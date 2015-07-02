@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: http://dankuanmei.github.io/sitemap.xml

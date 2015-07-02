@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
+  <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-02T19:14:22+09:00</updated>
+  <updated>2015-07-02T19:23:46+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

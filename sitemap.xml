@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://dankuanmei.github.io/blog/2015/07/03/the-presentation-time-stamp/</loc>
+    <lastmod>2015-07-03T11:03:43+09:00</lastmod>
+  </url>
+  <url>
+    <loc>http://dankuanmei.github.io/blog/2015/07/03/hello-oxygine-framework/</loc>
+    <lastmod>2015-07-03T11:01:46+09:00</lastmod>
+  </url>
+  <url>
     <loc>http://dankuanmei.github.io/blog/2015/07/02/sample-about-sort/</loc>
     <lastmod>2015-07-02T19:57:25+09:00</lastmod>
   </url>
@@ -13,5 +21,17 @@
   </url>
   <url>
     <loc>http://dankuanmei.github.io/</loc>
+  </url>
+  <url>
+    <loc>http://dankuanmei.github.io/blog/categories/c/</loc>
+  </url>
+  <url>
+    <loc>http://dankuanmei.github.io/blog/categories/language/</loc>
+  </url>
+  <url>
+    <loc>http://dankuanmei.github.io/blog/categories/oxygine/</loc>
+  </url>
+  <url>
+    <loc>http://dankuanmei.github.io/blog/categories/media/</loc>
   </url>
 </urlset>

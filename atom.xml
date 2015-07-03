@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-02T20:33:08+09:00</updated>
+  <updated>2015-07-03T13:18:40+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,72 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The Presentation Time Stamp]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/03/the-presentation-time-stamp/"/>
+    <updated>2015-07-03T11:03:43+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/03/the-presentation-time-stamp</id>
+    <content type="html"><![CDATA[<h2>wikipedia</h2>
+
+<p>The presentation timestamp (PTS) is a timestamp metadata field in an MPEG transport stream or MPEG program stream that is used to achieve synchronization of programs' separate elementary streams (for example Video, Audio, Subtitles) when presented to the viewer. The PTS is given in units related to a program&rsquo;s overall clock reference, either Program Clock Reference (PCR) or System Clock Reference (SCR), which is also transmitted in the transport stream or program stream.</p>
+
+<p>Presentation time stamps have a resolution of 90kHz, suitable for the presentation synchronization task. The PCR or SCR has a resolution of 27MHz which is suitable for synchronization of a decoder&rsquo;s overall clock with that of the usual remote encoder, including driving TV signals such as frame and line sync timing, colour sub carrier, etc.[1]</p>
+
+<p>Decoding of N elementary streams is synchronized by adjusting the decoding of streams to a common master time base rather than by adjusting the decoding of one stream to match that of another. The master time base may be one of the N decoders' clocks, the data source’s clock, or it may be some external clock.[1]</p>
+
+<p>A transport stream may contain multiple programs and each program may have its own time base. The time bases of different programs within a transport stream may be different. Because PTSs apply to the decoding of individual elementary streams, they reside in the PES packet layer of both the transport streams and program streams. End-to-end synchronization occurs when encoders save time stamps at capture time, when the time stamps propagate with associated coded data to decoders, and when decoders use those time stamps to schedule presentations.</p>
+
+<p>Synchronization of a decoding system with a channel is achieved through the use of the SCR in the program stream and by its analog, the PCR, in the transport stream. The SCR and PCR are time stamps encoding the timing of the bit stream itself, and are derived from the same time base used for the audio and video PTS values from the same program. Since each program may have its own time base, there are separate PCR fields for each program in a transport stream containing multiple programs. In some cases it may be possible for programs to share PCR fields.</p>
+
+<h2>Vietnamese</h2>
+
+<p>Có hai loại nhãn thời gian là nhãn thời gian trình diễn PTS (presentation time stamp) và nhãn thời gian giải mã DTS (decode time stamp)</p>
+
+<p>Nhãn thời gian trình diễn được dùng để xác định khi nào thì hình ảnh sẽ được thể hiện trên màn ảnh, còn nhãn thời gian giải mã xác định khi nào hình ảnh được giải mã.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hello Oxygine Framework]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/03/hello-oxygine-framework/"/>
+    <updated>2015-07-03T11:01:46+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/03/hello-oxygine-framework</id>
+    <content type="html"><![CDATA[<h2>Intro</h2>
+
+<h4>Free, Open Source and Cross-Platform</h4>
+
+<p>Oxygine is completely free and open source (MIT license) 2D game engine, available on BitBucket. It is written in C++ and runs on MacOSX, iOS, Android, Windows and Linux.</p>
+
+<h4>Pure C++</h4>
+
+<p>Oxygine is written in C++. It provides easy to use API, which is designed with &ldquo;do more with less code&rdquo; philosophy. It uses a managed scenegraph system that takes care of rendering and updates, and provides ability to extend with custom rendering and updates.</p>
+
+<h4>Build for Web</h4>
+
+<p>You can build and run your C++ Oxygine application in web browsers. It won’t require any plugins, such as Flash or Unity, and runs as pure HTML5/JS application using WebGL for rendering.</p>
+
+<h4>Embedded Profiling Tools</h4>
+
+<p>You can analyze your application with embedded tools. Inspect in runtime scenegraph, loaded textures, FPS, performance and more.</p>
+
+<h4>Text Rendering</h4>
+
+<p>Accurate unicode text rendering using bitmap fonts created with BMFont tool. Supports different alignment modes and substring colorization.</p>
+
+<h4>Compresed Textures and Atlasses</h4>
+
+<p>Oxygine provides command-line tools to build texture atlases with ability to convert it into compressed formats like PVRTC, ETC and more. Atlases can be automatically resized to any game resolution for higher quality.</p>
+
+<h4>High Performance</h4>
+
+<p>Oxygine is developed to be fast and memory efficient on mobile platforms. It has flexible resources management system, automatic sprites batching, memory pools and more.</p>
+
+<h4>Build on top of the SDL2 and Marmalade</h4>
+
+<p>You can build Oxygine on top of the SDL2, Marmalade, Emscripten or adapt to your platform.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Sample About Sort]]></title>

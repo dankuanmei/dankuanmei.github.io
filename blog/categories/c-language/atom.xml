@@ -4,7 +4,7 @@
   <title><![CDATA[Category: C-language | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/c-language/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-03T13:20:01+09:00</updated>
+  <updated>2015-07-03T13:27:49+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -36,7 +36,7 @@
             Bin[x[i]]++;            /* Bin[ ] の要素の値を */
                                     /* インクリメント */
         j = 0;                      /* x[ ] の添字として使用 */
-        for (i = 0; i &lt; MAX_DATA ; i++) 
+        for (i = 0; i &lt; MAX_DATA ; i++)
             if (Bin[i])             /* ０でなければ */
             x[j++] = i;             /* 書き戻す */
     }
@@ -56,7 +56,7 @@
                 x[j] = x[j - 1];
                 x[j - 1]= temp;
             }
-        } 
+        }
         /* ソートの途中経過を表示 */
         ShowData(x, NUM_DATA);
     }

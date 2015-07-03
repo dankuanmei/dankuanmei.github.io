@@ -119,7 +119,7 @@
             Bin[x[i]]++;            /* Bin[ ] の要素の値を */
                                     /* インクリメント */
         j = 0;                      /* x[ ] の添字として使用 */
-        for (i = 0; i &lt; MAX_DATA ; i++) 
+        for (i = 0; i &lt; MAX_DATA ; i++)
             if (Bin[i])             /* ０でなければ */
             x[j++] = i;             /* 書き戻す */
     }
@@ -139,7 +139,7 @@
                 x[j] = x[j - 1];
                 x[j - 1]= temp;
             }
-        } 
+        }
         /* ソートの途中経過を表示 */
         ShowData(x, NUM_DATA);
     }

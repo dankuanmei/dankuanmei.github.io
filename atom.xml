@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-03T13:20:01+09:00</updated>
+  <updated>2015-07-03T13:27:49+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -102,7 +102,7 @@
             Bin[x[i]]++;            /* Bin[ ] の要素の値を */
                                     /* インクリメント */
         j = 0;                      /* x[ ] の添字として使用 */
-        for (i = 0; i &lt; MAX_DATA ; i++) 
+        for (i = 0; i &lt; MAX_DATA ; i++)
             if (Bin[i])             /* ０でなければ */
             x[j++] = i;             /* 書き戻す */
     }
@@ -122,7 +122,7 @@
                 x[j] = x[j - 1];
                 x[j - 1]= temp;
             }
-        } 
+        }
         /* ソートの途中経過を表示 */
         ShowData(x, NUM_DATA);
     }
@@ -227,7 +227,34 @@ void Swap(int x[ ], int i, int j)
     <link href="http://dankuanmei.github.io/blog/2015/07/02/hello-world/"/>
     <updated>2015-07-02T19:13:45+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/02/hello-world</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<h3>酒と泪と男と女</h3>
+
+<pre><code>忘れてしまいたい事や
+どうしようもない 寂しさに
+包まれた時に男は
+酒を飲むのでしょう
+飲んで飲んで 飲まれて飲んで
+飲んで飲みつぶれて 寝むるまで飲んで
+やがて男は 静かに寝むるのでしょう
+
+忘れてしまいたい事や
+どうしようもない 悲しさに
+包まれた時に女は
+泪みせるのでしょう
+泣いて泣いて 一人泣いて
+泣いて泣きつかれて 寝むるまで泣いて
+やがて女は 静かに寝むるのでしょう
+
+またひとつ 女の方が偉く思えてきた
+またひとつ 男のずるさが見えてきた
+俺は男 泣きとおすなんて出来ないよ
+
+今夜も酒をあおって 眠ってしまうのさ
+俺は男 泪はみせられないもの
+飲んで飲んで 飲まれて飲んで
+飲んで飲みつぶれて 眠るまで飲んで
+やがて男は静かに 眠るのでしょう
+</code></pre>
 ]]></content>
   </entry>
   

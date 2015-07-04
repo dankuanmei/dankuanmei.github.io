@@ -102,66 +102,92 @@
 
 <div class="entry-content"><h2>Create the Directory Structure</h2>
 
-<p>The first step that we are going to take is to make a directory structure that will hold the site data that we will be serving to visitors.
-    sudo mkdir -p /var/www/example.local/public_html</p>
+<p>The first step that we are going to take is to make a directory structure that will hold the site data that we will be serving to visitors.</p>
+
+<pre><code>sudo mkdir -p /var/www/example.local/public_html
+</code></pre>
 
 <h2>Grant Permissions</h2>
 
-<p>Now we have the directory structure for our files, but they are owned by our root user. If we want our regular user to be able to modify files in our web directories, we can change the ownership by doing this:
-    sudo chown -R $USER:$USER /var/www/example.local/public_html</p>
+<p>Now we have the directory structure for our files, but they are owned by our root user. If we want our regular user to be able to modify files in our web directories, we can change the ownership by doing this:</p>
 
-<p>We should also modify our permissions a little bit to ensure that read access is permitted to the general web directory and all of the files and folders it contains so that pages can be served correctly:
-    sudo chmod -R 755 /var/www</p>
+<pre><code>sudo chown -R $USER:$USER /var/www/example.local/public_html
+</code></pre>
+
+<p>We should also modify our permissions a little bit to ensure that read access is permitted to the general web directory and all of the files and folders it contains so that pages can be served correctly:</p>
+
+<pre><code>sudo chmod -R 755 /var/www
+</code></pre>
 
 <h2>Create Demo Pages for Each Virtual Host</h2>
 
 <pre><code>vim /var/www/example.local/public_html/index.html
 </code></pre>
 
-<p>In this file, create a simple HTML document that indicates the site it is connected to. My file looks
-    <html>
-      <head>
-        <title>Welcome to example.local!</title>
-      </head>
-      <body>
-        <h1>Success!  The example.local virtual host is working!</h1>
-      </body>
-    </html></p>
+<p>In this file, create a simple HTML document that indicates the site it is connected to. My file looks</p>
+
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Welcome to example.local!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Success!  The example.local virtual host is working!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 
 <h2>Create New Virtual Host Files</h2>
 
-<p>Create the First Virtual Host File
-    sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.local.conf
-Open and Edit the file.
-    sudo vim /etc/apache2/sites-available/example.local.conf
-Sample
-    <VirtualHost *:80>
-        ServerAdmin <a href="&#109;&#x61;&#105;&#108;&#116;&#x6f;&#58;&#x61;&#100;&#109;&#105;&#110;&#64;&#101;&#120;&#97;&#x6d;&#112;&#108;&#x65;&#46;&#x6c;&#111;&#99;&#97;&#x6c;">&#x61;&#x64;&#109;&#x69;&#110;&#64;&#101;&#x78;&#97;&#109;&#112;&#108;&#101;&#x2e;&#108;&#111;&#x63;&#97;&#x6c;</a>
-        ServerName example.local
-        ServerAlias www.example.local
-        DocumentRoot /var/www/example.local/public_html
-        ErrorLog ${APACHE_LOG_DIR}/error.log
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
-    </VirtualHost>
-Save and close the file.</p>
+<p>Create the First Virtual Host File</p>
+
+<pre><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.local.conf
+</code></pre>
+
+<p>Open and Edit the file.</p>
+
+<pre><code>sudo vim /etc/apache2/sites-available/example.local.conf
+</code></pre>
+
+<p>Sample</p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerAdmin admin@example.local
+    ServerName example.local
+    ServerAlias www.example.local
+    DocumentRoot /var/www/example.local/public_html
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Save and close the file.</p>
 
 <h2>Enable the New Virtual Host Files</h2>
 
-<p>We can use the a2ensite tool to enable each of our sites like this:
-    sudo a2ensite example.local.conf
-When you are finished, you need to restart Apache to make these changes take effect:
-    sudo service apache2 restart</p>
+<p>We can use the a2ensite tool to enable each of our sites like this:</p>
+
+<pre><code>sudo a2ensite example.local.conf
+</code></pre>
+
+<p>When you are finished, you need to restart Apache to make these changes take effect:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
 
 <h2>Set Up Local Hosts File (Optional)</h2>
 
 <p>If you haven&rsquo;t been using actual domain names that you own to test this procedure and have been using some example domains instead, you can at least test the functionality of this process by temporarily modifying the hosts file on your local computer.
-If you are on a Mac or Linux computer, edit your local file with administrative privileges by typing:
-    sudo vim /etc/hosts</p>
+If you are on a Mac or Linux computer, edit your local file with administrative privileges by typing:</p>
 
-<p>For the domains that I used in this guide, assuming that my VPS IP address is 111.111.111.111, I could add the following lines to the bottom of my hosts file:
-    127.0.0.1   localhost
-    127.0.1.1   guest-desktop
-    111.111.111.111 example.local</p>
+<pre><code>sudo vim /etc/hosts
+</code></pre>
+
+<p>For the domains that I used in this guide, assuming that my VPS IP address is 111.111.111.111, I could add the following lines to the bottom of my hosts file:</p>
+
+<pre><code>127.0.0.1   localhost
+127.0.1.1   guest-desktop
+111.111.111.111 example.local
+</code></pre>
 
 <h2>Test your Results</h2>
 

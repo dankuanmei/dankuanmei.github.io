@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - ダン・クァン・ミン Blog</title>
+  <title>Setup Cakephp 3.x - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Blog Archive 2015 Setup Cakephp 3.x
-Jul 04 2015 posted in cakephp-3.x, php Setup Apache2 Virtual Host on Ubuntu
-Jul 04 2015 posted in apache2, linux &hellip;">
+  <meta name="description" content="Installing CakePHP First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ Jul 04 2015 posted in apache2, linux &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/archives">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -79,116 +77,120 @@ Jul 04 2015 posted in apache2, linux &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      
+        <h1 class="entry-title">Setup Cakephp 3.x</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+        
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><h2>Installing CakePHP</h2>
 
-  
-  <h2>2015</h2>
+<p>First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as running the following:</p>
 
-<article>
-  
-<h1><a href="/blog/2015/07/04/setup-cakephp-3-dot-x/">Setup Cakephp 3.x</a></h1>
-<time datetime="2015-07-04T16:18:28+09:00" pubdate><span class='month'>Jul</span> <span class='day'>04</span> <span class='year'>2015</span></time>
+<pre><code>curl -s https://getcomposer.org/installer | php
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/cakephp-3-dot-x/'>cakephp-3.x</a>, <a class='category' href='/blog/categories/php/'>php</a></span>
-</footer>
+<p>Now that you’ve downloaded and installed Composer, you can get a new CakePHP application by running:</p>
 
+<pre><code>php composer.phar create-project --prefer-dist cakephp/app [app_name]
+</code></pre>
 
-</article>
+<p>Or if Composer is installed globally:</p>
 
+<pre><code>composer create-project --prefer-dist cakephp/app [app_name]
+</code></pre>
 
+<p>You can now visit the path to where you installed your CakePHP application and see the setup traffic lights.</p>
 
-<article>
-  
-<h1><a href="/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu/">Setup Apache2 Virtual Host on Ubuntu</a></h1>
-<time datetime="2015-07-04T13:20:58+09:00" pubdate><span class='month'>Jul</span> <span class='day'>04</span> <span class='year'>2015</span></time>
+<h2>Development Server</h2>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/apache2/'>apache2</a>, <a class='category' href='/blog/categories/linux/'>linux</a>, <a class='category' href='/blog/categories/ubuntu/'>ubuntu</a>, <a class='category' href='/blog/categories/virtualhost/'>virtualhost</a></span>
-</footer>
+<p>A development installation is the fastest method to setup CakePHP. In this example, we will be using CakePHP’s console to run PHP’s built-in web server which will make your application available at <a href="http://host:port.">http://host:port.</a> From the app directory, execute:</p>
 
+<pre><code>bin/cake server -H 192.168.13.37 -p 5673
+</code></pre>
 
-</article>
+<h2>Create <code>.htaccess</code> file</h2>
 
+<p>CakePHP webroot directory (will be copied to your application’s web root by bake):</p>
 
-
-<article>
-  
-<h1><a href="/blog/2015/07/03/the-presentation-time-stamp/">The Presentation Time Stamp</a></h1>
-<time datetime="2015-07-03T11:03:43+09:00" pubdate><span class='month'>Jul</span> <span class='day'>03</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/media/'>media</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2015/07/03/hello-oxygine-framework/">Hello Oxygine Framework</a></h1>
-<time datetime="2015-07-03T11:01:46+09:00" pubdate><span class='month'>Jul</span> <span class='day'>03</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/oxygine/'>oxygine</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2015/07/02/sample-about-sort/">Sample About Sort</a></h1>
-<time datetime="2015-07-02T19:57:25+09:00" pubdate><span class='month'>Jul</span> <span class='day'>02</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/c-language/'>c-language</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2015/07/02/hello-world/">Hello World</a></h1>
-<time datetime="2015-07-02T19:13:45+09:00" pubdate><span class='month'>Jul</span> <span class='day'>02</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/life/'>life</a></span>
-</footer>
-
-
-</article>
-
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine on
+    RewriteRule    ^$    app/webroot/    [L]
+    RewriteRule    (.*) app/webroot/$1    [L]
+&lt;/IfModule&gt;
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
-</article>
 
 
-</div>
 
-<aside class="sidebar">
+  <span class="byline author vcard">Authored by <span class="fn">
   
+    ダン・クァン・ミン
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/cakephp-3-dot-x/'>cakephp-3.x</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+    </p>
     
+      <div class="sharing">
   
-</aside>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x/" >Tweet</a>
+  
+  
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu/" title="Previous Post: Setup Apache2 Virtual Host on Ubuntu">&laquo; Setup Apache2 Virtual Host on Ubuntu</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
 
     </div>
   </div>

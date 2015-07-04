@@ -136,6 +136,12 @@
 &lt;/html&gt;
 </code></pre>
 
+<h2>Enable mod rewrite(Optional)</h2>
+
+<pre><code>sudo a2enmod rewrite
+sudo service apache2 restart
+</code></pre>
+
 <h2>Create New Virtual Host Files</h2>
 
 <p>Create the First Virtual Host File</p>
@@ -155,6 +161,9 @@
     ServerName example.local
     ServerAlias www.example.local
     DocumentRoot /var/www/example.local/public_html
+    &lt;Directory /var/www/example.local/public_html&gt;
+      AllowOverride all
+    &lt;/Directory&gt;
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;
@@ -241,6 +250,8 @@ If you are on a Mac or Linux computer, edit your local file with administrative 
       
         <a class="basic-alignment left" href="/blog/2015/07/03/the-presentation-time-stamp/" title="Previous Post: The Presentation Time Stamp">&laquo; The Presentation Time Stamp</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2015/07/04/setup-cakephp-3-dot-x/" title="Next Post: Setup Cakephp 3.x">Setup Cakephp 3.x &raquo;</a>
       
     </p>
   </footer>

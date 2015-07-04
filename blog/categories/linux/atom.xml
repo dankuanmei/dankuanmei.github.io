@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-04T13:36:05+09:00</updated>
+  <updated>2015-07-04T16:35:02+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -54,6 +54,12 @@
 &lt;/html&gt;
 </code></pre>
 
+<h2>Enable mod rewrite(Optional)</h2>
+
+<pre><code>sudo a2enmod rewrite
+sudo service apache2 restart
+</code></pre>
+
 <h2>Create New Virtual Host Files</h2>
 
 <p>Create the First Virtual Host File</p>
@@ -73,6 +79,9 @@
     ServerName example.local
     ServerAlias www.example.local
     DocumentRoot /var/www/example.local/public_html
+    &lt;Directory /var/www/example.local/public_html&gt;
+      AllowOverride all
+    &lt;/Directory&gt;
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
 &lt;/VirtualHost&gt;

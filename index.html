@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Installing CakePHP First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as &hellip;">
+  <meta name="description" content="Create database UTF8 mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8; Drop database mysql&gt; DROP DATABASE ＜データベース名＞; Import database &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,165 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/04/mysql-useful-command-line/">Mysql - Useful Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-04T17:59:51+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:59 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Create database UTF8</h3>
+
+<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
+</code></pre>
+
+<h3>Drop database</h3>
+
+<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
+</code></pre>
+
+<h3>Import database from file</h3>
+
+<pre><code>$ mysql -u username -p database_name &lt; file.sql
+</code></pre>
+
+<h3>Export database to file</h3>
+
+<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/">CakePHP 3.x - Code Generation With Bake</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-04T17:44:10+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:44 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Some useful command</h2>
+
+<pre><code>$ bin/cake bake all users
+
+$ bin/cake bake controller users
+
+$ bin/cake bake model users
+</code></pre>
+
+<h2>Full guide</h2>
+
+<p>When run with no arguments bin/cake bake will output a list of available tasks. You should see something like:</p>
+
+<pre><code>$ bin/cake bake
+
+Welcome to CakePHP v3.0.0 Console
+---------------------------------------------------------------
+App : src
+Path: /var/www/cakephp.dev/src/
+---------------------------------------------------------------
+The following commands can be used to generate skeleton code for your application.
+
+Available bake commands:
+
+- all
+- behavior
+- cell
+- component
+- controller
+- fixture
+- form
+- helper
+- model
+- plugin
+- shell
+- template
+- test
+
+By using `cake bake [name]` you can invoke a specific bake task.
+</code></pre>
+
+<p>You can get more information on what each task does, and what options are available using the &ndash;help option:</p>
+
+<pre><code>$ bin/cake bake controller --help
+
+Welcome to CakePHP v3.0.0 Console
+---------------------------------------------------------------
+App : src
+Path: /var/www/cakephp.dev/src/
+---------------------------------------------------------------
+Bake a controller skeleton.
+
+Usage:
+cake bake controller [subcommand] [options] [&lt;name&gt;]
+
+Subcommands:
+
+all  Bake all controllers with CRUD methods.
+
+To see help on a subcommand use `cake bake controller [subcommand] --help`
+
+Options:
+
+--help, -h        Display this help.
+--verbose, -v     Enable verbose output.
+--quiet, -q       Enable quiet output.
+--plugin, -p      Plugin to bake into.
+--force, -f       Force overwriting existing files without prompting.
+--connection, -c  The datasource connection to get data from.
+                  (default: default)
+--theme, -t       The theme to use when baking code.
+--components      The comma separated list of components to use.
+--helpers         The comma separated list of helpers to use.
+--prefix          The namespace/routing prefix to use.
+--no-test         Do not generate a test skeleton.
+--no-actions      Do not generate basic CRUD action methods.
+
+Arguments:
+
+name  Name of the controller to bake. Can use Plugin.name to bake
+    controllers into plugins. (optional)
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setup Cakephp 3.x - ダン・クァン・ミン Blog</title>
+  <title>Mysql - Useful Command Line - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Installing CakePHP First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as &hellip;">
+  <meta name="description" content="Create database UTF8 mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8; Drop database mysql&gt; DROP DATABASE ＜データベース名＞; Import database &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -82,7 +82,7 @@
   <header>
     
       
-        <h1 class="entry-title">Setup Cakephp 3.x</h1>
+        <h1 class="entry-title">Mysql - Useful Command Line</h1>
       
     
     
@@ -92,7 +92,7 @@
 
 
 
-<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+<time class='entry-date' datetime='2015-07-04T17:59:51+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:59 pm</span></time>
         
         
       </p>
@@ -100,41 +100,24 @@
   </header>
 
 
-<div class="entry-content"><h2>Installing CakePHP</h2>
+<div class="entry-content"><h3>Create database UTF8</h3>
 
-<p>First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as running the following:</p>
-
-<pre><code>curl -s https://getcomposer.org/installer | php
+<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
 </code></pre>
 
-<p>Now that you’ve downloaded and installed Composer, you can get a new CakePHP application by running:</p>
+<h3>Drop database</h3>
 
-<pre><code>php composer.phar create-project --prefer-dist cakephp/app [app_name]
+<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
 </code></pre>
 
-<p>Or if Composer is installed globally:</p>
+<h3>Import database from file</h3>
 
-<pre><code>composer create-project --prefer-dist cakephp/app [app_name]
+<pre><code>$ mysql -u username -p database_name &lt; file.sql
 </code></pre>
 
-<p>You can now visit the path to where you installed your CakePHP application and see the setup traffic lights.</p>
+<h3>Export database to file</h3>
 
-<h2>Development Server</h2>
-
-<p>A development installation is the fastest method to setup CakePHP. In this example, we will be using CakePHP’s console to run PHP’s built-in web server which will make your application available at <a href="http://host:port.">http://host:port.</a> From the app directory, execute:</p>
-
-<pre><code>bin/cake server -H 192.168.13.37 -p 5673
-</code></pre>
-
-<h2>Create <code>.htaccess</code> file</h2>
-
-<p>CakePHP webroot directory (will be copied to your application’s web root by bake):</p>
-
-<pre><code>&lt;IfModule mod_rewrite.c&gt;
-    RewriteEngine on
-    RewriteRule    ^$    app/webroot/    [L]
-    RewriteRule    (.*) app/webroot/$1    [L]
-&lt;/IfModule&gt;
+<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
 </code></pre>
 </div>
 
@@ -158,13 +141,13 @@
 
 
 
-<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+<time class='entry-date' datetime='2015-07-04T17:59:51+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:59 pm</span></time>
       
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/cakephp-3-dot-x/'>cakephp-3.x</a>, <a class='category' href='/blog/categories/php/'>php</a>
+    <a class='category' href='/blog/categories/mysql/'>mysql</a>
   
 </span>
 
@@ -173,7 +156,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line/" >Tweet</a>
   
   
   
@@ -182,10 +165,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu/" title="Previous Post: Setup Apache2 Virtual Host on Ubuntu">&laquo; Setup Apache2 Virtual Host on Ubuntu</a>
+        <a class="basic-alignment left" href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/" title="Previous Post: CakePHP 3.x - Code Generation with Bake">&laquo; CakePHP 3.x - Code Generation with Bake</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/" title="Next Post: CakePHP 3.x - Code Generation with Bake">CakePHP 3.x - Code Generation with Bake &raquo;</a>
       
     </p>
   </footer>

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setup Cakephp 3.x - ダン・クァン・ミン Blog</title>
+  <title>CakePHP 3.x - Code Generation With Bake - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Installing CakePHP First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as &hellip;">
+  <meta name="description" content="Some useful command $ bin/cake bake all users $ bin/cake bake controller users $ bin/cake bake model users Full guide When run with no arguments bin/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -82,7 +82,7 @@
   <header>
     
       
-        <h1 class="entry-title">Setup Cakephp 3.x</h1>
+        <h1 class="entry-title">CakePHP 3.x - Code Generation With Bake</h1>
       
     
     
@@ -92,7 +92,7 @@
 
 
 
-<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+<time class='entry-date' datetime='2015-07-04T17:44:10+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:44 pm</span></time>
         
         
       </p>
@@ -100,41 +100,87 @@
   </header>
 
 
-<div class="entry-content"><h2>Installing CakePHP</h2>
+<div class="entry-content"><h2>Some useful command</h2>
 
-<p>First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as running the following:</p>
+<pre><code>$ bin/cake bake all users
 
-<pre><code>curl -s https://getcomposer.org/installer | php
+$ bin/cake bake controller users
+
+$ bin/cake bake model users
 </code></pre>
 
-<p>Now that you’ve downloaded and installed Composer, you can get a new CakePHP application by running:</p>
+<h2>Full guide</h2>
 
-<pre><code>php composer.phar create-project --prefer-dist cakephp/app [app_name]
+<p>When run with no arguments bin/cake bake will output a list of available tasks. You should see something like:</p>
+
+<pre><code>$ bin/cake bake
+
+Welcome to CakePHP v3.0.0 Console
+---------------------------------------------------------------
+App : src
+Path: /var/www/cakephp.dev/src/
+---------------------------------------------------------------
+The following commands can be used to generate skeleton code for your application.
+
+Available bake commands:
+
+- all
+- behavior
+- cell
+- component
+- controller
+- fixture
+- form
+- helper
+- model
+- plugin
+- shell
+- template
+- test
+
+By using `cake bake [name]` you can invoke a specific bake task.
 </code></pre>
 
-<p>Or if Composer is installed globally:</p>
+<p>You can get more information on what each task does, and what options are available using the &ndash;help option:</p>
 
-<pre><code>composer create-project --prefer-dist cakephp/app [app_name]
-</code></pre>
+<pre><code>$ bin/cake bake controller --help
 
-<p>You can now visit the path to where you installed your CakePHP application and see the setup traffic lights.</p>
+Welcome to CakePHP v3.0.0 Console
+---------------------------------------------------------------
+App : src
+Path: /var/www/cakephp.dev/src/
+---------------------------------------------------------------
+Bake a controller skeleton.
 
-<h2>Development Server</h2>
+Usage:
+cake bake controller [subcommand] [options] [&lt;name&gt;]
 
-<p>A development installation is the fastest method to setup CakePHP. In this example, we will be using CakePHP’s console to run PHP’s built-in web server which will make your application available at <a href="http://host:port.">http://host:port.</a> From the app directory, execute:</p>
+Subcommands:
 
-<pre><code>bin/cake server -H 192.168.13.37 -p 5673
-</code></pre>
+all  Bake all controllers with CRUD methods.
 
-<h2>Create <code>.htaccess</code> file</h2>
+To see help on a subcommand use `cake bake controller [subcommand] --help`
 
-<p>CakePHP webroot directory (will be copied to your application’s web root by bake):</p>
+Options:
 
-<pre><code>&lt;IfModule mod_rewrite.c&gt;
-    RewriteEngine on
-    RewriteRule    ^$    app/webroot/    [L]
-    RewriteRule    (.*) app/webroot/$1    [L]
-&lt;/IfModule&gt;
+--help, -h        Display this help.
+--verbose, -v     Enable verbose output.
+--quiet, -q       Enable quiet output.
+--plugin, -p      Plugin to bake into.
+--force, -f       Force overwriting existing files without prompting.
+--connection, -c  The datasource connection to get data from.
+                  (default: default)
+--theme, -t       The theme to use when baking code.
+--components      The comma separated list of components to use.
+--helpers         The comma separated list of helpers to use.
+--prefix          The namespace/routing prefix to use.
+--no-test         Do not generate a test skeleton.
+--no-actions      Do not generate basic CRUD action methods.
+
+Arguments:
+
+name  Name of the controller to bake. Can use Plugin.name to bake
+    controllers into plugins. (optional)
 </code></pre>
 </div>
 
@@ -158,7 +204,7 @@
 
 
 
-<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+<time class='entry-date' datetime='2015-07-04T17:44:10+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:44 pm</span></time>
       
       
 
@@ -173,7 +219,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/" >Tweet</a>
   
   
   
@@ -182,10 +228,10 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu/" title="Previous Post: Setup Apache2 Virtual Host on Ubuntu">&laquo; Setup Apache2 Virtual Host on Ubuntu</a>
+        <a class="basic-alignment left" href="/blog/2015/07/04/setup-cakephp-3-dot-x/" title="Previous Post: Setup Cakephp 3.x">&laquo; Setup Cakephp 3.x</a>
       
       
-        <a class="basic-alignment right" href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/" title="Next Post: CakePHP 3.x - Code Generation with Bake">CakePHP 3.x - Code Generation with Bake &raquo;</a>
+        <a class="basic-alignment right" href="/blog/2015/07/04/mysql-useful-command-line/" title="Next Post: Mysql - Useful command line">Mysql - Useful command line &raquo;</a>
       
     </p>
   </footer>

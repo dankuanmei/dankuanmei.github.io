@@ -5,12 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>First Look About Design Pattern - ダン・クァン・ミン Blog</title>
+  <title>Gradle - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Why Gradle? Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins. Here are &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -19,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/04/first-look-about-design-pattern">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/06/gradle">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -83,7 +82,7 @@
   <header>
     
       
-        <h1 class="entry-title">First Look About Design Pattern</h1>
+        <h1 class="entry-title">Gradle</h1>
       
     
     
@@ -93,7 +92,7 @@
 
 
 
-<time class='entry-date' datetime='2015-07-04T21:02:01+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:02 pm</span></time>
+<time class='entry-date' datetime='2015-07-06T13:59:40+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:59 pm</span></time>
         
         
       </p>
@@ -101,7 +100,72 @@
   </header>
 
 
-<div class="entry-content">
+<div class="entry-content"><h2>Why Gradle?</h2>
+
+<p>Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins.</p>
+
+<p>Here are some of its features that made us choose Gradle:
+- Domain Specific Language (DSL) to describe and manipulate the build logic
+- Build files are Groovy based and allow mixing of declarative elements through the DSL and using code to manipulate the DSL elements to provide custom logic.
+- Built-in dependency management through Maven and/or Ivy.
+- Very flexible. Allows using best practices but doesn’t force its own way of doing things.
+- Plugins can expose their own DSL and their own API for build files to use.
+- Good Tooling API allowing IDE integration</p>
+
+<h2>Wikipedia</h2>
+
+<p>Gradle is a build automation tool that builds upon the concepts of Apache Ant and Apache Maven and introduces a Groovy-based domain-specific language (DSL) instead of the more traditional XML form of declaring the project configuration. Gradle uses a directed acyclic graph (&ldquo;DAG&rdquo;) to determine the order in which tasks can be run.</p>
+
+<p>Gradle was designed for multi-project builds which can grow to be quite large, and supports incremental builds by intelligently determining which parts of the build tree are up-to-date, so that any task dependent upon those parts will not need to be re-executed.</p>
+
+<p>The initial plugins are primarily focused around Java, Groovy and Scala development and deployment, but more languages and project workflows are on the roadmap.</p>
+
+<h3>Example Java project</h3>
+
+<p>Consider the case where the Maven directory structure is used for Java sources and resources. These directories are: src/main/java, src/main/resources, src/test/java and src/test/resources.</p>
+
+<p>build.gradle</p>
+
+<pre><code>apply plugin: 'java'
+</code></pre>
+
+<p>The most simple Android project has the following build.gradle:</p>
+
+<pre><code>buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.11.1'
+    }
+}
+
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+}
+</code></pre>
+
+<p>Running gradle build will result in</p>
+
+<pre><code>&gt; gradle build
+:compileJava
+:processResources
+:classes
+:jar
+:assemble
+:compileTestJava
+:processTestResources
+:testClasses
+:test
+:check
+:build
+
+BUILD SUCCESSFUL
+</code></pre>
 </div>
 
 
@@ -124,13 +188,13 @@
 
 
 
-<time class='entry-date' datetime='2015-07-04T21:02:01+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:02 pm</span></time>
+<time class='entry-date' datetime='2015-07-06T13:59:40+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:59 pm</span></time>
       
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/design/'>design</a>, <a class='category' href='/blog/categories/pattern/'>pattern</a>
+    <a class='category' href='/blog/categories/gradle/'>gradle</a>, <a class='category' href='/blog/categories/java/'>java</a>
   
 </span>
 
@@ -139,7 +203,7 @@
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/04/first-look-about-design-pattern/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/04/first-look-about-design-pattern/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/06/gradle/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/06/gradle/" >Tweet</a>
   
   
   
@@ -148,10 +212,8 @@
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/07/04/mysql-useful-command-line/" title="Previous Post: Mysql - Useful command line">&laquo; Mysql - Useful command line</a>
+        <a class="basic-alignment left" href="/blog/2015/07/06/linux-command-to-check-status/" title="Previous Post: Linux command to check status">&laquo; Linux command to check status</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/07/04/vagrant/" title="Next Post: Vagrant">Vagrant &raquo;</a>
       
     </p>
   </footer>

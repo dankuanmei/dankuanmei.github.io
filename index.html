@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="To investigate the usage of disk memory Check the disk usage. It was confirmed command in CentOS on Vagrant + Virtualbox. $ df Check the usage of &hellip;">
+  <meta name="description" content="Why Gradle? Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins. Here are &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,101 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/06/gradle/">Gradle</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-06T13:59:40+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:59 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Why Gradle?</h2>
+
+<p>Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins.</p>
+
+<p>Here are some of its features that made us choose Gradle:
+- Domain Specific Language (DSL) to describe and manipulate the build logic
+- Build files are Groovy based and allow mixing of declarative elements through the DSL and using code to manipulate the DSL elements to provide custom logic.
+- Built-in dependency management through Maven and/or Ivy.
+- Very flexible. Allows using best practices but doesn’t force its own way of doing things.
+- Plugins can expose their own DSL and their own API for build files to use.
+- Good Tooling API allowing IDE integration</p>
+
+<h2>Wikipedia</h2>
+
+<p>Gradle is a build automation tool that builds upon the concepts of Apache Ant and Apache Maven and introduces a Groovy-based domain-specific language (DSL) instead of the more traditional XML form of declaring the project configuration. Gradle uses a directed acyclic graph (&ldquo;DAG&rdquo;) to determine the order in which tasks can be run.</p>
+
+<p>Gradle was designed for multi-project builds which can grow to be quite large, and supports incremental builds by intelligently determining which parts of the build tree are up-to-date, so that any task dependent upon those parts will not need to be re-executed.</p>
+
+<p>The initial plugins are primarily focused around Java, Groovy and Scala development and deployment, but more languages and project workflows are on the roadmap.</p>
+
+<h3>Example Java project</h3>
+
+<p>Consider the case where the Maven directory structure is used for Java sources and resources. These directories are: src/main/java, src/main/resources, src/test/java and src/test/resources.</p>
+
+<p>build.gradle</p>
+
+<pre><code>apply plugin: 'java'
+</code></pre>
+
+<p>The most simple Android project has the following build.gradle:</p>
+
+<pre><code>buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.11.1'
+    }
+}
+
+apply plugin: 'android'
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+}
+</code></pre>
+
+<p>Running gradle build will result in</p>
+
+<pre><code>&gt; gradle build
+:compileJava
+:processResources
+:classes
+:jar
+:assemble
+:compileTestJava
+:processTestResources
+:testClasses
+:test
+:check
+:build
+
+BUILD SUCCESSFUL
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -676,68 +771,6 @@ If you are on a Mac or Linux computer, edit your local file with administrative 
 <p>Có hai loại nhãn thời gian là nhãn thời gian trình diễn PTS (presentation time stamp) và nhãn thời gian giải mã DTS (decode time stamp)</p>
 
 <p>Nhãn thời gian trình diễn được dùng để xác định khi nào thì hình ảnh sẽ được thể hiện trên màn ảnh, còn nhãn thời gian giải mã xác định khi nào hình ảnh được giải mã.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/03/hello-oxygine-framework/">Hello Oxygine Framework</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-03T11:01:46+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2015</span></span> <span class='time'>11:01 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Intro</h2>
-
-<h4>Free, Open Source and Cross-Platform</h4>
-
-<p>Oxygine is completely free and open source (MIT license) 2D game engine, available on BitBucket. It is written in C++ and runs on MacOSX, iOS, Android, Windows and Linux.</p>
-
-<h4>Pure C++</h4>
-
-<p>Oxygine is written in C++. It provides easy to use API, which is designed with &ldquo;do more with less code&rdquo; philosophy. It uses a managed scenegraph system that takes care of rendering and updates, and provides ability to extend with custom rendering and updates.</p>
-
-<h4>Build for Web</h4>
-
-<p>You can build and run your C++ Oxygine application in web browsers. It won’t require any plugins, such as Flash or Unity, and runs as pure HTML5/JS application using WebGL for rendering.</p>
-
-<h4>Embedded Profiling Tools</h4>
-
-<p>You can analyze your application with embedded tools. Inspect in runtime scenegraph, loaded textures, FPS, performance and more.</p>
-
-<h4>Text Rendering</h4>
-
-<p>Accurate unicode text rendering using bitmap fonts created with BMFont tool. Supports different alignment modes and substring colorization.</p>
-
-<h4>Compresed Textures and Atlasses</h4>
-
-<p>Oxygine provides command-line tools to build texture atlases with ability to convert it into compressed formats like PVRTC, ETC and more. Atlases can be automatically resized to any game resolution for higher quality.</p>
-
-<h4>High Performance</h4>
-
-<p>Oxygine is developed to be fast and memory efficient on mobile platforms. It has flexible resources management system, automatic sprites batching, memory pools and more.</p>
-
-<h4>Build on top of the SDL2 and Marmalade</h4>
-
-<p>You can build Oxygine on top of the SDL2, Marmalade, Emscripten or adapt to your platform.</p>
 </div>
   
   

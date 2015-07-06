@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Rails | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://dankuanmei.github.io/"/>
+  <updated>2015-07-06T12:10:11+09:00</updated>
+  <id>http://dankuanmei.github.io/</id>
+  <author>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Server]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/06/rails-server/"/>
+    <updated>2015-07-06T11:25:09+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/06/rails-server</id>
+    <content type="html"><![CDATA[<h2>Rails Server Throwdown: Passenger, Unicorn or Puma?</h2>
+
+<p>Every millisecond counts. As professionals from industries outside the technology sector turn to web apps to run their businesses, shaving a minuscule amount of response time from your process can mean the difference between keeping an end user happy and losing their company’s account. It’s fair game to expect your Rails server to handle load balancing, to deter DDoS attacks, and to manage your app’s reverse proxy requests.</p>
+
+<p>Selecting a Rails server can set the pace for your app’s speed and scalability down the road, and switching horses mid-stream can lead to some tough client conversations. Even as hardware gets more robust and cloud computing platforms aim to replace dedicated servers, three of the most popular Rails server products got major updates in the past few months. Therefore, we set out to compare Passenger, Unicorn, and Puma to see if there’s more than a slight difference in performance.</p>
+
+<h3>Rails Server #1: Passenger</h3>
+
+<p>Passenger still gets the Rails Core Team’s vote as the “preferred way to deploy your Rails applications,” according to Phusion’s website. After a significant update during the summer, this popular Rails server now comes in two flavors: open source and Enterprise. This popular module directly integrates with Apache or NGINX, so you can upload and run your application code with ease.</p>
+
+<p>Thanks to built-in deployment error resistance, Passenger can shut down all application processes when it encounters a configuration error or a glitch in an application’s code. The Enterprise edition of Passenger enables enhanced monitoring and debugging, so you can get to the source of an error in real time. An accepted standard for many corporate server environments, Phusion’s website boasts of over 150,000 leading companies running apps with Passenger.</p>
+
+<h3>Rails Server #2: Unicorn</h3>
+
+<p>When James Pozdena benchmarked Unicorn in 2009, it maintained consistent average response times of around a second, even when hammered by concurrent requests. Podenza noted that Passenger’s maximum response time grew by as much as a second with each concurrent request.</p>
+
+<p>However, Urban Influence’s Nate Miller discovered that Unicorn’s speed comes at a cost. While testing Unicorn as a replacement for a Mongrel deployment experiencing a high number of 502 Bad Gateway errors, Miller benchmarked a similar drop in average response time on Unicorn. However, Unicorn’s standard deviation for gateway errors increased significantly, raising concerns that the speed gains could leave the door open to increased instability.</p>
+
+<h3>Rails Server #3: Puma</h3>
+
+<p>Evan Phoenix took a “Back to the Future” approach to rails servers, rewriting code from Mongrel that hearkens back to what Phoenix calls a “pre-rack world.” His benchmarks show Puma using less than one-tenth the active memory of a similar Unicorn setup, while trouncing competitors in speed tests. Puma leverage’s Mongrel’s heritage HTTP parser, offering accuracy without the “stuck mongrel” issues that dogged early Rails deployments.</p>
+
+<p>Puma runs best with Rubinius or JRuby, implementations that provide true concurrency. As developers prepare for Rails 4, some admins report significant speed improvements when combining Puma with NGINX’s proxy functionality. As recent Ruby converts search for Rails servers, developers have noticed the difference between a slow stack and a system supercharged with Puma.</p>
+
+<h3>Verdict</h3>
+
+<p>Even though Passenger’s recent updates address both speed and stability, Puma offers a lean and fast web server solution for most applications that require high concurrency. Of course, it always makes sense to run your own benchmarks and application tests. However, with growing support for Puma on many cloud-based application servers, this significantly refreshed version of Mongrel should be easy for you to test and to enjoy.</p>
+
+<h2>Deploy</h2>
+
+<h3>Rails Server #1: Passenger</h3>
+
+<h3>Rails Server #2: Unicorn</h3>
+
+<h3>Rails Server #3: Puma</h3>
+]]></content>
+  </entry>
+  
+</feed>

@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-06T14:47:11+09:00</updated>
+  <updated>2015-07-06T14:56:24+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -18,7 +18,7 @@
     <link href="http://dankuanmei.github.io/blog/2015/07/06/gradle/"/>
     <updated>2015-07-06T13:59:40+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/06/gradle</id>
-    <content type="html"><![CDATA[<h2>Why Gradle?</h2>
+    <content type="html"><![CDATA[<h2>Gradle.org - Why Gradle?</h2>
 
 <p>Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins.</p>
 

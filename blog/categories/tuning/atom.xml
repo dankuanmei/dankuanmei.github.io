@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Mysql | ダン・クァン・ミン Blog]]></title>
-  <link href="http://dankuanmei.github.io/blog/categories/mysql/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Tuning | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/tuning/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
   <updated>2015-07-06T19:28:48+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
@@ -149,33 +149,6 @@
 <li><p>Test your backups regularly.</p></li>
 </ol>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mysql - Useful Command Line]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line/"/>
-    <updated>2015-07-04T17:59:51+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line</id>
-    <content type="html"><![CDATA[<h3>Create database UTF8</h3>
-
-<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
-</code></pre>
-
-<h3>Drop database</h3>
-
-<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
-</code></pre>
-
-<h3>Import database from file</h3>
-
-<pre><code>$ mysql -u username -p database_name &lt; file.sql
-</code></pre>
-
-<h3>Export database to file</h3>
-
-<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
-</code></pre>
 ]]></content>
   </entry>
   

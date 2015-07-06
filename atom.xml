@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-06T16:11:27+09:00</updated>
+  <updated>2015-07-06T16:12:47+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -48,7 +48,7 @@
 
 <h3>NAT – Network Address Translation</h3>
 
-<p>NAT được những Router sử dụng để chia xẻ một địa chỉ IP cho nhiều thiết bị . Ví dụ , bạn có thể có Router không dây trong gia đình để tạo mạng Wi-Fi cho máy xách tay , điện thoại thông minh , máy tính bảng và các thiết khác kết nối tới . IPS của bạn cung cấp cho bạn một địa chỉ IP để có thể với tới mọi nơi trên Internet , đôi khi địa chỉ đó gọi là địa chỉ IP công cộng ( Public IP Address ) .</p>
+<p>NAT được những Router sử dụng để chia xẻ một địa chỉ IP cho nhiều thiết bị . Ví dụ, bạn có thể có Router không dây trong gia đình để tạo mạng Wi-Fi cho máy xách tay , điện thoại thông minh , máy tính bảng và các thiết khác kết nối tới . IPS của bạn cung cấp cho bạn một địa chỉ IP để có thể với tới mọi nơi trên Internet , đôi khi địa chỉ đó gọi là địa chỉ IP công cộng ( Public IP Address ) .</p>
 
 <p>Router tạo một mạng LAN và gán những địa chỉ IP cục bộ tới những thiết bị của bạn . Router sau đó có nhiệm vụ như là một Gateway để những thiết bị của bạn ra ngoài mạng LAN và nó xuất hiện như là một thiết bị ( Router ) dùng một địa chỉ IP duy nhất .</p>
 

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Network | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/network/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-06T16:12:47+09:00</updated>
+  <updated>2015-07-06T16:36:21+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -19,6 +19,12 @@
     <updated>2015-07-06T15:33:16+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/06/concepts-used-in-the-network</id>
     <content type="html"><![CDATA[<h3>ISP – Internet Service Provider</h3>
+
+<p>An Internet service provider (ISP) is an organization that provides services for accessing, using, or participating in the Internet. Internet service providers may be organized in various forms, such as commercial, community-owned, non-profit, or otherwise privately owned.</p>
+
+<p>Internet services typically provided by ISPs include Internet access, Internet transit, domain name registration, web hosting, Usenet service, colocation.</p>
+
+<p>[<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Internet_Connectivity_Access_layer.svg/800px-Internet_Connectivity_Access_layer.svg.png">]</p>
 
 <p>ISP là công ty cung cấp cho bạn kết nối Internet . Ví dụ tại Việt Nam có những ISP như FPT , VDC , Viettel và một số công ty  khác . Đó là những công ty mà bạn sẽ phải trả tiền hàng tháng để dùng kết nối Internet của mình .</p>
 

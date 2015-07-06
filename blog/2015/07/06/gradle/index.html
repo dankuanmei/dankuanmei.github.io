@@ -170,6 +170,62 @@ android {
 
 BUILD SUCCESSFUL
 </code></pre>
+
+<h2>Tutorial</h2>
+
+<h3>Installation of Gradle and setting it up correctly on your system</h3>
+
+<p>In this part of the tutorial, we shall focus on setting up Gradle on our system. While tools like Android Studio do ship with an internal Gradle distribution, our intention here is to understand the tools, its installation, the setup and firing up some basic Gradle commands.</p>
+
+<h4>Download Gradle</h4>
+
+<p>At the time of this update, Gradle is in version 2.2.1 and is available for download here.</p>
+
+<p>Just go ahead and download the ZIP file to your machine. You should have a file named gradle-2.2.1-all.zip. Expand it to a folder of your choice.</p>
+
+<h4>Environment Settings</h4>
+
+<p>The \bin folder of your gradle distribution contains the gradle script file (both Unix and Windows) that you will use to run the gradle command along with various parameters.</p>
+
+<p>Ideally, do the following:</p>
+
+<ul>
+<li>Create an environment variable GRADLE_HOME and point it to the Gradle Installation folder. On my machine, the Gradle installation folder is e:\gradle-2.2.1 and hence I have created a GRADLE_HOME Environment variable that has the value e:\gradle-2.2.1</li>
+<li>Add %GRADLE_HOME%\bin to the PATH environment variable. This will allow you to launch gradle command from any directory.</li>
+</ul>
+
+
+<h4>Verify Gradle Setup</h4>
+
+<pre><code>$ gradle -v
+</code></pre>
+
+<h4>Basic Gradle commands</h4>
+
+<pre><code>$ gradle -q help
+
+$ gradle -q tasks
+
+$ gradle properties
+</code></pre>
+
+<h3>Your first Java Project Build with Gradle</h3>
+
+<h3>Multiple Java Projects with Gradle</h3>
+
+<h3>Java Web Applications with Gradle</h3>
+
+<h3>App Engine Gradle Plugin</h3>
+
+<h3>Gradle + Android Studio</h3>
+
+<h3>Gradle + Android Studio + App Engine</h3>
+
+<h3>Gradle + App Engine + Cloud Endpoints + Android Studio</h3>
+
+<h3>Gradle + App Engine + Cloud Endpoints (Persistence) + Android Studio</h3>
+
+<h3>Consuming Endpoints in your Android application</h3>
 </div>
 
 

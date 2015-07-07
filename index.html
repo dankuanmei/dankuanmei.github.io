@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="MySQL is a powerful open-source database. With more and more database driven applications, people have been pushing MySQL to its limits. Here are 101 &hellip;">
+  <meta name="description" content="A regular expression is a sequence of characters that forms a search pattern. Một biểu thức chính quy là một chuỗi các ký tự tạo thành một mẫu tìm &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -78,6 +78,201 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/07/javascript-regexp-reference/">JavaScript RegExp Reference</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-07T10:49:42+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:49 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A regular expression is a sequence of characters that forms a search pattern.</p>
+
+<p>Một biểu thức chính quy là một chuỗi các ký tự tạo thành một mẫu tìm kiếm.</p>
+
+<p>The search pattern can be used for text search and text replace operations.</p>
+
+<p>Một mẫu tìm kiếm có thể được sử dụng cho tìm kiếm văn bản và thay thế text trong văn bản.</p>
+
+<h3>What Is a Regular Expression?</h3>
+
+<p>When you search for data in a text, you can use this search pattern to describe what you are searching for.</p>
+
+<p>Khi bạn tìm kiếm dữ liệu trong văn bản, bạn có thể sử dụng mẫu tìm kiếm này để miêu tả bạn đang tìm kiếm cái gì.</p>
+
+<p>A regular expression can be a single character, or a more complicated pattern.</p>
+
+<p>Một biểu thức chính quy có thể là một ký tự, hoặc có thể là môt mẫu phức tạp.</p>
+
+<p>Regular expressions can be used to perform all types of text search and text replace operations.</p>
+
+<p>Biểu thức chính quy có thể được sử dụng để thực hiện xử lý tìm kiếm và thay thế văn bản.</p>
+
+<h3>Syntax</h3>
+
+<pre><code>/pattern/modifiers;
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>var patt = /w3schools/i
+</code></pre>
+
+<p>Example explained:</p>
+
+<ul>
+<li><code>/w3schools/i</code>  là một biểu thức chính quy</li>
+<li><code>w3schools</code>  là một mẫu (to be used in a search).</li>
+<li><code>i</code>  là một modifier (modifies the search to be case-insensitive).</li>
+</ul>
+
+
+<h3>Using String Methods</h3>
+
+<p>In JavaScript, regular expressions are often used with the two string methods: search() and replace().</p>
+
+<p>The search() method uses an expression to search for a match, and returns the position of the match.</p>
+
+<p>The replace() method returns a modified string where the pattern is replaced.</p>
+
+<h3>Using String search() With a Regular Expression</h3>
+
+<p>Example</p>
+
+<pre><code>// Use a regular expression to do a case-insensitive search for "w3schools" in a string:
+var str = "Visit W3Schools";
+var n = str.search(/w3schools/i);
+</code></pre>
+
+<p>The result in n will be: <code>6</code></p>
+
+<h3>Using String search() With String</h3>
+
+<p>Example</p>
+
+<pre><code>//Use a case insensitive regular expression to replace Microsoft with W3Schools in a string:
+var str = "Visit Microsoft!";
+var res = str.replace(/microsoft/i, "W3Schools");
+</code></pre>
+
+<p>The result in res will be: <code>Visit W3Schools!</code></p>
+
+<h3>Using String replace() With a String</h3>
+
+<p>The replace() method will also accept a string as search argument:</p>
+
+<pre><code>var str = "Visit Microsoft!";
+var res = str.replace("Microsoft", "W3Schools");
+</code></pre>
+
+<h3>RegExp Object</h3>
+
+<p>A regular expression is an object that describes a pattern of characters.</p>
+
+<p>Regular expressions are used to perform pattern-matching and &ldquo;search-and-replace&rdquo; functions on text.</p>
+
+<h3>Syntax</h3>
+
+<pre><code>/pattern/modifiers;
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>var patt = /w3schools/i
+</code></pre>
+
+<h3>Modifiers</h3>
+
+<p>Modifiers are used to perform case-insensitive and global searches:</p>
+
+<pre><code>Modifier    Description
+i           Perform case-insensitive matching
+g           Perform a global match (find all matches rather than stopping after the first match)
+m           Perform multiline matching
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/07/regular-expression/">Regular Expression</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-07T10:45:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:45 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>From Wikipedia</h2>
+
+<p>In theoretical computer science and formal language theory, a regular expression (abbreviated regex or regexp and sometimes called a rational expression) is a sequence of characters that define a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. &ldquo;find and replace&rdquo;-like operations. The concept arose in the 1950s, when the American mathematician Stephen Kleene formalized the description of a regular language, and came into common use with the Unix text processing utilities ed, an editor, and grep (global regular expression print), a filter.</p>
+
+<p>Regular expressions are so useful in computing that the various systems to specify regular expressions have evolved to provide both a basic and extended standard for the grammar and syntax; modern regular expressions heavily augment the standard. Regular expression processors are found in several search engines, search and replace dialogs of several word processors and text editors, and in the command lines of text processing utilities, such as sed and AWK.</p>
+
+<p>Many programming languages provide regular expression capabilities, some built-in, for example Perl, JavaScript, Ruby, AWK, and Tcl, and others via a standard library, for example .NET languages, Java, Python and C++ (since C++11). Most other languages offer regular expressions via a library.</p>
+
+<p>Biểu thức chính quy (tiếng Anh: regular expression, viết tắt là regexp, regex hay regxp) là một chuỗi miêu tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Biểu thức chính quy thường được dùng trong các trình biên tập văn bản và các tiện ích tìm kiếm và xử lý văn bản dựa trên các mẫu được quy định. Nhiều ngôn ngữ lập trình cũng hỗ trợ biểu thức chính quy trong việc xử lý chuỗi, chẳng hạn như Perl có bộ máy mạnh mẽ để xử lý biểu thức chính quy được xây dựng trực tiếp trong cú pháp của chúng. Bộ các trình tiện ích (gồm trình biên tập sed và trình lọc grep) đi kèm các bản phân phối Unix có vai trò đầu tiên trong việc phổ biến khái niệm biểu thức chính quy.</p>
+
+<h3>Patterns</h3>
+
+<p>Each character in a regular expression is either understood to be a metacharacter with its special meaning, or a regular character with its literal meaning. Together, they can be used to identify textual material of a given pattern, or process a number of instances of it that can vary from a precise equality to a very general similarity of the pattern. The pattern sequence itself is an expression that is a statement in a language designed specifically to represent prescribed targets in the most concise and flexible way to direct the automation of text processing of general text files, specific textual forms, or of random input strings.</p>
+
+<h3>Basic concepts</h3>
+
+<p>A regular expression, often called a pattern, is an expression used to specify a set of strings required for a particular purpose. A simple way to specify a finite set of strings is to list its elements or members. However, there are often more concise ways to specify the desired set of strings. For example, the set containing the three strings &ldquo;Handel&rdquo;, &ldquo;Händel&rdquo;, and &ldquo;Haendel&rdquo; can be specified by the pattern H(ä|ae?)ndel; we say that this pattern matches each of the three strings. In most formalisms, if there exists at least one regex that matches a particular set then there exists an infinite number of other regex that also match it—the specification is not unique. Most formalisms provide the following operations to construct regular expressions.</p>
+
+<p>Boolean &ldquo;or&rdquo;
+    A vertical bar separates alternatives. For example, gray|grey can match &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
+Grouping
+    Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
+Quantification
+    A quantifier after a token (such as a character) or group specifies how often that preceding element is allowed to occur. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).</p>
+
+<pre><code>?   The question mark indicates there is zero or one of the preceding element. For example, colou?r matches both "color" and "colour".
+*   The asterisk indicates there is zero or more of the preceding element. For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on.
++   The plus sign indicates there is one or more of the preceding element. For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac".
+</code></pre>
+
+<p>These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.</p>
+
+<p>The precise syntax for regular expressions varies among tools and with context; more detail is given in the Syntax section.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -793,182 +988,6 @@ $ w
 <h3>Export database to file</h3>
 
 <pre><code>$ mysqldump -u username -p database_name &gt; file.sql
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/">CakePHP 3.x - Code Generation With Bake</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-04T17:44:10+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:44 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Some useful command</h2>
-
-<pre><code>$ bin/cake bake all users
-
-$ bin/cake bake controller users
-
-$ bin/cake bake model users
-</code></pre>
-
-<h2>Full guide</h2>
-
-<p>When run with no arguments bin/cake bake will output a list of available tasks. You should see something like:</p>
-
-<pre><code>$ bin/cake bake
-
-Welcome to CakePHP v3.0.0 Console
----------------------------------------------------------------
-App : src
-Path: /var/www/cakephp.dev/src/
----------------------------------------------------------------
-The following commands can be used to generate skeleton code for your application.
-
-Available bake commands:
-
-- all
-- behavior
-- cell
-- component
-- controller
-- fixture
-- form
-- helper
-- model
-- plugin
-- shell
-- template
-- test
-
-By using `cake bake [name]` you can invoke a specific bake task.
-</code></pre>
-
-<p>You can get more information on what each task does, and what options are available using the &ndash;help option:</p>
-
-<pre><code>$ bin/cake bake controller --help
-
-Welcome to CakePHP v3.0.0 Console
----------------------------------------------------------------
-App : src
-Path: /var/www/cakephp.dev/src/
----------------------------------------------------------------
-Bake a controller skeleton.
-
-Usage:
-cake bake controller [subcommand] [options] [&lt;name&gt;]
-
-Subcommands:
-
-all  Bake all controllers with CRUD methods.
-
-To see help on a subcommand use `cake bake controller [subcommand] --help`
-
-Options:
-
---help, -h        Display this help.
---verbose, -v     Enable verbose output.
---quiet, -q       Enable quiet output.
---plugin, -p      Plugin to bake into.
---force, -f       Force overwriting existing files without prompting.
---connection, -c  The datasource connection to get data from.
-                  (default: default)
---theme, -t       The theme to use when baking code.
---components      The comma separated list of components to use.
---helpers         The comma separated list of helpers to use.
---prefix          The namespace/routing prefix to use.
---no-test         Do not generate a test skeleton.
---no-actions      Do not generate basic CRUD action methods.
-
-Arguments:
-
-name  Name of the controller to bake. Can use Plugin.name to bake
-    controllers into plugins. (optional)
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/04/setup-cakephp-3-dot-x/">Setup Cakephp 3.x</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Installing CakePHP</h2>
-
-<p>First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as running the following:</p>
-
-<pre><code>curl -s https://getcomposer.org/installer | php
-</code></pre>
-
-<p>Now that you’ve downloaded and installed Composer, you can get a new CakePHP application by running:</p>
-
-<pre><code>php composer.phar create-project --prefer-dist cakephp/app [app_name]
-</code></pre>
-
-<p>Or if Composer is installed globally:</p>
-
-<pre><code>composer create-project --prefer-dist cakephp/app [app_name]
-</code></pre>
-
-<p>You can now visit the path to where you installed your CakePHP application and see the setup traffic lights.</p>
-
-<h2>Development Server</h2>
-
-<p>A development installation is the fastest method to setup CakePHP. In this example, we will be using CakePHP’s console to run PHP’s built-in web server which will make your application available at <a href="http://host:port.">http://host:port.</a> From the app directory, execute:</p>
-
-<pre><code>bin/cake server -H 192.168.13.37 -p 5673
-</code></pre>
-
-<h2>Create <code>.htaccess</code> file</h2>
-
-<p>CakePHP webroot directory (will be copied to your application’s web root by bake):</p>
-
-<pre><code>&lt;IfModule mod_rewrite.c&gt;
-    RewriteEngine on
-    RewriteRule    ^$    app/webroot/    [L]
-    RewriteRule    (.*) app/webroot/$1    [L]
-&lt;/IfModule&gt;
 </code></pre>
 </div>
   

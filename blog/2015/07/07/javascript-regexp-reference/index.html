@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JavaScript RegExp Reference - ダン・クァン・ミン Blog</title>
+  <meta name="author" content="ダン・クァン・ミン">
+
+  
+  <meta name="description" content="A regular expression is a sequence of characters that forms a search pattern. Một biểu thức chính quy là một chuỗi các ký tự tạo thành một mẫu tìm &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/07/javascript-regexp-reference">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ダン・クァン・ミン Blog</a></h1>
+  
+    <h2>はじめまして</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="dankuanmei.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">JavaScript RegExp Reference</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-07T10:49:42+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:49 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A regular expression is a sequence of characters that forms a search pattern.</p>
+
+<p>Một biểu thức chính quy là một chuỗi các ký tự tạo thành một mẫu tìm kiếm.</p>
+
+<p>The search pattern can be used for text search and text replace operations.</p>
+
+<p>Một mẫu tìm kiếm có thể được sử dụng cho tìm kiếm văn bản và thay thế text trong văn bản.</p>
+
+<h3>What Is a Regular Expression?</h3>
+
+<p>When you search for data in a text, you can use this search pattern to describe what you are searching for.</p>
+
+<p>Khi bạn tìm kiếm dữ liệu trong văn bản, bạn có thể sử dụng mẫu tìm kiếm này để miêu tả bạn đang tìm kiếm cái gì.</p>
+
+<p>A regular expression can be a single character, or a more complicated pattern.</p>
+
+<p>Một biểu thức chính quy có thể là một ký tự, hoặc có thể là môt mẫu phức tạp.</p>
+
+<p>Regular expressions can be used to perform all types of text search and text replace operations.</p>
+
+<p>Biểu thức chính quy có thể được sử dụng để thực hiện xử lý tìm kiếm và thay thế văn bản.</p>
+
+<h3>Syntax</h3>
+
+<pre><code>/pattern/modifiers;
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>var patt = /w3schools/i
+</code></pre>
+
+<p>Example explained:</p>
+
+<ul>
+<li><code>/w3schools/i</code>  là một biểu thức chính quy</li>
+<li><code>w3schools</code>  là một mẫu (to be used in a search).</li>
+<li><code>i</code>  là một modifier (modifies the search to be case-insensitive).</li>
+</ul>
+
+
+<h3>Using String Methods</h3>
+
+<p>In JavaScript, regular expressions are often used with the two string methods: search() and replace().</p>
+
+<p>The search() method uses an expression to search for a match, and returns the position of the match.</p>
+
+<p>The replace() method returns a modified string where the pattern is replaced.</p>
+
+<h3>Using String search() With a Regular Expression</h3>
+
+<p>Example</p>
+
+<pre><code>// Use a regular expression to do a case-insensitive search for "w3schools" in a string:
+var str = "Visit W3Schools";
+var n = str.search(/w3schools/i);
+</code></pre>
+
+<p>The result in n will be: <code>6</code></p>
+
+<h3>Using String search() With String</h3>
+
+<p>Example</p>
+
+<pre><code>//Use a case insensitive regular expression to replace Microsoft with W3Schools in a string:
+var str = "Visit Microsoft!";
+var res = str.replace(/microsoft/i, "W3Schools");
+</code></pre>
+
+<p>The result in res will be: <code>Visit W3Schools!</code></p>
+
+<h3>Using String replace() With a String</h3>
+
+<p>The replace() method will also accept a string as search argument:</p>
+
+<pre><code>var str = "Visit Microsoft!";
+var res = str.replace("Microsoft", "W3Schools");
+</code></pre>
+
+<h3>RegExp Object</h3>
+
+<p>A regular expression is an object that describes a pattern of characters.</p>
+
+<p>Regular expressions are used to perform pattern-matching and &ldquo;search-and-replace&rdquo; functions on text.</p>
+
+<h3>Syntax</h3>
+
+<pre><code>/pattern/modifiers;
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>var patt = /w3schools/i
+</code></pre>
+
+<h3>Modifiers</h3>
+
+<p>Modifiers are used to perform case-insensitive and global searches:</p>
+
+<pre><code>Modifier    Description
+i           Perform case-insensitive matching
+g           Perform a global match (find all matches rather than stopping after the first match)
+m           Perform multiline matching
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    ダン・クァン・ミン
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-07T10:49:42+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:49 am</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/regex/'>regex</a>, <a class='category' href='/blog/categories/regexp/'>regexp</a>, <a class='category' href='/blog/categories/regular-expression/'>regular-expression</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/07/javascript-regexp-reference/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/07/javascript-regexp-reference/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/07/regular-expression/" title="Previous Post: Regular expression">&laquo; Regular expression</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - ダン・クァン・ミン
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-09T19:46:39+09:00</updated>
+  <updated>2015-07-09T19:58:35+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -18,8 +18,164 @@
     <link href="http://dankuanmei.github.io/blog/2015/07/09/java-for-beginner/"/>
     <updated>2015-07-09T19:40:19+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/09/java-for-beginner</id>
-    <content type="html"><![CDATA[<p>Thử nghiệm khá ổn
-できます</p>
+    <content type="html"><![CDATA[<h3>Section 1: Getting Started with Java</h3>
+
+<ol>
+<li><p>What you need to get started</p></li>
+<li><p>The Netbeans Software</p></li>
+<li><p>Java Comments</p></li>
+<li><p>The Structure of Java Code</p></li>
+<li><p>How to Run your Java Programmes</p></li>
+<li><p>Printing to the Output Window</p></li>
+<li><p>Sharing your programmes with others</p></li>
+</ol>
+
+
+<h3>Section 2: Variables</h3>
+
+<ol>
+<li><p>Integer Variables in Java</p></li>
+<li><p>Double Variables</p></li>
+<li><p>Short and Float</p></li>
+<li><p>Operator_Precedence</p></li>
+<li><p>Java String Variables</p></li>
+<li><p>Getting Input from the User</p></li>
+<li><p>Option Panes</p></li>
+</ol>
+
+
+<h3>Section 3: Control Flow</h3>
+
+<ol>
+<li><p>If Statements in Java</p></li>
+<li><p>If Else Statements</p></li>
+<li><p>Boolean Values</p></li>
+<li><p>Switch Statements</p></li>
+<li><p>Java for Loops</p></li>
+<li><p>Java While Loops</p></li>
+</ol>
+
+
+<h3>Section 4: Arrays in Java</h3>
+
+<ol>
+<li><p>Java Arrays</p></li>
+<li><p>Arrays and Loops</p></li>
+<li><p>Sorting Arrays</p></li>
+<li><p>Arrays and Strings</p></li>
+<li><p>Multi-Dimensional Arrays</p></li>
+<li><p>Array Lists</p></li>
+</ol>
+
+
+<h3>Section 5: Java String Methods</h3>
+
+<ol>
+<li><p>Java and Strings</p></li>
+<li><p>Upper and LowerCase</p></li>
+<li><p>The compare Method</p></li>
+<li><p>The indexOf Method</p></li>
+<li><p>The substring Method</p></li>
+<li><p>The equals Method</p></li>
+<li><p>The charAt Method</p></li>
+<li><p>The replace Method</p></li>
+<li><p>Printing Formatted Strings</p></li>
+</ol>
+
+
+<h3>Section 6: Java Methods</h3>
+
+<ol>
+<li><p>Java Methods</p></li>
+<li><p>Calling your Java Methods</p></li>
+<li><p>Passing Values to Methods</p></li>
+<li><p>Mutliple Method Parameters</p></li>
+</ol>
+
+
+<h3>Section 7: Java Classes</h3>
+
+<ol>
+<li><p>Writing your own Java Classes</p></li>
+<li><p>Field Variables</p></li>
+<li><p>The Java Class Constructor</p></li>
+<li><p>Accessing Class Variables</p></li>
+<li><p>More on Java Class Methods</p></li>
+<li><p>Java and Inheritance</p></li>
+</ol>
+
+
+<h3>Section 8: Java Error Handling</h3>
+
+<ol>
+<li><p>Error Handling and Excpetions</p></li>
+<li><p>Stack Trace</p></li>
+<li><p>Handling Logic Errors in Java</p></li>
+</ol>
+
+
+<h3>Section 9: Dealing with Text Files in Java</h3>
+
+<ol>
+<li><p>Open and Read a Text File in Java</p></li>
+<li><p>Write to a Text File in Java</p></li>
+</ol>
+
+
+<h3>Section 10: A Java Calculator Project</h3>
+
+<ol>
+<li><p>Java Forms</p></li>
+<li><p>The Different Form Views in NetBeans</p></li>
+<li><p>Add a Text Box to a Java Form</p></li>
+<li><p>Add a Button to the Form</p></li>
+<li><p>Button Properties</p></li>
+<li><p>Java Form Events</p></li>
+<li><p>Coding for the Plus Button</p></li>
+<li><p>Coding for the Equals Button</p></li>
+<li><p>Coding for the Clear Button</p></li>
+<li><p>Subtract, Divide, Multiply Buttons</p></li>
+</ol>
+
+
+<h3>Section 11: More Java Form Controls</h3>
+
+<ol>
+<li><p>Java and Combo Boxes</p></li>
+<li><p>Java Check Boxes</p></li>
+<li><p>Radio Buttons</p></li>
+<li><p>Adding Menus to a Java Form</p></li>
+<li><p>Open File Dialogue Boxes</p></li>
+<li><p>Opening Files</p></li>
+<li><p>Save File Dialogue Boxes</p></li>
+</ol>
+
+
+<h3>Section 12: Java and Databases</h3>
+
+<ol>
+<li><p>Java and Databases</p></li>
+<li><p>Creating a Database with Java</p></li>
+<li><p>Adding Records to Table</p></li>
+<li><p>SQL Commands</p></li>
+<li><p>Connect to a Database with Java code</p></li>
+<li><p>Connecting to the Table</p></li>
+</ol>
+
+
+<h3>Section 13: Databases and Java Forms</h3>
+
+<ol>
+<li><p>Databases and Java Forms</p></li>
+<li><p>Database Scrolling Buttons</p></li>
+<li><p>Move Back Through the Database</p></li>
+<li><p>Move to the First and Last Records</p></li>
+<li><p>Update a Record</p></li>
+<li><p>Add a New Record</p></li>
+<li><p>Save a New Record</p></li>
+<li><p>Delete a Record from a Database</p></li>
+</ol>
+
 ]]></content>
   </entry>
   

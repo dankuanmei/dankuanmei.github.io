@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-07T12:09:03+09:00</updated>
+  <updated>2015-07-09T10:49:41+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,112 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Introduction to RESTful Webservice]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/09/introduction-to-restful-webservice/"/>
+    <updated>2015-07-09T10:39:53+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/09/introduction-to-restful-webservice</id>
+    <content type="html"><![CDATA[<h3>What is RESTtful webservice?</h3>
+
+<p>REST describes a set of architectural principles by which data can be transmitted over a standardized interface (such as HTTP). The acronym REST stands for Representational State Transfer, this basically means that each unique URL is a representation of some object.</p>
+
+<p>REST asks developers to use HTTP methods explicitly and in a way that’s consistent with the protocol definition. This basic REST design principle establishes a one-to-one mapping between create, read, update, and delete (CRUD) operations and HTTP methods. According to this mapping:</p>
+
+<ul>
+<li>To create a resource on the server, use POST.</li>
+<li>To retrieve a resource, use GET.</li>
+<li>To change the state of a resource or to update it, use PUT.</li>
+<li>To remove or delete a resource, use DELETE.</li>
+</ul>
+
+
+<h3>Who is using Restful webservice?</h3>
+
+<p>Internet giants like Yahoo, Amazon, eBay and more are using Restful webservice</p>
+
+<h3>Rest vs SOAP</h3>
+
+<table>
+<thead>
+<tr>
+<th> REST                                                  </th>
+<th> SOAP                                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> REST stands for REpresentational State Transfer       </td>
+<td> SOAP stands for Simple Object Access Protocol </td>
+</tr>
+<tr>
+<td> REST is not XML protocol based                        </td>
+<td> SOAP is a XML based messaging protocol        </td>
+</tr>
+<tr>
+<td> REST doesn’t have any specification                     </td>
+<td> SOAP has specifications like WSDL etc         </td>
+</tr>
+<tr>
+<td> REST doesn’t enforce message format as XML or JSON  </td>
+<td> SOAP enforces message format as XML           </td>
+</tr>
+<tr>
+<td> Light weight – due to the usage of JSON             </td>
+<td> Heavy weight – due to the usage of XML      </td>
+</tr>
+<tr>
+<td> Easy to parse the response                            </td>
+<td> Bit difficult to parse the response           </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>RESTFul Webservice Request and Response – Drill down</h3>
+
+<p>Fist step in designing RESTFul webservice is choosing the right domain name – say weatherinfo.org to retrieve weather information of cities.
+Let us take the first example (weatherinfo.org) which takes city name as input, composes weather information of the city and respond back to the browser. Assume the response is in XML format, this can be in other formats like JSON as well.</p>
+
+<p>Here is the structure of Request and Response:</p>
+
+<h4>HTTP Request</h4>
+
+<p>The client request from the browser will look like:</p>
+
+<pre><code>GET http://weatherinfo.org/getweather/mumbai HTTP/1.1
+</code></pre>
+
+<h4>HTTP Response</h4>
+
+<p>The server response will look like</p>
+
+<pre><code>HTTP/1.1 200 Ok
+Date: Mon, 14 Apr 2014 10:20:58 GMT
+Content-Type: text/xml
+Content-length: 139
+
+&lt;City name="Mumbai" datetime="2014-04-14 10:20:58 GMT" &gt;
+&lt;Condition&gt;Scattered Clouds&lt;/Condition&gt;
+&lt;Temp&gt;33&lt;/Temp&gt;
+&lt;/City&gt;
+</code></pre>
+
+<p>Line 1 is the initial line which has the HTTP response code – 200 OK, lines 2 through 4 are the HTTP headers (there can be lots of headers, only 3 are shown here), line 5 is the mandatory blank line separating header and body, and lines 6 through 10 constitute the “HTTP Body (or content)” – this part is the data that the response carries and can be in any format, not necessarily XML.</p>
+
+<p>In fact, the most commonly used format on the web is HTML – one that web servers use to send back data to browsers. Whatever it is, the “Content-type” header usually specifies it. But if you are writing a web service, JSON is a better choice, but that is upto me. If your web service does not return complex or composite data, the format does not need to be JSON – it can be plain , in which case the body will just be a string of characters.</p>
+
+<h3>Advantages of using RESTful webservice</h3>
+
+<ol>
+<li><p>RESTful Web services are designed with less dependence on proprietary middleware (for example, an application server) than the SOAP- and WSDL-based kind.</p></li>
+<li><p>As per the RESTful interface design, XML or JSON over HTTP is a powerful interface that allows internal applications, such as Asynchronous JavaScript + XML/JSON (Ajax)-based custom user interfaces, to easily connect, address, and consume resources.</p></li>
+<li><p>The great fit between Ajax and REST has increased the amount of attention REST is getting these days.</p></li>
+<li><p>Exposing a system’s resources through a RESTful API is a flexible way to provide different kinds of applications with data formatted in a standard way. It helps to meet integration requirements that are critical to building systems where data can be easily combined (mashups) and to extend or build on a set of base, RESTful services into something much bigger.</p></li>
+</ol>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript RegExp Reference]]></title>
@@ -116,11 +222,11 @@ m               bật chế độ tìm kiếm trên nhiều dòng
 <p>Cặp ngoặc được dùng để tìm kiếm một dải ký tự:</p>
 
 <pre><code>Expression      Description
-[abc]           Find any character between the brackets
-[^abc]          Find any character NOT between the brackets
-[0-9]           Find any digit between the brackets
-[^0-9]          Find any digit NOT between the brackets
-(x|y)           Find any of the alternatives specified
+[abc]           1 ký tự a hoặc b hoặc c
+[^abc]          1 ký tự nào đó khác a,b,c (ví dụ d)
+[0-9]           1 ký tự số từ 0 đến 9
+[^0-9]          1 ký tự số không phải từ 0 đến 9
+(x|y)           1 ký tự hoặc là x hoặc là y
 </code></pre>
 
 <h3>Metacharacters</h3>

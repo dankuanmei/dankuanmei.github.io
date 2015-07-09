@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Javascript | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-07T12:09:03+09:00</updated>
+  <updated>2015-07-09T10:49:41+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -116,11 +116,11 @@ m               bật chế độ tìm kiếm trên nhiều dòng
 <p>Cặp ngoặc được dùng để tìm kiếm một dải ký tự:</p>
 
 <pre><code>Expression      Description
-[abc]           Find any character between the brackets
-[^abc]          Find any character NOT between the brackets
-[0-9]           Find any digit between the brackets
-[^0-9]          Find any digit NOT between the brackets
-(x|y)           Find any of the alternatives specified
+[abc]           1 ký tự a hoặc b hoặc c
+[^abc]          1 ký tự nào đó khác a,b,c (ví dụ d)
+[0-9]           1 ký tự số từ 0 đến 9
+[^0-9]          1 ký tự số không phải từ 0 đến 9
+(x|y)           1 ký tự hoặc là x hoặc là y
 </code></pre>
 
 <h3>Metacharacters</h3>

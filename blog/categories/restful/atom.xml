@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Restful | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/restful/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-09T11:14:55+09:00</updated>
+  <updated>2015-07-09T19:02:52+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -84,10 +84,11 @@
 
 <h3>RESTFul Webservice Request and Response – Drill down</h3>
 
-<p>Fist step in designing RESTFul webservice is choosing the right domain name – say weatherinfo.org to retrieve weather information of cities.
-Let us take the first example (weatherinfo.org) which takes city name as input, composes weather information of the city and respond back to the browser. Assume the response is in XML format, this can be in other formats like JSON as well.</p>
+<p>Bước đầu tiên khi thiết kế RESTFul webservice là lựa chọn domain name đúng - gửi đến weatherinfo.org để hỏi thông tin thời tiết của các thành phố.</p>
 
-<p>Here is the structure of Request and Response:</p>
+<p>Hãy xem ví dụ đầu tiên (weatherinfo.org) đã lấy tên thành phố là đầu vào, lấy thông tin thời tiết của thành phố và gửi trả kết quả lại cho trình duyệt. Giả sử các kết quả trả về là XML format, nó có thể là JSON một cách dễ dàng.</p>
+
+<p>Dưới đây là cấu trúc của Request và Response:</p>
 
 <h4>HTTP Request</h4>
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: regular-expression | ダン・クァン・ミン Blog]]></title>
+  <title><![CDATA[Category: Regular-expression | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/regular-expression/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:42:51+09:00</updated>
+  <updated>2015-07-10T11:44:00+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -186,7 +186,7 @@ toString()      Returns the string value of the regular expression
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Regular expression]]></title>
+    <title type="html"><![CDATA[Regular Expression]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/07/regular-expression/"/>
     <updated>2015-07-07T10:45:58+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/07/regular-expression</id>

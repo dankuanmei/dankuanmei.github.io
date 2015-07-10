@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: c-language | ダン・クァン・ミン Blog]]></title>
+  <title><![CDATA[Category: C-language | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/c-language/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:42:51+09:00</updated>
+  <updated>2015-07-10T11:44:00+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Sample about Sort]]></title>
+    <title type="html"><![CDATA[Sample About Sort]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/02/sample-about-sort/"/>
     <updated>2015-07-02T19:57:25+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/02/sample-about-sort</id>

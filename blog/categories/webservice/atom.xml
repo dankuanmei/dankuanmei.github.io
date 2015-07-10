@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: webservice | ダン・クァン・ミン Blog]]></title>
+  <title><![CDATA[Category: Webservice | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/webservice/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:42:51+09:00</updated>
+  <updated>2015-07-10T11:44:00+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Explore about RESTful webservice]]></title>
+    <title type="html"><![CDATA[Explore About RESTful Webservice]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/09/introduction-to-restful-webservice/"/>
     <updated>2015-07-09T10:39:53+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/09/introduction-to-restful-webservice</id>

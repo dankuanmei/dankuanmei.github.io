@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: uml | ダン・クァン・ミン Blog]]></title>
+  <title><![CDATA[Category: Uml | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/uml/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:42:51+09:00</updated>
+  <updated>2015-07-10T11:44:00+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Một số quan hệ giữa các class trong UML]]></title>
+    <title type="html"><![CDATA[Một Số Quan Hệ Giữa Các Class Trong UML]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/"/>
     <updated>2015-07-10T10:53:15+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml</id>

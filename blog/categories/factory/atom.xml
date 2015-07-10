@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Factory | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/factory/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T21:15:55+09:00</updated>
+  <updated>2015-07-10T21:19:18+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -18,61 +18,61 @@
     <link href="http://dankuanmei.github.io/blog/2015/07/10/abstract-factory-va-factory-pattern/"/>
     <updated>2015-07-10T21:08:50+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/10/abstract-factory-va-factory-pattern</id>
-    <content type="html"><![CDATA[<p><code>Interviewer</code>    : Chà chà, chào hai anh, đây là lần đầu tiên blog của iem phỏng vấn hai anh, hai anh cảm thấy thế nào.</p>
+    <content type="html"><![CDATA[<p><code>Interviewer</code> Chà chà, chào hai anh, đây là lần đầu tiên blog của iem phỏng vấn hai anh, hai anh cảm thấy thế nào.</p>
 
-<p><code>Factory Method</code>  : Tôi ko biết sao hay bị gộp chúng với cha <code>Abstract Factory</code>. Đều là factory pattern không có nghĩa chúng tôi không được có những buổi phỏng vấn riêng.</p>
+<p><code>Factory Method</code> Tôi ko biết sao hay bị gộp chúng với cha <code>Abstract Factory</code>. Đều là factory pattern không có nghĩa chúng tôi không được có những buổi phỏng vấn riêng.</p>
 
-<p><code>Interviewer</code>    : Ấy ấy, đừng tự ái, em muốn phỏng vấn cả hai anh cùng nhau để giúp đọc giả phân biệt được ai là ai. Hai anh có nhiều điểm giống nhau, và em có nghe vài phàn nàn rằng người ta thỉnh thoảng bị rối và không thể phân biệt được 2 người.</p>
+<p><code>Interviewer</code> Ấy ấy, đừng tự ái, em muốn phỏng vấn cả hai anh cùng nhau để giúp đọc giả phân biệt được ai là ai. Hai anh có nhiều điểm giống nhau, và em có nghe vài phàn nàn rằng người ta thỉnh thoảng bị rối và không thể phân biệt được 2 người.</p>
 
-<p><code>Abstract Factory</code>: Ừ đúng đấy, đã có lúc tôi bị nhầm lẫn là cha <code>Factory Method</code>, và tôi biết ổng cũng bị giống như tôi. Hai tụi tôi đều giỏi trong việc giảm sự phụ thuộc giữa chương trình với những cài đặt cụ thể; nhưng mỗi người chúng tôi lại có những cách làm riêng nên thỉnh thoảng dân lập trình lại cảm thấy rối và không thể xác định được phải dùng cách nào.</p>
+<p><code>Abstract Factory</code> Ừ đúng đấy, đã có lúc tôi bị nhầm lẫn là cha <code>Factory Method</code>, và tôi biết ổng cũng bị giống như tôi. Hai tụi tôi đều giỏi trong việc giảm sự phụ thuộc giữa chương trình với những cài đặt cụ thể; nhưng mỗi người chúng tôi lại có những cách làm riêng nên thỉnh thoảng dân lập trình lại cảm thấy rối và không thể xác định được phải dùng cách nào.</p>
 
-<p><code>Factory Method</code>  : Ấy, người ta vẫn phân biệt được tôi mà. Nói chung, tôi dùng các lớp để tạo ra products, còn cha dùng những đối tượng; hai cách đó hoàn toàn khác nhau nhé.</p>
+<p><code>Factory Method</code> Ấy, người ta vẫn phân biệt được tôi mà. Nói chung, tôi dùng các lớp để tạo ra products, còn cha dùng những đối tượng; hai cách đó hoàn toàn khác nhau nhé.</p>
 
-<p><code>Interviewer</code>    : Ừ em có tìm hiểu về hai anh rồi mà vẫn còn rối đây này, anh có thể nói thêm về khoản này không, anh <code>Factory Method</code>?</p>
+<p><code>Interviewer</code> Ừ em có tìm hiểu về hai anh rồi mà vẫn còn rối đây này, anh có thể nói thêm về khoản này không, anh <code>Factory Method</code>?</p>
 
-<p><code>Factory Method</code>  : Ok, Cả cha <code>Abstract Factory</code> và tôi đều tạo ra các products, các objects, đó là việc chúng tôi phải làm. Nhưng tôi làm nhờ vào sự kế thừa (inheritance) …</p>
+<p><code>Factory Method</code> Ok, Cả cha <code>Abstract Factory</code> và tôi đều tạo ra các products, các objects, đó là việc chúng tôi phải làm. Nhưng tôi làm nhờ vào sự kế thừa (inheritance) …</p>
 
-<p><code>Abstract Factory</code>: … còn tôi làm nhờ vào sự kết hợp các đối tượng.</p>
+<p><code>Abstract Factory</code> … còn tôi làm nhờ vào sự kết hợp các đối tượng.</p>
 
-<p><code>Factory Method</code>  : Đúng thía, nghĩa là nếu muốn tạo ra các đối tượng bằng cách <code>Factory Method</code>, người ta cần phải extend một lớp và override lại hàm tạo <code>Factory Method</code>.</p>
+<p><code>Factory Method</code> Đúng thía, nghĩa là nếu muốn tạo ra các đối tượng bằng cách <code>Factory Method</code>, người ta cần phải extend một lớp và override lại hàm tạo <code>Factory Method</code>.</p>
 
-<p><code>Interviewer</code>    : …rồi <code>Factory Method</code> sẽ làm cái gì?</p>
+<p><code>Interviewer</code> …rồi <code>Factory Method</code> sẽ làm cái gì?</p>
 
-<p><code>Factory Method</code>  : Tất nhiên là tạo ra 1 object roài, anh đã từng viết bài về tôi mà giờ còn hỏi hả. Ý tưởng của tôi, <code>Factory Method</code> Pattern, là sẽ sử dụng các lớp con để sinh ra 1 đối tượng mong muốn. Bằng cách đó, người dùng sẽ chỉ cần biết đến lớp trừu tượng như gia cầm, và các lớp con cụ thể sẽ lo về các kiểu gà, kiểu vịt, kiểu ngan. Vì vậy, nói theo cách khác, tôi giúp chương trình độc lập với các kiểu (type) cụ thể đó.</p>
+<p><code>Factory Method</code> Tất nhiên là tạo ra 1 object roài, anh đã từng viết bài về tôi mà giờ còn hỏi hả. Ý tưởng của tôi, <code>Factory Method</code> Pattern, là sẽ sử dụng các lớp con để sinh ra 1 đối tượng mong muốn. Bằng cách đó, người dùng sẽ chỉ cần biết đến lớp trừu tượng như gia cầm, và các lớp con cụ thể sẽ lo về các kiểu gà, kiểu vịt, kiểu ngan. Vì vậy, nói theo cách khác, tôi giúp chương trình độc lập với các kiểu (type) cụ thể đó.</p>
 
-<p><code>Abstract Factory</code>: Ý tưởng của tôi cũng giống giống vậy đó, nhưng chỉ là làm theo một cách khác…</p>
+<p><code>Abstract Factory</code> Ý tưởng của tôi cũng giống giống vậy đó, nhưng chỉ là làm theo một cách khác…</p>
 
-<p><code>Interviewer</code>    : Tiếp đi anh <code>Abstract Factory</code> … vừa rồi anh có đề cập đến cách kết hợp các đối tượng?</p>
+<p><code>Interviewer</code> Tiếp đi anh <code>Abstract Factory</code> … vừa rồi anh có đề cập đến cách kết hợp các đối tượng?</p>
 
-<p><code>Abstract Factory</code>: Ờ,cách của tôi thế này: Tôi tạo ra một kiểu trừu tượng (abstract type) để dùng vào việc tạo ra một nhóm những products khác. Khi đó, những lớp con của kiểu trừu tượng sẽ xác định cách tạo ra các products này. Để áp dụng được ý tưởng của tôi, bạn phải tạo ra một instance của một trong các lớp con trên (instance này là 1 factory) và đưa nó vào chỗ cần thiết trong code. Vì thế, giống như <code>Factory Method</code>, những nơi sử dụng factory của tôi sẽ hoàn toàn độc lập với những produtcts cụ thể.</p>
+<p><code>Abstract Factory</code> Ờ,cách của tôi thế này: Tôi tạo ra một kiểu trừu tượng (abstract type) để dùng vào việc tạo ra một nhóm những products khác. Khi đó, những lớp con của kiểu trừu tượng sẽ xác định cách tạo ra các products này. Để áp dụng được ý tưởng của tôi, bạn phải tạo ra một instance của một trong các lớp con trên (instance này là 1 factory) và đưa nó vào chỗ cần thiết trong code. Vì thế, giống như <code>Factory Method</code>, những nơi sử dụng factory của tôi sẽ hoàn toàn độc lập với những produtcts cụ thể.</p>
 
-<p><code>Interviewer</code>    : Oh yè, tôi biết rồi, một lợi ích nữa của cách này là anh đã nhóm các products tương tự nhau lại, có đúng không?</p>
+<p><code>Interviewer</code> Oh yè, tôi biết rồi, một lợi ích nữa của cách này là anh đã nhóm các products tương tự nhau lại, có đúng không?</p>
 
-<p><code>Abstract Factory</code>: Đúng roài cưng à.</p>
+<p><code>Abstract Factory</code> Đúng roài cưng à.</p>
 
-<p><code>Interviewer</code>    : Bây giờ người ta cần bổ sung thêm một product nữa vô nhóm các products mà anh có thể tạo ra. Vậy không cần phải thay đổi gì hết huh?</p>
+<p><code>Interviewer</code> Bây giờ người ta cần bổ sung thêm một product nữa vô nhóm các products mà anh có thể tạo ra. Vậy không cần phải thay đổi gì hết huh?</p>
 
-<p><code>Abstract Factory</code>: Hèm, trường hợp này thì tôi phải thay đổi chút ít, nhiều người không thích lắm ở điểm này.</p>
+<p><code>Abstract Factory</code> Hèm, trường hợp này thì tôi phải thay đổi chút ít, nhiều người không thích lắm ở điểm này.</p>
 
-<p><code>Factory Method</code>  : hĩ hĩ</p>
+<p><code>Factory Method</code> hĩ hĩ</p>
 
-<p><code>Abstract Factory</code>: Cười gì cha nội?</p>
+<p><code>Abstract Factory</code> Cười gì cha nội?</p>
 
-<p><code>Factory Method</code>  : Cười chứ sao ko cười, làm vậy quá mất công chứ gì nữa. Cha thay đổi có nghĩa là người dùng phải đi mà đổi tất cả các lớp con roài? (các lớp con ở đây là các factories)</p>
+<p><code>Factory Method</code> Cười chứ sao ko cười, làm vậy quá mất công chứ gì nữa. Cha thay đổi có nghĩa là người dùng phải đi mà đổi tất cả các lớp con roài? (các lớp con ở đây là các factories)</p>
 
-<p><code>Abstract Factory</code>: Đúng, nhưng cần phải làm như vậy vì tôi có khả năng tạo ra nhiều kiểu product khác nhau, trong khi người ta xài cách của anh khi họ cần tạo ra một kiểu product nào đó thôi, vì thế anh không có cồng kềnh như tôi, anh chỉ cần một method duy nhất.</p>
+<p><code>Abstract Factory</code> Đúng, nhưng cần phải làm như vậy vì tôi có khả năng tạo ra nhiều kiểu product khác nhau, trong khi người ta xài cách của anh khi họ cần tạo ra một kiểu product nào đó thôi, vì thế anh không có cồng kềnh như tôi, anh chỉ cần một method duy nhất.</p>
 
-<p><code>Interviewer</code>    : Anh <code>Abstract Factory</code> bớt nóng, tôi nghe đồn rằng anh thường sử dụng nhiều hàm <code>Factory Method</code> theo cách của anh <code>Factory Method</code> để tạo các đổi tượng bên trong những factories của anh, điều đó có đúng ko?</p>
+<p><code>Interviewer</code> Anh <code>Abstract Factory</code> bớt nóng, tôi nghe đồn rằng anh thường sử dụng nhiều hàm <code>Factory Method</code> theo cách của anh <code>Factory Method</code> để tạo các đổi tượng bên trong những factories của anh, điều đó có đúng ko?</p>
 
-<p><code>Abstract Factory</code>: Đúng đó em, anh thừa nhận điêu này. Những lớp factory con thường dùng các <code>Factory Method</code> để tạo các products tương ứng. Trong trường hợp này, các <code>Factory Method</code> được dùng thuần túy để tạo ra các products.</p>
+<p><code>Abstract Factory</code> Đúng đó em, anh thừa nhận điêu này. Những lớp factory con thường dùng các <code>Factory Method</code> để tạo các products tương ứng. Trong trường hợp này, các <code>Factory Method</code> được dùng thuần túy để tạo ra các products.</p>
 
-<p><code>Factory Method</code>  : … còn tôi dùng hàm <code>Factory Method</code> để tạo ra product cụ thể mà người ta muốn, người dùng sẽ không biết cái gì được tạo ra, họ chỉ cần gọi hàm.</p>
+<p><code>Factory Method</code> … còn tôi dùng hàm <code>Factory Method</code> để tạo ra product cụ thể mà người ta muốn, người dùng sẽ không biết cái gì được tạo ra, họ chỉ cần gọi hàm.</p>
 
-<p><code>Interviewer</code>    : Dường như hai anh làm rất tốt công việc của mình. Tôi chắc rằng đọc giả đã có được lựa chọn của mình. Sau cùng, những factories của 2 anh quả thật rất hữu ích, đọc giả của tôi sẽ sử dụng chúng trong các tình huống thích hợp nhất. Các anh đều đóng gói (encapsulate) quá trình tạo ra đối tượng để giúp chương trình độc lập và giảm phụ thuộc với những kiểu cụ thể, việc làm này thật đáng tuyên dương. Cám ơn hai anh, hai anh có lời gì trước khi chào tạm biệt đọc giả không ạ?</p>
+<p><code>Interviewer</code> Dường như hai anh làm rất tốt công việc của mình. Tôi chắc rằng đọc giả đã có được lựa chọn của mình. Sau cùng, những factories của 2 anh quả thật rất hữu ích, đọc giả của tôi sẽ sử dụng chúng trong các tình huống thích hợp nhất. Các anh đều đóng gói (encapsulate) quá trình tạo ra đối tượng để giúp chương trình độc lập và giảm phụ thuộc với những kiểu cụ thể, việc làm này thật đáng tuyên dương. Cám ơn hai anh, hai anh có lời gì trước khi chào tạm biệt đọc giả không ạ?</p>
 
-<p><code>Abstract Factory</code>: Cám ơn. Hãy nhớ đến tôi, <code>Abstract Factory</code>, và sử dụng tôi bất cứ khi nào bạn cần cùng một lúc tạo ra nhiều loại products, và khi bạn muốn chắc chắn những nơi sử dụng sẽ không cần biết đến những lớp cụ thể khi cần làm việc này.</p>
+<p><code>Abstract Factory</code> Cám ơn. Hãy nhớ đến tôi, <code>Abstract Factory</code>, và sử dụng tôi bất cứ khi nào bạn cần cùng một lúc tạo ra nhiều loại products, và khi bạn muốn chắc chắn những nơi sử dụng sẽ không cần biết đến những lớp cụ thể khi cần làm việc này.</p>
 
-<p><code>Factory Method</code>  : Còn tôi là <code>Factory Method</code>, hãy sử dụng tôi để làm cho chương trình của bạn độc lập với những lớp cụ thể mà bạn cần tạo 1 đối tượng, hoặc khi bạn không biết sau này sẽ cần đến những lớp con nào nữa. Khi cần sử dụng tôi, hãy tạo tạo ra subclass (1 factory implement 1 kiểu abstract) và implement <code>Factory Method</code> cho chính bạn.</p>
+<p><code>Factory Method</code> Còn tôi là <code>Factory Method</code>, hãy sử dụng tôi để làm cho chương trình của bạn độc lập với những lớp cụ thể mà bạn cần tạo 1 đối tượng, hoặc khi bạn không biết sau này sẽ cần đến những lớp con nào nữa. Khi cần sử dụng tôi, hãy tạo tạo ra subclass (1 factory implement 1 kiểu abstract) và implement <code>Factory Method</code> cho chính bạn.</p>
 
 <p>(Page 158-162 of Head First – Design Pattern)</p>
 ]]></content>

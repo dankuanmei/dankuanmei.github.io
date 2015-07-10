@@ -1,67 +1,86 @@
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="utf-8">
-  <title>MySQL Tuning and Optimization - ダン・クァン・ミン Blog</title>
-  <meta name="author" content="ダン・クァン・ミン">
+	<meta charset="utf-8">
+	<title>MySQL Tuning and Optimization - ダン・クァン・ミン Blog</title>
+    <meta name="author" content="ダン・クァン・ミン">
+    
+	<meta name="description" content="MySQL is a powerful open-source database. With more and more database driven applications, people have been pushing MySQL to its limits. Here are 101 &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
-  <meta name="description" content="MySQL is a powerful open-source database. With more and more database driven applications, people have been pushing MySQL to its limits. Here are 101 &hellip;">
-  
+	<link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.ico" rel="shortcut icon">
+    <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
 
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Slackey' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Amethysta' rel='stylesheet' type='text/css'>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 
-  
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/06/mysql-tuning-and-optimization/">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/javascripts/jquery-tapir.js"></script>
 
-  
+    <!-- remove or comment it to disable ajaxification -->   
+    <script src="/javascripts/ajaxify.js"></script>
+   
+    
+    
 
 </head>
 
-<body   >
-  <header role="banner"><hgroup>
-  <img src="/images/ah_frame_transparent.svg" />
-  <h1><a href="/">ダン・クァン・ミン Blog</a></h1>
-</hgroup>
+
+<body>
+    <div id="wrapper">
+    <header id="header" class="inner"><!-- for more effects see _animate.scss -->
+<h1 class="animated bounceInDown">
+    <div id="headerbg">
+        ダン・クァン・ミン
+    </div>
+</h1>
+<br>
+
+<ul id="social-links" style="text-align:center">
+  
+  
+  
+  
+  
+  
+  
+  
+</ul>
+
+
+<!-- use full url including 'index.html' for navigation bar if you are using ajax -->
+<ul id="nav">
+	<li id="ajax"><a href="/index.html">Home</a></li>
+	<li id="ajax"><a href="/blog/archives/index.html">Archives</a></li>
+    <li><a href="/atom.xml">RSS</a></li>
+    
+    <li>
+    <div id="dark">
+        <form method="get" action="/search.html" id="search">
+            <input name="query" type="text" placeholder="Search..." x-webkit-speech />
+        </form>
+    </div>
+    </li>
+        
+</ul>
+
+
+
 
 </header>
-  <div id="main">
-    <div id="content">
-      <div>
-<article class="hentry" role="article">
-  
-  <header>
-    
-      <h1 class="entry-title">MySQL Tuning and Optimization</h1>
-    
-  </header>
 
-
-
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/mysql/'>mysql</a>, <a class='category' href='/blog/categories/optimization/'>optimization</a>, <a class='category' href='/blog/categories/tuning/'>tuning</a>
-  
-</span>
-
-
-<div class="entry-content"><p>MySQL is a powerful open-source database.  With more and more database driven applications, people have been pushing MySQL to its limits.  Here are 101 tips for tuning and optimizing your MySQL install.  Some tips are specific to the environment they are installed on, but the concepts are universal.   I have divided them up into several categories to help you with getting the most out of MySQL:</p>
+<div id="toload">
+<!-- begin toload --> 
+    <div id="content" class="inner">
+        <article class="post">
+	<h2 class="title">MySQL Tuning and Optimization</h2>
+	<div class="entry-content"><p>MySQL is a powerful open-source database.  With more and more database driven applications, people have been pushing MySQL to its limits.  Here are 101 tips for tuning and optimizing your MySQL install.  Some tips are specific to the environment they are installed on, but the concepts are universal.   I have divided them up into several categories to help you with getting the most out of MySQL:</p>
 
 <h2>MySQL Server Hardware and OS Tuning:</h2>
 
@@ -194,129 +213,58 @@
 
 </div>
 
-
-  <footer>
-    <p class="meta">
-      
-  
-
-<span class="byline author vcard">Posted by <span class="fn">ダン・クァン・ミン</span></span>
-
-      
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-06T19:25:35+09:00" pubdate data-updated="true"></time>
-    </p>
-    
-      <div class="sharing">
-  
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/06/mysql-tuning-and-optimization/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/06/mysql-tuning-and-optimization/" >Tweet</a>
-  
-  
-  
+<div class="meta">
+	
 </div>
-
-    
-    <p class="meta">
-      
-        <a class="basic-alignment left" href="/blog/2015/07/06/concepts-used-in-the-network/" title="Previous Post: Concepts used in the network">&laquo; Concepts used in the network</a>
-      
-      
-        <a class="basic-alignment right" href="/blog/2015/07/07/regular-expression/" title="Next Post: Regular expression">Regular expression &raquo;</a>
-      
-    </p>
-  </footer>
 </article>
 
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
 </div>
-
-<aside class="sidebar">
-  
-    <form action="https://www.google.com/search" method="get">
-      <fieldset role="search">
-        <input type="hidden" name="q" value="site:dankuanmei.github.io" />
-        <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-      </fieldset>
-    </form>
-  
-  
-    <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/">Một số quan hệ giữa các class trong UML</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo blog miễn phí bằng Octopress &amp; Github</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/09/java-for-beginner/">Java for beginner</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/09/introduction-to-restful-webservice/">Explore about RESTful webservice</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/07/javascript-regexp-reference/">JavaScript RegExp Reference</a>
-      </li>
-    
-  </ul>
-</section>
-
-
-
-
-
-  
-</aside>
 
 
 
     </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - ダン・クァン・ミン -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+    <footer id="footer">
+    <div style="display:inline">
+    Copyright &copy; 2015
 
-</footer>
-  
-
-
+    ダン・クァン・ミン
+. Powered by <a href="http://octopress.org">Octopress</a> | 
+    Theme <a href="http://github.com/panks/fabric">fabric</a> by <a href="http://panks.me">Pankaj Kumar</a>
+</div>
 
 
-
-
-
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
+    </footer>
+    <script src="/javascripts/fabric.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
 
 
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="/javascripts/aharris.js"></script>
 
+
+<!-- end toload --> 
+</div>
+</div>
+<script src="/javascripts/jquery.ui.totop.js" type="text/javascript"></script>
+<script type="text/javascript">
+/*<![CDATA[*/
+;(function($){$().UItoTop({easingType:'easeOutCirc'});})(jQuery); 
+/*]]>*/
+</script><!-- remove it to remove the scroll to top button -->
 </body>
 </html>

@@ -9,8 +9,9 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Nguyên tắc trong java Dưới đây là năm mục tiêu chính khi làm việc với ngôn ngữ Java: Nó phải &ldquo;đơn giản, hướng đối tượng, và gần gũi&rdquo;.
-Nó &hellip;">
+  <meta name="description" content="Octopress $ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+$ bundle install --path vendor/bundle Thiết lập theme $ git &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +81,69 @@ Nó &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo Blog Miễn Phí Bằng Octopress &amp; Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-10T10:38:33+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:38 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Octopress</h3>
+
+<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+$ bundle install --path vendor/bundle
+</code></pre>
+
+<h3>Thiết lập theme</h3>
+
+<pre><code>$ git clone git://github.com/lucaslew/whitespace.git .themes/whitespace
+$ rake install['whitespace'] # for zsh, use: rake install\['whitespace'\]
+$ rake generate
+</code></pre>
+
+<h3>Thêm bài viết</h3>
+
+<pre><code>$ rake new_post['Hello world']
+</code></pre>
+
+<h3>Xem trước</h3>
+
+<pre><code>$ rake preview
+</code></pre>
+
+<h3>GitHub Pages</h3>
+
+<pre><code>$ rake setup_github_pages
+</code></pre>
+
+<h3>Triển khai</h3>
+
+<pre><code>$ rake generate
+$ rake deploy
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1218,36 +1282,6 @@ $ w
 <h3>Rails Server #2: Unicorn</h3>
 
 <h3>Rails Server #3: Puma</h3>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/04/vagrant/">Vagrant</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-04T21:06:20+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:06 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
 </div>
   
   

@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete &hellip;">
+  <meta name="description" content="Nguyễn Thoại : Chà chà, chào hai anh, đây là lần đầu tiên blog của iem phỏng vấn hai anh, hai anh cảm thấy thế nào. Factory Method : Tôi ko biết sao &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,92 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/10/abstract-factory-va-factory-pattern/">Abstract Factory và Factory Pattern</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-10T21:08:50+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:08 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Nguyễn Thoại    : Chà chà, chào hai anh, đây là lần đầu tiên blog của iem phỏng vấn hai anh, hai anh cảm thấy thế nào.</p>
+
+<p>Factory Method  : Tôi ko biết sao hay bị gộp chúng với cha Abstract Factory. Đều là factory pattern không có nghĩa chúng tôi không được có những buổi phỏng vấn riêng.</p>
+
+<p>Nguyễn Thoại    : Ấy ấy, đừng tự ái, em muốn phỏng vấn cả hai anh cùng nhau để giúp đọc giả phân biệt được ai là ai. Hai anh có nhiều điểm giống nhau, và em có nghe vài phàn nàn rằng người ta thỉnh thoảng bị rối và không thể phân biệt được 2 người.</p>
+
+<p>Abstract Factory: Ừ đúng đấy, đã có lúc tôi bị nhầm lẫn là cha Factory Method, và tôi biết ổng cũng bị giống như tôi. Hai tụi tôi đều giỏi trong việc giảm sự phụ thuộc giữa chương trình với những cài đặt cụ thể; nhưng mỗi người chúng tôi lại có những cách làm riêng nên thỉnh thoảng dân lập trình lại cảm thấy rối và không thể xác định được phải dùng cách nào.:bbpcuoi3:</p>
+
+<p>Factory Method  : Ấy, người ta vẫn phân biệt được tôi mà. Nói chung, tôi dùng các lớp để tạo ra products, còn cha dùng những đối tượng; hai cách đó hoàn toàn khác nhau nhé.</p>
+
+<p>Nguyễn Thoại    : Ừ em có tìm hiểu về hai anh rồi mà vẫn còn rối đây này, anh có thể nói thêm về khoản này không, anh Factory Method?:big_smile:</p>
+
+<p>Factory Method  : Ok, Cả cha Abstract Factory và tôi đều tạo ra các products, các objects, đó là việc chúng tôi phải làm. Nhưng tôi làm nhờ vào sự kế thừa (inheritance) …</p>
+
+<p>Abstract Factory: … còn tôi làm nhờ vào sự kết hợp các đối tượng.</p>
+
+<p>Factory Method  : Đúng thía, nghĩa là nếu muốn tạo ra các đối tượng bằng cách Factory Method, người ta cần phải extend một lớp và override lại hàm tạo “factory method”.</p>
+
+<p>Nguyễn Thoại    : …rồi factory method sẽ làm cái gì?</p>
+
+<p>Factory Method  : Tất nhiên là tạo ra 1 object roài, anh đã từng viết bài về tôi mà giờ còn hỏi hả. Ý tưởng của tôi, Factory Method Pattern, là sẽ sử dụng các lớp con để sinh ra 1 đối tượng mong muốn. Bằng cách đó, người dùng sẽ chỉ cần biết đến lớp trừu tượng như gia cầm, và các lớp con cụ thể sẽ lo về các kiểu gà, kiểu vịt, kiểu ngan. Vì vậy, nói theo cách khác, tôi giúp chương trình độc lập với các kiểu (type) cụ thể đó.:bbpskien:</p>
+
+<p>Abstract Factory: Ý tưởng của tôi cũng giống giống vậy đó, nhưng chỉ là làm theo một cách khác…</p>
+
+<p>Nguyễn Thoại    : Tiếp đi anh Abstract Factory … vừa rồi anh có đề cập đến cách kết hợp các đối tượng?</p>
+
+<p>Abstract Factory: Ờ,cách của tôi thế này: Tôi tạo ra một kiểu trừu tượng (abstract type) để dùng vào việc tạo ra một nhóm những products khác. Khi đó, những lớp con của kiểu trừu tượng sẽ xác định cách tạo ra các products này. Để áp dụng được ý tưởng của tôi, bạn phải tạo ra một instance của một trong các lớp con trên (instance này là 1 factory) và đưa nó vào chỗ cần thiết trong code. Vì thế, giống như Factory Method, những nơi sử dụng factory của tôi sẽ hoàn toàn độc lập với những produtcts cụ thể.</p>
+
+<p>Nguyễn Thoại    : Oh yè, tôi biết rồi, một lợi ích nữa của cách này là anh đã nhóm các products tương tự nhau lại, có đúng không?</p>
+
+<p>Abstract Factory: Đúng roài cưng à.</p>
+
+<p>Nguyễn Thoại    : Bây giờ người ta cần bổ sung thêm một product nữa vô nhóm các products mà anh có thể tạo ra. Vậy không cần phải thay đổi gì hết huh?</p>
+
+<p>Abstract Factory: Hèm, trường hợp này thì tôi phải thay đổi chút ít, nhiều người không thích lắm ở điểm này.</p>
+
+<p>Factory Method  : hĩ hĩ</p>
+
+<p>Abstract Factory: Cười gì cha nội?</p>
+
+<p>Factory Method  : Cười chứ sao ko cười, làm vậy quá mất công chứ gì nữa. Cha thay đổi có nghĩa là người dùng phải đi mà đổi tất cả các lớp con roài? (các lớp con ở đây là các factories)</p>
+
+<p>Abstract Factory: Đúng, nhưng cần phải làm như vậy vì tôi có khả năng tạo ra nhiều kiểu product khác nhau, trong khi người ta xài cách của anh khi họ cần tạo ra một kiểu product nào đó thôi, vì thế anh không có cồng kềnh như tôi, anh chỉ cần một method duy nhất.:bbpnodo:</p>
+
+<p>Nguyễn Thoại    : Anh Abstract Factory bớt nóng, tôi nghe đồn rằng anh thường sử dụng nhiều hàm factory method theo cách của anh Factory Method để tạo các đổi tượng bên trong những factories của anh, điều đó có đúng ko?</p>
+
+<p>Abstract Factory: Đúng đó em, anh thừa nhận điêu này. Những lớp factory con thường dùng các factory method để tạo các products tương ứng. Trong trường hợp này, các factory method được dùng thuần túy để tạo ra các products.</p>
+
+<p>Factory Method  : … còn tôi dùng hàm factory method để tạo ra product cụ thể mà người ta muốn, người dùng sẽ không biết cái gì được tạo ra, họ chỉ cần gọi hàm.</p>
+
+<p>Nguyễn Thoại    : Dường như hai anh làm rất tốt công việc của mình. Tôi chắc rằng đọc giả đã có được lựa chọn của mình. Sau cùng, những factories của 2 anh quả thật rất hữu ích, đọc giả của tôi sẽ sử dụng chúng trong các tình huống thích hợp nhất. Các anh đều đóng gói (encapsulate) quá trình tạo ra đối tượng để giúp chương trình độc lập và giảm phụ thuộc với những kiểu cụ thể, việc làm này thật đáng tuyên dương. Cám ơn hai anh, hai anh có lời gì trước khi chào tạm biệt đọc giả không ạ?:bbpbtay:</p>
+
+<p>Abstract Factory: Cám ơn. Hãy nhớ đến tôi, Abstract Factory, và sử dụng tôi bất cứ khi nào bạn cần cùng một lúc tạo ra nhiều loại products, và khi bạn muốn chắc chắn những nơi sử dụng sẽ không cần biết đến những lớp cụ thể khi cần làm việc này.:bbpskien:</p>
+
+<p>Factory Method  : Còn tôi là Factory Method, hãy sử dụng tôi để làm cho chương trình của bạn độc lập với những lớp cụ thể mà bạn cần tạo 1 đối tượng, hoặc khi bạn không biết sau này sẽ cần đến những lớp con nào nữa. Khi cần sử dụng tôi, hãy tạo tạo ra subclass (1 factory implement 1 kiểu abstract) và implement factory method cho chính bạn.:bbpraroi:</p>
+
+<p>(Page 158-162 of Head First – Design Pattern)</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1334,161 +1420,6 @@ Quantification
 <h3>URL - Uniform Resource Locator</h3>
 
 <p>URL hay cũng còn được gọi là địa chỉ của trang web . URL hiện tại được hiển thị trên thanh địa chỉ của trình duyệt  web . Ví dụ <a href="http://dantri.com/tu-van/chay-thu.html">http://dantri.com/tu-van/chay-thu.html</a>  là một URL nói cho máy tính dùng giao thức HTTP để nối tới máy chủ của dantri.com và yêu cầu nội dung ở /tu-van trong thư mục gốc .</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/06/gradle/">Gradle</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-06T13:59:40+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:59 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Gradle.org - Why Gradle?</h2>
-
-<p>Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins.</p>
-
-<p>Here are some of its features that made us choose Gradle:</p>
-
-<ul>
-<li>Domain Specific Language (DSL) to describe and manipulate the build logic</li>
-<li>Build files are Groovy based and allow mixing of declarative elements through the DSL and using code to manipulate the DSL elements to provide custom logic.</li>
-<li>Built-in dependency management through Maven and/or Ivy.</li>
-<li>Very flexible. Allows using best practices but doesn’t force its own way of doing things.</li>
-<li>Plugins can expose their own DSL and their own API for build files to use.</li>
-<li>Good Tooling API allowing IDE integration</li>
-</ul>
-
-
-<h2>Wikipedia</h2>
-
-<p>Gradle is a build automation tool that builds upon the concepts of Apache Ant and Apache Maven and introduces a Groovy-based domain-specific language (DSL) instead of the more traditional XML form of declaring the project configuration. Gradle uses a directed acyclic graph (&ldquo;DAG&rdquo;) to determine the order in which tasks can be run.</p>
-
-<p>Gradle was designed for multi-project builds which can grow to be quite large, and supports incremental builds by intelligently determining which parts of the build tree are up-to-date, so that any task dependent upon those parts will not need to be re-executed.</p>
-
-<p>The initial plugins are primarily focused around Java, Groovy and Scala development and deployment, but more languages and project workflows are on the roadmap.</p>
-
-<h3>Example Java project</h3>
-
-<p>Consider the case where the Maven directory structure is used for Java sources and resources. These directories are: src/main/java, src/main/resources, src/test/java and src/test/resources.</p>
-
-<p>build.gradle</p>
-
-<pre><code>apply plugin: 'java'
-</code></pre>
-
-<p>The most simple Android project has the following build.gradle:</p>
-
-<pre><code>buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.1'
-    }
-}
-
-apply plugin: 'android'
-
-android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.0"
-}
-</code></pre>
-
-<p>Running gradle build will result in</p>
-
-<pre><code>&gt; gradle build
-:compileJava
-:processResources
-:classes
-:jar
-:assemble
-:compileTestJava
-:processTestResources
-:testClasses
-:test
-:check
-:build
-
-BUILD SUCCESSFUL
-</code></pre>
-
-<h2>Tutorial</h2>
-
-<h3>Installation of Gradle and setting it up correctly on your system</h3>
-
-<p>In this part of the tutorial, we shall focus on setting up Gradle on our system. While tools like Android Studio do ship with an internal Gradle distribution, our intention here is to understand the tools, its installation, the setup and firing up some basic Gradle commands.</p>
-
-<h4>Download Gradle</h4>
-
-<p>At the time of this update, Gradle is in version 2.2.1 and is available for download here.</p>
-
-<p>Just go ahead and download the ZIP file to your machine. You should have a file named gradle-2.2.1-all.zip. Expand it to a folder of your choice.</p>
-
-<h4>Environment Settings</h4>
-
-<p>The \bin folder of your gradle distribution contains the gradle script file (both Unix and Windows) that you will use to run the gradle command along with various parameters.</p>
-
-<p>Ideally, do the following:</p>
-
-<ul>
-<li>Create an environment variable GRADLE_HOME and point it to the Gradle Installation folder. On my machine, the Gradle installation folder is e:\gradle-2.2.1 and hence I have created a GRADLE_HOME Environment variable that has the value e:\gradle-2.2.1</li>
-<li>Add %GRADLE_HOME%\bin to the PATH environment variable. This will allow you to launch gradle command from any directory.</li>
-</ul>
-
-
-<h4>Verify Gradle Setup</h4>
-
-<pre><code>$ gradle -v
-</code></pre>
-
-<h4>Basic Gradle commands</h4>
-
-<pre><code>$ gradle -q help
-
-$ gradle -q tasks
-
-$ gradle properties
-</code></pre>
-
-<h3>Your first Java Project Build with Gradle</h3>
-
-<h3>Multiple Java Projects with Gradle</h3>
-
-<h3>Java Web Applications with Gradle</h3>
-
-<h3>App Engine Gradle Plugin</h3>
-
-<h3>Gradle + Android Studio</h3>
-
-<h3>Gradle + Android Studio + App Engine</h3>
-
-<h3>Gradle + App Engine + Cloud Endpoints + Android Studio</h3>
-
-<h3>Gradle + App Engine + Cloud Endpoints (Persistence) + Android Studio</h3>
-
-<h3>Consuming Endpoints in your Android application</h3>
 </div>
   
   

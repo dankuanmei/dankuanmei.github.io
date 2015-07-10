@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Design | ダン・クァン・ミン Blog]]></title>
-  <link href="http://dankuanmei.github.io/blog/categories/design/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Patterns | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/patterns/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
   <updated>2015-07-10T20:14:50+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
@@ -123,15 +123,6 @@ public class ApplicationRunner {
     }
 }
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[First Look About Design Pattern]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/04/first-look-about-design-pattern/"/>
-    <updated>2015-07-04T21:02:01+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/04/first-look-about-design-pattern</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   

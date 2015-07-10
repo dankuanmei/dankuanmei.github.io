@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:49:42+09:00</updated>
+  <updated>2015-07-10T20:14:50+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Java Design Patterns - Abstract Factory]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/10/java-design-patterns-abstract-factory/"/>
+    <updated>2015-07-10T20:08:31+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/10/java-design-patterns-abstract-factory</id>
+    <content type="html"><![CDATA[<p>The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.In normal usage, the client software creates a concrete implementation of the abstract factory and then uses the generic interface of the factory to create the concrete objects that are part of the theme. The client doesn&rsquo;t know (or care) which concrete objects it gets from each of these internal factories, since it uses only the generic interfaces of their products.This pattern separates the details of implementation of a set of objects from their general usage and relies on object composition, as object creation is implemented in methods exposed in the factory interface.</p>
+
+<p>An example of this would be an abstract factory class DocumentCreator that provides interfaces to create a number of products (e.g. createLetter() and createResume()). The system would have any number of derived concrete versions of the DocumentCreator class like FancyDocumentCreator or ModernDocumentCreator, each with a different implementation of createLetter() and createResume() that would create a corresponding object like FancyLetter or ModernResume. Each of these products is derived from a simple abstract class like Letter or Resume of which the client is aware. The client code would get an appropriate instance of the DocumentCreator and call its factory methods. Each of the resulting objects would be created from the same DocumentCreator implementation and would share a common theme (they would all be fancy or modern objects). The client would only need to know how to handle the abstract Letter or Resume class, not the specific version that it got from the concrete factory.</p>
+
+<p>A factory is the location of a concrete class in the code at which objects are constructed. The intent in employing the pattern is to insulate the creation of objects from their usage and to create families of related objects without having to depend on their concrete classes.This allows for new derived types to be introduced with no change to the code that uses the base class.</p>
+
+<p>Use of this pattern makes it possible to interchange concrete implementations without changing the code that uses them, even at runtime. However, employment of this pattern, as with similar design patterns, may result in unnecessary complexity and extra work in the initial writing of code. Additionally, higher levels of separation and abstraction can result in systems which are more difficult to debug and maintain.</p>
+
+<p>Abstract Factory, đầy đủ là Abstract Factory pattern, cung cấp một giao diện lớp có chức năng tạo ra một tập hợp các đối tượng liên quan hoặc phụ thuộc lẫn nhau mà không chỉ ra đó là những lớp cụ thể nào tại thời điểm thiết kế.Mẫu thiết kế Abstract Factory đóng gói một nhóm những lớp đóng vai trò &ldquo;sản xuất&rdquo; (Factory) trong ứng dụng, đây là những lớp được dùng để tạo lập các đối tượng. Các lớp sản xuất này có chung một giao diện lập trình được kế thừa từ một lớp cha thuần ảo gọi là &ldquo;lớp sản xuất ảo&rdquo;.</p>
+
+<h3>Java Example</h3>
+
+<pre><code>//GuiFactory example
+
+//Abstract Product
+interface Button {
+    void paint();
+}
+//Abstract Product
+interface Label {
+    void paint();
+}
+
+//Abstract Factory
+interface GUIFactory {
+    Button createButton();
+    Label createLabel();
+}
+
+//Concrete Factory
+class WinFactory implements GUIFactory {
+    public Button createButton() {
+        return new WinButton();
+    }
+
+    public Label createLabel() {
+        return new WinLabel();
+    }
+}
+
+//Concrete Factory
+class OSXFactory implements GUIFactory {
+    public Button createButton() {
+        return new OSXButton();
+    }
+
+    public Label createLabel() {
+        return new OSXLabel();
+    }
+
+}
+
+//Concrete Product
+class OSXButton implements Button {
+    public void paint() {
+        System.out.println("I'm an OSXButton");
+    }
+}
+
+//Concrete Product
+class WinButton implements Button {
+    public void paint() {
+        System.out.println("I'm a WinButton");
+    }
+}
+
+//Concrete Product
+class OSXLabel implements Label {
+    public void paint() {
+        System.out.println("I'm an OSXLabel");
+    }
+}
+
+//Concrete Product
+class WinLabel implements Label {
+    public void paint() {
+        System.out.println("I'm a WinLabel");
+    }
+}
+
+//Client application is not aware about the how the product is created. Its only responsible to give a name of 
+//concrete factory
+class Application {
+    public Application(GUIFactory factory) {
+        Button button = factory.createButton();
+        Label label = factory.createLabel();
+        button.paint();
+        label.paint();
+    }
+}
+
+public class ApplicationRunner {
+    public static void main(String[] args) {
+        new Application(createOsSpecificFactory());
+    }
+
+    public static GUIFactory createOsSpecificFactory() {
+        String osname = System.getProperty("os.name").toLowerCase();
+        if(osname != null &amp;&amp; osname.contains("windows"))
+            return new WinFactory();
+        else
+            return new OSXFactory();
+    }
+}
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Một Số Quan Hệ Giữa Các Class Trong UML]]></title>
@@ -1524,149 +1637,6 @@ If you are on a Mac or Linux computer, edit your local file with administrative 
 <h4>Build on top of the SDL2 and Marmalade</h4>
 
 <p>You can build Oxygine on top of the SDL2, Marmalade, Emscripten or adapt to your platform.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Sample About Sort]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/02/sample-about-sort/"/>
-    <updated>2015-07-02T19:57:25+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/02/sample-about-sort</id>
-    <content type="html"><![CDATA[<h2>Binary Sort</h2>
-
-<pre><code>void BinSort(int x[ ], int n)
-{
-    int i, j;
-
-    if (n &gt; MAX_DATA) {
-        printf("データが多すぎます!\n");
-        return;
-    }
-    else {
-        for (i = 0; i &lt; MAX_DATA; i++)
-            Bin[i] = 0;             /* 作業用配列の初期化 */
-
-        for (i = 0; i &lt; n; i++)     /* x[i] の値の */
-            Bin[x[i]]++;            /* Bin[ ] の要素の値を */
-                                    /* インクリメント */
-        j = 0;                      /* x[ ] の添字として使用 */
-        for (i = 0; i &lt; MAX_DATA ; i++)
-            if (Bin[i])             /* ０でなければ */
-            x[j++] = i;             /* 書き戻す */
-    }
-}
-</code></pre>
-
-<h2>Buble Sort</h2>
-
-<pre><code>int BubSort(int x[ ], int n)
-{
-    int i, j, temp;
-
-    for (i = 0; i &lt; n - 1; i++) {
-        for (j = n - 1; j &gt; i; j--) {
-            if (x[j - 1] &gt; x[j]) {  /* 前の要素の方が大きかったら */
-                temp = x[j];        /* 交換する */
-                x[j] = x[j - 1];
-                x[j - 1]= temp;
-            }
-        }
-        /* ソートの途中経過を表示 */
-        ShowData(x, NUM_DATA);
-    }
-}
-</code></pre>
-
-<h2>Heap Sort</h2>
-
-<pre><code>void Hpsort(int a[ ], int n)
-{
-    int leaf, root;
-
-    leaf = n;                   /* 初期値は末尾の要素 */
-    root = n/2;                 /* 初期値はその親 */
-
-    while (root &gt; 0 ) {         /* 半順序木を構成 */
-        DownHeap(a, leaf, root);
-        root--;
-    }
-
-    while(leaf &gt; 0) {
-        Swap(a, 1, leaf);       /* 半順序木の根と末尾の要素を交換 */
-        leaf--;                 /* 末尾の要素を半順序木から外す */
-        DownHeap(a, leaf, 1);   /* 半順序木を再構成する */
-    }
-}
-
-void DownHeap(int a[ ],  int leaf, int root)
-{
-    int i;
-
-    i = root * 2;
-    while (i &lt;= leaf) {
-        if (i &lt; leaf &amp;&amp; a[i + 1] &gt; a[i])  /* a[i] と a[i + 1]  の大きい方と */
-            i++;
-        if (a[root] &gt;= a[i])              /* a[root] と比較 */
-            break;                        /* 子の方が大きければ */
-        Swap(a, root, i);                 /* 交換 */
-
-        root = i;                         /* 更にその子についても調べる */
-        i = root * 2;
-    }
-}
-
-void Swap(int a[ ], int i, int j)
-{
-    int temp;
-
-    temp = a[i];
-    a[i] = a[j];
-    a[j] = temp;
-}
-</code></pre>
-
-<h2>Quick Sort</h2>
-
-<pre><code>void QSort(int x[ ], int left, int right)
-{
-    int i, j;
-    int pivot;
-
-    i = left;                      /* ソートする配列の一番小さい要素の添字 */
-    j = right;                     /* ソートする配列の一番大きい要素の添字 */
-
-    pivot = x[(left + right) / 2]; /* 基準値を配列の中央付近にとる */
-
-    while (1) {                    /* 無限ループ */
-
-        while (x[i] &lt; pivot)       /* pivot より大きい値が */
-            i++;                   /* 出るまで i を増加させる */
-
-        while (pivot &lt; x[j])       /* pivot より小さい値が */
-            j--;                   /*  出るまで j を減少させる */
-        if (i &gt;= j)                /* i &gt;= j なら */
-            break;                 /* 無限ループから抜ける */
-
-        Swap(x, i, j);             /* x[i] と x[j]を交換 */
-        i++;                       /* 次のデータ */
-        j--;
-    }
-
-    if (left &lt; i - 1)              /* 基準値の左に 2 以上要素があれば */
-        QSort(x, left, i - 1);     /* 左の配列を Q ソートする */
-    if (j + 1 &lt;  right)            /* 基準値の右に 2 以上要素があれば */
-        QSort(x, j + 1, right);    /* 右の配列を Q ソートする */
-}
-
-void Swap(int x[ ], int i, int j)
-{
-    int temp;
-
-    temp = x[i];
-    x[i] = x[j];
-    x[j] = temp;
-}
-</code></pre>
 ]]></content>
   </entry>
   

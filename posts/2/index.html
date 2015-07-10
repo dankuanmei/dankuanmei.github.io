@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Rails Server Throwdown: Passenger, Unicorn or Puma? Every millisecond counts. As professionals from industries outside the technology sector turn to &hellip;">
+  <meta name="description" content="To investigate the usage of disk memory Check the disk usage. It was confirmed command in CentOS on Vagrant + Virtualbox. $ df Check the usage of &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,85 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/06/linux-command-to-check-status/">Linux Command to Check Status</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-06T11:34:10+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:34 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>To investigate the usage of disk memory</h2>
+
+<p>Check the disk usage. It was confirmed command in CentOS on Vagrant + Virtualbox.</p>
+
+<pre><code>$ df
+</code></pre>
+
+<p>Check the usage of memory.</p>
+
+<pre><code>$ free
+</code></pre>
+
+<h2>Survey the load on the CPU and disk I / O</h2>
+
+<p>Check the load average.</p>
+
+<pre><code>$ uptime
+
+$ w
+</code></pre>
+
+<p>Check and load average / task status / memory usage / swap.</p>
+
+<pre><code>$ top
+</code></pre>
+
+<p>CPU and I / O load, and other various confirmation.</p>
+
+<pre><code>$ sar
+</code></pre>
+
+<p>Check the status of the virtual memory.</p>
+
+<pre><code>$ vmstat
+</code></pre>
+
+<p>Check the status of the disk I / O.</p>
+
+<pre><code>$ iostat
+</code></pre>
+
+<p>Check the process running. CPU load of each process, it can confirm the memory usage.</p>
+
+<pre><code>$ ps aux
+</code></pre>
+
+<p>Display the network-related statistics</p>
+
+<pre><code>$ netstat -an | wc -l
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -660,170 +739,6 @@ If you are on a Mac or Linux computer, edit your local file with administrative 
 <h4>Build on top of the SDL2 and Marmalade</h4>
 
 <p>You can build Oxygine on top of the SDL2, Marmalade, Emscripten or adapt to your platform.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/02/sample-about-sort/">Sample About Sort</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-02T19:57:25+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>7:57 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Binary Sort</h2>
-
-<pre><code>void BinSort(int x[ ], int n)
-{
-    int i, j;
-
-    if (n &gt; MAX_DATA) {
-        printf("データが多すぎます!\n");
-        return;
-    }
-    else {
-        for (i = 0; i &lt; MAX_DATA; i++)
-            Bin[i] = 0;             /* 作業用配列の初期化 */
-
-        for (i = 0; i &lt; n; i++)     /* x[i] の値の */
-            Bin[x[i]]++;            /* Bin[ ] の要素の値を */
-                                    /* インクリメント */
-        j = 0;                      /* x[ ] の添字として使用 */
-        for (i = 0; i &lt; MAX_DATA ; i++)
-            if (Bin[i])             /* ０でなければ */
-            x[j++] = i;             /* 書き戻す */
-    }
-}
-</code></pre>
-
-<h2>Buble Sort</h2>
-
-<pre><code>int BubSort(int x[ ], int n)
-{
-    int i, j, temp;
-
-    for (i = 0; i &lt; n - 1; i++) {
-        for (j = n - 1; j &gt; i; j--) {
-            if (x[j - 1] &gt; x[j]) {  /* 前の要素の方が大きかったら */
-                temp = x[j];        /* 交換する */
-                x[j] = x[j - 1];
-                x[j - 1]= temp;
-            }
-        }
-        /* ソートの途中経過を表示 */
-        ShowData(x, NUM_DATA);
-    }
-}
-</code></pre>
-
-<h2>Heap Sort</h2>
-
-<pre><code>void Hpsort(int a[ ], int n)
-{
-    int leaf, root;
-
-    leaf = n;                   /* 初期値は末尾の要素 */
-    root = n/2;                 /* 初期値はその親 */
-
-    while (root &gt; 0 ) {         /* 半順序木を構成 */
-        DownHeap(a, leaf, root);
-        root--;
-    }
-
-    while(leaf &gt; 0) {
-        Swap(a, 1, leaf);       /* 半順序木の根と末尾の要素を交換 */
-        leaf--;                 /* 末尾の要素を半順序木から外す */
-        DownHeap(a, leaf, 1);   /* 半順序木を再構成する */
-    }
-}
-
-void DownHeap(int a[ ],  int leaf, int root)
-{
-    int i;
-
-    i = root * 2;
-    while (i &lt;= leaf) {
-        if (i &lt; leaf &amp;&amp; a[i + 1] &gt; a[i])  /* a[i] と a[i + 1]  の大きい方と */
-            i++;
-        if (a[root] &gt;= a[i])              /* a[root] と比較 */
-            break;                        /* 子の方が大きければ */
-        Swap(a, root, i);                 /* 交換 */
-
-        root = i;                         /* 更にその子についても調べる */
-        i = root * 2;
-    }
-}
-
-void Swap(int a[ ], int i, int j)
-{
-    int temp;
-
-    temp = a[i];
-    a[i] = a[j];
-    a[j] = temp;
-}
-</code></pre>
-
-<h2>Quick Sort</h2>
-
-<pre><code>void QSort(int x[ ], int left, int right)
-{
-    int i, j;
-    int pivot;
-
-    i = left;                      /* ソートする配列の一番小さい要素の添字 */
-    j = right;                     /* ソートする配列の一番大きい要素の添字 */
-
-    pivot = x[(left + right) / 2]; /* 基準値を配列の中央付近にとる */
-
-    while (1) {                    /* 無限ループ */
-
-        while (x[i] &lt; pivot)       /* pivot より大きい値が */
-            i++;                   /* 出るまで i を増加させる */
-
-        while (pivot &lt; x[j])       /* pivot より小さい値が */
-            j--;                   /*  出るまで j を減少させる */
-        if (i &gt;= j)                /* i &gt;= j なら */
-            break;                 /* 無限ループから抜ける */
-
-        Swap(x, i, j);             /* x[i] と x[j]を交換 */
-        i++;                       /* 次のデータ */
-        j--;
-    }
-
-    if (left &lt; i - 1)              /* 基準値の左に 2 以上要素があれば */
-        QSort(x, left, i - 1);     /* 左の配列を Q ソートする */
-    if (j + 1 &lt;  right)            /* 基準値の右に 2 以上要素があれば */
-        QSort(x, j + 1, right);    /* 右の配列を Q ソートする */
-}
-
-void Swap(int x[ ], int i, int j)
-{
-    int temp;
-
-    temp = x[i];
-    x[i] = x[j];
-    x[j] = temp;
-}
-</code></pre>
 </div>
   
   

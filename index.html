@@ -9,10 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Quan hệ giữa các class trong UML, gồm có các 4 quan hệ chính sau: Realization
-Generation
-Dependency
-Association: có 2 quan hệ phân biệt Aggregation & &hellip;">
+  <meta name="description" content="The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +79,140 @@ Association: có 2 quan hệ phân biệt Aggregation & &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/10/java-design-patterns-abstract-factory/">Java Design Patterns - Abstract Factory</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-10T20:08:31+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>8:08 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.In normal usage, the client software creates a concrete implementation of the abstract factory and then uses the generic interface of the factory to create the concrete objects that are part of the theme. The client doesn&rsquo;t know (or care) which concrete objects it gets from each of these internal factories, since it uses only the generic interfaces of their products.This pattern separates the details of implementation of a set of objects from their general usage and relies on object composition, as object creation is implemented in methods exposed in the factory interface.</p>
+
+<p>An example of this would be an abstract factory class DocumentCreator that provides interfaces to create a number of products (e.g. createLetter() and createResume()). The system would have any number of derived concrete versions of the DocumentCreator class like FancyDocumentCreator or ModernDocumentCreator, each with a different implementation of createLetter() and createResume() that would create a corresponding object like FancyLetter or ModernResume. Each of these products is derived from a simple abstract class like Letter or Resume of which the client is aware. The client code would get an appropriate instance of the DocumentCreator and call its factory methods. Each of the resulting objects would be created from the same DocumentCreator implementation and would share a common theme (they would all be fancy or modern objects). The client would only need to know how to handle the abstract Letter or Resume class, not the specific version that it got from the concrete factory.</p>
+
+<p>A factory is the location of a concrete class in the code at which objects are constructed. The intent in employing the pattern is to insulate the creation of objects from their usage and to create families of related objects without having to depend on their concrete classes.This allows for new derived types to be introduced with no change to the code that uses the base class.</p>
+
+<p>Use of this pattern makes it possible to interchange concrete implementations without changing the code that uses them, even at runtime. However, employment of this pattern, as with similar design patterns, may result in unnecessary complexity and extra work in the initial writing of code. Additionally, higher levels of separation and abstraction can result in systems which are more difficult to debug and maintain.</p>
+
+<p>Abstract Factory, đầy đủ là Abstract Factory pattern, cung cấp một giao diện lớp có chức năng tạo ra một tập hợp các đối tượng liên quan hoặc phụ thuộc lẫn nhau mà không chỉ ra đó là những lớp cụ thể nào tại thời điểm thiết kế.Mẫu thiết kế Abstract Factory đóng gói một nhóm những lớp đóng vai trò &ldquo;sản xuất&rdquo; (Factory) trong ứng dụng, đây là những lớp được dùng để tạo lập các đối tượng. Các lớp sản xuất này có chung một giao diện lập trình được kế thừa từ một lớp cha thuần ảo gọi là &ldquo;lớp sản xuất ảo&rdquo;.</p>
+
+<h3>Java Example</h3>
+
+<pre><code>//GuiFactory example
+
+//Abstract Product
+interface Button {
+    void paint();
+}
+//Abstract Product
+interface Label {
+    void paint();
+}
+
+//Abstract Factory
+interface GUIFactory {
+    Button createButton();
+    Label createLabel();
+}
+
+//Concrete Factory
+class WinFactory implements GUIFactory {
+    public Button createButton() {
+        return new WinButton();
+    }
+
+    public Label createLabel() {
+        return new WinLabel();
+    }
+}
+
+//Concrete Factory
+class OSXFactory implements GUIFactory {
+    public Button createButton() {
+        return new OSXButton();
+    }
+
+    public Label createLabel() {
+        return new OSXLabel();
+    }
+
+}
+
+//Concrete Product
+class OSXButton implements Button {
+    public void paint() {
+        System.out.println("I'm an OSXButton");
+    }
+}
+
+//Concrete Product
+class WinButton implements Button {
+    public void paint() {
+        System.out.println("I'm a WinButton");
+    }
+}
+
+//Concrete Product
+class OSXLabel implements Label {
+    public void paint() {
+        System.out.println("I'm an OSXLabel");
+    }
+}
+
+//Concrete Product
+class WinLabel implements Label {
+    public void paint() {
+        System.out.println("I'm a WinLabel");
+    }
+}
+
+//Client application is not aware about the how the product is created. Its only responsible to give a name of 
+//concrete factory
+class Application {
+    public Application(GUIFactory factory) {
+        Button button = factory.createButton();
+        Label label = factory.createLabel();
+        button.paint();
+        label.paint();
+    }
+}
+
+public class ApplicationRunner {
+    public static void main(String[] args) {
+        new Application(createOsSpecificFactory());
+    }
+
+    public static GUIFactory createOsSpecificFactory() {
+        String osname = System.getProperty("os.name").toLowerCase();
+        if(osname != null &amp;&amp; osname.contains("windows"))
+            return new WinFactory();
+        else
+            return new OSXFactory();
+    }
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1323,85 +1454,6 @@ $ gradle properties
 <h3>Gradle + App Engine + Cloud Endpoints (Persistence) + Android Studio</h3>
 
 <h3>Consuming Endpoints in your Android application</h3>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/06/linux-command-to-check-status/">Linux Command to Check Status</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-06T11:34:10+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:34 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>To investigate the usage of disk memory</h2>
-
-<p>Check the disk usage. It was confirmed command in CentOS on Vagrant + Virtualbox.</p>
-
-<pre><code>$ df
-</code></pre>
-
-<p>Check the usage of memory.</p>
-
-<pre><code>$ free
-</code></pre>
-
-<h2>Survey the load on the CPU and disk I / O</h2>
-
-<p>Check the load average.</p>
-
-<pre><code>$ uptime
-
-$ w
-</code></pre>
-
-<p>Check and load average / task status / memory usage / swap.</p>
-
-<pre><code>$ top
-</code></pre>
-
-<p>CPU and I / O load, and other various confirmation.</p>
-
-<pre><code>$ sar
-</code></pre>
-
-<p>Check the status of the virtual memory.</p>
-
-<pre><code>$ vmstat
-</code></pre>
-
-<p>Check the status of the disk I / O.</p>
-
-<pre><code>$ iostat
-</code></pre>
-
-<p>Check the process running. CPU load of each process, it can confirm the memory usage.</p>
-
-<pre><code>$ ps aux
-</code></pre>
-
-<p>Display the network-related statistics</p>
-
-<pre><code>$ netstat -an | wc -l
-</code></pre>
 </div>
   
   

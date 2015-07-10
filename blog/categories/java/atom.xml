@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T20:14:50+09:00</updated>
+  <updated>2015-07-10T20:18:33+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -27,6 +27,8 @@
 <p>Use of this pattern makes it possible to interchange concrete implementations without changing the code that uses them, even at runtime. However, employment of this pattern, as with similar design patterns, may result in unnecessary complexity and extra work in the initial writing of code. Additionally, higher levels of separation and abstraction can result in systems which are more difficult to debug and maintain.</p>
 
 <p>Abstract Factory, đầy đủ là Abstract Factory pattern, cung cấp một giao diện lớp có chức năng tạo ra một tập hợp các đối tượng liên quan hoặc phụ thuộc lẫn nhau mà không chỉ ra đó là những lớp cụ thể nào tại thời điểm thiết kế.Mẫu thiết kế Abstract Factory đóng gói một nhóm những lớp đóng vai trò &ldquo;sản xuất&rdquo; (Factory) trong ứng dụng, đây là những lớp được dùng để tạo lập các đối tượng. Các lớp sản xuất này có chung một giao diện lập trình được kế thừa từ một lớp cha thuần ảo gọi là &ldquo;lớp sản xuất ảo&rdquo;.</p>
+
+<p><img src="http://i.imgur.com/pmd3pvQ.png"></p>
 
 <h3>Java Example</h3>
 

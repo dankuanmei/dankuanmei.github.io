@@ -1,1 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
+  <title><![CDATA[Category: mysql | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/mysql/atom.xml" rel="self"/>
+  <link href="http://dankuanmei.github.io/"/>
+  <updated>2015-07-10T11:42:51+09:00</updated>
+  <id>http://dankuanmei.github.io/</id>
+  <author>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[MySQL Tuning and Optimization]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/06/mysql-tuning-and-optimization/"/>
+    <updated>2015-07-06T19:25:35+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/06/mysql-tuning-and-optimization</id>
+    <content type="html"><![CDATA[<p>MySQL is a powerful open-source database.  With more and more database driven applications, people have been pushing MySQL to its limits.  Here are 101 tips for tuning and optimizing your MySQL install.  Some tips are specific to the environment they are installed on, but the concepts are universal.   I have divided them up into several categories to help you with getting the most out of MySQL:</p>
+
+<h2>MySQL Server Hardware and OS Tuning:</h2>
+
+<ol>
+<li><p>Have enough physical memory to load your entire InnoDB file into memory – InnoDB is much faster when the file can be accessed in memory rather than from disk.</p></li>
+<li><p>Avoid Swap at all costs – swapping is reading from disk, its slow.</p></li>
+<li><p>Use Battery-Backed RAM.</p></li>
+<li><p>Use an advanced RAID – preferably RAID10 or higher.</p></li>
+<li><p>Avoid RAID5 – the checksum needed to ensure integrity is costly.</p></li>
+<li><p>Separate your OS and data partitions, not just logically, but physically – costly OS writes and reads will impact your database performance.</p></li>
+<li><p>Put your mysql temp space and replication logs on a separate partition than your data – background writes will impact your database when it goes to write/read from disk.</p></li>
+<li><p>More disks equals more speed.</p></li>
+<li><p>Faster disks are better.</p></li>
+<li><p>Use SAS over SATA.</p></li>
+<li><p>Smaller disks are faster than larger disks, especially in RAID configs.</p></li>
+<li><p>Use Battery-Backed Cache RAID controllers.</p></li>
+<li><p>Avoid software raids.</p></li>
+<li><p>Consider using Solid State IO Cards (not disk drives) for your data partition – these cards can sustain over 2GB/s writes for almost any amount of data.</p></li>
+<li><p>On Linux set your swappiness value to 0 – no reason to cache files on a database server, this is more of a web server or desktop advantage.</p></li>
+<li><p>Mount filesystem with noatime and nodirtime if available – no reason to update database file modification times for access.</p></li>
+<li><p>Use XFS filesystem – a faster, smaller filesystem than ext3 and has more options for journaling, also ext3 has been shown to have double buffering issues with MySQL.</p></li>
+<li><p>Tune your XFS filesystem log and buffer variables – for maximum performance benchmark.</p></li>
+<li><p>On Linux systems, use NOOP or DEADLINE IO scheduler – the CFQ and ANTICIPATORY scheduler have been shown to be slow vs NOOP and DEADLINE scheduler.</p></li>
+<li><p>Use a 64-bit OS – more memory addressable and usable to MySQL.</p></li>
+<li><p>Remove unused packages and daemons from servers – less resource stealing.</p></li>
+<li><p>Put your host that use MySQL and your MySQL host in a hosts file – no dns lookups.</p></li>
+<li><p>Never force kill a MySQL process – you will corrupt your database and be running for the backups.</p></li>
+<li><p>Dedicate your server to MySQL – background processes and other services can steal from the db cpu time.</p></li>
+</ol>
+
+
+<h3>MySQL Configuration:</h3>
+
+<ol>
+<li><p>Use innodb_flush_method=O_DIRECT to avoid a double buffer when writing.</p></li>
+<li><p>Avoid O_DIRECT and EXT3 filesystem – you will serialize all your writes.</p></li>
+<li><p>Allocate enough innodb_buffer_pool_size to load your entire InnoDB file into memory – less reads from disk.</p></li>
+<li><p>Do not make innodb_log_file_size too big, with faster and more disks – flushing more often is good and lowers the recovery time during crashes.</p></li>
+<li><p>Do not mix innodb_thread_concurrency and thread_concurrency variables – these two values are not compatible.</p></li>
+<li><p>Allocate a minimal amount for max_connections – too many connections can use up your RAM and lock up your MySQL server.</p></li>
+<li><p>Keep thread_cache at a relatively high number, about 16 – to prevent slowness when opening connections.</p></li>
+<li><p>Use  skip-name-resolve – to remove dns lookups.</p></li>
+<li><p>Use query cache if your queries are repetitive and your data does not change often – however using query cache on data that changes often will give you a performance hit.</p></li>
+<li><p>Increase temp_table_size – to prevent disk writes.</p></li>
+<li><p>Increase max_heap_table_size – to prevent disk writes.</p></li>
+<li><p>Do not set your sort_buffer_size too high – this is per connection and can use up memory fast.</p></li>
+<li><p>Monitor key_read_requests and key_reads to determine your key_buffer size – the key read requests should be higher than your key_reads, otherwise you are not efficiently using your key_buffer.</p></li>
+<li><p>Set innodb_flush_log_at_trx_commit = 0 will improve performance, but leaving it to default (1), you will ensure data integrity, you will also ensure replication is not lagging</p></li>
+<li><p>Have a test environment where you can test your configs and restart often, without affecting production.</p></li>
+</ol>
+
+
+<h3>MySQL Schema Optimization:</h3>
+
+<ol>
+<li><p>Keep your database trim.</p></li>
+<li><p>Archive old data – to remove excessive row returns or searches on queries.</p></li>
+<li><p>Put indexes on your data.</p></li>
+<li><p>Do not overuse indexes, compare with your queries.</p></li>
+<li><p>Compress text and blob data types – to save space and reduce number of disk reads.</p></li>
+<li><p>UTF 8 and UTF16 is slower than latin1.</p></li>
+<li><p>Use Triggers sparingly.</p></li>
+<li><p>Keep redundant data to a minimum – do not duplicate data unnecessarily.</p></li>
+<li><p>Use linking tables rather than extending rows.</p></li>
+<li><p>Pay attention to your data types, use the smallest one possible for your real data.</p></li>
+<li><p>Separate blob/text data from other data if other data is often used for queries when blob/text are not.</p></li>
+<li><p>Check and optimize tables often.</p></li>
+<li><p>Rewrite InnoDB tables often to optimize.</p></li>
+<li><p>Sometimes, it is faster to drop indexes when adding columns and then add indexes back.</p></li>
+<li><p>Use different storage engines for different needs.</p></li>
+<li><p>Use ARCHIVE storage engine for Logging tables or Auditing tables – this is much more efficient for writes.</p></li>
+<li><p>Store session data in memcache rather than MySQL – memcache allows for auto-expiring values and prevents you from having to create costly reads and writes to MySQL for temporal data.</p></li>
+<li><p>Use VARCHAR instead CHAR when storing variable length strings – to save space since CHAR is fixed length and VARCHAR is not (utf8 is not affected by this).</p></li>
+<li><p>Make schema changes incrementally – a small change can have drastic effects.</p></li>
+<li><p>Test all schema changes in a development environment that mirrors production.</p></li>
+<li><p>Do NOT arbitrarily change values in your config file, it can have disastrous affects.</p></li>
+<li><p>Sometimes less is more in MySQL configs.</p></li>
+<li><p>When in doubt use a generic MySQL config file.</p></li>
+</ol>
+
+
+<h3>Query Optimization:</h3>
+
+<ol>
+<li><p>Use the slow query log to find slow queries.</p></li>
+<li><p>Use EXPLAIN to determine queries are functioning appropriately.</p></li>
+<li><p>Test your queries often to see if they are performing optimally – performance will change over time.</p></li>
+<li><p>Avoid count(*) on entire tables, it can lock the entire table.</p></li>
+<li><p>Make queries uniform so subsequent similar queries will use query cache.</p></li>
+<li><p>Use GROUP BY instead of DISTINCT when appropriate.</p></li>
+<li><p>Use indexed columns in WHERE, GROUP BY, and ORDER BY clauses.</p></li>
+<li><p>Keep indexes simple, do not reuse a column in multiple indexes.</p></li>
+<li><p>Sometimes MySQL chooses the wrong index, use USE INDEX for this case</p></li>
+<li><p>Check for issues using SQL_MODE=STRICT.</p></li>
+<li><p>Use a LIMIT on UNION instead of OR for less than 5 indexed fields.</p></li>
+<li><p>Use INSERT ON DUPLICATE KEY or INSERT IGNORE instead of UPDATE to avoid the SELECT prior to update.</p></li>
+<li><p>Use a indexed field and ORDER BY instead of MAX.</p></li>
+<li><p>Avoid using ORDER BY RAND().</p></li>
+<li><p>LIMIT M,N can actually slow down queries in certain circumstances, use sparingly.</p></li>
+<li><p>Use UNION instead of sub-queries in WHERE clauses.</p></li>
+<li><p>For UPDATES, use SHARE MODE to prevent exclusive locks.</p></li>
+<li><p>On restarts of MySQL, remember to warm your database, to ensure that your data is in memory and queries are fast.</p></li>
+<li><p>Use DROP TABLE then CREATE TABLE instead of DELETE FROM to remove all data from a table.</p></li>
+<li><p>Minimize the data in your query to only the data you need, using * is overkill most of the time.</p></li>
+<li><p>Consider persistent connections instead of multiple connections to reduce overhead.</p></li>
+<li><p>Benchmark queries, including using load on the server, sometimes a simple query can have affects on other queries.</p></li>
+<li><p>When load increases on your server, use SHOW PROCESSLIST to view slow/problematic queries.</p></li>
+<li><p>Test all suspect queries in a development environment where you have mirrored production data.</p></li>
+</ol>
+
+
+<h3>MySQL Backup Procedures:</h3>
+
+<ol>
+<li><p>Backup from secondary replicated server.</p></li>
+<li><p>Stop replication during backups to prevent inconsistencies on data dependencies and foreign constraints.</p></li>
+<li><p>Stop MySQL altogether and take a backup of the database files.</p></li>
+<li><p>Backup binary logs at same time as dumpfile if MySQL dump used – to make sure replication does not break.</p></li>
+<li><p>Do not trust an LVM snapshot for backups – this could create data inconsistencies that will give you issues in the future.</p></li>
+<li><p>Make dumps per table for easier single table recovery – if data is isolated from other tables.</p></li>
+<li><p>Use –opt when using mysqldump.</p></li>
+<li><p>Check and Optimize tables before a backup.</p></li>
+<li><p>When importing temporarily disable foreign constraints for a faster import.</p></li>
+<li><p>When importing temporarily disable unique checks for a faster import.</p></li>
+<li><p>Calculate size of database/tables data and indexes after each backup to monitor growth.</p></li>
+<li><p>Monitor slave replication for errors and delay with a cron script.</p></li>
+<li><p>Perform Backups regularly.</p></li>
+<li><p>Test your backups regularly.</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Mysql - Useful command line]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line/"/>
+    <updated>2015-07-04T17:59:51+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line</id>
+    <content type="html"><![CDATA[<h3>Create database UTF8</h3>
+
+<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
+</code></pre>
+
+<h3>Drop database</h3>
+
+<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
+</code></pre>
+
+<h3>Import database from file</h3>
+
+<pre><code>$ mysql -u username -p database_name &lt; file.sql
+</code></pre>
+
+<h3>Export database to file</h3>
+
+<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

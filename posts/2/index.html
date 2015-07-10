@@ -1,184 +1,193 @@
 
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <!-- include head -->
-    
+<!DOCTYPE HTML>
+<html lang="en-GB">
+<head>
+	<meta charset="utf-8">
+	<title>はじめまして  | ダン・クァン・ミン Blog</title>
 
-<meta charset="utf-8">
-<title>ダン・クァン・ミン Blog</title>
-<meta name="author" content="ダン・クァン・ミン">
-<meta name="description"
-      content="最近のブログ投稿 Rails Server （） Vagrant （） First look about design pattern （） Mysql - Useful command line （） CakePHP 3.x - Code Generation with Bake （） &hellip;">
+	<meta name="author" content="ダン・クァン・ミン">
 
+<meta name="description" content="Rails Server Throwdown: Passenger, Unicorn or Puma? Every millisecond counts. As professionals from industries outside the technology sector turn to &hellip;"> <meta name="keywords" content="">
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-<link rel="canonical" href="http://dankuanmei.github.io/posts/2">
-<link href="/favicon.png" rel="icon">
-<link href="/stylesheets/screen.css"
-      media="screen, projection"
-      rel="stylesheet"
-      type="text/css">
-<link href="/atom.xml"
-      rel="alternate"
-      title="ダン・クァン・ミン Blog"
-      type="application/atom+xml">
-
-<style type="text/css">
-  header[role="banner"] hgroup h1 {
-    /* font-size: 180% */
-    color: #999;
-  }
-</style>
-
-
-<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
-<script src="/javascripts/ender.js" type="text/javascript"></script>
-<script src="/javascripts/octopress.js" type="text/javascript"></script>
-
-
-
-    <!-- /include -->
-  </head>
-  <body>
-    <div id="wrapper">
-
-      <header role="banner" class="site_metas">
-	<!-- include header -->
+	<link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	
-<hgroup>
-  <h1><a href="/">ダン・クァン・ミン Blog</a></h1>
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">ダン・クァン・ミン Blog</a></h1>
+<span class="tagline">はじめまして</span>
+<nav id="main-nav"><ul>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+	<li><a href="/contact">Contact</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul>
+	<li><a href="/about">About</a></li>
+	<li><a href="/archives">Archives</a></li>
+	<li><a href="/contact">Contact</a></li>
+</ul>
+</div>
+	</div>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/06/rails-server/">
+			
+				Rails Server</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
   
-  <h2>はじめまして</h2>
+
+
+<time datetime="2015-07-06T11:25:09+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h2>Rails Server Throwdown: Passenger, Unicorn or Puma?</h2>
+
+<p>Every millisecond counts. As professionals from industries outside the technology sector turn to web apps to run their businesses, shaving a minuscule amount of response time from your process can mean the difference between keeping an end user happy and losing their company’s account. It’s fair game to expect your Rails server to handle load balancing, to deter DDoS attacks, and to manage your app’s reverse proxy requests.</p>
+
+<p>Selecting a Rails server can set the pace for your app’s speed and scalability down the road, and switching horses mid-stream can lead to some tough client conversations. Even as hardware gets more robust and cloud computing platforms aim to replace dedicated servers, three of the most popular Rails server products got major updates in the past few months. Therefore, we set out to compare Passenger, Unicorn, and Puma to see if there’s more than a slight difference in performance.</p>
+
+<h3>Rails Server #1: Passenger</h3>
+
+<p>Passenger still gets the Rails Core Team’s vote as the “preferred way to deploy your Rails applications,” according to Phusion’s website. After a significant update during the summer, this popular Rails server now comes in two flavors: open source and Enterprise. This popular module directly integrates with Apache or NGINX, so you can upload and run your application code with ease.</p>
+
+<p>Thanks to built-in deployment error resistance, Passenger can shut down all application processes when it encounters a configuration error or a glitch in an application’s code. The Enterprise edition of Passenger enables enhanced monitoring and debugging, so you can get to the source of an error in real time. An accepted standard for many corporate server environments, Phusion’s website boasts of over 150,000 leading companies running apps with Passenger.</p>
+
+<h3>Rails Server #2: Unicorn</h3>
+
+<p>When James Pozdena benchmarked Unicorn in 2009, it maintained consistent average response times of around a second, even when hammered by concurrent requests. Podenza noted that Passenger’s maximum response time grew by as much as a second with each concurrent request.</p>
+
+<p>However, Urban Influence’s Nate Miller discovered that Unicorn’s speed comes at a cost. While testing Unicorn as a replacement for a Mongrel deployment experiencing a high number of 502 Bad Gateway errors, Miller benchmarked a similar drop in average response time on Unicorn. However, Unicorn’s standard deviation for gateway errors increased significantly, raising concerns that the speed gains could leave the door open to increased instability.</p>
+
+<h3>Rails Server #3: Puma</h3>
+
+<p>Evan Phoenix took a “Back to the Future” approach to rails servers, rewriting code from Mongrel that hearkens back to what Phoenix calls a “pre-rack world.” His benchmarks show Puma using less than one-tenth the active memory of a similar Unicorn setup, while trouncing competitors in speed tests. Puma leverage’s Mongrel’s heritage HTTP parser, offering accuracy without the “stuck mongrel” issues that dogged early Rails deployments.</p>
+
+<p>Puma runs best with Rubinius or JRuby, implementations that provide true concurrency. As developers prepare for Rails 4, some admins report significant speed improvements when combining Puma with NGINX’s proxy functionality. As recent Ruby converts search for Rails servers, developers have noticed the difference between a slow stack and a system supercharged with Puma.</p>
+
+<h3>Verdict</h3>
+
+<p>Even though Passenger’s recent updates address both speed and stability, Puma offers a lean and fast web server solution for most applications that require high concurrency. Of course, it always makes sense to run your own benchmarks and application tests. However, with growing support for Puma on many cloud-based application servers, this significantly refreshed version of Mongrel should be easy for you to test and to enjoy.</p>
+
+<h2>Deploy</h2>
+
+<h3>Rails Server #1: Passenger</h3>
+
+<h3>Rails Server #2: Unicorn</h3>
+
+<h3>Rails Server #3: Puma</h3>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/04/vagrant/">
+			
+				Vagrant</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
   
-</hgroup>
-
-	<!-- /include -->
-        <!-- include social_service_links -->
-	
-
-        <!-- /include -->
-      </header>
-
-      <div id="content">
-	<!-- content -->
-	<div id="page">
-  <div id="top">
-
-  <div id="recent_posts">
-    <h2>最近のブログ投稿</h2>
-
-    <ul>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/06/rails-server/">Rails Server</a>
-          （<time datetime="2015-07-06 11:25:09 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/04/vagrant/">Vagrant</a>
-          （<time datetime="2015-07-04 21:06:20 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/04/first-look-about-design-pattern/">First look about design pattern</a>
-          （<time datetime="2015-07-04 21:02:01 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/04/mysql-useful-command-line/">Mysql - Useful command line</a>
-          （<time datetime="2015-07-04 17:59:51 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/">CakePHP 3.x - Code Generation with Bake</a>
-          （<time datetime="2015-07-04 17:44:10 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/04/setup-cakephp-3-dot-x/">Setup Cakephp 3.x</a>
-          （<time datetime="2015-07-04 16:18:28 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu/">Setup Apache2 Virtual Host on Ubuntu</a>
-          （<time datetime="2015-07-04 13:20:58 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/03/the-presentation-time-stamp/">The Presentation Time Stamp</a>
-          （<time datetime="2015-07-03 11:03:43 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/03/hello-oxygine-framework/">Hello Oxygine Framework</a>
-          （<time datetime="2015-07-03 11:01:46 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-      <li>
-        <article>
-          <a rel="full-article" href="/blog/2015/07/02/sample-about-sort/">Sample about Sort</a>
-          （<time datetime="2015-07-02 19:57:25 +0900" pubdate></time>）
-        </article>
-      </li>
-    
-    </ul>
-
-    <p><a href="/blog/archives">&laquo; 過去の記事</a></p>
-
-  </div>
 
 
-  <!-- include asides.html -->
+<time datetime="2015-07-04T21:06:20+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/04/first-look-about-design-pattern/">
+			
+				First Look About Design Pattern</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
   
-  <section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/">Một số quan hệ giữa các class trong UML</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo blog miễn phí bằng Octopress &amp; Github</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/09/java-for-beginner/">Java for beginner</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/09/introduction-to-restful-webservice/">Explore about RESTful webservice</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/07/07/javascript-regexp-reference/">JavaScript RegExp Reference</a>
-      </li>
-    
-  </ul>
-</section>
+
+
+<time datetime="2015-07-04T21:02:01+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/04/mysql-useful-command-line/">
+			
+				Mysql - Useful Command Line</a>
+		</h2>
+		<div class="meta date">
 
 
 
@@ -187,28 +196,647 @@
 
 
 
+  
 
-  <!-- /include asides.html -->
+
+<time datetime="2015-07-04T17:59:51+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h3>Create database UTF8</h3>
+
+<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
+</code></pre>
+
+<h3>Drop database</h3>
+
+<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
+</code></pre>
+
+<h3>Import database from file</h3>
+
+<pre><code>$ mysql -u username -p database_name &lt; file.sql
+</code></pre>
+
+<h3>Export database to file</h3>
+
+<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
+</code></pre>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/">
+			
+				CakePHP 3.x - Code Generation With Bake</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-04T17:44:10+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h2>Some useful command</h2>
+
+<pre><code>$ bin/cake bake all users
+
+$ bin/cake bake controller users
+
+$ bin/cake bake model users
+</code></pre>
+
+<h2>Full guide</h2>
+
+<p>When run with no arguments bin/cake bake will output a list of available tasks. You should see something like:</p>
+
+<pre><code>$ bin/cake bake
+
+Welcome to CakePHP v3.0.0 Console
+---------------------------------------------------------------
+App : src
+Path: /var/www/cakephp.dev/src/
+---------------------------------------------------------------
+The following commands can be used to generate skeleton code for your application.
+
+Available bake commands:
+
+- all
+- behavior
+- cell
+- component
+- controller
+- fixture
+- form
+- helper
+- model
+- plugin
+- shell
+- template
+- test
+
+By using `cake bake [name]` you can invoke a specific bake task.
+</code></pre>
+
+<p>You can get more information on what each task does, and what options are available using the &ndash;help option:</p>
+
+<pre><code>$ bin/cake bake controller --help
+
+Welcome to CakePHP v3.0.0 Console
+---------------------------------------------------------------
+App : src
+Path: /var/www/cakephp.dev/src/
+---------------------------------------------------------------
+Bake a controller skeleton.
+
+Usage:
+cake bake controller [subcommand] [options] [&lt;name&gt;]
+
+Subcommands:
+
+all  Bake all controllers with CRUD methods.
+
+To see help on a subcommand use `cake bake controller [subcommand] --help`
+
+Options:
+
+--help, -h        Display this help.
+--verbose, -v     Enable verbose output.
+--quiet, -q       Enable quiet output.
+--plugin, -p      Plugin to bake into.
+--force, -f       Force overwriting existing files without prompting.
+--connection, -c  The datasource connection to get data from.
+                  (default: default)
+--theme, -t       The theme to use when baking code.
+--components      The comma separated list of components to use.
+--helpers         The comma separated list of helpers to use.
+--prefix          The namespace/routing prefix to use.
+--no-test         Do not generate a test skeleton.
+--no-actions      Do not generate basic CRUD action methods.
+
+Arguments:
+
+name  Name of the controller to bake. Can use Plugin.name to bake
+    controllers into plugins. (optional)
+</code></pre>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/04/setup-cakephp-3-dot-x/">
+			
+				Setup Cakephp 3.x</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-04T16:18:28+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h2>Installing CakePHP</h2>
+
+<p>First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as running the following:</p>
+
+<pre><code>curl -s https://getcomposer.org/installer | php
+</code></pre>
+
+<p>Now that you’ve downloaded and installed Composer, you can get a new CakePHP application by running:</p>
+
+<pre><code>php composer.phar create-project --prefer-dist cakephp/app [app_name]
+</code></pre>
+
+<p>Or if Composer is installed globally:</p>
+
+<pre><code>composer create-project --prefer-dist cakephp/app [app_name]
+</code></pre>
+
+<p>You can now visit the path to where you installed your CakePHP application and see the setup traffic lights.</p>
+
+<h2>Development Server</h2>
+
+<p>A development installation is the fastest method to setup CakePHP. In this example, we will be using CakePHP’s console to run PHP’s built-in web server which will make your application available at <a href="http://host:port.">http://host:port.</a> From the app directory, execute:</p>
+
+<pre><code>bin/cake server -H 192.168.13.37 -p 5673
+</code></pre>
+
+<h2>Create <code>.htaccess</code> file</h2>
+
+<p>CakePHP webroot directory (will be copied to your application’s web root by bake):</p>
+
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine on
+    RewriteRule    ^$    app/webroot/    [L]
+    RewriteRule    (.*) app/webroot/$1    [L]
+&lt;/IfModule&gt;
+</code></pre>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu/">
+			
+				Setup Apache2 Virtual Host on Ubuntu</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-04T13:20:58+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h2>Create the Directory Structure</h2>
+
+<p>The first step that we are going to take is to make a directory structure that will hold the site data that we will be serving to visitors.</p>
+
+<pre><code>sudo mkdir -p /var/www/example.local/public_html
+</code></pre>
+
+<h2>Grant Permissions</h2>
+
+<p>Now we have the directory structure for our files, but they are owned by our root user. If we want our regular user to be able to modify files in our web directories, we can change the ownership by doing this:</p>
+
+<pre><code>sudo chown -R $USER:$USER /var/www/example.local/public_html
+</code></pre>
+
+<p>We should also modify our permissions a little bit to ensure that read access is permitted to the general web directory and all of the files and folders it contains so that pages can be served correctly:</p>
+
+<pre><code>sudo chmod -R 755 /var/www
+</code></pre>
+
+<h2>Create Demo Pages for Each Virtual Host</h2>
+
+<pre><code>vim /var/www/example.local/public_html/index.html
+</code></pre>
+
+<p>In this file, create a simple HTML document that indicates the site it is connected to. My file looks</p>
+
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Welcome to example.local!&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Success!  The example.local virtual host is working!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<h2>Enable mod rewrite(Optional)</h2>
+
+<pre><code>sudo a2enmod rewrite
+sudo service apache2 restart
+</code></pre>
+
+<h2>Create New Virtual Host Files</h2>
+
+<p>Create the First Virtual Host File</p>
+
+<pre><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.local.conf
+</code></pre>
+
+<p>Open and Edit the file.</p>
+
+<pre><code>sudo vim /etc/apache2/sites-available/example.local.conf
+</code></pre>
+
+<p>Sample</p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerAdmin admin@example.local
+    ServerName example.local
+    ServerAlias www.example.local
+    DocumentRoot /var/www/example.local/public_html
+    &lt;Directory /var/www/example.local/public_html&gt;
+      AllowOverride all
+    &lt;/Directory&gt;
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Save and close the file.</p>
+
+<h2>Enable the New Virtual Host Files</h2>
+
+<p>We can use the a2ensite tool to enable each of our sites like this:</p>
+
+<pre><code>sudo a2ensite example.local.conf
+</code></pre>
+
+<p>When you are finished, you need to restart Apache to make these changes take effect:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<h2>Set Up Local Hosts File (Optional)</h2>
+
+<p>If you haven&rsquo;t been using actual domain names that you own to test this procedure and have been using some example domains instead, you can at least test the functionality of this process by temporarily modifying the hosts file on your local computer.
+If you are on a Mac or Linux computer, edit your local file with administrative privileges by typing:</p>
+
+<pre><code>sudo vim /etc/hosts
+</code></pre>
+
+<p>For the domains that I used in this guide, assuming that my VPS IP address is 111.111.111.111, I could add the following lines to the bottom of my hosts file:</p>
+
+<pre><code>127.0.0.1   localhost
+127.0.1.1   guest-desktop
+111.111.111.111 example.local
+</code></pre>
+
+<h2>Test your Results</h2>
+
+<p>Now that you have your virtual hosts configured, you can test your setup easily by going to the domains that you configured in your web browser:
+<a href="http://example.local">http://example.local</a></p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/03/the-presentation-time-stamp/">
+			
+				The Presentation Time Stamp</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-03T11:03:43+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h2>wikipedia</h2>
+
+<p>The presentation timestamp (PTS) is a timestamp metadata field in an MPEG transport stream or MPEG program stream that is used to achieve synchronization of programs' separate elementary streams (for example Video, Audio, Subtitles) when presented to the viewer. The PTS is given in units related to a program&rsquo;s overall clock reference, either Program Clock Reference (PCR) or System Clock Reference (SCR), which is also transmitted in the transport stream or program stream.</p>
+
+<p>Presentation time stamps have a resolution of 90kHz, suitable for the presentation synchronization task. The PCR or SCR has a resolution of 27MHz which is suitable for synchronization of a decoder&rsquo;s overall clock with that of the usual remote encoder, including driving TV signals such as frame and line sync timing, colour sub carrier, etc.</p>
+
+<p>Decoding of N elementary streams is synchronized by adjusting the decoding of streams to a common master time base rather than by adjusting the decoding of one stream to match that of another. The master time base may be one of the N decoders' clocks, the data source’s clock, or it may be some external clock.</p>
+
+<p>A transport stream may contain multiple programs and each program may have its own time base. The time bases of different programs within a transport stream may be different. Because PTSs apply to the decoding of individual elementary streams, they reside in the PES packet layer of both the transport streams and program streams. End-to-end synchronization occurs when encoders save time stamps at capture time, when the time stamps propagate with associated coded data to decoders, and when decoders use those time stamps to schedule presentations.</p>
+
+<p>Synchronization of a decoding system with a channel is achieved through the use of the SCR in the program stream and by its analog, the PCR, in the transport stream. The SCR and PCR are time stamps encoding the timing of the bit stream itself, and are derived from the same time base used for the audio and video PTS values from the same program. Since each program may have its own time base, there are separate PCR fields for each program in a transport stream containing multiple programs. In some cases it may be possible for programs to share PCR fields.</p>
+
+<h2>Vietnamese</h2>
+
+<p>Có hai loại nhãn thời gian là nhãn thời gian trình diễn PTS (presentation time stamp) và nhãn thời gian giải mã DTS (decode time stamp)</p>
+
+<p>Nhãn thời gian trình diễn được dùng để xác định khi nào thì hình ảnh sẽ được thể hiện trên màn ảnh, còn nhãn thời gian giải mã xác định khi nào hình ảnh được giải mã.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/03/hello-oxygine-framework/">
+			
+				Hello Oxygine Framework</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-03T11:01:46+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h2>Intro</h2>
+
+<h4>Free, Open Source and Cross-Platform</h4>
+
+<p>Oxygine is completely free and open source (MIT license) 2D game engine, available on BitBucket. It is written in C++ and runs on MacOSX, iOS, Android, Windows and Linux.</p>
+
+<h4>Pure C++</h4>
+
+<p>Oxygine is written in C++. It provides easy to use API, which is designed with &ldquo;do more with less code&rdquo; philosophy. It uses a managed scenegraph system that takes care of rendering and updates, and provides ability to extend with custom rendering and updates.</p>
+
+<h4>Build for Web</h4>
+
+<p>You can build and run your C++ Oxygine application in web browsers. It won’t require any plugins, such as Flash or Unity, and runs as pure HTML5/JS application using WebGL for rendering.</p>
+
+<h4>Embedded Profiling Tools</h4>
+
+<p>You can analyze your application with embedded tools. Inspect in runtime scenegraph, loaded textures, FPS, performance and more.</p>
+
+<h4>Text Rendering</h4>
+
+<p>Accurate unicode text rendering using bitmap fonts created with BMFont tool. Supports different alignment modes and substring colorization.</p>
+
+<h4>Compresed Textures and Atlasses</h4>
+
+<p>Oxygine provides command-line tools to build texture atlases with ability to convert it into compressed formats like PVRTC, ETC and more. Atlases can be automatically resized to any game resolution for higher quality.</p>
+
+<h4>High Performance</h4>
+
+<p>Oxygine is developed to be fast and memory efficient on mobile platforms. It has flexible resources management system, automatic sprites batching, memory pools and more.</p>
+
+<h4>Build on top of the SDL2 and Marmalade</h4>
+
+<p>You can build Oxygine on top of the SDL2, Marmalade, Emscripten or adapt to your platform.</p>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <article class="post">
+	<header>
+		<h2 class="title">
+			
+			<a href="/blog/2015/07/02/sample-about-sort/">
+			
+				Sample About Sort</a>
+		</h2>
+		<div class="meta date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-07-02T19:57:25+09:00" pubdate data-updated="true"></time></div>
+	</header>
+	<div class="entry-content">
+		<h2>Binary Sort</h2>
+
+<pre><code>void BinSort(int x[ ], int n)
+{
+    int i, j;
+
+    if (n &gt; MAX_DATA) {
+        printf("データが多すぎます!\n");
+        return;
+    }
+    else {
+        for (i = 0; i &lt; MAX_DATA; i++)
+            Bin[i] = 0;             /* 作業用配列の初期化 */
+
+        for (i = 0; i &lt; n; i++)     /* x[i] の値の */
+            Bin[x[i]]++;            /* Bin[ ] の要素の値を */
+                                    /* インクリメント */
+        j = 0;                      /* x[ ] の添字として使用 */
+        for (i = 0; i &lt; MAX_DATA ; i++)
+            if (Bin[i])             /* ０でなければ */
+            x[j++] = i;             /* 書き戻す */
+    }
+}
+</code></pre>
+
+<h2>Buble Sort</h2>
+
+<pre><code>int BubSort(int x[ ], int n)
+{
+    int i, j, temp;
+
+    for (i = 0; i &lt; n - 1; i++) {
+        for (j = n - 1; j &gt; i; j--) {
+            if (x[j - 1] &gt; x[j]) {  /* 前の要素の方が大きかったら */
+                temp = x[j];        /* 交換する */
+                x[j] = x[j - 1];
+                x[j - 1]= temp;
+            }
+        }
+        /* ソートの途中経過を表示 */
+        ShowData(x, NUM_DATA);
+    }
+}
+</code></pre>
+
+<h2>Heap Sort</h2>
+
+<pre><code>void Hpsort(int a[ ], int n)
+{
+    int leaf, root;
+
+    leaf = n;                   /* 初期値は末尾の要素 */
+    root = n/2;                 /* 初期値はその親 */
+
+    while (root &gt; 0 ) {         /* 半順序木を構成 */
+        DownHeap(a, leaf, root);
+        root--;
+    }
+
+    while(leaf &gt; 0) {
+        Swap(a, 1, leaf);       /* 半順序木の根と末尾の要素を交換 */
+        leaf--;                 /* 末尾の要素を半順序木から外す */
+        DownHeap(a, leaf, 1);   /* 半順序木を再構成する */
+    }
+}
+
+void DownHeap(int a[ ],  int leaf, int root)
+{
+    int i;
+
+    i = root * 2;
+    while (i &lt;= leaf) {
+        if (i &lt; leaf &amp;&amp; a[i + 1] &gt; a[i])  /* a[i] と a[i + 1]  の大きい方と */
+            i++;
+        if (a[root] &gt;= a[i])              /* a[root] と比較 */
+            break;                        /* 子の方が大きければ */
+        Swap(a, root, i);                 /* 交換 */
+
+        root = i;                         /* 更にその子についても調べる */
+        i = root * 2;
+    }
+}
+
+void Swap(int a[ ], int i, int j)
+{
+    int temp;
+
+    temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
+}
+</code></pre>
+
+<h2>Quick Sort</h2>
+
+<pre><code>void QSort(int x[ ], int left, int right)
+{
+    int i, j;
+    int pivot;
+
+    i = left;                      /* ソートする配列の一番小さい要素の添字 */
+    j = right;                     /* ソートする配列の一番大きい要素の添字 */
+
+    pivot = x[(left + right) / 2]; /* 基準値を配列の中央付近にとる */
+
+    while (1) {                    /* 無限ループ */
+
+        while (x[i] &lt; pivot)       /* pivot より大きい値が */
+            i++;                   /* 出るまで i を増加させる */
+
+        while (pivot &lt; x[j])       /* pivot より小さい値が */
+            j--;                   /*  出るまで j を減少させる */
+        if (i &gt;= j)                /* i &gt;= j なら */
+            break;                 /* 無限ループから抜ける */
+
+        Swap(x, i, j);             /* x[i] と x[j]を交換 */
+        i++;                       /* 次のデータ */
+        j--;
+    }
+
+    if (left &lt; i - 1)              /* 基準値の左に 2 以上要素があれば */
+        QSort(x, left, i - 1);     /* 左の配列を Q ソートする */
+    if (j + 1 &lt;  right)            /* 基準値の右に 2 以上要素があれば */
+        QSort(x, j + 1, right);    /* 右の配列を Q ソートする */
+}
+
+void Swap(int x[ ], int i, int j)
+{
+    int temp;
+
+    temp = x[i];
+    x[i] = x[j];
+    x[j] = temp;
+}
+</code></pre>
+
+		
+		
+	</div>
+
+</article>
+
+
+    <nav id="pagenavi">
+        
+            <a href="1" class="prev">Previous</a>
+        
+        
+            <a href="3" class="next">Next</a>
+        
+    </nav>
 
 </div>
+	<footer id="footer" class="inner">&copy; 2015
 
-</div>
+    ダン・クァン・ミン
 
-	<!-- /content -->
-      </div>
-
-      <footer role="contentinfo">
-	<!-- include footer -->
-	<p>
-  Copyright &copy; 2015 - ダン・クァン・ミン -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-	<!-- /include -->
-      </footer>
-      
-      <!-- include after_footer -->
-      
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/hyphenator.js"></script>
 
 
 
@@ -216,21 +844,5 @@
 
 
 
-  <script type="text/javascript">
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
-
-
-
-
-      <!-- /include -->
-
-    </div>
-  </body>
+</body>
 </html>

@@ -1,1364 +1,184 @@
 
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>ダン・クァン・ミン Blog</title>
-	<meta name="author" content="ダン・クァン・ミン">
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- include head -->
+    
 
+<meta charset="utf-8">
+<title>ダン・クァン・ミン Blog</title>
+<meta name="author" content="ダン・クァン・ミン">
+<meta name="description"
+      content="最近のブログ投稿 Một số quan hệ giữa các class trong UML （） Tạo blog miễn phí bằng Octopress &amp; Github （） Java for beginner （） Explore about RESTful &hellip;">
+
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="canonical" href="http://dankuanmei.github.io">
+<link href="/favicon.png" rel="icon">
+<link href="/stylesheets/screen.css"
+      media="screen, projection"
+      rel="stylesheet"
+      type="text/css">
+<link href="/atom.xml"
+      rel="alternate"
+      title="ダン・クァン・ミン Blog"
+      type="application/atom+xml">
+
+<style type="text/css">
+  header[role="banner"] hgroup h1 {
+    /* font-size: 180% */
+    color: #999;
+  }
+</style>
+
+
+<script src="/javascripts/modernizr-2.0.js" type="text/javascript"></script>
+<script src="/javascripts/ender.js" type="text/javascript"></script>
+<script src="/javascripts/octopress.js" type="text/javascript"></script>
+
+
+
+    <!-- /include -->
+  </head>
+  <body>
+    <div id="wrapper">
+
+      <header role="banner" class="site_metas">
+	<!-- include header -->
 	
-	<meta name="description" content="Quan hệ giữa các class trong UML, gồm có các 4 quan hệ chính sau: Realization
-Generation
-Dependency
-Association: có 2 quan hệ phân biệt
-4.1. &hellip;">
+<hgroup>
+  <h1><a href="/">ダン・クァン・ミン Blog</a></h1>
+  
+  <h2>はじめまして</h2>
+  
+</hgroup>
+
+	<!-- /include -->
+        <!-- include social_service_links -->
 	
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-	<link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
-	<link rel="canonical" href="">
-	<link href="/favicon.png" rel="shortcut icon">
-	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,700' rel='stylesheet' type='text/css'>
-	<!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic' rel='stylesheet' type='text/css'>
-</head>
+        <!-- /include -->
+      </header>
 
-<body>
-	<div class="container">	
+      <div id="content">
+	<!-- content -->
+	<div id="page">
+  <div id="top">
 
-			<div class="mid-col-container">
-				<div id="content" class="inner">
-					
+  <div id="recent_posts">
+    <h2>最近のブログ投稿</h2>
 
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-10T10:53:15+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/">Một Số Quan Hệ Giữa Các Class Trong UML</a></h1>
-	<div class="entry-content">
-		<p>Quan hệ giữa các class trong UML, gồm có các 4 quan hệ chính sau:</p>
-
-<ol>
-<li>Realization</li>
-<li>Generation</li>
-<li>Dependency</li>
-<li>Association: có 2 quan hệ phân biệt
-4.1. Aggregation
-4.2. Composition</li>
-</ol>
-
-
-<h3>Quan hệ Realization (hiện thực hóa)</h3>
-
-<p>Là quan hệ giữa một classifier đóng vai trò là hợp đồng và một classifier đóng vai trò thực hiện. Hay nói cách khác:</p>
-
-<p>Mối quan hệ giữa 1 class implement 1 interface được gọi là quan hệ realization, được biểu diễn bởi đường đứt nét có hình mũi tên tam giác chỉ vào interface.</p>
-
-<p><img src="http://i.imgur.com/24Do9yQ.png"></p>
-
-<h3>Quan hệ generalization (tên khác là Inheritance)</h3>
-
-<p>Còn có tên khác là:</p>
-
-<ul>
-<li>Quan hệ tổng quát hóa</li>
-<li>Quan hệ khái quát hóa</li>
-<li>Quan hệ kế thừa</li>
-</ul>
-
-
-<p>Đối tượng cụ thể (concrete) sẽ kế thừa các thuộc tính và phương thức của đối tượng tổng quát (general)</p>
-
-<p>Ký hiệu: A is-a B</p>
-
-<p><img src="http://i.imgur.com/jYOTHlb.png"></p>
-
-<p>Đọc là :</p>
-
-<ul>
-<li>A là tổng quát của B, B là chi tiết của A</li>
-<li>B là trường hợp đặc biệt của A</li>
-<li>A là cha của B, B là con của A</li>
-</ul>
-
-
-<h3>Quan hệ Dependency (phụ thuộc)</h3>
-
-<p>Là quan hệ giữa 2 phần tử trong mô hình mà thay đổi ở phần tử này (phần tử độc lập) có thể gây ra thay đổi ở phần tử kia (phần tử phục thuộc).</p>
-
-<p>Là loại quan hệ giữa 2 object</p>
-
-<p>ClassA và ClassB không có quan hệ Association</p>
-
-<p>Trong ClassA có sử dụng biến toàn cục (kiểu B), hoặc sử dụng phương thức/thuộc tính static của ClassB</p>
-
-<p>Ký hiệu : A use-a B ,  bằng mũi tên 1 chiều nét đứt , từ bên phụ thuộc sang bên độc lập ;</p>
-
-<p><img src="http://i.imgur.com/vj6U2En.png"></p>
-
-<p>ClassA “phụ thuộc” vào ClassB ;</p>
-
-<p>Client –> Supplier (phần tử phục thuộc –> phần tử độc lập)</p>
-
-<p>Dependency còn có một số biểu hiện khác , thường dùng các stereotype sau :</p>
-
-<ul>
-<li><p><code>&lt;&lt;use&gt;&gt;</code> : chỉ rằng ngữ nghĩa của lớp gốc (mũi tên) phụ thuộc vào lớp ngọn (mũi tên) . Đặc biệt trong trường hợp lớp gốc dùng lớp ngọn làm tham số trong 1 số method của nó</p></li>
-<li><p><code>&lt;&lt;permit&gt;&gt;</code> : chỉ rằng lớp gốc được quyền truy cập 1 cách đặc biệt vào lớp ngọn (chẳng hạn truy cập các thao tác riêng tư). Tương ứng với khái niệm friend trong C++</p></li>
-<li><p><code>&lt;&lt;refine&gt;&gt;</code> : chỉ rằng lớp gốc ở 1 mức độ tinh chế cao hơn từ lớp ngọn . Chẳng hạn 1 lớp lập ở giai đoạn thiết kế nhằn tinh chế cùng lớp đó lập ở giai đoạn phân tích</p></li>
-</ul>
-
-
-<p>Lưu ý : Phân biệt giữa Dependency và Association</p>
-
-<ul>
-<li>Association là quan hệ cấu trúc</li>
-<li>Dependency là qua hệ phi cấu trúc</li>
-</ul>
-
-
-<h3>Association</h3>
-
-<p>Giữa 2 object của 2 lớp có sự ghép cặp (vợ – chồng , thầy – trò , khách hàng – hóa đơn …) . Tập hợp các kết nối cùng loại (cùng ý nghĩa) giữa các object của 2 lớp tạo thành mối liên kết association , quan hệ giữa 2 tập hợp (2 lớp)</p>
-
-<p>Là mỗi liên hệ giữa 2 lớp có  role, role là tên vai trò của mối liên kết : vd như : của , cho , có , liên kết tới , trao đối với , …. (thường tên role có kèm theo 1 mũi tên để chỉ hướng quan hệ áp dụng từ lớp nào sang lớp nào)</p>
-
-<p>Ký hiệu : A has-a B</p>
-
-<p><img src="http://i.imgur.com/N6nkWbx.png"></p>
-
-<p>Ý nghĩa : (trường hợp mũi tên không có chiều)
-- Hoặc  : Trong ClassA có thuộc tính có kiểu là ClassB
-- Hoặc  : Trong ClassB có thuộc tính có kiểu là ClassA</p>
-
-<h5>Nhận xét</h5>
-
-<p>Về mặt lập trình, thuộc tính có thể được lưu trữ dạng biến đơn, biến mảng, hay biến con trỏ</p>
-
-<p>Có hoặc không có bản số cũng được</p>
-
-<p>Có hoặc không có mũi tên cũng được</p>
-
-<p>Nếu có mũi tên 1 chiều , chỉ ra chiều đối tượng thuộc lớp này chỉ có gọi đối tượng của lớp kia, không có chiều ngược lại</p>
-
-<p>Nếu không có mũi tên nào thì tương đương là mũi tên 2 chiều , hoặc chiều không quan trọng.</p>
-
-<p><code>Multiplicity</code> là bản số , lượng số , số object bên này tham gia vào mối kết hợp so với 1 object bên kia.</p>
-
-<h3>Quan hệ Aggregation (còn gọi là quan hệ thu nạp)</h3>
-
-<p>Đã xác định được ClassA và ClassB có quan hệ Association với nhau</p>
-
-<p>Xác định rõ hơn:</p>
-
-<p>Trong object của ClassA có chứa (trong phần thuộc tính) object của ClassB</p>
-
-<p>ObjectX của ClassA bị hủy thì ObjectY của ClassB (bên trong ObjectX) vẫn có thể còn tồn tại</p>
-
-<p>Còn gọi là shared-aggregation.Một dạng của nối kết, trong đó một phần tử này chứa các phần tử khác.</p>
-
-<p>Ký hiệu :</p>
-
-<p><img src="http://i.imgur.com/nrYxfcB.png"></p>
-
-<p>Ý nghĩa : còn gọi là : Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , và B có thể tạo ra độc lập , không cần phải tạo ra A , B có thể cùng thuộc 1 whole khác A.</p>
-
-<p>Chú ý : Từ share ở đây có nghĩa là , B có thể là bộ phận của whole khác, do đó A bị hủy thì chưa chắc B bị hủy .</p>
-
-<h3>Quan hệ Composition (hợp thành)</h3>
-
-<p>Là loại aggregation chặt chẽ hơn , còn gọi là non-shared aggregation.</p>
-
-<p>Ký hiệu :</p>
-
-<p><img src="http://i.imgur.com/HMYgISe.png"></p>
-
-<p>Ý nghĩa : còn gọi là Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , nhưng B không thể đứng 1 mình được , B chỉ là thuộc A mà thôi không thể cùng thuộc Whole khác được.</p>
-
-<p>Đã xác định được ClassA và ClassB có quan hệ Association với nhau</p>
-
-<p>Xác định rõ hơn:</p>
-
-<ul>
-<li>Trong object của ClassA có chứa (trong phần thuộc tính) object của ClassB</li>
-<li>ObjectX của ClassA bị hủy thì ObjectY của ClassB (bên trong ObjectX) không thể còn tồn tại</li>
-</ul>
-
-
-<p>Chú ý :</p>
-
-<ul>
-<li>B chỉ có thể là bộ phận của whole A</li>
-<li>A chết thì tất cả B chết</li>
-<li>B chết không ảnh hưởng đến A</li>
-<li>Bản số của Whole A luôn là 1, nghĩa là B luôn thuộc 1 A thôi</li>
-</ul>
-
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-10T10:38:33+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo Blog Miễn Phí Bằng Octopress &amp; Github</a></h1>
-	<div class="entry-content">
-		<h3>Octopress</h3>
-
-<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
-$ cd octopress
-$ bundle install --path vendor/bundle
-</code></pre>
-
-<h3>Thiết lập theme</h3>
-
-<pre><code>$ git clone git://github.com/lucaslew/whitespace.git .themes/whitespace
-$ rake install['whitespace'] # for zsh, use: rake install\['whitespace'\]
-$ rake generate
-</code></pre>
-
-<h3>Thêm bài viết</h3>
-
-<pre><code>$ rake new_post['Hello world']
-</code></pre>
-
-<h3>Xem trước</h3>
-
-<pre><code>$ rake preview
-</code></pre>
-
-<h3>GitHub Pages</h3>
-
-<pre><code>$ rake setup_github_pages
-</code></pre>
-
-<h3>Triển khai</h3>
-
-<pre><code>$ rake generate
-$ rake deploy
-</code></pre>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-09T19:40:19+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/09/java-for-beginner/">Java for Beginner</a></h1>
-	<div class="entry-content">
-		<h3>Nguyên tắc trong java</h3>
-
-<p>Dưới đây là năm mục tiêu chính khi làm việc với ngôn ngữ Java:</p>
-
-<ul>
-<li>Nó phải &ldquo;đơn giản, hướng đối tượng, và gần gũi&rdquo;.</li>
-<li>Nó phải &ldquo;mạnh mẽ và bảo mật&rdquo;.</li>
-<li>Nó phải &ldquo;Độc lập với cấu trúc và dễ di chuyển&rdquo;.</li>
-<li>Nó phải &ldquo;hiệu suất cao&rdquo;.</li>
-<li>Nó phải &ldquo;đa luồng, và có tính động&rdquo;</li>
-</ul>
-
-
-<h3>Lập trình hướng đối tượng</h3>
-
-<p>Lập trình hướng đối tượng (gọi tắt là OOP, từ chữ Anh ngữ object-oriented programming), hay còn gọi là lập trình định hướng đối tượng, là kĩ thuật lập trình hỗ trợ công nghệ đối tượng. OOP được xem là giúp tăng năng suất, đơn giản hóa độ phức tạp khi bảo trì cũng như mở rộng phần mềm bằng cách cho phép lập trình viên tập trung vào các đối tượng phần mềm ở bậc cao hơn. Ngoài ra, nhiều người còn cho rằng OOP dễ tiếp thu hơn cho những người mới học về lập trình hơn là các phương pháp trước đó.</p>
-
-<p>Một cách giản lược, đây là khái niệm và là một nỗ lực nhằm giảm nhẹ các thao tác viết mã cho người lập trình, cho phép họ tạo ra các ứng dụng mà các yếu tố bên ngoài có thể tương tác với các chương trình đó giống như là tương tác với các đối tượng vật lý.</p>
-
-<p>Những đối tượng trong một ngôn ngữ OOP là các kết hợp giữa mã và dữ liệu mà chúng được nhìn nhận như là một đơn vị duy nhất. Mỗi đối tượng có một tên riêng biệt và tất cả các tham chiếu đến đối tượng đó được tiến hành qua tên của nó. Như vậy, mỗi đối tượng có khả năng nhận vào các thông báo, xử lý dữ liệu (bên trong của nó), và gửi ra hay trả lời đến các đối tượng khác hay đến môi trường.</p>
-
-<h4>Tính trừu tượng (abstraction):</h4>
-
-<p>Đây là khả năng của chương trình bỏ qua hay không chú ý đến một số khía cạnh của thông tin mà nó đang trực tiếp làm việc lên, nghĩa là nó có khả năng tập trung vào những cốt lõi cần thiết. Mỗi đối tượng phục vụ như là một &ldquo;động tử&rdquo; có thể hoàn tất các công việc một cách nội bộ, báo cáo, thay đổi trạng thái của nó và liên lạc với các đối tượng khác mà không cần cho biết làm cách nào đối tượng tiến hành được các thao tác. Tính chất này thường được gọi là sự trừu tượng của dữ liệu.</p>
-
-<p>Tính trừu tượng còn thể hiện qua việc một đối tượng ban đầu có thể có một số đặc điểm chung cho nhiều đối tượng khác như là sự mở rộng của nó nhưng bản thân đối tượng ban đầu này có thể không có các biện pháp thi hành. Tính trừu tượng này thường được xác định trong khái niệm gọi là lớp trừu tượng hay lớp cơ sở trừu tượng.</p>
-
-<h4>Tính đóng gói (encapsulation) và che giấu thông tin (information hiding):</h4>
-
-<p>Tính chất này không cho phép người sử dụng các đối tượng thay đổi trạng thái nội tại của một đối tượng. Chỉ có các phương thức nội tại của đối tượng cho phép thay đổi trạng thái của nó. Việc cho phép môi trường bên ngoài tác động lên các dữ liệu nội tại của một đối tượng theo cách nào là hoàn toàn tùy thuộc vào người viết mã. Đây là tính chất đảm bảo sự toàn vẹn của đối tượng.</p>
-
-<h4>Tính đa hình (polymorphism):</h4>
-
-<p>Thể hiện thông qua việc gửi các thông điệp (message). Việc gửi các thông điệp này có thể so sánh như việc gọi các hàm bên trong của một đối tượng. Các phương thức dùng trả lời cho một thông điệp sẽ tùy theo đối tượng mà thông điệp đó được gửi tới sẽ có phản ứng khác nhau. Người lập trình có thể định nghĩa một đặc tính (chẳng hạn thông qua tên của các phương thức) cho một loạt các đối tượng gần nhau nhưng khi thi hành thì dùng cùng một tên gọi mà sự thi hành của mỗi đối tượng sẽ tự động xảy ra tương ứng theo đặc tính của từng đối tượng mà không bị nhầm lẫn.</p>
-
-<p>Thí dụ khi định nghĩa hai đối tượng &ldquo;hinh_vuong&rdquo; và &ldquo;hinh_tron&rdquo; thì có một phương thức chung là &ldquo;chu_vi&rdquo;. Khi gọi phương thức này thì nếu đối tượng là &ldquo;hinh_vuong&rdquo; nó sẽ tính theo công thức khác với khi đối tượng là &ldquo;hinh_tron&rdquo;.</p>
-
-<h4>Tính kế thừa (inheritance):</h4>
-
-<p>Đặc tính này cho phép một đối tượng có thể có sẵn các đặc tính mà đối tượng khác đã có thông qua kế thừa. Điều này cho phép các đối tượng chia sẻ hay mở rộng các đặc tính sẵn có mà không phải tiến hành định nghĩa lại. Tuy nhiên, không phải ngôn ngữ định hướng đối tượng nào cũng có tính chất này.</p>
-
-<h3>Một số khái niệm cần biết</h3>
-
-<h4>Lớp (class)</h4>
-
-<p>Một lớp có thể được hiểu là khuôn mẫu để tạo ra các đối tượng. Trong một lớp, người ta thường dùng các biến để mô tả các thuộc tính và các hàm để mô tả các phương thức của đối tượng. Khi đã định nghĩa được lớp, ta có thể tạo ra các đối tượng từ lớp này. Để việc sử dụng được dễ dàng, thông qua hệ thống hàm tạo (constructor), người ta dùng lớp như một kiểu dữ liệu để tạo ra các đối tượng.</p>
-
-<h4>Lớp con (subclass)</h4>
-
-<p>Lớp con là một lớp thông thường nhưng có thêm tính chất kế thừa một phần hay toàn bộ các đặc tính của một lớp khác. Lớp chia sẻ sự kế thừa gọi là lớp cha (parent class).</p>
-
-<h4>Lớp trừu tượng hay lớp cơ sở trừu tượng (abstract class)</h4>
-
-<p>Lớp trừu tượng là một lớp mà nó không thể thực thể hóa thành một đối tượng thực dụng được. Lớp này được thiết kế nhằm tạo ra một lớp có các đặc tính tổng quát nhưng bản thân lớp đó chưa có ý nghĩa (hay không đủ ý nghĩa) để có thể tiến hành viết mã cho việc thực thể hóa. (xem thí dụ)</p>
-
-<p>Thí dụ: Lớp &ldquo;hinh&rdquo; được định nghĩa không có dữ liệu nội tại và chỉ có các phương thức (hàm nội tại) &ldquo;tinh_chu_vi&rdquo;, &ldquo;tinh_dien_tich&rdquo;. Nhưng vì lớp hinh này chưa xác định được đầy đủ các đặc tính của nó (cụ thể các biến nội tại là tọa độ các đỉnh nếu là đa giác, là đường bán kính và toạ độ tâm nếu là hình tròn,&hellip;) nên nó chỉ có thể được viết thành một lớp trừu tượng. Sau đó, người lập trình có thể tạo ra các lớp con chẳng hạn như là lớp &ldquo;tam_giac&rdquo;, lớp &ldquo;hinh_tron&rdquo;, lớp &ldquo;tu_giac&rdquo;,&hellip;. Và trong các lớp con này người viết mã sẽ cung cấp các dữ liệu nội tại (như là biến nội tại r làm bán kính và hằng số nội tại Pi cho lớp &ldquo;hinh_tron&rdquo; và sau đó viết mã cụ thể cho các phương thức &ldquo;tinh_chu_vi&rdquo; và &ldquo;tinh_dien_tich&rdquo;).</p>
-
-<h4>Phương thức (method)</h4>
-
-<p>Phương thức của một lớp thường được dùng để mô tả các hành vi của đối tượng (hoặc của lớp). Ví dụ như đối tượng thuộc lớp điện thoại có các hành vi sau: Đổ chuông, chuyển tín hiệu từ sóng sang dạng nghe được, chuyển tín hiệu giọng nói sang dạng chuẩn, chuyển tín hiệu lên tổng đài.v.v. Khi thiết kế, người ta có thể dùng các phương thức để mô tả và thực hiện các hành vi của đối tượng. Mỗi phương thức thường được định nghĩa là một hàm, các thao tác để thực hiện hành vi đó được viết tại nội dung của hàm. Khi thực hiện hành vi này, đối tượng có thể phải thực hiện các hành vi khác. Ví dụ như điện thoại phải chuyển tín hiệu giọng nói sang dạng chuẩn trước khi chuyển lên tổng đài. Cho nên một phương thức trong một lớp có thể sử dụng phương thức khác trong quá trình thực hiện hành vi của mình.</p>
-
-<p>Người ta còn định nghĩa thêm vài loại phương thức đặc biệt:</p>
-
-<ul>
-<li>Hàm tạo (constructor) là hàm được dùng để tạo ra một đối tượng, cài đặt các giá trị ban đầu cho các thuộc tính của đối tượng đó.</li>
-<li>Hàm hủy (destructor) là hàm dùng vào việc làm sạch bộ nhớ đã dùng để lưu đối tượng và hủy bỏ tên của một đối tượng sau khi đã dùng xong, trong đó có thể bao gồm cả việc xóa các con trỏ nội tại và trả về các phần bộ nhớ mà đối tượng đã dùng.</li>
-</ul>
-
-
-<p>Nhiều lớp thư viện có sẵn hàm tạo mặc định (thông thường không có tham số) và hàm huỷ.</p>
-
-<h4>Thuộc tính (attribute)</h4>
-
-<p>Thuộc tính của một lớp bao gồm các biến, các hằng, hay tham số nội tại của lớp đó. Ở đây, vai trò quan trọng nhất của các thuộc tính là các biến vì chúng sẽ có thể bị thay đổi trong suốt quá trình hoạt động của một đối tượng. Các thuộc tính có thể được xác định kiểu và kiểu của chúng có thể là các kiểu dữ liệu cổ điển hay đó là một lớp đã định nghĩa từ trước. Như đã ghi, khi một lớp đã được thực thể hoá thành đối tượng cụ thể thì tập hợp các giá trị của các biến nội tại làm thành trạng thái của đối tượng. Giống như trường hợp của phương thức, tùy theo người viết mã, biến nội tại có thể chỉ được dùng bên trong các phương thức của chính lớp đó, có thể cho phép các câu lệnh bên ngoài lớp, hay chỉ cho phép các lớp có quan hệ đặc biệt như là quan hệ lớp con, (và quan hệ bạn bè (friend) trong C++) được phép dùng tới nó (hay thay đổi giá trị của nó). Mỗi thuộc tính của một lớp còn được gọi là thành viên dữ liệu của lớp đó.</p>
-
-<h4>Thực thể hóa (instantiate)</h4>
-
-<p>Là quá trình khai báo để có một tên (có thể được xem như là một biến) trở thành một đối tượng từ một lớp nào đó.</p>
-
-<p>Một lớp sau khi được tiến hành thực thể hóa để có một đối tượng cụ thể gọi là một thực thể. Hay nói ngược lại một thực thể là một đối tượng riêng lẻ của một lớp đã định trước. Như các biến thông thường, hai thực thể của cùng một lớp có thể có trạng thái nội tại khác nhau (xác định bởi các giá trị hiện có của các biến nội tại) và do đó hoàn toàn độc lập nhau nếu không có yêu cầu gì đặc biệt từ người lập trình. &ldquo; Thực thể hóa: gần giống như cá nhân hóa. Một lớp khi được &rdquo; cá nhân hóa" sẽ thành một đối tượng cụ thể.</p>
-
-<h4>Công cộng (public)</h4>
-
-<p>Công cộng là một tính chất được dùng để gán cho các phương thức, các biến nội tại, hay các lớp mà khi khai báo thì người lập trình đã cho phép các câu lệnh bên ngoài cũng như các đối tượng khác được phép dùng đến nó.</p>
-
-<h4>Riêng tư (private)</h4>
-
-<p>Riêng tư là sự thể hiện tính chất đóng mạnh nhất (của một đặc tính hay một lớp). Khi dùng tính chất này gán cho một biến, một phương thức thì biến hay phương thức đó chỉ có thể được sử dụng bên trong của lớp mà chúng được định nghĩa. Mọi nỗ lực dùng trực tiếp đến chúng từ bên ngoài qua các câu lệnh hay từ các lớp con sẽ bị phủ nhận hay bị lỗi.</p>
-
-<h4>Bảo tồn (protected)</h4>
-
-<p>Tùy theo ngôn ngữ, sẽ có vài điểm nhỏ khác nhau về cách hiểu tính chất này. Nhìn chung đây là tính chất mà khi dùng để áp dụng cho các phương thức, các biến nội tại, hay các lớp thì chỉ có trong nội bộ của lớp đó hay các lớp con của nó (hay trong nội bộ một gói như trong Java) được phép gọi đến hay dùng đến các phương pháp, biến hay lớp đó.</p>
-
-<p>So với tính chất riêng tư thì tính bảo tồn rộng rãi hơn về nghĩa chia sẻ dữ liệu hay chức năng. Nó cho phép một số trường hợp được dùng tới các đặc tính của một lớp (từ một lớp con chẳng hạn).</p>
-
-<p>Lưu ý: Các tính chất công cộng, riêng tư và bảo tồn đôi khi còn được dùng để chỉ thị cho một lớp con cách thức kế thừa một lớp cha như trong C++.</p>
-
-<h4>Đa kế thừa (multiple inheritance)</h4>
-
-<p>Đây là một tính chất cho phép một lớp con có khả năng kế thừa trực tiếp cùng lúc nhiều lớp khác.</p>
-
-<p>Vài điểm cần lưu ý khi viết mã dùng tính chất đa kế thừa:</p>
-
-<ul>
-<li>Khi muốn có một sự kế thừa từ nhiều lớp cha thì các lớp này cần phải độc lập và đặc biệt tên của các dữ liệu hay hàm cho phép kế thừa phải có tên khác nhau để tránh lỗi &ldquo;ambiguity&rdquo;. Bởi vì lúc đó trình dịch sẽ không thể xác định được là lớp con sẽ thừa kế tên nào của các lớp cha.</li>
-<li>Nhiều ngôn ngữ, ví dụ như Java, không có đa thừa kế, nhưng chúng có khái niệm giao diện Interface. Với Interface, ta có thể có hầu hết các lợi ích mà đa thừa kế mang lại.</li>
-</ul>
-
-
-<p>Ngoài các khái niệm trên, tùy theo ngôn ngữ, có thể sẽ có các chức năng OOP riêng biệt được cấp thêm vào.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-09T10:39:53+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/09/introduction-to-restful-webservice/">Explore About RESTful Webservice</a></h1>
-	<div class="entry-content">
-		<h3>RESTtful webservice là gì?</h3>
-
-<p>REST là một tập hợp các nguyên tắc mà dữ liệu có thể truyền qua phương thức truyền tin (như là HTTP). REST  là từ viết tắt của Representational State Transfer.</p>
-
-<p>This basically means that each unique URL is a representation of some object.</p>
-
-<p>Represntational : Tiêu biểu, tượng trưng; Đại diện, thay mặt</p>
-
-<p>State: Trạng thái; tình trạng</p>
-
-<p>Transfer: Sự di chuyển, sự dời chỗ; sự truyền</p>
-
-<p>REST yêu cầu người lập trình sử dụng các phương thức HTTP một cách rõ ràng và theo một cách phù hợp với định nghĩa giao thức. Nguyên tắc thiết kế cơ bản là thiết lập một ánh xạ 1:1 giữa create, read, update và delete (CRUD) và HTTP methods. Tuân theo quy tắc dưới đây:</p>
-
-<ul>
-<li>Để &ldquo;create&rdquo;, hãy sử dụng POST</li>
-<li>Để &ldquo;read&rdquo;, hãy sử dụng GET.</li>
-<li>Để &ldquo;update&rdquo;, hãy sử dụng PUT.</li>
-<li>Để &ldquo;delete&rdquo;, hãy sử dụng DELETE.</li>
-</ul>
-
-
-<h3>Who is using Restful webservice?</h3>
-
-<p>Internet giants like Yahoo, Amazon, eBay and more are using Restful webservice</p>
-
-<h3>Rest vs SOAP</h3>
-
-<table>
-<thead>
-<tr>
-<th> REST                                                  </th>
-<th> SOAP                                          </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> REST stands for REpresentational State Transfer       </td>
-<td> SOAP stands for Simple Object Access Protocol </td>
-</tr>
-<tr>
-<td> REST is not XML protocol based                        </td>
-<td> SOAP is a XML based messaging protocol        </td>
-</tr>
-<tr>
-<td> REST doesn’t have any specification                     </td>
-<td> SOAP has specifications like WSDL etc         </td>
-</tr>
-<tr>
-<td> REST doesn’t enforce message format as XML or JSON  </td>
-<td> SOAP enforces message format as XML           </td>
-</tr>
-<tr>
-<td> Light weight – due to the usage of JSON             </td>
-<td> Heavy weight – due to the usage of XML      </td>
-</tr>
-<tr>
-<td> Easy to parse the response                            </td>
-<td> Bit difficult to parse the response           </td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>RESTFul Webservice Request and Response – Drill down</h3>
-
-<p>Bước đầu tiên khi thiết kế RESTFul webservice là lựa chọn domain name đúng - gửi đến weatherinfo.org để hỏi thông tin thời tiết của các thành phố.</p>
-
-<p>Hãy xem ví dụ đầu tiên (weatherinfo.org) đã lấy tên thành phố là đầu vào, lấy thông tin thời tiết của thành phố và gửi trả kết quả lại cho trình duyệt. Giả sử các kết quả trả về là XML format, nó có thể là JSON một cách dễ dàng.</p>
-
-<p>Dưới đây là cấu trúc của Request và Response:</p>
-
-<h4>HTTP Request</h4>
-
-<p>The client request from the browser will look like:</p>
-
-<pre><code>GET http://weatherinfo.org/getweather/mumbai HTTP/1.1
-</code></pre>
-
-<h4>HTTP Response</h4>
-
-<p>The server response will look like</p>
-
-<pre><code>HTTP/1.1 200 Ok
-Date: Mon, 14 Apr 2014 10:20:58 GMT
-Content-Type: text/xml
-Content-length: 139
-
-&lt;City name="Mumbai" datetime="2014-04-14 10:20:58 GMT" &gt;
-&lt;Condition&gt;Scattered Clouds&lt;/Condition&gt;
-&lt;Temp&gt;33&lt;/Temp&gt;
-&lt;/City&gt;
-</code></pre>
-
-<p>Line 1 is the initial line which has the HTTP response code – 200 OK, lines 2 through 4 are the HTTP headers (there can be lots of headers, only 3 are shown here), line 5 is the mandatory blank line separating header and body, and lines 6 through 10 constitute the “HTTP Body (or content)” – this part is the data that the response carries and can be in any format, not necessarily XML.</p>
-
-<p>In fact, the most commonly used format on the web is HTML – one that web servers use to send back data to browsers. Whatever it is, the “Content-type” header usually specifies it. But if you are writing a web service, JSON is a better choice, but that is upto me. If your web service does not return complex or composite data, the format does not need to be JSON – it can be plain , in which case the body will just be a string of characters.</p>
-
-<h3>Advantages of using RESTful webservice</h3>
-
-<ol>
-<li><p>RESTful Web services are designed with less dependence on proprietary middleware (for example, an application server) than the SOAP- and WSDL-based kind.</p></li>
-<li><p>As per the RESTful interface design, XML or JSON over HTTP is a powerful interface that allows internal applications, such as Asynchronous JavaScript + XML/JSON (Ajax)-based custom user interfaces, to easily connect, address, and consume resources.</p></li>
-<li><p>The great fit between Ajax and REST has increased the amount of attention REST is getting these days.</p></li>
-<li><p>Exposing a system’s resources through a RESTful API is a flexible way to provide different kinds of applications with data formatted in a standard way. It helps to meet integration requirements that are critical to building systems where data can be easily combined (mashups) and to extend or build on a set of base, RESTful services into something much bigger.</p></li>
-</ol>
-
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-07T10:49:42+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/07/javascript-regexp-reference/">JavaScript RegExp Reference</a></h1>
-	<div class="entry-content">
-		<p>Một biểu thức chính quy là một chuỗi các ký tự tạo thành một mẫu tìm kiếm.</p>
-
-<p>Một mẫu tìm kiếm có thể được sử dụng cho tìm kiếm văn bản và thay thế text trong văn bản.</p>
-
-<h3>What Is a Regular Expression?</h3>
-
-<p>Khi bạn tìm kiếm dữ liệu trong văn bản, có thể sử dụng mẫu tìm kiếm này để miêu tả cái đang tìm kiếm.</p>
-
-<p>Một biểu thức chính quy có thể là một ký tự, hoặc có thể là môt mẫu phức tạp.</p>
-
-<p>Biểu thức chính quy có thể được sử dụng để thực hiện xử lý tìm kiếm và thay thế văn bản.</p>
-
-<h3>Syntax</h3>
-
-<pre><code>/pattern/modifiers;
-</code></pre>
-
-<p>Example:</p>
-
-<pre><code>var patt = /w3schools/i
-</code></pre>
-
-<p>Example explained:</p>
-
-<ul>
-<li><code>/w3schools/i</code>  là một biểu thức chính quy</li>
-<li><code>w3schools</code>  là một mẫu (to be used in a search).</li>
-<li><code>i</code>  là một modifier (modifies the search to be case-insensitive).</li>
-</ul>
-
-
-<h3>Using String Methods</h3>
-
-<p>In JavaScript, regular expressions are often used with the two string methods: search() and replace().</p>
-
-<p>The search() method uses an expression to search for a match, and returns the position of the match.</p>
-
-<p>The replace() method returns a modified string where the pattern is replaced.</p>
-
-<h3>Using String search() With a Regular Expression</h3>
-
-<p>Example use a regular expression to do a case-insensitive search for &ldquo;w3schools&rdquo; in a string:</p>
-
-<pre><code>var str = "Visit W3Schools";
-var n = str.search(/w3schools/i);
-</code></pre>
-
-<p>The result in n will be: <code>6</code></p>
-
-<h3>Using String search() With String</h3>
-
-<p>Example use a case insensitive regular expression to replace Microsoft with W3Schools in a string:</p>
-
-<pre><code>var str = "Visit Microsoft!";
-var res = str.replace(/microsoft/i, "W3Schools");
-</code></pre>
-
-<p>The result in res will be: <code>Visit W3Schools!</code></p>
-
-<h3>Using String replace() With a String</h3>
-
-<p>The replace() method will also accept a string as search argument:</p>
-
-<pre><code>var str = "Visit Microsoft!";
-var res = str.replace("Microsoft", "W3Schools");
-</code></pre>
-
-<h3>RegExp Object</h3>
-
-<p>A regular expression is an object that describes a pattern of characters.</p>
-
-<p>Regular expressions are used to perform pattern-matching and &ldquo;search-and-replace&rdquo; functions on text.</p>
-
-<h3>Syntax</h3>
-
-<pre><code>/pattern/modifiers;
-</code></pre>
-
-<p>Example:</p>
-
-<pre><code>var patt = /w3schools/i
-</code></pre>
-
-<h3>Modifiers</h3>
-
-<p>Modifiers are used to perform case-insensitive and global searches:</p>
-
-<pre><code>Modifier        Description
-i               Bật chế độ tìm kiếm phân biệt hoa thường
-g               Bật chế độ tìm kiếm toàn cục (nếu không thì sẽ chỉ tìm kiếm kết quả đầu tiên)
-m               bật chế độ tìm kiếm trên nhiều dòng
-</code></pre>
-
-<h3>Brackets</h3>
-
-<p>Cặp ngoặc được dùng để tìm kiếm một dải ký tự:</p>
-
-<pre><code>Expression      Description
-[abc]           1 ký tự a hoặc b hoặc c
-[^abc]          1 ký tự nào đó khác a,b,c (ví dụ d)
-[0-9]           1 ký tự số từ 0 đến 9
-[^0-9]          1 ký tự số không phải từ 0 đến 9
-(x|y)           1 ký tự hoặc là x hoặc là y
-</code></pre>
-
-<h3>Metacharacters</h3>
-
-<p>Metacharacters are characters with a special meaning:</p>
-
-<pre><code>Metacharacters  Description
-.               Find a single character, except newline or line terminator
-\w              Find a word character
-\W              Find a non-word character
-\d              Find a digit
-\D              Find a non-digit character
-\s              Find a whitespace character
-\S              Find a non-whitespace character
-\b              Find a match at the beginning/end of a word
-\B              Find a match not at the beginning/end of a word
-\0              Find a NUL character
-\n              Find a new line character
-\f              Find a form feed character
-\r              Find a carriage return character
-\t              Find a tab character
-\v              Find a vertical tab character
-\xxx            Find the character specified by an octal number xxx
-\xdd            Find the character specified by a hexadecimal number dd
-\uxxxx          Find the Unicode character specified by a hexadecimal number xxxx
-</code></pre>
-
-<h3>Quantifiers</h3>
-
-<pre><code>Quantifier      Description
-n+              Matches any string that contains at least one n
-n*              Matches any string that contains zero or more occurrences of n
-n?              Matches any string that contains zero or one occurrences of n
-n{X}            Matches any string that contains a sequence of X n's
-n{X,Y}          Matches any string that contains a sequence of X to Y n's
-n{X,}           Matches any string that contains a sequence of at least X n's
-n$              Matches any string with n at the end of it
-^n              Matches any string with n at the beginning of it
-?=n             Matches any string that is followed by a specific string n
-?!n             Matches any string that is not followed by a specific string n
-</code></pre>
-
-<h3>RegExp Object Properties</h3>
-
-<pre><code>Property        Description
-constructor     Returns the function that created the RegExp object's prototype
-global          Checks whether the "g" modifier is set
-ignoreCase      Checks whether the "i" modifier is set
-lastIndex       Specifies the index at which to start the next match
-multiline       Checks whether the "m" modifier is set
-source          Returns the text of the RegExp pattern
-</code></pre>
-
-<h3>RegExp Object Methods</h3>
-
-<pre><code>Method          Description
-compile()       Deprecated in version 1.5. Compiles a regular expression
-exec()          Tests for a match in a string. Returns the first match
-test()          Tests for a match in a string. Returns true or false
-toString()      Returns the string value of the regular expression
-</code></pre>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-07T10:45:58+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/07/regular-expression/">Regular Expression</a></h1>
-	<div class="entry-content">
-		<h2>From Wikipedia</h2>
-
-<p>In theoretical computer science and formal language theory, a regular expression (abbreviated regex or regexp and sometimes called a rational expression) is a sequence of characters that define a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. &ldquo;find and replace&rdquo;-like operations. The concept arose in the 1950s, when the American mathematician Stephen Kleene formalized the description of a regular language, and came into common use with the Unix text processing utilities ed, an editor, and grep (global regular expression print), a filter.</p>
-
-<p>Regular expressions are so useful in computing that the various systems to specify regular expressions have evolved to provide both a basic and extended standard for the grammar and syntax; modern regular expressions heavily augment the standard. Regular expression processors are found in several search engines, search and replace dialogs of several word processors and text editors, and in the command lines of text processing utilities, such as sed and AWK.</p>
-
-<p>Many programming languages provide regular expression capabilities, some built-in, for example Perl, JavaScript, Ruby, AWK, and Tcl, and others via a standard library, for example .NET languages, Java, Python and C++ (since C++11). Most other languages offer regular expressions via a library.</p>
-
-<p>Biểu thức chính quy (tiếng Anh: regular expression, viết tắt là regexp, regex hay regxp) là một chuỗi miêu tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Biểu thức chính quy thường được dùng trong các trình biên tập văn bản và các tiện ích tìm kiếm và xử lý văn bản dựa trên các mẫu được quy định. Nhiều ngôn ngữ lập trình cũng hỗ trợ biểu thức chính quy trong việc xử lý chuỗi, chẳng hạn như Perl có bộ máy mạnh mẽ để xử lý biểu thức chính quy được xây dựng trực tiếp trong cú pháp của chúng. Bộ các trình tiện ích (gồm trình biên tập sed và trình lọc grep) đi kèm các bản phân phối Unix có vai trò đầu tiên trong việc phổ biến khái niệm biểu thức chính quy.</p>
-
-<h3>Patterns</h3>
-
-<p>Each character in a regular expression is either understood to be a metacharacter with its special meaning, or a regular character with its literal meaning. Together, they can be used to identify textual material of a given pattern, or process a number of instances of it that can vary from a precise equality to a very general similarity of the pattern. The pattern sequence itself is an expression that is a statement in a language designed specifically to represent prescribed targets in the most concise and flexible way to direct the automation of text processing of general text files, specific textual forms, or of random input strings.</p>
-
-<h3>Basic concepts</h3>
-
-<p>A regular expression, often called a pattern, is an expression used to specify a set of strings required for a particular purpose. A simple way to specify a finite set of strings is to list its elements or members. However, there are often more concise ways to specify the desired set of strings. For example, the set containing the three strings &ldquo;Handel&rdquo;, &ldquo;Händel&rdquo;, and &ldquo;Haendel&rdquo; can be specified by the pattern H(ä|ae?)ndel; we say that this pattern matches each of the three strings. In most formalisms, if there exists at least one regex that matches a particular set then there exists an infinite number of other regex that also match it—the specification is not unique. Most formalisms provide the following operations to construct regular expressions.</p>
-
-<p>Boolean &ldquo;or&rdquo;
-    A vertical bar separates alternatives. For example, gray|grey can match &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
-Grouping
-    Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
-Quantification
-    A quantifier after a token (such as a character) or group specifies how often that preceding element is allowed to occur. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).</p>
-
-<pre><code>?   The question mark indicates there is zero or one of the preceding element. For example, colou?r matches both "color" and "colour".
-*   The asterisk indicates there is zero or more of the preceding element. For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on.
-+   The plus sign indicates there is one or more of the preceding element. For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac".
-</code></pre>
-
-<p>These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.</p>
-
-<p>The precise syntax for regular expressions varies among tools and with context; more detail is given in the Syntax section.</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-06T19:25:35+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/06/mysql-tuning-and-optimization/">MySQL Tuning and Optimization</a></h1>
-	<div class="entry-content">
-		<p>MySQL is a powerful open-source database.  With more and more database driven applications, people have been pushing MySQL to its limits.  Here are 101 tips for tuning and optimizing your MySQL install.  Some tips are specific to the environment they are installed on, but the concepts are universal.   I have divided them up into several categories to help you with getting the most out of MySQL:</p>
-
-<h2>MySQL Server Hardware and OS Tuning:</h2>
-
-<ol>
-<li><p>Have enough physical memory to load your entire InnoDB file into memory – InnoDB is much faster when the file can be accessed in memory rather than from disk.</p></li>
-<li><p>Avoid Swap at all costs – swapping is reading from disk, its slow.</p></li>
-<li><p>Use Battery-Backed RAM.</p></li>
-<li><p>Use an advanced RAID – preferably RAID10 or higher.</p></li>
-<li><p>Avoid RAID5 – the checksum needed to ensure integrity is costly.</p></li>
-<li><p>Separate your OS and data partitions, not just logically, but physically – costly OS writes and reads will impact your database performance.</p></li>
-<li><p>Put your mysql temp space and replication logs on a separate partition than your data – background writes will impact your database when it goes to write/read from disk.</p></li>
-<li><p>More disks equals more speed.</p></li>
-<li><p>Faster disks are better.</p></li>
-<li><p>Use SAS over SATA.</p></li>
-<li><p>Smaller disks are faster than larger disks, especially in RAID configs.</p></li>
-<li><p>Use Battery-Backed Cache RAID controllers.</p></li>
-<li><p>Avoid software raids.</p></li>
-<li><p>Consider using Solid State IO Cards (not disk drives) for your data partition – these cards can sustain over 2GB/s writes for almost any amount of data.</p></li>
-<li><p>On Linux set your swappiness value to 0 – no reason to cache files on a database server, this is more of a web server or desktop advantage.</p></li>
-<li><p>Mount filesystem with noatime and nodirtime if available – no reason to update database file modification times for access.</p></li>
-<li><p>Use XFS filesystem – a faster, smaller filesystem than ext3 and has more options for journaling, also ext3 has been shown to have double buffering issues with MySQL.</p></li>
-<li><p>Tune your XFS filesystem log and buffer variables – for maximum performance benchmark.</p></li>
-<li><p>On Linux systems, use NOOP or DEADLINE IO scheduler – the CFQ and ANTICIPATORY scheduler have been shown to be slow vs NOOP and DEADLINE scheduler.</p></li>
-<li><p>Use a 64-bit OS – more memory addressable and usable to MySQL.</p></li>
-<li><p>Remove unused packages and daemons from servers – less resource stealing.</p></li>
-<li><p>Put your host that use MySQL and your MySQL host in a hosts file – no dns lookups.</p></li>
-<li><p>Never force kill a MySQL process – you will corrupt your database and be running for the backups.</p></li>
-<li><p>Dedicate your server to MySQL – background processes and other services can steal from the db cpu time.</p></li>
-</ol>
-
-
-<h3>MySQL Configuration:</h3>
-
-<ol>
-<li><p>Use innodb_flush_method=O_DIRECT to avoid a double buffer when writing.</p></li>
-<li><p>Avoid O_DIRECT and EXT3 filesystem – you will serialize all your writes.</p></li>
-<li><p>Allocate enough innodb_buffer_pool_size to load your entire InnoDB file into memory – less reads from disk.</p></li>
-<li><p>Do not make innodb_log_file_size too big, with faster and more disks – flushing more often is good and lowers the recovery time during crashes.</p></li>
-<li><p>Do not mix innodb_thread_concurrency and thread_concurrency variables – these two values are not compatible.</p></li>
-<li><p>Allocate a minimal amount for max_connections – too many connections can use up your RAM and lock up your MySQL server.</p></li>
-<li><p>Keep thread_cache at a relatively high number, about 16 – to prevent slowness when opening connections.</p></li>
-<li><p>Use  skip-name-resolve – to remove dns lookups.</p></li>
-<li><p>Use query cache if your queries are repetitive and your data does not change often – however using query cache on data that changes often will give you a performance hit.</p></li>
-<li><p>Increase temp_table_size – to prevent disk writes.</p></li>
-<li><p>Increase max_heap_table_size – to prevent disk writes.</p></li>
-<li><p>Do not set your sort_buffer_size too high – this is per connection and can use up memory fast.</p></li>
-<li><p>Monitor key_read_requests and key_reads to determine your key_buffer size – the key read requests should be higher than your key_reads, otherwise you are not efficiently using your key_buffer.</p></li>
-<li><p>Set innodb_flush_log_at_trx_commit = 0 will improve performance, but leaving it to default (1), you will ensure data integrity, you will also ensure replication is not lagging</p></li>
-<li><p>Have a test environment where you can test your configs and restart often, without affecting production.</p></li>
-</ol>
-
-
-<h3>MySQL Schema Optimization:</h3>
-
-<ol>
-<li><p>Keep your database trim.</p></li>
-<li><p>Archive old data – to remove excessive row returns or searches on queries.</p></li>
-<li><p>Put indexes on your data.</p></li>
-<li><p>Do not overuse indexes, compare with your queries.</p></li>
-<li><p>Compress text and blob data types – to save space and reduce number of disk reads.</p></li>
-<li><p>UTF 8 and UTF16 is slower than latin1.</p></li>
-<li><p>Use Triggers sparingly.</p></li>
-<li><p>Keep redundant data to a minimum – do not duplicate data unnecessarily.</p></li>
-<li><p>Use linking tables rather than extending rows.</p></li>
-<li><p>Pay attention to your data types, use the smallest one possible for your real data.</p></li>
-<li><p>Separate blob/text data from other data if other data is often used for queries when blob/text are not.</p></li>
-<li><p>Check and optimize tables often.</p></li>
-<li><p>Rewrite InnoDB tables often to optimize.</p></li>
-<li><p>Sometimes, it is faster to drop indexes when adding columns and then add indexes back.</p></li>
-<li><p>Use different storage engines for different needs.</p></li>
-<li><p>Use ARCHIVE storage engine for Logging tables or Auditing tables – this is much more efficient for writes.</p></li>
-<li><p>Store session data in memcache rather than MySQL – memcache allows for auto-expiring values and prevents you from having to create costly reads and writes to MySQL for temporal data.</p></li>
-<li><p>Use VARCHAR instead CHAR when storing variable length strings – to save space since CHAR is fixed length and VARCHAR is not (utf8 is not affected by this).</p></li>
-<li><p>Make schema changes incrementally – a small change can have drastic effects.</p></li>
-<li><p>Test all schema changes in a development environment that mirrors production.</p></li>
-<li><p>Do NOT arbitrarily change values in your config file, it can have disastrous affects.</p></li>
-<li><p>Sometimes less is more in MySQL configs.</p></li>
-<li><p>When in doubt use a generic MySQL config file.</p></li>
-</ol>
-
-
-<h3>Query Optimization:</h3>
-
-<ol>
-<li><p>Use the slow query log to find slow queries.</p></li>
-<li><p>Use EXPLAIN to determine queries are functioning appropriately.</p></li>
-<li><p>Test your queries often to see if they are performing optimally – performance will change over time.</p></li>
-<li><p>Avoid count(*) on entire tables, it can lock the entire table.</p></li>
-<li><p>Make queries uniform so subsequent similar queries will use query cache.</p></li>
-<li><p>Use GROUP BY instead of DISTINCT when appropriate.</p></li>
-<li><p>Use indexed columns in WHERE, GROUP BY, and ORDER BY clauses.</p></li>
-<li><p>Keep indexes simple, do not reuse a column in multiple indexes.</p></li>
-<li><p>Sometimes MySQL chooses the wrong index, use USE INDEX for this case</p></li>
-<li><p>Check for issues using SQL_MODE=STRICT.</p></li>
-<li><p>Use a LIMIT on UNION instead of OR for less than 5 indexed fields.</p></li>
-<li><p>Use INSERT ON DUPLICATE KEY or INSERT IGNORE instead of UPDATE to avoid the SELECT prior to update.</p></li>
-<li><p>Use a indexed field and ORDER BY instead of MAX.</p></li>
-<li><p>Avoid using ORDER BY RAND().</p></li>
-<li><p>LIMIT M,N can actually slow down queries in certain circumstances, use sparingly.</p></li>
-<li><p>Use UNION instead of sub-queries in WHERE clauses.</p></li>
-<li><p>For UPDATES, use SHARE MODE to prevent exclusive locks.</p></li>
-<li><p>On restarts of MySQL, remember to warm your database, to ensure that your data is in memory and queries are fast.</p></li>
-<li><p>Use DROP TABLE then CREATE TABLE instead of DELETE FROM to remove all data from a table.</p></li>
-<li><p>Minimize the data in your query to only the data you need, using * is overkill most of the time.</p></li>
-<li><p>Consider persistent connections instead of multiple connections to reduce overhead.</p></li>
-<li><p>Benchmark queries, including using load on the server, sometimes a simple query can have affects on other queries.</p></li>
-<li><p>When load increases on your server, use SHOW PROCESSLIST to view slow/problematic queries.</p></li>
-<li><p>Test all suspect queries in a development environment where you have mirrored production data.</p></li>
-</ol>
-
-
-<h3>MySQL Backup Procedures:</h3>
-
-<ol>
-<li><p>Backup from secondary replicated server.</p></li>
-<li><p>Stop replication during backups to prevent inconsistencies on data dependencies and foreign constraints.</p></li>
-<li><p>Stop MySQL altogether and take a backup of the database files.</p></li>
-<li><p>Backup binary logs at same time as dumpfile if MySQL dump used – to make sure replication does not break.</p></li>
-<li><p>Do not trust an LVM snapshot for backups – this could create data inconsistencies that will give you issues in the future.</p></li>
-<li><p>Make dumps per table for easier single table recovery – if data is isolated from other tables.</p></li>
-<li><p>Use –opt when using mysqldump.</p></li>
-<li><p>Check and Optimize tables before a backup.</p></li>
-<li><p>When importing temporarily disable foreign constraints for a faster import.</p></li>
-<li><p>When importing temporarily disable unique checks for a faster import.</p></li>
-<li><p>Calculate size of database/tables data and indexes after each backup to monitor growth.</p></li>
-<li><p>Monitor slave replication for errors and delay with a cron script.</p></li>
-<li><p>Perform Backups regularly.</p></li>
-<li><p>Test your backups regularly.</p></li>
-</ol>
-
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-06T15:33:16+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/06/concepts-used-in-the-network/">Concepts Used in the Network</a></h1>
-	<div class="entry-content">
-		<h3>ISP – Internet Service Provider</h3>
-
-<p>An Internet service provider (ISP) is an organization that provides services for accessing, using, or participating in the Internet. Internet service providers may be organized in various forms, such as commercial, community-owned, non-profit, or otherwise privately owned.</p>
-
-<p>Internet services typically provided by ISPs include Internet access, Internet transit, domain name registration, web hosting, Usenet service, colocation.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Internet_Connectivity_Access_layer.svg/800px-Internet_Connectivity_Access_layer.svg.png"></p>
-
-<p>ISP là công ty cung cấp cho bạn kết nối Internet . Ví dụ tại Việt Nam có những ISP như FPT , VDC , Viettel và một số công ty  khác . Đó là những công ty mà bạn sẽ phải trả tiền hàng tháng để dùng kết nối Internet của mình .</p>
-
-<h3>LAN – Local Area Network</h3>
-
-<p>A local area network (LAN) is a computer network that interconnects computers within a limited area such as a home, school, computer laboratory, or office building, using network media.[1] The defining characteristics of LANs, in contrast to wide area networks (WANs), include their smaller geographic area, and non-inclusion of leased telecommunication lines.[citation needed]</p>
-
-<p>ARCNET, Token Ring and other technology standards have been used in the past, but Ethernet over twisted pair cabling, and Wi-Fi are the two most common technologies currently used to build LANs.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Ethernet_LAN.svg/800px-Ethernet_LAN.svg.png"></p>
-
-<p>LAN là một mạng nhỏ hạn chế trong một khu vực . Ví dụ mạng trong gia đình hoặc mang trong văn phòng cơ quan gọi là mạng LAN .</p>
-
-<h3>WAN – Wide Area Network</h3>
-
-<p>A wide area network (WAN) is a network that covers a broad area (i.e., any telecommunications network that links across metropolitan, regional, national or international boundaries) using leased telecommunication lines. Business and government entities use WANs to relay data among employees, clients, buyers, and suppliers from various geographical locations. In essence, this mode of telecommunication allows a business to effectively carry out its daily function regardless of location. The Internet can be considered a WAN as well, and is used by businesses, governments, organizations, and individuals for almost any purpose imaginable.[1]</p>
-
-<p>Related terms for other types of networks are personal area networks (PANs), local area networks (LANs), campus area networks (CANs), or metropolitan area networks (MANs) which are usually limited to a room, building, campus or specific metropolitan area (e.g., a city) respectively.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/LAN_WAN_scheme.svg/800px-LAN_WAN_scheme.svg.png"></p>
-
-<p>WAN là mạng lớn hơn và có tầm bao phủ lớn hơn so với mạng LAN . Những ISP cung cấp cho bạn kết nối tới mạng WAN của họ để kết nối tới Internet .</p>
-
-<h3>IP Address</h3>
-
-<p>Địa chỉ giao thức Internet hay còn được gọi “IP Address” , là địa chỉ ở dạng số tương ứng với máy tính của bạn trong một mạng . Khi một máy tính muốn kết nối tới một máy khác , nó nối thông qua địa chỉ IP của máy tính đó .</p>
-
-<h3>IPv4 và IPv6</h3>
-
-<p>Có hai kiểu địa chỉ IP hay sử dụng . Địa chỉ IPv4 ( version 4 ) cũ hơn hiện tại được dùng nhiều hơn cả , địa chỉ IPv6 mới hơn . IPv6 là rất cần thiết bởi vì chúng ta đã không còn đủ không gian địa chỉ IPv4 cho tất cả mọi người và thiết bị trên thế giới .</p>
-
-<h3>Router</h3>
-
-<p>Router là thiết bị mà lưu lượng dữ liệu qua lại . Chúng ta thường có Router tại gia đình . Công việc của Router để gửi lưu lượng dữ liệu ra từ những thiết bị của bạn tới mạng Internet và nhận lại dữ liệu từ mạng Internet tới thiết bị của bạn .</p>
-
-<h3>Gateway</h3>
-
-<p>Gateway là thiết bị định hướng đường truyền giữa những mạng . Ví dụ trong gia đình Router của bạn chính là Gateway . Nó cung cấp “Gateway” giữa mạng LAN và WAN .</p>
-
-<h3>NAT – Network Address Translation</h3>
-
-<p>NAT được những Router sử dụng để chia xẻ một địa chỉ IP cho nhiều thiết bị . Ví dụ, bạn có thể có Router không dây trong gia đình để tạo mạng Wi-Fi cho máy xách tay , điện thoại thông minh , máy tính bảng và các thiết khác kết nối tới . IPS của bạn cung cấp cho bạn một địa chỉ IP để có thể với tới mọi nơi trên Internet , đôi khi địa chỉ đó gọi là địa chỉ IP công cộng ( Public IP Address ) .</p>
-
-<p>Router tạo một mạng LAN và gán những địa chỉ IP cục bộ tới những thiết bị của bạn . Router sau đó có nhiệm vụ như là một Gateway để những thiết bị của bạn ra ngoài mạng LAN và nó xuất hiện như là một thiết bị ( Router ) dùng một địa chỉ IP duy nhất .</p>
-
-<h3>DHCP – Dynamic Host Configuration Protocol</h3>
-
-<p>HDCP là một giao thức cho phép những máy tính yêu cầu tự động và được gán địa chỉ IP và những thiết lập mạng khác . Ví dụ , khi bạn kết nối máy xách tay hoặc điện thoại thông minh tới mạng Wi-Fi , thiết bị của bạn yêu cầu Router gán cho mình một địa chỉ IP bằng giao thức DHCP và khi ấy Router sẽ gán cho nó một địa chỉ IP . Việc này để đơn giản hóa cho gán địa chỉ IP tĩnh bằng tay .</p>
-
-<h3>Hostname</h3>
-
-<p>Hostname là tên của nhãn để có thể chỉ tới một thiết bị được kết nối trên mạng . Ví dụ trong mạng gia đình , Hostname máy tính Windows của bạn có thể là WINDOWSPC . Các thiết bị khác có thể kết nối tới WINDOWSPC mà không cần phải gõ địa chỉ IP cục bộ của máy tính .</p>
-
-<h3>Domain Name</h3>
-
-<p>Những tên miền ( Domain Name ) là một phần cơ bản của tên trang web ví dụ như google.com.vn.</p>
-
-<p>Tên miền thực chất là một kiểu khác của Hostname .</p>
-
-<h3>DNS – Domain Name System</h3>
-
-<p>DNS là những hệ thống  để chuyển đổi những tên miền và Hostname thành dạng số của IP Address .</p>
-
-<p>Khi bạn gõ google.com.vn trong thanh địa chỉ trong trình duyệt  web , máy tính của bạn sẽ kết nối tới những máy chủ DNS và máy chủ DNS sẽ gửi trả địa chỉ IP dạng số của máy chủ của trang google.com.vn .</p>
-
-<p>Bạn có thể dùng ngầm định địa chỉ những máy chủ DNS của ISP hoặc có thể dùng những máy chủ DNS của nhà cung cấp khác ví dụ như của Google có địa chỉ 8.8.8.8 và 8.8.4.4 .</p>
-
-<h3>Ethernet</h3>
-
-<p>Ethernet là chuẩn công nghệ mạng có dây đang được dùng gần như mọi nơi hiện nay . Nếu máy tính kết nối tới mạng thông qua cáp thì có nghĩa là hầu như chắc chắn đang dùng cáp Ethernet . Cáp này cắm vào cổng Ethernet trên máy tính của bạn .</p>
-
-<h3>Network Interface / Network Adapter</h3>
-
-<p>Kết nối có dây Ethernet và kết nối Wi-Fi trong máy tính của bạn đều dựa trên hai giao diện mạng ( Network Interface ) .</p>
-
-<p>Nếu máy xách tay của bạn được kết nối với cả mạng có dây và mạng Wi-Fi , mỗi giao diện mạng đều có địa chỉ IP riêng và khác nhau .</p>
-
-<p>Những giao diện mạng có thể cũng được thực hiện hoàn toàn trong phần mềm , do đó chúng không thường xuyên trực tiếp tới phần cứng tương ứng .</p>
-
-<h3>localhost</h3>
-
-<p> “localhost” hostname tương ứng với thiết bị bạn đang dùng . Nó được dùng để phản hồi ( Loopback ) giao diện mạng – giao diện mạng thực hiện bằng phầm mềm – để kết nối trực tiếp tới PC của bạn .</p>
-
-<p>localhost thực chất chỉ tới địa chỉ IPv4 127.0.0.1 hoặc địa chỉ IPv6 ::1 . Mỗi cái thường tương ứng với thiết bị hiện tại .</p>
-
-<h3>MAC Address</h3>
-
-<p>Mỗi giao diện mạng đều có địa chỉ MAC – Media Access Control , hay còn được gọi là địa chỉ vật lí ( Physical Address ) . Địa chỉ này là duy nhất được thiết kế để nhận dạng được các PC khác nhau trên mạng . Những địa chỉ MAC được các nhà sản xuất gán mỗi thiết bị mạng mà họ chế tạo .</p>
-
-<h3>Port – Cổng</h3>
-
-<p>Khi một ứng dụng muốn gửi hoặc nhận lưu lượng dữ liệu , nó phải dùng số Cổng ( Port ) từ 1 tới 65.535 . Điều đó có thể giải thích tại sao lại có nhiều ứng dụng trên máy tính dùng mạng và mỗi ứng dụng lại biết lưu lượng dữ liệu của mình .</p>
-
-<p>Chuẩn HTTP dùng cổng 80 , so đó khi bạn đang kết nối tới trang <a href="http://dantri.com">http://dantri.com</a> có nghĩa là bạn đang thực hiện kết nối HTTP tới cổng 80 trong trang dantri.com. Phần mềm máy chủ web của trang dantri.com đang “nghe” lưu lượng dữ liệu tới trong cổng 80 . Bạn có thể thử kết nối tới cổng 81 bằng cách gõ <a href="http://dantri.com:81">http://dantri.com:81</a> vào trình duyệt  web , nhưng bạn không nhận được phản hồi vì phần mềm máy chủ web không “nghe” trong cổng 81 .</p>
-
-<h3>Protocol – Giao thức – TCP , UDP , ICMP ….</h3>
-
-<p>Những giao thức là những cách khác nhau của truyền thông qua mạng Internet .</p>
-
-<p>TCP và UDP là những giao thức thông dụng nhất . Giao thức ICMP cũng được dùng nhưng chủ yếu để các thiết bị mạng có thể kiểm tra trạng thái của những thiết bị mạng khác .</p>
-
-<p>Những giao thức khác nhau là những ý tưởng cho những kiểu truyền thông khác nhau .</p>
-
-<h3>Packet – Gói dữ liệu</h3>
-
-<p>Packet là một đơn vị của dữ liệu được gửi giữa những thiết bị . Khi tải một trang web , máy tính của bạn gửi những Packet tới máy chủ yêu cầu trang web và máy chủ phản gửi trả lại bằng nhiều Packet khác nhau để máy tính của bạn tái tạo ra nội dung của trang web .</p>
-
-<p>Packet là đơn vị cơ bản của dữ liệu mà máy tính trên mạng trao đổi với nhau .</p>
-
-<h3>Firewall – Tường lửa</h3>
-
-<p>Firewall là một phần mềm hoặc phần cứng để ngăn chặn những kiểu lưu lượng dữ liệu nào đó . Ví dụ , Firewall có thể chặn dữ liệu đi vào từ một cổng nào đó hoặc chặn tất cả những luồng dữ liệu đi vào ngoại trừ dữ liệu được tới từ một địa chỉ IP nào đó .</p>
-
-<h3>HTTP - hypertext transfer protocol</h3>
-
-<p>HTTP là giao thức chuẩn trong những trình duyệt  web hiện đại và được các trang web sử dụng . FTP và BitTorrent là những ví dụ của những giao thức thay thế .</p>
-
-<h3>URL - Uniform Resource Locator</h3>
-
-<p>URL hay cũng còn được gọi là địa chỉ của trang web . URL hiện tại được hiển thị trên thanh địa chỉ của trình duyệt  web . Ví dụ <a href="http://dantri.com/tu-van/chay-thu.html">http://dantri.com/tu-van/chay-thu.html</a>  là một URL nói cho máy tính dùng giao thức HTTP để nối tới máy chủ của dantri.com và yêu cầu nội dung ở /tu-van trong thư mục gốc .</p>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-06T13:59:40+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/06/gradle/">Gradle</a></h1>
-	<div class="entry-content">
-		<h2>Gradle.org - Why Gradle?</h2>
-
-<p>Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins.</p>
-
-<p>Here are some of its features that made us choose Gradle:</p>
-
-<ul>
-<li>Domain Specific Language (DSL) to describe and manipulate the build logic</li>
-<li>Build files are Groovy based and allow mixing of declarative elements through the DSL and using code to manipulate the DSL elements to provide custom logic.</li>
-<li>Built-in dependency management through Maven and/or Ivy.</li>
-<li>Very flexible. Allows using best practices but doesn’t force its own way of doing things.</li>
-<li>Plugins can expose their own DSL and their own API for build files to use.</li>
-<li>Good Tooling API allowing IDE integration</li>
-</ul>
-
-
-<h2>Wikipedia</h2>
-
-<p>Gradle is a build automation tool that builds upon the concepts of Apache Ant and Apache Maven and introduces a Groovy-based domain-specific language (DSL) instead of the more traditional XML form of declaring the project configuration. Gradle uses a directed acyclic graph (&ldquo;DAG&rdquo;) to determine the order in which tasks can be run.</p>
-
-<p>Gradle was designed for multi-project builds which can grow to be quite large, and supports incremental builds by intelligently determining which parts of the build tree are up-to-date, so that any task dependent upon those parts will not need to be re-executed.</p>
-
-<p>The initial plugins are primarily focused around Java, Groovy and Scala development and deployment, but more languages and project workflows are on the roadmap.</p>
-
-<h3>Example Java project</h3>
-
-<p>Consider the case where the Maven directory structure is used for Java sources and resources. These directories are: src/main/java, src/main/resources, src/test/java and src/test/resources.</p>
-
-<p>build.gradle</p>
-
-<pre><code>apply plugin: 'java'
-</code></pre>
-
-<p>The most simple Android project has the following build.gradle:</p>
-
-<pre><code>buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.1'
-    }
-}
-
-apply plugin: 'android'
-
-android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.0"
-}
-</code></pre>
-
-<p>Running gradle build will result in</p>
-
-<pre><code>&gt; gradle build
-:compileJava
-:processResources
-:classes
-:jar
-:assemble
-:compileTestJava
-:processTestResources
-:testClasses
-:test
-:check
-:build
-
-BUILD SUCCESSFUL
-</code></pre>
-
-<h2>Tutorial</h2>
-
-<h3>Installation of Gradle and setting it up correctly on your system</h3>
-
-<p>In this part of the tutorial, we shall focus on setting up Gradle on our system. While tools like Android Studio do ship with an internal Gradle distribution, our intention here is to understand the tools, its installation, the setup and firing up some basic Gradle commands.</p>
-
-<h4>Download Gradle</h4>
-
-<p>At the time of this update, Gradle is in version 2.2.1 and is available for download here.</p>
-
-<p>Just go ahead and download the ZIP file to your machine. You should have a file named gradle-2.2.1-all.zip. Expand it to a folder of your choice.</p>
-
-<h4>Environment Settings</h4>
-
-<p>The \bin folder of your gradle distribution contains the gradle script file (both Unix and Windows) that you will use to run the gradle command along with various parameters.</p>
-
-<p>Ideally, do the following:</p>
-
-<ul>
-<li>Create an environment variable GRADLE_HOME and point it to the Gradle Installation folder. On my machine, the Gradle installation folder is e:\gradle-2.2.1 and hence I have created a GRADLE_HOME Environment variable that has the value e:\gradle-2.2.1</li>
-<li>Add %GRADLE_HOME%\bin to the PATH environment variable. This will allow you to launch gradle command from any directory.</li>
-</ul>
-
-
-<h4>Verify Gradle Setup</h4>
-
-<pre><code>$ gradle -v
-</code></pre>
-
-<h4>Basic Gradle commands</h4>
-
-<pre><code>$ gradle -q help
-
-$ gradle -q tasks
-
-$ gradle properties
-</code></pre>
-
-<h3>Your first Java Project Build with Gradle</h3>
-
-<h3>Multiple Java Projects with Gradle</h3>
-
-<h3>Java Web Applications with Gradle</h3>
-
-<h3>App Engine Gradle Plugin</h3>
-
-<h3>Gradle + Android Studio</h3>
-
-<h3>Gradle + Android Studio + App Engine</h3>
-
-<h3>Gradle + App Engine + Cloud Endpoints + Android Studio</h3>
-
-<h3>Gradle + App Engine + Cloud Endpoints (Persistence) + Android Studio</h3>
-
-<h3>Consuming Endpoints in your Android application</h3>
-
-		
-		
-	</div>
-
-</article>
-
-
-    <article class="post">
-	<div class="meta">
-		<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-07-06T11:34:10+09:00" pubdate data-updated="true"></time></div>
-		
-	</div>
-	<h1 class="title"><a href="/blog/2015/07/06/linux-command-to-check-status/">Linux Command to Check Status</a></h1>
-	<div class="entry-content">
-		<h2>To investigate the usage of disk memory</h2>
-
-<p>Check the disk usage. It was confirmed command in CentOS on Vagrant + Virtualbox.</p>
-
-<pre><code>$ df
-</code></pre>
-
-<p>Check the usage of memory.</p>
-
-<pre><code>$ free
-</code></pre>
-
-<h2>Survey the load on the CPU and disk I / O</h2>
-
-<p>Check the load average.</p>
-
-<pre><code>$ uptime
-
-$ w
-</code></pre>
-
-<p>Check and load average / task status / memory usage / swap.</p>
-
-<pre><code>$ top
-</code></pre>
-
-<p>CPU and I / O load, and other various confirmation.</p>
-
-<pre><code>$ sar
-</code></pre>
-
-<p>Check the status of the virtual memory.</p>
-
-<pre><code>$ vmstat
-</code></pre>
-
-<p>Check the status of the disk I / O.</p>
-
-<pre><code>$ iostat
-</code></pre>
-
-<p>Check the process running. CPU load of each process, it can confirm the memory usage.</p>
-
-<pre><code>$ ps aux
-</code></pre>
-
-<p>Display the network-related statistics</p>
-
-<pre><code>$ netstat -an | wc -l
-</code></pre>
-
-		
-		
-	</div>
-
-</article>
-
-<nav id="pagenavi">
+    <ul>
     
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/">Một số quan hệ giữa các class trong UML</a>
+          （<time datetime="2015-07-10 10:53:15 +0900" pubdate></time>）
+        </article>
+      </li>
     
-        <a href="2" class="next">Next</a>
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo blog miễn phí bằng Octopress &amp; Github</a>
+          （<time datetime="2015-07-10 10:38:33 +0900" pubdate></time>）
+        </article>
+      </li>
     
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav>
-				</div>
-			</div>
-			<footer id="footer" class="inner">
-				Copyright &copy; 2015 
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/09/java-for-beginner/">Java for beginner</a>
+          （<time datetime="2015-07-09 19:40:19 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/09/introduction-to-restful-webservice/">Explore about RESTful webservice</a>
+          （<time datetime="2015-07-09 10:39:53 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/07/javascript-regexp-reference/">JavaScript RegExp Reference</a>
+          （<time datetime="2015-07-07 10:49:42 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/07/regular-expression/">Regular expression</a>
+          （<time datetime="2015-07-07 10:45:58 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/06/mysql-tuning-and-optimization/">MySQL Tuning and Optimization</a>
+          （<time datetime="2015-07-06 19:25:35 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/06/concepts-used-in-the-network/">Concepts used in the network</a>
+          （<time datetime="2015-07-06 15:33:16 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/06/gradle/">Gradle</a>
+          （<time datetime="2015-07-06 13:59:40 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+      <li>
+        <article>
+          <a rel="full-article" href="/blog/2015/07/06/linux-command-to-check-status/">Linux command to check status</a>
+          （<time datetime="2015-07-06 11:34:10 +0900" pubdate></time>）
+        </article>
+      </li>
+    
+    </ul>
 
-    <a href="/about">ダン・クァン・ミン</a>
- |
-<span class="credit">Powered by <a href="http://octopress.org">Octopress</a>, customized with <a href="https://github.com/mjhea0/nologo">noLogo</a></span></footer>
-			<script src="/javascripts/slash.js"></script>
+    <p><a href="/blog/archives">&laquo; 過去の記事</a></p>
+
+  </div>
+
+
+  <!-- include asides.html -->
+  
+  <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/">Một số quan hệ giữa các class trong UML</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo blog miễn phí bằng Octopress &amp; Github</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/09/java-for-beginner/">Java for beginner</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/09/introduction-to-restful-webservice/">Explore about RESTful webservice</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2015/07/07/javascript-regexp-reference/">JavaScript RegExp Reference</a>
+      </li>
+    
+  </ul>
+</section>
 
 
 
@@ -1367,6 +187,50 @@ $ w
 
 
 
-	</div>
-</body>
+
+  <!-- /include asides.html -->
+
+</div>
+
+</div>
+
+	<!-- /content -->
+      </div>
+
+      <footer role="contentinfo">
+	<!-- include footer -->
+	<p>
+  Copyright &copy; 2015 - ダン・クァン・ミン -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+	<!-- /include -->
+      </footer>
+      
+      <!-- include after_footer -->
+      
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+      <!-- /include -->
+
+    </div>
+  </body>
 </html>

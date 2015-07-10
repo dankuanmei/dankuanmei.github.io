@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://dankuanmei.github.io/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/</loc>
+    <lastmod>2015-07-10T10:53:15+09:00</lastmod>
+  </url>
+  <url>
     <loc>http://dankuanmei.github.io/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/</loc>
     <lastmod>2015-07-10T10:38:33+09:00</lastmod>
   </url>
@@ -177,6 +181,12 @@
     <loc>http://dankuanmei.github.io/blog/categories/blog/</loc>
   </url>
   <url>
+    <loc>http://dankuanmei.github.io/blog/categories/uml/</loc>
+  </url>
+  <url>
     <loc>http://dankuanmei.github.io/posts/2/</loc>
+  </url>
+  <url>
+    <loc>http://dankuanmei.github.io/posts/3/</loc>
   </url>
 </urlset>

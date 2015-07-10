@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Linux | ダン・クァン・ミン Blog]]></title>
+  <title><![CDATA[Category: linux | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:12:19+09:00</updated>
+  <updated>2015-07-10T11:17:01+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Linux Command to Check Status]]></title>
+    <title type="html"><![CDATA[Linux command to check status]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/06/linux-command-to-check-status/"/>
     <updated>2015-07-06T11:34:10+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/06/linux-command-to-check-status</id>

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cakephp-3.x | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/cakephp-3-dot-x/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:12:19+09:00</updated>
+  <updated>2015-07-10T11:17:01+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[CakePHP 3.x - Code Generation With Bake]]></title>
+    <title type="html"><![CDATA[CakePHP 3.x - Code Generation with Bake]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/"/>
     <updated>2015-07-04T17:44:10+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake</id>

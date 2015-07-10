@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Network | ダン・クァン・ミン Blog]]></title>
+  <title><![CDATA[Category: network | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/network/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:12:19+09:00</updated>
+  <updated>2015-07-10T11:17:01+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Concepts Used in the Network]]></title>
+    <title type="html"><![CDATA[Concepts used in the network]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/06/concepts-used-in-the-network/"/>
     <updated>2015-07-06T15:33:16+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/06/concepts-used-in-the-network</id>

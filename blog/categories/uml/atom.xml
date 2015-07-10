@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uml | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/uml/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:09:59+09:00</updated>
+  <updated>2015-07-10T11:12:19+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -51,8 +51,9 @@
 
 <p>Đối tượng cụ thể (concrete) sẽ kế thừa các thuộc tính và phương thức của đối tượng tổng quát (general)</p>
 
-<p>Ký hiệu: A is-a B
-<img src="http://i.imgur.com/jYOTHlb.png"></p>
+<p>Ký hiệu: A is-a B</p>
+
+<p><img src="http://i.imgur.com/jYOTHlb.png"></p>
 
 <p>Đọc là :</p>
 
@@ -73,8 +74,9 @@
 
 <p>Trong ClassA có sử dụng biến toàn cục (kiểu B), hoặc sử dụng phương thức/thuộc tính static của ClassB</p>
 
-<p>Ký hiệu : A use-a B ,  bằng mũi tên 1 chiều nét đứt , từ bên phụ thuộc sang bên độc lập ;
-<img src="http://i.imgur.com/vj6U2En.png"></p>
+<p>Ký hiệu : A use-a B ,  bằng mũi tên 1 chiều nét đứt , từ bên phụ thuộc sang bên độc lập ;</p>
+
+<p><img src="http://i.imgur.com/vj6U2En.png"></p>
 
 <p>ClassA “phụ thuộc” vào ClassB ;</p>
 
@@ -104,6 +106,8 @@
 <p>Là mỗi liên hệ giữa 2 lớp có  role, role là tên vai trò của mối liên kết : vd như : của , cho , có , liên kết tới , trao đối với , …. (thường tên role có kèm theo 1 mũi tên để chỉ hướng quan hệ áp dụng từ lớp nào sang lớp nào)</p>
 
 <p>Ký hiệu : A has-a B</p>
+
+<p><img src="http://i.imgur.com/N6nkWbx.png"></p>
 
 <p>Ý nghĩa : (trường hợp mũi tên không có chiều)
 - Hoặc  : Trong ClassA có thuộc tính có kiểu là ClassB
@@ -135,8 +139,9 @@
 
 <p>Còn gọi là shared-aggregation.Một dạng của nối kết, trong đó một phần tử này chứa các phần tử khác.</p>
 
-<p>Ký hiệu :
-<img src="http://i.imgur.com/nrYxfcB.png"></p>
+<p>Ký hiệu :</p>
+
+<p><img src="http://i.imgur.com/nrYxfcB.png"></p>
 
 <p>Ý nghĩa : còn gọi là : Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , và B có thể tạo ra độc lập , không cần phải tạo ra A , B có thể cùng thuộc 1 whole khác A.</p>
 
@@ -146,8 +151,9 @@
 
 <p>Là loại aggregation chặt chẽ hơn , còn gọi là non-shared aggregation.</p>
 
-<p>Ký hiệu :
-<img src="http://i.imgur.com/HMYgISe.png"></p>
+<p>Ký hiệu :</p>
+
+<p><img src="http://i.imgur.com/HMYgISe.png"></p>
 
 <p>Ý nghĩa : còn gọi là Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , nhưng B không thể đứng 1 mình được , B chỉ là thuộc A mà thôi không thể cùng thuộc Whole khác được.</p>
 

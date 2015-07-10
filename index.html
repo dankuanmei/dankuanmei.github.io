@@ -110,15 +110,36 @@
 
 <p>Use of this pattern makes it possible to interchange concrete implementations without changing the code that uses them, even at runtime. However, employment of this pattern, as with similar design patterns, may result in unnecessary complexity and extra work in the initial writing of code. Additionally, higher levels of separation and abstraction can result in systems which are more difficult to debug and maintain.</p>
 
-<p>Abstract Factory, đầy đủ là Abstract Factory pattern, cung cấp một giao diện lớp có chức năng tạo ra một tập hợp các đối tượng liên quan hoặc phụ thuộc lẫn nhau mà không chỉ ra đó là những lớp cụ thể nào tại thời điểm thiết kế.Mẫu thiết kế Abstract Factory đóng gói một nhóm những lớp đóng vai trò &ldquo;sản xuất&rdquo; (Factory) trong ứng dụng, đây là những lớp được dùng để tạo lập các đối tượng. Các lớp sản xuất này có chung một giao diện lập trình được kế thừa từ một lớp cha thuần ảo gọi là &ldquo;lớp sản xuất ảo&rdquo;.</p>
-
 <p><img src="http://i.imgur.com/pmd3pvQ.png"></p>
+
+<p>Factory design pattern phải đảm bảo được những yếu tố sau:</p>
+
+<ul>
+<li>Việc khởi tạo những object phải được che giấu ở phía client.</li>
+<li>Việc sử dụng những object mới được tạo ra phải thông qua một common interface.</li>
+</ul>
+
+
+<p>Việc triển khai này thực sự rất đơn giản, nó bao gồm những bước sau:</p>
+
+<ul>
+<li>Client cần một product, nhưng thay vì khởi tạo product object trực tiếp thông qua từ khóa new, nó sẽ hỏi factory object cho việc khởi tạo một object mới của product, cung cấp thông tin về loại dữ liệu của object cần thiết.</li>
+<li>Phía factory sẽ khởi tạo một object cụ thể và trả về cho client một object product mới được tạo(đã được ép kiểu thành loại abstract product class)</li>
+<li>Client sử dụng những object product này như là abstract product mà không quan tâm đến việc chúng được khởi tạo như thế nào.</li>
+</ul>
+
+
+<p>Ví dụ về một ứng dụng có chức năng tạo giao diện GUI. Ứng dụng của bạn sẽ có một client, GUIs là những product. Tất cả những GUI này đều có nguồn gốc từ một abstract class(hoặc một interface). GUI class này định nghĩa ra Button hay Label theo mỗi loại máy tính cụ thể. Giả sử có lệnh từ client là tạo Button và Label cho máy Windows, trong source code bạn phải nhận diện được kiểu máy tính như là một tham số, sau đó sẽ gọi đến Factory để thực hiện tạo ra giao diện tương ứng, ở đây là cho máy Windows. Như vậy, phía client hoàn toàn không cần quan tâm đến việc thực hiện tạo ra giao diện là như thế nào. Đó chính là mục đích của Factory Design Pattern.</p>
+
+<p>Lợi ích ở đây chính là việc một hay nhiều loại máy tính mới có thể được thêm vào mà không cần phải sửa lại source code của ứng dụng quá nhiều. Việc thay đổi source code hoàn toàn không ảnh hưởng đến factory class.</p>
 
 <h3>Java Example</h3>
 
-<pre><code>//GuiFactory example
+<p>GuiFactory example</p>
 
-//Abstract Product
+<h4>Abstract Product</h4>
+
+<pre><code>//Abstract Product
 interface Button {
     void paint();
 }
@@ -126,14 +147,20 @@ interface Button {
 interface Label {
     void paint();
 }
+</code></pre>
 
-//Abstract Factory
+<h4>Abstract Factory</h4>
+
+<pre><code>//Abstract Factory
 interface GUIFactory {
     Button createButton();
     Label createLabel();
 }
+</code></pre>
 
-//Concrete Factory
+<h4>Concrete Factory</h4>
+
+<pre><code>//Concrete Factory
 class WinFactory implements GUIFactory {
     public Button createButton() {
         return new WinButton();
@@ -155,8 +182,11 @@ class OSXFactory implements GUIFactory {
     }
 
 }
+</code></pre>
 
-//Concrete Product
+<h4>Concrete Product</h4>
+
+<pre><code>//Concrete Product
 class OSXButton implements Button {
     public void paint() {
         System.out.println("I'm an OSXButton");
@@ -183,10 +213,13 @@ class WinLabel implements Label {
         System.out.println("I'm a WinLabel");
     }
 }
+</code></pre>
 
-//Client application is not aware about the how the product is created. Its only responsible to give a name of 
-//concrete factory
-class Application {
+<h4>Client</h4>
+
+<p>Client application không quan tâm làm thế nào mà sản phẩm được tạo ra. Nó chỉ chịu trách nhiệm nhận về tên của Concrete Factory</p>
+
+<pre><code>class Application {
     public Application(GUIFactory factory) {
         Button button = factory.createButton();
         Label label = factory.createLabel();

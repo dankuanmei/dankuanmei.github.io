@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uml | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/uml/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:47:45+09:00</updated>
+  <updated>2015-07-10T11:49:42+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -24,12 +24,9 @@
 <li>Realization</li>
 <li>Generation</li>
 <li>Dependency</li>
-<li>Association: có 2 quan hệ phân biệt</li>
+<li>Association: có 2 quan hệ phân biệt Aggregation &amp; Composition</li>
 </ol>
 
-
-<p>4.1. Aggregation
-4.2. Composition</p>
 
 <h3>Quan hệ Realization (hiện thực hóa)</h3>
 
@@ -114,19 +111,17 @@
 - Hoặc  : Trong ClassA có thuộc tính có kiểu là ClassB
 - Hoặc  : Trong ClassB có thuộc tính có kiểu là ClassA</p>
 
-<h5>Nhận xét</h5>
+<p>Nhận xét :</p>
 
-<p>Về mặt lập trình, thuộc tính có thể được lưu trữ dạng biến đơn, biến mảng, hay biến con trỏ</p>
+<ul>
+<li>Về mặt lập trình, thuộc tính có thể được lưu trữ dạng biến đơn, biến mảng, hay biến con trỏ</li>
+<li>Có hoặc không có bản số cũng được</li>
+<li>Có hoặc không có mũi tên cũng được</li>
+<li>Nếu có mũi tên 1 chiều , chỉ ra chiều đối tượng thuộc lớp này chỉ có gọi đối tượng của lớp kia, không có chiều ngược lại</li>
+<li>Nếu không có mũi tên nào thì tương đương là mũi tên 2 chiều , hoặc chiều không quan trọng.</li>
+<li><code>Multiplicity</code> là bản số , lượng số , số object bên này tham gia vào mối kết hợp so với 1 object bên kia.</li>
+</ul>
 
-<p>Có hoặc không có bản số cũng được</p>
-
-<p>Có hoặc không có mũi tên cũng được</p>
-
-<p>Nếu có mũi tên 1 chiều , chỉ ra chiều đối tượng thuộc lớp này chỉ có gọi đối tượng của lớp kia, không có chiều ngược lại</p>
-
-<p>Nếu không có mũi tên nào thì tương đương là mũi tên 2 chiều , hoặc chiều không quan trọng.</p>
-
-<p><code>Multiplicity</code> là bản số , lượng số , số object bên này tham gia vào mối kết hợp so với 1 object bên kia.</p>
 
 <h3>Quan hệ Aggregation (còn gọi là quan hệ thu nạp)</h3>
 

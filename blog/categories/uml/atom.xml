@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Uml | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/uml/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T11:44:00+09:00</updated>
+  <updated>2015-07-10T11:47:45+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -24,11 +24,12 @@
 <li>Realization</li>
 <li>Generation</li>
 <li>Dependency</li>
-<li>Association: có 2 quan hệ phân biệt
-4.1. Aggregation
-4.2. Composition</li>
+<li>Association: có 2 quan hệ phân biệt</li>
 </ol>
 
+
+<p>4.1. Aggregation
+4.2. Composition</p>
 
 <h3>Quan hệ Realization (hiện thực hóa)</h3>
 

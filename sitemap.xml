@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://dankuanmei.github.io/blog/2015/07/11/java-design-patterns-factory-methods/</loc>
+    <lastmod>2015-07-11T11:38:55+09:00</lastmod>
+  </url>
+  <url>
     <loc>http://dankuanmei.github.io/blog/2015/07/10/abstract-factory-va-factory-pattern/</loc>
     <lastmod>2015-07-10T21:08:50+09:00</lastmod>
   </url>
@@ -204,10 +208,10 @@
     <loc>http://dankuanmei.github.io/blog/categories/patterns/</loc>
   </url>
   <url>
-    <loc>http://dankuanmei.github.io/blog/categories/abstract/</loc>
+    <loc>http://dankuanmei.github.io/blog/categories/abstract-factory/</loc>
   </url>
   <url>
-    <loc>http://dankuanmei.github.io/blog/categories/factory/</loc>
+    <loc>http://dankuanmei.github.io/blog/categories/factory-method/</loc>
   </url>
   <url>
     <loc>http://dankuanmei.github.io/posts/2/</loc>

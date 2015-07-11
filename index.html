@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Interviewer Chà chà, chào hai anh, đây là lần đầu tiên blog của iem phỏng vấn hai anh, hai anh cảm thấy thế nào. Factory Method Tôi ko biết sao hay &hellip;">
+  <meta name="description" content="Định nghĩa một interface cho việc tạo ra một đối tượng, nhưng để cho các lớp con quyết định lớp nào sẽ tạo đối tượng. Factory Method cho phép một lớp &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,7 +85,172 @@
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2015/07/10/abstract-factory-va-factory-pattern/">Abstract Factory và Factory Pattern</a></h1>
+      <h1 class="entry-title"><a href="/blog/2015/07/11/java-design-patterns-factory-methods/">Java Design Patterns - Factory Methods</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-11T11:38:55+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:38 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Định nghĩa một interface cho việc tạo ra một đối tượng, nhưng để cho các lớp con quyết định lớp nào sẽ tạo đối tượng. Factory Method cho phép một lớp hoãn việc tạo đối tượng sang các lớp con.</p>
+
+<p><img src="http://i.imgur.com/KCE7HIw.png"></p>
+
+<h2>#</h2>
+
+<pre><code>public interface Weapon {
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<pre><code>/**
+ * 
+ * Concrete subclass for creating new objects.
+ * 
+ */
+public class ElfBlacksmith implements Blacksmith {
+
+    public Weapon manufactureWeapon(WeaponType weaponType) {
+        return new ElfWeapon(weaponType);
+    }
+
+}
+
+/**
+ * 
+ * Concrete subclass for creating new objects.
+ * 
+ */
+public class OrcBlacksmith implements Blacksmith {
+
+    public Weapon manufactureWeapon(WeaponType weaponType) {
+        return new OrcWeapon(weaponType);
+    }
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<pre><code>/**
+ * 
+ * The interface containing method for producing objects.
+ * 
+ */
+public interface Blacksmith {
+
+    Weapon manufactureWeapon(WeaponType weaponType);
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<pre><code>public class ElfWeapon implements Weapon {
+
+    private WeaponType weaponType;
+
+    public ElfWeapon(WeaponType weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    @Override
+    public String toString() {
+        return "Elven " + weaponType;
+    }
+
+}
+
+
+public class OrcWeapon implements Weapon {
+
+    private WeaponType weaponType;
+
+    public OrcWeapon(WeaponType weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    @Override
+    public String toString() {
+        return "Orcish " + weaponType;
+    }
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<pre><code>public enum WeaponType {
+
+    SHORT_SWORD("short sword"), SPEAR("spear"), AXE("axe"), UNDEFINED("");
+
+    private String title;
+
+    WeaponType(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
+}
+</code></pre>
+
+<h3>Application</h3>
+
+<pre><code>/**
+ * 
+ * In Factory Method we have an interface (Blacksmith) with a method for
+ * creating objects (manufactureWeapon). The concrete subclasses (OrcBlacksmith,
+ * ElfBlacksmith) then override the method to produce objects of their liking.
+ * 
+ */
+public class App {
+
+    public static void main(String[] args) {
+        Blacksmith blacksmith;
+        Weapon weapon;
+
+        blacksmith = new OrcBlacksmith();
+        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        System.out.println(weapon);
+        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+        System.out.println(weapon);
+
+        blacksmith = new ElfBlacksmith();
+        weapon = blacksmith.manufactureWeapon(WeaponType.SHORT_SWORD);
+        System.out.println(weapon);
+        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        System.out.println(weapon);
+    }
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/10/abstract-factory-va-factory-pattern/">Abstract Factory và Factory Method</a></h1>
     
     
       <p class="meta">
@@ -1264,162 +1429,6 @@ Quantification
 <li><p>Test your backups regularly.</p></li>
 </ol>
 
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/06/concepts-used-in-the-network/">Concepts Used in the Network</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-06T15:33:16+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:33 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>ISP – Internet Service Provider</h3>
-
-<p>An Internet service provider (ISP) is an organization that provides services for accessing, using, or participating in the Internet. Internet service providers may be organized in various forms, such as commercial, community-owned, non-profit, or otherwise privately owned.</p>
-
-<p>Internet services typically provided by ISPs include Internet access, Internet transit, domain name registration, web hosting, Usenet service, colocation.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Internet_Connectivity_Access_layer.svg/800px-Internet_Connectivity_Access_layer.svg.png"></p>
-
-<p>ISP là công ty cung cấp cho bạn kết nối Internet . Ví dụ tại Việt Nam có những ISP như FPT , VDC , Viettel và một số công ty  khác . Đó là những công ty mà bạn sẽ phải trả tiền hàng tháng để dùng kết nối Internet của mình .</p>
-
-<h3>LAN – Local Area Network</h3>
-
-<p>A local area network (LAN) is a computer network that interconnects computers within a limited area such as a home, school, computer laboratory, or office building, using network media.[1] The defining characteristics of LANs, in contrast to wide area networks (WANs), include their smaller geographic area, and non-inclusion of leased telecommunication lines.[citation needed]</p>
-
-<p>ARCNET, Token Ring and other technology standards have been used in the past, but Ethernet over twisted pair cabling, and Wi-Fi are the two most common technologies currently used to build LANs.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Ethernet_LAN.svg/800px-Ethernet_LAN.svg.png"></p>
-
-<p>LAN là một mạng nhỏ hạn chế trong một khu vực . Ví dụ mạng trong gia đình hoặc mang trong văn phòng cơ quan gọi là mạng LAN .</p>
-
-<h3>WAN – Wide Area Network</h3>
-
-<p>A wide area network (WAN) is a network that covers a broad area (i.e., any telecommunications network that links across metropolitan, regional, national or international boundaries) using leased telecommunication lines. Business and government entities use WANs to relay data among employees, clients, buyers, and suppliers from various geographical locations. In essence, this mode of telecommunication allows a business to effectively carry out its daily function regardless of location. The Internet can be considered a WAN as well, and is used by businesses, governments, organizations, and individuals for almost any purpose imaginable.[1]</p>
-
-<p>Related terms for other types of networks are personal area networks (PANs), local area networks (LANs), campus area networks (CANs), or metropolitan area networks (MANs) which are usually limited to a room, building, campus or specific metropolitan area (e.g., a city) respectively.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/LAN_WAN_scheme.svg/800px-LAN_WAN_scheme.svg.png"></p>
-
-<p>WAN là mạng lớn hơn và có tầm bao phủ lớn hơn so với mạng LAN . Những ISP cung cấp cho bạn kết nối tới mạng WAN của họ để kết nối tới Internet .</p>
-
-<h3>IP Address</h3>
-
-<p>Địa chỉ giao thức Internet hay còn được gọi “IP Address” , là địa chỉ ở dạng số tương ứng với máy tính của bạn trong một mạng . Khi một máy tính muốn kết nối tới một máy khác , nó nối thông qua địa chỉ IP của máy tính đó .</p>
-
-<h3>IPv4 và IPv6</h3>
-
-<p>Có hai kiểu địa chỉ IP hay sử dụng . Địa chỉ IPv4 ( version 4 ) cũ hơn hiện tại được dùng nhiều hơn cả , địa chỉ IPv6 mới hơn . IPv6 là rất cần thiết bởi vì chúng ta đã không còn đủ không gian địa chỉ IPv4 cho tất cả mọi người và thiết bị trên thế giới .</p>
-
-<h3>Router</h3>
-
-<p>Router là thiết bị mà lưu lượng dữ liệu qua lại . Chúng ta thường có Router tại gia đình . Công việc của Router để gửi lưu lượng dữ liệu ra từ những thiết bị của bạn tới mạng Internet và nhận lại dữ liệu từ mạng Internet tới thiết bị của bạn .</p>
-
-<h3>Gateway</h3>
-
-<p>Gateway là thiết bị định hướng đường truyền giữa những mạng . Ví dụ trong gia đình Router của bạn chính là Gateway . Nó cung cấp “Gateway” giữa mạng LAN và WAN .</p>
-
-<h3>NAT – Network Address Translation</h3>
-
-<p>NAT được những Router sử dụng để chia xẻ một địa chỉ IP cho nhiều thiết bị . Ví dụ, bạn có thể có Router không dây trong gia đình để tạo mạng Wi-Fi cho máy xách tay , điện thoại thông minh , máy tính bảng và các thiết khác kết nối tới . IPS của bạn cung cấp cho bạn một địa chỉ IP để có thể với tới mọi nơi trên Internet , đôi khi địa chỉ đó gọi là địa chỉ IP công cộng ( Public IP Address ) .</p>
-
-<p>Router tạo một mạng LAN và gán những địa chỉ IP cục bộ tới những thiết bị của bạn . Router sau đó có nhiệm vụ như là một Gateway để những thiết bị của bạn ra ngoài mạng LAN và nó xuất hiện như là một thiết bị ( Router ) dùng một địa chỉ IP duy nhất .</p>
-
-<h3>DHCP – Dynamic Host Configuration Protocol</h3>
-
-<p>HDCP là một giao thức cho phép những máy tính yêu cầu tự động và được gán địa chỉ IP và những thiết lập mạng khác . Ví dụ , khi bạn kết nối máy xách tay hoặc điện thoại thông minh tới mạng Wi-Fi , thiết bị của bạn yêu cầu Router gán cho mình một địa chỉ IP bằng giao thức DHCP và khi ấy Router sẽ gán cho nó một địa chỉ IP . Việc này để đơn giản hóa cho gán địa chỉ IP tĩnh bằng tay .</p>
-
-<h3>Hostname</h3>
-
-<p>Hostname là tên của nhãn để có thể chỉ tới một thiết bị được kết nối trên mạng . Ví dụ trong mạng gia đình , Hostname máy tính Windows của bạn có thể là WINDOWSPC . Các thiết bị khác có thể kết nối tới WINDOWSPC mà không cần phải gõ địa chỉ IP cục bộ của máy tính .</p>
-
-<h3>Domain Name</h3>
-
-<p>Những tên miền ( Domain Name ) là một phần cơ bản của tên trang web ví dụ như google.com.vn.</p>
-
-<p>Tên miền thực chất là một kiểu khác của Hostname .</p>
-
-<h3>DNS – Domain Name System</h3>
-
-<p>DNS là những hệ thống  để chuyển đổi những tên miền và Hostname thành dạng số của IP Address .</p>
-
-<p>Khi bạn gõ google.com.vn trong thanh địa chỉ trong trình duyệt  web , máy tính của bạn sẽ kết nối tới những máy chủ DNS và máy chủ DNS sẽ gửi trả địa chỉ IP dạng số của máy chủ của trang google.com.vn .</p>
-
-<p>Bạn có thể dùng ngầm định địa chỉ những máy chủ DNS của ISP hoặc có thể dùng những máy chủ DNS của nhà cung cấp khác ví dụ như của Google có địa chỉ 8.8.8.8 và 8.8.4.4 .</p>
-
-<h3>Ethernet</h3>
-
-<p>Ethernet là chuẩn công nghệ mạng có dây đang được dùng gần như mọi nơi hiện nay . Nếu máy tính kết nối tới mạng thông qua cáp thì có nghĩa là hầu như chắc chắn đang dùng cáp Ethernet . Cáp này cắm vào cổng Ethernet trên máy tính của bạn .</p>
-
-<h3>Network Interface / Network Adapter</h3>
-
-<p>Kết nối có dây Ethernet và kết nối Wi-Fi trong máy tính của bạn đều dựa trên hai giao diện mạng ( Network Interface ) .</p>
-
-<p>Nếu máy xách tay của bạn được kết nối với cả mạng có dây và mạng Wi-Fi , mỗi giao diện mạng đều có địa chỉ IP riêng và khác nhau .</p>
-
-<p>Những giao diện mạng có thể cũng được thực hiện hoàn toàn trong phần mềm , do đó chúng không thường xuyên trực tiếp tới phần cứng tương ứng .</p>
-
-<h3>localhost</h3>
-
-<p> “localhost” hostname tương ứng với thiết bị bạn đang dùng . Nó được dùng để phản hồi ( Loopback ) giao diện mạng – giao diện mạng thực hiện bằng phầm mềm – để kết nối trực tiếp tới PC của bạn .</p>
-
-<p>localhost thực chất chỉ tới địa chỉ IPv4 127.0.0.1 hoặc địa chỉ IPv6 ::1 . Mỗi cái thường tương ứng với thiết bị hiện tại .</p>
-
-<h3>MAC Address</h3>
-
-<p>Mỗi giao diện mạng đều có địa chỉ MAC – Media Access Control , hay còn được gọi là địa chỉ vật lí ( Physical Address ) . Địa chỉ này là duy nhất được thiết kế để nhận dạng được các PC khác nhau trên mạng . Những địa chỉ MAC được các nhà sản xuất gán mỗi thiết bị mạng mà họ chế tạo .</p>
-
-<h3>Port – Cổng</h3>
-
-<p>Khi một ứng dụng muốn gửi hoặc nhận lưu lượng dữ liệu , nó phải dùng số Cổng ( Port ) từ 1 tới 65.535 . Điều đó có thể giải thích tại sao lại có nhiều ứng dụng trên máy tính dùng mạng và mỗi ứng dụng lại biết lưu lượng dữ liệu của mình .</p>
-
-<p>Chuẩn HTTP dùng cổng 80 , so đó khi bạn đang kết nối tới trang <a href="http://dantri.com">http://dantri.com</a> có nghĩa là bạn đang thực hiện kết nối HTTP tới cổng 80 trong trang dantri.com. Phần mềm máy chủ web của trang dantri.com đang “nghe” lưu lượng dữ liệu tới trong cổng 80 . Bạn có thể thử kết nối tới cổng 81 bằng cách gõ <a href="http://dantri.com:81">http://dantri.com:81</a> vào trình duyệt  web , nhưng bạn không nhận được phản hồi vì phần mềm máy chủ web không “nghe” trong cổng 81 .</p>
-
-<h3>Protocol – Giao thức – TCP , UDP , ICMP ….</h3>
-
-<p>Những giao thức là những cách khác nhau của truyền thông qua mạng Internet .</p>
-
-<p>TCP và UDP là những giao thức thông dụng nhất . Giao thức ICMP cũng được dùng nhưng chủ yếu để các thiết bị mạng có thể kiểm tra trạng thái của những thiết bị mạng khác .</p>
-
-<p>Những giao thức khác nhau là những ý tưởng cho những kiểu truyền thông khác nhau .</p>
-
-<h3>Packet – Gói dữ liệu</h3>
-
-<p>Packet là một đơn vị của dữ liệu được gửi giữa những thiết bị . Khi tải một trang web , máy tính của bạn gửi những Packet tới máy chủ yêu cầu trang web và máy chủ phản gửi trả lại bằng nhiều Packet khác nhau để máy tính của bạn tái tạo ra nội dung của trang web .</p>
-
-<p>Packet là đơn vị cơ bản của dữ liệu mà máy tính trên mạng trao đổi với nhau .</p>
-
-<h3>Firewall – Tường lửa</h3>
-
-<p>Firewall là một phần mềm hoặc phần cứng để ngăn chặn những kiểu lưu lượng dữ liệu nào đó . Ví dụ , Firewall có thể chặn dữ liệu đi vào từ một cổng nào đó hoặc chặn tất cả những luồng dữ liệu đi vào ngoại trừ dữ liệu được tới từ một địa chỉ IP nào đó .</p>
-
-<h3>HTTP - hypertext transfer protocol</h3>
-
-<p>HTTP là giao thức chuẩn trong những trình duyệt  web hiện đại và được các trang web sử dụng . FTP và BitTorrent là những ví dụ của những giao thức thay thế .</p>
-
-<h3>URL - Uniform Resource Locator</h3>
-
-<p>URL hay cũng còn được gọi là địa chỉ của trang web . URL hiện tại được hiển thị trên thanh địa chỉ của trình duyệt  web . Ví dụ <a href="http://dantri.com/tu-van/chay-thu.html">http://dantri.com/tu-van/chay-thu.html</a>  là một URL nói cho máy tính dùng giao thức HTTP để nối tới máy chủ của dantri.com và yêu cầu nội dung ở /tu-van trong thư mục gốc .</p>
 </div>
   
   

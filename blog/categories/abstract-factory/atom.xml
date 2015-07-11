@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Abstract | ダン・クァン・ミン Blog]]></title>
-  <link href="http://dankuanmei.github.io/blog/categories/abstract/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Abstract-factory | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/abstract-factory/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-10T21:19:18+09:00</updated>
+  <updated>2015-07-11T11:49:53+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Abstract Factory và Factory Pattern]]></title>
+    <title type="html"><![CDATA[Abstract Factory và Factory Method]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/07/10/abstract-factory-va-factory-pattern/"/>
     <updated>2015-07-10T21:08:50+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/10/abstract-factory-va-factory-pattern</id>
@@ -75,6 +75,154 @@
 <p><code>Factory Method</code> Còn tôi là <code>Factory Method</code>, hãy sử dụng tôi để làm cho chương trình của bạn độc lập với những lớp cụ thể mà bạn cần tạo 1 đối tượng, hoặc khi bạn không biết sau này sẽ cần đến những lớp con nào nữa. Khi cần sử dụng tôi, hãy tạo tạo ra subclass (1 factory implement 1 kiểu abstract) và implement <code>Factory Method</code> cho chính bạn.</p>
 
 <p>(Page 158-162 of Head First – Design Pattern)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Java Design Patterns - Abstract Factory]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/10/java-design-patterns-abstract-factory/"/>
+    <updated>2015-07-10T20:08:31+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/10/java-design-patterns-abstract-factory</id>
+    <content type="html"><![CDATA[<p>The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes.In normal usage, the client software creates a concrete implementation of the abstract factory and then uses the generic interface of the factory to create the concrete objects that are part of the theme. The client doesn&rsquo;t know (or care) which concrete objects it gets from each of these internal factories, since it uses only the generic interfaces of their products.This pattern separates the details of implementation of a set of objects from their general usage and relies on object composition, as object creation is implemented in methods exposed in the factory interface.</p>
+
+<p>An example of this would be an abstract factory class DocumentCreator that provides interfaces to create a number of products (e.g. createLetter() and createResume()). The system would have any number of derived concrete versions of the DocumentCreator class like FancyDocumentCreator or ModernDocumentCreator, each with a different implementation of createLetter() and createResume() that would create a corresponding object like FancyLetter or ModernResume. Each of these products is derived from a simple abstract class like Letter or Resume of which the client is aware. The client code would get an appropriate instance of the DocumentCreator and call its factory methods. Each of the resulting objects would be created from the same DocumentCreator implementation and would share a common theme (they would all be fancy or modern objects). The client would only need to know how to handle the abstract Letter or Resume class, not the specific version that it got from the concrete factory.</p>
+
+<p>A factory is the location of a concrete class in the code at which objects are constructed. The intent in employing the pattern is to insulate the creation of objects from their usage and to create families of related objects without having to depend on their concrete classes.This allows for new derived types to be introduced with no change to the code that uses the base class.</p>
+
+<p>Use of this pattern makes it possible to interchange concrete implementations without changing the code that uses them, even at runtime. However, employment of this pattern, as with similar design patterns, may result in unnecessary complexity and extra work in the initial writing of code. Additionally, higher levels of separation and abstraction can result in systems which are more difficult to debug and maintain.</p>
+
+<p><img src="http://i.imgur.com/pmd3pvQ.png"></p>
+
+<p>Factory design pattern phải đảm bảo được những yếu tố sau:</p>
+
+<ul>
+<li>Việc khởi tạo những object phải được che giấu ở phía client.</li>
+<li>Việc sử dụng những object mới được tạo ra phải thông qua một common interface.</li>
+</ul>
+
+
+<p>Việc triển khai này thực sự rất đơn giản, nó bao gồm những bước sau:</p>
+
+<ul>
+<li>Client cần một product, nhưng thay vì khởi tạo product object trực tiếp thông qua từ khóa new, nó sẽ hỏi factory object cho việc khởi tạo một object mới của product, cung cấp thông tin về loại dữ liệu của object cần thiết.</li>
+<li>Phía factory sẽ khởi tạo một object cụ thể và trả về cho client một object product mới được tạo(đã được ép kiểu thành loại abstract product class)</li>
+<li>Client sử dụng những object product này như là abstract product mà không quan tâm đến việc chúng được khởi tạo như thế nào.</li>
+</ul>
+
+
+<p>Ví dụ về một ứng dụng có chức năng tạo giao diện GUI. Ứng dụng của bạn sẽ có một client, GUIs là những product. Tất cả những GUI này đều có nguồn gốc từ một abstract class(hoặc một interface). GUI class này định nghĩa ra Button hay Label theo mỗi loại máy tính cụ thể. Giả sử có lệnh từ client là tạo Button và Label cho máy Windows, trong source code bạn phải nhận diện được kiểu máy tính như là một tham số, sau đó sẽ gọi đến Factory để thực hiện tạo ra giao diện tương ứng, ở đây là cho máy Windows. Như vậy, phía client hoàn toàn không cần quan tâm đến việc thực hiện tạo ra giao diện là như thế nào. Đó chính là mục đích của Factory Design Pattern.</p>
+
+<p>Lợi ích ở đây chính là việc một hay nhiều loại máy tính mới có thể được thêm vào mà không cần phải sửa lại source code của ứng dụng quá nhiều. Việc thay đổi source code hoàn toàn không ảnh hưởng đến factory class.</p>
+
+<h3>Java Example</h3>
+
+<p>GuiFactory example</p>
+
+<h4>Abstract Product</h4>
+
+<pre><code>//Abstract Product
+interface Button {
+    void paint();
+}
+//Abstract Product
+interface Label {
+    void paint();
+}
+</code></pre>
+
+<h4>Abstract Factory</h4>
+
+<pre><code>//Abstract Factory
+interface GUIFactory {
+    Button createButton();
+    Label createLabel();
+}
+</code></pre>
+
+<h4>Concrete Factory</h4>
+
+<pre><code>//Concrete Factory
+class WinFactory implements GUIFactory {
+    public Button createButton() {
+        return new WinButton();
+    }
+
+    public Label createLabel() {
+        return new WinLabel();
+    }
+}
+
+//Concrete Factory
+class OSXFactory implements GUIFactory {
+    public Button createButton() {
+        return new OSXButton();
+    }
+
+    public Label createLabel() {
+        return new OSXLabel();
+    }
+
+}
+</code></pre>
+
+<h4>Concrete Product</h4>
+
+<pre><code>//Concrete Product
+class OSXButton implements Button {
+    public void paint() {
+        System.out.println("I'm an OSXButton");
+    }
+}
+
+//Concrete Product
+class WinButton implements Button {
+    public void paint() {
+        System.out.println("I'm a WinButton");
+    }
+}
+
+//Concrete Product
+class OSXLabel implements Label {
+    public void paint() {
+        System.out.println("I'm an OSXLabel");
+    }
+}
+
+//Concrete Product
+class WinLabel implements Label {
+    public void paint() {
+        System.out.println("I'm a WinLabel");
+    }
+}
+</code></pre>
+
+<h4>Client</h4>
+
+<p>Client application không quan tâm làm thế nào mà sản phẩm được tạo ra. Nó chỉ chịu trách nhiệm nhận về tên của Concrete Factory</p>
+
+<pre><code>class Application {
+    public Application(GUIFactory factory) {
+        Button button = factory.createButton();
+        Label label = factory.createLabel();
+        button.paint();
+        label.paint();
+    }
+}
+
+public class ApplicationRunner {
+    public static void main(String[] args) {
+        new Application(createOsSpecificFactory());
+    }
+
+    public static GUIFactory createOsSpecificFactory() {
+        String osname = System.getProperty("os.name").toLowerCase();
+        if(osname != null &amp;&amp; osname.contains("windows"))
+            return new WinFactory();
+        else
+            return new OSXFactory();
+    }
+}
+</code></pre>
 ]]></content>
   </entry>
   

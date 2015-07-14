@@ -107,6 +107,8 @@
 
 <h2>#</h2>
 
+<p>Interface sản phẩm</p>
+
 <pre><code>public interface Weapon {
 
 }
@@ -114,12 +116,20 @@
 
 <h2>#</h2>
 
-<pre><code>/**
- * 
- * Concrete subclass for creating new objects.
- * 
- */
-public class ElfBlacksmith implements Blacksmith {
+<p>Interface factory chứa method để tạo sản phẩm</p>
+
+<pre><code>public interface Blacksmith {
+
+    Weapon manufactureWeapon(WeaponType weaponType);
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<p>Các subclass factory thực thi để tạo sản phẩm</p>
+
+<pre><code>public class ElfBlacksmith implements Blacksmith {
 
     public Weapon manufactureWeapon(WeaponType weaponType) {
         return new ElfWeapon(weaponType);
@@ -127,11 +137,6 @@ public class ElfBlacksmith implements Blacksmith {
 
 }
 
-/**
- * 
- * Concrete subclass for creating new objects.
- * 
- */
 public class OrcBlacksmith implements Blacksmith {
 
     public Weapon manufactureWeapon(WeaponType weaponType) {
@@ -143,19 +148,7 @@ public class OrcBlacksmith implements Blacksmith {
 
 <h2>#</h2>
 
-<pre><code>/**
- * 
- * The interface containing method for producing objects.
- * 
- */
-public interface Blacksmith {
-
-    Weapon manufactureWeapon(WeaponType weaponType);
-
-}
-</code></pre>
-
-<h2>#</h2>
+<p>Các subclass sản phẩm</p>
 
 <pre><code>public class ElfWeapon implements Weapon {
 
@@ -171,7 +164,6 @@ public interface Blacksmith {
     }
 
 }
-
 
 public class OrcWeapon implements Weapon {
 
@@ -190,6 +182,8 @@ public class OrcWeapon implements Weapon {
 </code></pre>
 
 <h2>#</h2>
+
+<p>Class chứa loại sản phẩm</p>
 
 <pre><code>public enum WeaponType {
 
@@ -210,6 +204,8 @@ public class OrcWeapon implements Weapon {
 
 <h3>Application</h3>
 
+<p>Class chạy thực thi, khởi tạo đối tượng sản phẩm và đối tượng factory. Tạo factory tương ứng với sản phẩm muốn tạo và truyền vào loại sản phẩm.</p>
+
 <pre><code>/**
  * 
  * In Factory Method we have an interface (Blacksmith) with a method for
@@ -223,7 +219,7 @@ public class App {
         Blacksmith blacksmith;
         Weapon weapon;
 
-        blacksmith = new OrcBlacksmith();
+        blacksmith = new f();
         weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
         System.out.println(weapon);
         weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
@@ -285,6 +281,8 @@ public class App {
       
         <a class="basic-alignment left" href="/blog/2015/07/10/abstract-factory-va-factory-pattern/" title="Previous Post: Abstract Factory và Factory Method">&laquo; Abstract Factory và Factory Method</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2015/07/11/install-golang/" title="Next Post: Install GoLang">Install GoLang &raquo;</a>
       
     </p>
   </footer>

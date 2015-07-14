@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-11T11:49:53+09:00</updated>
+  <updated>2015-07-15T01:25:15+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Install openGL in Ubuntu]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/15/install-opengl-in-ubuntu/"/>
+    <updated>2015-07-15T01:22:58+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/15/install-opengl-in-ubuntu</id>
+    <content type="html"><![CDATA[<h3>Command line</h3>
+
+<pre><code>$ sudo apt-get install freeglut3-dev libglew1.5-dev
+
+$ sudo apt-get install libxmu-dev libxi-dev
+
+$ sudo apt-get install binutils-gold
+
+$ gcc dino.c -o dino -lGL -lglut
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Install GoLang]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/11/install-golang/"/>
+    <updated>2015-07-11T13:46:29+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/11/install-golang</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Java Design Patterns - Factory Methods]]></title>
@@ -24,6 +51,8 @@
 
 <h2>#</h2>
 
+<p>Interface sản phẩm</p>
+
 <pre><code>public interface Weapon {
 
 }
@@ -31,12 +60,20 @@
 
 <h2>#</h2>
 
-<pre><code>/**
- * 
- * Concrete subclass for creating new objects.
- * 
- */
-public class ElfBlacksmith implements Blacksmith {
+<p>Interface factory chứa method để tạo sản phẩm</p>
+
+<pre><code>public interface Blacksmith {
+
+    Weapon manufactureWeapon(WeaponType weaponType);
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<p>Các subclass factory thực thi để tạo sản phẩm</p>
+
+<pre><code>public class ElfBlacksmith implements Blacksmith {
 
     public Weapon manufactureWeapon(WeaponType weaponType) {
         return new ElfWeapon(weaponType);
@@ -44,11 +81,6 @@ public class ElfBlacksmith implements Blacksmith {
 
 }
 
-/**
- * 
- * Concrete subclass for creating new objects.
- * 
- */
 public class OrcBlacksmith implements Blacksmith {
 
     public Weapon manufactureWeapon(WeaponType weaponType) {
@@ -60,19 +92,7 @@ public class OrcBlacksmith implements Blacksmith {
 
 <h2>#</h2>
 
-<pre><code>/**
- * 
- * The interface containing method for producing objects.
- * 
- */
-public interface Blacksmith {
-
-    Weapon manufactureWeapon(WeaponType weaponType);
-
-}
-</code></pre>
-
-<h2>#</h2>
+<p>Các subclass sản phẩm</p>
 
 <pre><code>public class ElfWeapon implements Weapon {
 
@@ -88,7 +108,6 @@ public interface Blacksmith {
     }
 
 }
-
 
 public class OrcWeapon implements Weapon {
 
@@ -107,6 +126,8 @@ public class OrcWeapon implements Weapon {
 </code></pre>
 
 <h2>#</h2>
+
+<p>Class chứa loại sản phẩm</p>
 
 <pre><code>public enum WeaponType {
 
@@ -127,6 +148,8 @@ public class OrcWeapon implements Weapon {
 
 <h3>Application</h3>
 
+<p>Class chạy thực thi, khởi tạo đối tượng sản phẩm và đối tượng factory. Tạo factory tương ứng với sản phẩm muốn tạo và truyền vào loại sản phẩm.</p>
+
 <pre><code>/**
  * 
  * In Factory Method we have an interface (Blacksmith) with a method for
@@ -140,7 +163,7 @@ public class App {
         Blacksmith blacksmith;
         Weapon weapon;
 
-        blacksmith = new OrcBlacksmith();
+        blacksmith = new f();
         weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
         System.out.println(weapon);
         weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
@@ -264,11 +287,10 @@ public class App {
 
 <h4>Abstract Product</h4>
 
-<pre><code>//Abstract Product
-interface Button {
+<pre><code>interface Button {
     void paint();
 }
-//Abstract Product
+
 interface Label {
     void paint();
 }
@@ -276,8 +298,7 @@ interface Label {
 
 <h4>Abstract Factory</h4>
 
-<pre><code>//Abstract Factory
-interface GUIFactory {
+<pre><code>interface GUIFactory {
     Button createButton();
     Label createLabel();
 }
@@ -285,8 +306,7 @@ interface GUIFactory {
 
 <h4>Concrete Factory</h4>
 
-<pre><code>//Concrete Factory
-class WinFactory implements GUIFactory {
+<pre><code>class WinFactory implements GUIFactory {
     public Button createButton() {
         return new WinButton();
     }
@@ -296,7 +316,6 @@ class WinFactory implements GUIFactory {
     }
 }
 
-//Concrete Factory
 class OSXFactory implements GUIFactory {
     public Button createButton() {
         return new OSXButton();
@@ -311,28 +330,24 @@ class OSXFactory implements GUIFactory {
 
 <h4>Concrete Product</h4>
 
-<pre><code>//Concrete Product
-class OSXButton implements Button {
+<pre><code>class OSXButton implements Button {
     public void paint() {
         System.out.println("I'm an OSXButton");
     }
 }
 
-//Concrete Product
 class WinButton implements Button {
     public void paint() {
         System.out.println("I'm a WinButton");
     }
 }
 
-//Concrete Product
 class OSXLabel implements Label {
     public void paint() {
         System.out.println("I'm an OSXLabel");
     }
 }
 
-//Concrete Product
 class WinLabel implements Label {
     public void paint() {
         System.out.println("I'm a WinLabel");
@@ -364,6 +379,29 @@ public class ApplicationRunner {
             return new WinFactory();
         else
             return new OSXFactory();
+    }
+}
+</code></pre>
+
+<h3>Java Example 2</h3>
+
+<h4>Client</h4>
+
+<pre><code>public class App {
+
+    public static void main(String[] args) {
+        createKingdom(new ElfKingdomFactory());
+        createKingdom(new OrcKingdomFactory());
+    }
+
+    public static void createKingdom(KingdomFactory factory) {
+        King king = factory.createKing();
+        Castle castle = factory.createCastle();
+        Army army = factory.createArmy();
+        System.out.println("The kingdom was created.");
+        System.out.println(king);
+        System.out.println(castle);
+        System.out.println(army);
     }
 }
 </code></pre>
@@ -1661,160 +1699,6 @@ Arguments:
 name  Name of the controller to bake. Can use Plugin.name to bake
     controllers into plugins. (optional)
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setup Cakephp 3.x]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x/"/>
-    <updated>2015-07-04T16:18:28+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/04/setup-cakephp-3-dot-x</id>
-    <content type="html"><![CDATA[<h2>Installing CakePHP</h2>
-
-<p>First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as running the following:</p>
-
-<pre><code>curl -s https://getcomposer.org/installer | php
-</code></pre>
-
-<p>Now that you’ve downloaded and installed Composer, you can get a new CakePHP application by running:</p>
-
-<pre><code>php composer.phar create-project --prefer-dist cakephp/app [app_name]
-</code></pre>
-
-<p>Or if Composer is installed globally:</p>
-
-<pre><code>composer create-project --prefer-dist cakephp/app [app_name]
-</code></pre>
-
-<p>You can now visit the path to where you installed your CakePHP application and see the setup traffic lights.</p>
-
-<h2>Development Server</h2>
-
-<p>A development installation is the fastest method to setup CakePHP. In this example, we will be using CakePHP’s console to run PHP’s built-in web server which will make your application available at <a href="http://host:port.">http://host:port.</a> From the app directory, execute:</p>
-
-<pre><code>bin/cake server -H 192.168.13.37 -p 5673
-</code></pre>
-
-<h2>Create <code>.htaccess</code> file</h2>
-
-<p>CakePHP webroot directory (will be copied to your application’s web root by bake):</p>
-
-<pre><code>&lt;IfModule mod_rewrite.c&gt;
-    RewriteEngine on
-    RewriteRule    ^$    app/webroot/    [L]
-    RewriteRule    (.*) app/webroot/$1    [L]
-&lt;/IfModule&gt;
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setup Apache2 Virtual Host on Ubuntu]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu/"/>
-    <updated>2015-07-04T13:20:58+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/04/setup-apache2-virtual-host-on-ubuntu</id>
-    <content type="html"><![CDATA[<h2>Create the Directory Structure</h2>
-
-<p>The first step that we are going to take is to make a directory structure that will hold the site data that we will be serving to visitors.</p>
-
-<pre><code>sudo mkdir -p /var/www/example.local/public_html
-</code></pre>
-
-<h2>Grant Permissions</h2>
-
-<p>Now we have the directory structure for our files, but they are owned by our root user. If we want our regular user to be able to modify files in our web directories, we can change the ownership by doing this:</p>
-
-<pre><code>sudo chown -R $USER:$USER /var/www/example.local/public_html
-</code></pre>
-
-<p>We should also modify our permissions a little bit to ensure that read access is permitted to the general web directory and all of the files and folders it contains so that pages can be served correctly:</p>
-
-<pre><code>sudo chmod -R 755 /var/www
-</code></pre>
-
-<h2>Create Demo Pages for Each Virtual Host</h2>
-
-<pre><code>vim /var/www/example.local/public_html/index.html
-</code></pre>
-
-<p>In this file, create a simple HTML document that indicates the site it is connected to. My file looks</p>
-
-<pre><code>&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;Welcome to example.local!&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Success!  The example.local virtual host is working!&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-<h2>Enable mod rewrite(Optional)</h2>
-
-<pre><code>sudo a2enmod rewrite
-sudo service apache2 restart
-</code></pre>
-
-<h2>Create New Virtual Host Files</h2>
-
-<p>Create the First Virtual Host File</p>
-
-<pre><code>sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.local.conf
-</code></pre>
-
-<p>Open and Edit the file.</p>
-
-<pre><code>sudo vim /etc/apache2/sites-available/example.local.conf
-</code></pre>
-
-<p>Sample</p>
-
-<pre><code>&lt;VirtualHost *:80&gt;
-    ServerAdmin admin@example.local
-    ServerName example.local
-    ServerAlias www.example.local
-    DocumentRoot /var/www/example.local/public_html
-    &lt;Directory /var/www/example.local/public_html&gt;
-      AllowOverride all
-    &lt;/Directory&gt;
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-&lt;/VirtualHost&gt;
-</code></pre>
-
-<p>Save and close the file.</p>
-
-<h2>Enable the New Virtual Host Files</h2>
-
-<p>We can use the a2ensite tool to enable each of our sites like this:</p>
-
-<pre><code>sudo a2ensite example.local.conf
-</code></pre>
-
-<p>When you are finished, you need to restart Apache to make these changes take effect:</p>
-
-<pre><code>sudo service apache2 restart
-</code></pre>
-
-<h2>Set Up Local Hosts File (Optional)</h2>
-
-<p>If you haven&rsquo;t been using actual domain names that you own to test this procedure and have been using some example domains instead, you can at least test the functionality of this process by temporarily modifying the hosts file on your local computer.
-If you are on a Mac or Linux computer, edit your local file with administrative privileges by typing:</p>
-
-<pre><code>sudo vim /etc/hosts
-</code></pre>
-
-<p>For the domains that I used in this guide, assuming that my VPS IP address is 111.111.111.111, I could add the following lines to the bottom of my hosts file:</p>
-
-<pre><code>127.0.0.1   localhost
-127.0.1.1   guest-desktop
-111.111.111.111 example.local
-</code></pre>
-
-<h2>Test your Results</h2>
-
-<p>Now that you have your virtual hosts configured, you can test your setup easily by going to the domains that you configured in your web browser:
-<a href="http://example.local">http://example.local</a></p>
 ]]></content>
   </entry>
   

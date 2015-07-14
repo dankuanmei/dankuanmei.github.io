@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Opengl | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/opengl/atom.xml" rel="self"/>
+  <link href="http://dankuanmei.github.io/"/>
+  <updated>2015-07-15T01:25:15+09:00</updated>
+  <id>http://dankuanmei.github.io/</id>
+  <author>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Install openGL in Ubuntu]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/15/install-opengl-in-ubuntu/"/>
+    <updated>2015-07-15T01:22:58+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/15/install-opengl-in-ubuntu</id>
+    <content type="html"><![CDATA[<h3>Command line</h3>
+
+<pre><code>$ sudo apt-get install freeglut3-dev libglew1.5-dev
+
+$ sudo apt-get install libxmu-dev libxi-dev
+
+$ sudo apt-get install binutils-gold
+
+$ gcc dino.c -o dino -lGL -lglut
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

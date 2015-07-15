@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-15T01:25:15+09:00</updated>
+  <updated>2015-07-15T22:07:31+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,189 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[OpenGL Beginner]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner/"/>
+    <updated>2015-07-15T22:03:54+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner</id>
+    <content type="html"><![CDATA[<h3>Opening a window</h3>
+
+<p>Ok, let’s go. First, we’ll have to deal with dependencies : we need some basic stuff to display messages in the console :</p>
+
+<pre><code>// Include standard headers
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</code></pre>
+
+<p>First, GLEW. So this one actually is a little bit magic, but let’s leave this for later.</p>
+
+<pre><code>// Include GLEW. Always include it before gl.h and glfw.h, since it's a bit magic.
+#include &lt;GL/glew.h&gt;
+</code></pre>
+
+<p>We decided to let GLFW handle the window and the keyboard, so let’s include it too :</p>
+
+<pre><code>// Include GLFW
+#include &lt;GL/glfw3.h&gt;
+</code></pre>
+
+<p>We don’t actually need this one right now, but this is a library for 3D mathematics. It will prove very useful soon. There is no magic in GLM, you can write your own if you want; it’s just handy. The “using namespace” is there to avoid typing “glm::vec3″, but “vec3″ instead.</p>
+
+<pre><code>// Include GLM
+#include &lt;glm/glm.hpp&gt;
+using namespace glm;
+</code></pre>
+
+<p>If you cut’n paste all these #include’s in playground.cpp, the compiler will complain that there is no main() function. So let’s create one :</p>
+
+<pre><code>int main(){
+}
+</code></pre>
+
+<p>First thing to do it to initialize GLFW :</p>
+
+<pre><code>// Initialise GLFW
+if( !glfwInit() )
+{
+    fprintf( stderr, "Failed to initialize GLFW\n" );
+    return -1;
+}
+</code></pre>
+
+<p>We can now create our first OpenGL window !</p>
+
+<pre><code>glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
+glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
+glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
+
+// Open a window and create its OpenGL context 
+GLFWwindow* window; // (In the accompanying source code, this variable is global) 
+window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL); 
+if( window == NULL ){
+    fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
+    glfwTerminate();
+    return -1;
+}
+glfwMakeContextCurrent(window); // Initialize GLEW 
+glewExperimental=true; // Needed in core profile 
+if (glewInit() != GLEW_OK) {
+    fprintf(stderr, "Failed to initialize GLEW\n");
+    return -1;
+}
+</code></pre>
+
+<p>Build this and run. A window should appear, and be closed right away. Of course ! We need to wait until the user hits the Escape key :</p>
+
+<pre><code>// Ensure we can capture the escape key being pressed below
+glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+
+do{
+    // Draw nothing, see you in tutorial 2 !
+
+    // Swap buffers
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+
+} // Check if the ESC key was pressed or the window was closed
+while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &amp;&amp;
+glfwWindowShouldClose(window) == 0 );
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Free Resource]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/15/free-resource/"/>
+    <updated>2015-07-15T21:21:47+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/15/free-resource</id>
+    <content type="html"><![CDATA[<h3>SNS avatar generator</h3>
+
+<p><code>uiFaces</code></p>
+
+<p><a href="http://uifaces.com/">http://uifaces.com/</a></p>
+
+<p>Dùng trong trường hợp muốn tạo ra một loạt avatar dùng cho demo vân vân.</p>
+
+<p>Có tích hợp cả API, rất đáng để dùng thử.</p>
+
+<h3>Free Video</h3>
+
+<p><code>mazwai</code></p>
+
+<p><a href="http://mazwai.com/#index">http://mazwai.com/#index</a></p>
+
+<p>Toàn là video nhìn rất cool.</p>
+
+<p><code>jQuery video background plugin</code></p>
+
+<p><a href="https://github.com/VodkaBears/Vide">https://github.com/VodkaBears/Vide</a></p>
+
+<h3>Icon</h3>
+
+<p><code>iconfinder</code></p>
+
+<p><a href="https://www.iconfinder.com/">https://www.iconfinder.com/</a></p>
+
+<h3>Html template</h3>
+
+<p><code>html5up</code></p>
+
+<p><a href="http://html5up.net/">http://html5up.net/</a></p>
+
+<p><code>startbootstrap</code></p>
+
+<p><a href="http://startbootstrap.com/">http://startbootstrap.com/</a></p>
+
+<p><code>blacktie</code></p>
+
+<p><a href="http://www.blacktie.co/">http://www.blacktie.co/</a></p>
+
+<h3>Free logo</h3>
+
+<p><code>Squarespace</code> (Recommend)</p>
+
+<p><a href="http://www.squarespace.com/logo#">http://www.squarespace.com/logo#</a></p>
+
+<p><code>LOGASTER</code></p>
+
+<p><a href="https://www.logaster.com/">https://www.logaster.com/</a></p>
+
+<h3>CSS animation</h3>
+
+<p><code>Animate.css</code> (Recommend)</p>
+
+<p><a href="http://daneden.github.io/animate.css/">http://daneden.github.io/animate.css/</a></p>
+
+<h3>HTML Gen</h3>
+
+<p><code>coveloping</code> (Recommend)</p>
+
+<p><a href="http://coveloping.com/">http://coveloping.com/</a></p>
+
+<p>Tập hợp rất nhiều công cụ dùng để sinh ra các phần trong trang HTML như price page vân vân.</p>
+
+<p><code>TeamPage.io</code></p>
+
+<p><a href="http://www.teampage.io/">http://www.teampage.io/</a></p>
+
+<p>Tạo team member page một cách rất đơn giản.</p>
+
+<p><code>FRAME</code></p>
+
+<p><a href="http://frame.lab25.co.uk/">http://frame.lab25.co.uk/</a></p>
+
+<p>Sinh ra 1 top page na ná như trang đó.</p>
+
+<p><code>UICloud</code></p>
+
+<p><a href="http://ui-cloud.com/">http://ui-cloud.com/</a></p>
+
+<p>Trang chuyên dùng cho việc search tham khảo những thành phần của UI.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install openGL in Ubuntu]]></title>
@@ -1582,123 +1765,6 @@ $ w
     <updated>2015-07-04T21:02:01+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/07/04/first-look-about-design-pattern</id>
     <content type="html"><![CDATA[
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Mysql - Useful Command Line]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line/"/>
-    <updated>2015-07-04T17:59:51+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/04/mysql-useful-command-line</id>
-    <content type="html"><![CDATA[<h3>Create database UTF8</h3>
-
-<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
-</code></pre>
-
-<h3>Drop database</h3>
-
-<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
-</code></pre>
-
-<h3>Import database from file</h3>
-
-<pre><code>$ mysql -u username -p database_name &lt; file.sql
-</code></pre>
-
-<h3>Export database to file</h3>
-
-<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
-</code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[CakePHP 3.x - Code Generation With Bake]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/"/>
-    <updated>2015-07-04T17:44:10+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake</id>
-    <content type="html"><![CDATA[<h2>Some useful command</h2>
-
-<pre><code>$ bin/cake bake all users
-
-$ bin/cake bake controller users
-
-$ bin/cake bake model users
-</code></pre>
-
-<h2>Full guide</h2>
-
-<p>When run with no arguments bin/cake bake will output a list of available tasks. You should see something like:</p>
-
-<pre><code>$ bin/cake bake
-
-Welcome to CakePHP v3.0.0 Console
----------------------------------------------------------------
-App : src
-Path: /var/www/cakephp.dev/src/
----------------------------------------------------------------
-The following commands can be used to generate skeleton code for your application.
-
-Available bake commands:
-
-- all
-- behavior
-- cell
-- component
-- controller
-- fixture
-- form
-- helper
-- model
-- plugin
-- shell
-- template
-- test
-
-By using `cake bake [name]` you can invoke a specific bake task.
-</code></pre>
-
-<p>You can get more information on what each task does, and what options are available using the &ndash;help option:</p>
-
-<pre><code>$ bin/cake bake controller --help
-
-Welcome to CakePHP v3.0.0 Console
----------------------------------------------------------------
-App : src
-Path: /var/www/cakephp.dev/src/
----------------------------------------------------------------
-Bake a controller skeleton.
-
-Usage:
-cake bake controller [subcommand] [options] [&lt;name&gt;]
-
-Subcommands:
-
-all  Bake all controllers with CRUD methods.
-
-To see help on a subcommand use `cake bake controller [subcommand] --help`
-
-Options:
-
---help, -h        Display this help.
---verbose, -v     Enable verbose output.
---quiet, -q       Enable quiet output.
---plugin, -p      Plugin to bake into.
---force, -f       Force overwriting existing files without prompting.
---connection, -c  The datasource connection to get data from.
-                  (default: default)
---theme, -t       The theme to use when baking code.
---components      The comma separated list of components to use.
---helpers         The comma separated list of helpers to use.
---prefix          The namespace/routing prefix to use.
---no-test         Do not generate a test skeleton.
---no-actions      Do not generate basic CRUD action methods.
-
-Arguments:
-
-name  Name of the controller to bake. Can use Plugin.name to bake
-    controllers into plugins. (optional)
-</code></pre>
 ]]></content>
   </entry>
   

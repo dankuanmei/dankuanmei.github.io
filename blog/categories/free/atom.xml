@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Free | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/free/atom.xml" rel="self"/>
+  <link href="http://dankuanmei.github.io/"/>
+  <updated>2015-07-15T22:07:31+09:00</updated>
+  <id>http://dankuanmei.github.io/</id>
+  <author>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Free Resource]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/15/free-resource/"/>
+    <updated>2015-07-15T21:21:47+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/15/free-resource</id>
+    <content type="html"><![CDATA[<h3>SNS avatar generator</h3>
+
+<p><code>uiFaces</code></p>
+
+<p><a href="http://uifaces.com/">http://uifaces.com/</a></p>
+
+<p>Dùng trong trường hợp muốn tạo ra một loạt avatar dùng cho demo vân vân.</p>
+
+<p>Có tích hợp cả API, rất đáng để dùng thử.</p>
+
+<h3>Free Video</h3>
+
+<p><code>mazwai</code></p>
+
+<p><a href="http://mazwai.com/#index">http://mazwai.com/#index</a></p>
+
+<p>Toàn là video nhìn rất cool.</p>
+
+<p><code>jQuery video background plugin</code></p>
+
+<p><a href="https://github.com/VodkaBears/Vide">https://github.com/VodkaBears/Vide</a></p>
+
+<h3>Icon</h3>
+
+<p><code>iconfinder</code></p>
+
+<p><a href="https://www.iconfinder.com/">https://www.iconfinder.com/</a></p>
+
+<h3>Html template</h3>
+
+<p><code>html5up</code></p>
+
+<p><a href="http://html5up.net/">http://html5up.net/</a></p>
+
+<p><code>startbootstrap</code></p>
+
+<p><a href="http://startbootstrap.com/">http://startbootstrap.com/</a></p>
+
+<p><code>blacktie</code></p>
+
+<p><a href="http://www.blacktie.co/">http://www.blacktie.co/</a></p>
+
+<h3>Free logo</h3>
+
+<p><code>Squarespace</code> (Recommend)</p>
+
+<p><a href="http://www.squarespace.com/logo#">http://www.squarespace.com/logo#</a></p>
+
+<p><code>LOGASTER</code></p>
+
+<p><a href="https://www.logaster.com/">https://www.logaster.com/</a></p>
+
+<h3>CSS animation</h3>
+
+<p><code>Animate.css</code> (Recommend)</p>
+
+<p><a href="http://daneden.github.io/animate.css/">http://daneden.github.io/animate.css/</a></p>
+
+<h3>HTML Gen</h3>
+
+<p><code>coveloping</code> (Recommend)</p>
+
+<p><a href="http://coveloping.com/">http://coveloping.com/</a></p>
+
+<p>Tập hợp rất nhiều công cụ dùng để sinh ra các phần trong trang HTML như price page vân vân.</p>
+
+<p><code>TeamPage.io</code></p>
+
+<p><a href="http://www.teampage.io/">http://www.teampage.io/</a></p>
+
+<p>Tạo team member page một cách rất đơn giản.</p>
+
+<p><code>FRAME</code></p>
+
+<p><a href="http://frame.lab25.co.uk/">http://frame.lab25.co.uk/</a></p>
+
+<p>Sinh ra 1 top page na ná như trang đó.</p>
+
+<p><code>UICloud</code></p>
+
+<p><a href="http://ui-cloud.com/">http://ui-cloud.com/</a></p>
+
+<p>Trang chuyên dùng cho việc search tham khảo những thành phần của UI.</p>
+]]></content>
+  </entry>
+  
+</feed>

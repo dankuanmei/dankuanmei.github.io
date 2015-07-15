@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="From Wikipedia In theoretical computer science and formal language theory, a regular expression (abbreviated regex or regexp and sometimes called a &hellip;">
+  <meta name="description" content="RESTtful webservice là gì? REST là một tập hợp các nguyên tắc mà dữ liệu có thể truyền qua phương thức truyền tin (như là HTTP). REST là từ viết tắt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,335 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/09/introduction-to-restful-webservice/">Explore About RESTful Webservice</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-09T10:39:53+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:39 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>RESTtful webservice là gì?</h3>
+
+<p>REST là một tập hợp các nguyên tắc mà dữ liệu có thể truyền qua phương thức truyền tin (như là HTTP). REST  là từ viết tắt của Representational State Transfer.</p>
+
+<p>This basically means that each unique URL is a representation of some object.</p>
+
+<p>Represntational : Tiêu biểu, tượng trưng; Đại diện, thay mặt</p>
+
+<p>State: Trạng thái; tình trạng</p>
+
+<p>Transfer: Sự di chuyển, sự dời chỗ; sự truyền</p>
+
+<p>REST yêu cầu người lập trình sử dụng các phương thức HTTP một cách rõ ràng và theo một cách phù hợp với định nghĩa giao thức. Nguyên tắc thiết kế cơ bản là thiết lập một ánh xạ 1:1 giữa create, read, update và delete (CRUD) và HTTP methods. Tuân theo quy tắc dưới đây:</p>
+
+<ul>
+<li>Để &ldquo;create&rdquo;, hãy sử dụng POST</li>
+<li>Để &ldquo;read&rdquo;, hãy sử dụng GET.</li>
+<li>Để &ldquo;update&rdquo;, hãy sử dụng PUT.</li>
+<li>Để &ldquo;delete&rdquo;, hãy sử dụng DELETE.</li>
+</ul>
+
+
+<h3>Who is using Restful webservice?</h3>
+
+<p>Internet giants like Yahoo, Amazon, eBay and more are using Restful webservice</p>
+
+<h3>Rest vs SOAP</h3>
+
+<table>
+<thead>
+<tr>
+<th> REST                                                  </th>
+<th> SOAP                                          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> REST stands for REpresentational State Transfer       </td>
+<td> SOAP stands for Simple Object Access Protocol </td>
+</tr>
+<tr>
+<td> REST is not XML protocol based                        </td>
+<td> SOAP is a XML based messaging protocol        </td>
+</tr>
+<tr>
+<td> REST doesn’t have any specification                     </td>
+<td> SOAP has specifications like WSDL etc         </td>
+</tr>
+<tr>
+<td> REST doesn’t enforce message format as XML or JSON  </td>
+<td> SOAP enforces message format as XML           </td>
+</tr>
+<tr>
+<td> Light weight – due to the usage of JSON             </td>
+<td> Heavy weight – due to the usage of XML      </td>
+</tr>
+<tr>
+<td> Easy to parse the response                            </td>
+<td> Bit difficult to parse the response           </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>RESTFul Webservice Request and Response – Drill down</h3>
+
+<p>Bước đầu tiên khi thiết kế RESTFul webservice là lựa chọn domain name đúng - gửi đến weatherinfo.org để hỏi thông tin thời tiết của các thành phố.</p>
+
+<p>Hãy xem ví dụ đầu tiên (weatherinfo.org) đã lấy tên thành phố là đầu vào, lấy thông tin thời tiết của thành phố và gửi trả kết quả lại cho trình duyệt. Giả sử các kết quả trả về là XML format, nó có thể là JSON một cách dễ dàng.</p>
+
+<p>Dưới đây là cấu trúc của Request và Response:</p>
+
+<h4>HTTP Request</h4>
+
+<p>The client request from the browser will look like:</p>
+
+<pre><code>GET http://weatherinfo.org/getweather/mumbai HTTP/1.1
+</code></pre>
+
+<h4>HTTP Response</h4>
+
+<p>The server response will look like</p>
+
+<pre><code>HTTP/1.1 200 Ok
+Date: Mon, 14 Apr 2014 10:20:58 GMT
+Content-Type: text/xml
+Content-length: 139
+
+&lt;City name="Mumbai" datetime="2014-04-14 10:20:58 GMT" &gt;
+&lt;Condition&gt;Scattered Clouds&lt;/Condition&gt;
+&lt;Temp&gt;33&lt;/Temp&gt;
+&lt;/City&gt;
+</code></pre>
+
+<p>Line 1 is the initial line which has the HTTP response code – 200 OK, lines 2 through 4 are the HTTP headers (there can be lots of headers, only 3 are shown here), line 5 is the mandatory blank line separating header and body, and lines 6 through 10 constitute the “HTTP Body (or content)” – this part is the data that the response carries and can be in any format, not necessarily XML.</p>
+
+<p>In fact, the most commonly used format on the web is HTML – one that web servers use to send back data to browsers. Whatever it is, the “Content-type” header usually specifies it. But if you are writing a web service, JSON is a better choice, but that is upto me. If your web service does not return complex or composite data, the format does not need to be JSON – it can be plain , in which case the body will just be a string of characters.</p>
+
+<h3>Advantages of using RESTful webservice</h3>
+
+<ol>
+<li><p>RESTful Web services are designed with less dependence on proprietary middleware (for example, an application server) than the SOAP- and WSDL-based kind.</p></li>
+<li><p>As per the RESTful interface design, XML or JSON over HTTP is a powerful interface that allows internal applications, such as Asynchronous JavaScript + XML/JSON (Ajax)-based custom user interfaces, to easily connect, address, and consume resources.</p></li>
+<li><p>The great fit between Ajax and REST has increased the amount of attention REST is getting these days.</p></li>
+<li><p>Exposing a system’s resources through a RESTful API is a flexible way to provide different kinds of applications with data formatted in a standard way. It helps to meet integration requirements that are critical to building systems where data can be easily combined (mashups) and to extend or build on a set of base, RESTful services into something much bigger.</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/07/javascript-regexp-reference/">JavaScript RegExp Reference</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-07T10:49:42+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:49 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Một biểu thức chính quy là một chuỗi các ký tự tạo thành một mẫu tìm kiếm.</p>
+
+<p>Một mẫu tìm kiếm có thể được sử dụng cho tìm kiếm văn bản và thay thế text trong văn bản.</p>
+
+<h3>What Is a Regular Expression?</h3>
+
+<p>Khi bạn tìm kiếm dữ liệu trong văn bản, có thể sử dụng mẫu tìm kiếm này để miêu tả cái đang tìm kiếm.</p>
+
+<p>Một biểu thức chính quy có thể là một ký tự, hoặc có thể là môt mẫu phức tạp.</p>
+
+<p>Biểu thức chính quy có thể được sử dụng để thực hiện xử lý tìm kiếm và thay thế văn bản.</p>
+
+<h3>Syntax</h3>
+
+<pre><code>/pattern/modifiers;
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>var patt = /w3schools/i
+</code></pre>
+
+<p>Example explained:</p>
+
+<ul>
+<li><code>/w3schools/i</code>  là một biểu thức chính quy</li>
+<li><code>w3schools</code>  là một mẫu (to be used in a search).</li>
+<li><code>i</code>  là một modifier (modifies the search to be case-insensitive).</li>
+</ul>
+
+
+<h3>Using String Methods</h3>
+
+<p>In JavaScript, regular expressions are often used with the two string methods: search() and replace().</p>
+
+<p>The search() method uses an expression to search for a match, and returns the position of the match.</p>
+
+<p>The replace() method returns a modified string where the pattern is replaced.</p>
+
+<h3>Using String search() With a Regular Expression</h3>
+
+<p>Example use a regular expression to do a case-insensitive search for &ldquo;w3schools&rdquo; in a string:</p>
+
+<pre><code>var str = "Visit W3Schools";
+var n = str.search(/w3schools/i);
+</code></pre>
+
+<p>The result in n will be: <code>6</code></p>
+
+<h3>Using String search() With String</h3>
+
+<p>Example use a case insensitive regular expression to replace Microsoft with W3Schools in a string:</p>
+
+<pre><code>var str = "Visit Microsoft!";
+var res = str.replace(/microsoft/i, "W3Schools");
+</code></pre>
+
+<p>The result in res will be: <code>Visit W3Schools!</code></p>
+
+<h3>Using String replace() With a String</h3>
+
+<p>The replace() method will also accept a string as search argument:</p>
+
+<pre><code>var str = "Visit Microsoft!";
+var res = str.replace("Microsoft", "W3Schools");
+</code></pre>
+
+<h3>RegExp Object</h3>
+
+<p>A regular expression is an object that describes a pattern of characters.</p>
+
+<p>Regular expressions are used to perform pattern-matching and &ldquo;search-and-replace&rdquo; functions on text.</p>
+
+<h3>Syntax</h3>
+
+<pre><code>/pattern/modifiers;
+</code></pre>
+
+<p>Example:</p>
+
+<pre><code>var patt = /w3schools/i
+</code></pre>
+
+<h3>Modifiers</h3>
+
+<p>Modifiers are used to perform case-insensitive and global searches:</p>
+
+<pre><code>Modifier        Description
+i               Bật chế độ tìm kiếm phân biệt hoa thường
+g               Bật chế độ tìm kiếm toàn cục (nếu không thì sẽ chỉ tìm kiếm kết quả đầu tiên)
+m               bật chế độ tìm kiếm trên nhiều dòng
+</code></pre>
+
+<h3>Brackets</h3>
+
+<p>Cặp ngoặc được dùng để tìm kiếm một dải ký tự:</p>
+
+<pre><code>Expression      Description
+[abc]           1 ký tự a hoặc b hoặc c
+[^abc]          1 ký tự nào đó khác a,b,c (ví dụ d)
+[0-9]           1 ký tự số từ 0 đến 9
+[^0-9]          1 ký tự số không phải từ 0 đến 9
+(x|y)           1 ký tự hoặc là x hoặc là y
+</code></pre>
+
+<h3>Metacharacters</h3>
+
+<p>Metacharacters are characters with a special meaning:</p>
+
+<pre><code>Metacharacters  Description
+.               Find a single character, except newline or line terminator
+\w              Find a word character
+\W              Find a non-word character
+\d              Find a digit
+\D              Find a non-digit character
+\s              Find a whitespace character
+\S              Find a non-whitespace character
+\b              Find a match at the beginning/end of a word
+\B              Find a match not at the beginning/end of a word
+\0              Find a NUL character
+\n              Find a new line character
+\f              Find a form feed character
+\r              Find a carriage return character
+\t              Find a tab character
+\v              Find a vertical tab character
+\xxx            Find the character specified by an octal number xxx
+\xdd            Find the character specified by a hexadecimal number dd
+\uxxxx          Find the Unicode character specified by a hexadecimal number xxxx
+</code></pre>
+
+<h3>Quantifiers</h3>
+
+<pre><code>Quantifier      Description
+n+              Matches any string that contains at least one n
+n*              Matches any string that contains zero or more occurrences of n
+n?              Matches any string that contains zero or one occurrences of n
+n{X}            Matches any string that contains a sequence of X n's
+n{X,Y}          Matches any string that contains a sequence of X to Y n's
+n{X,}           Matches any string that contains a sequence of at least X n's
+n$              Matches any string with n at the end of it
+^n              Matches any string with n at the beginning of it
+?=n             Matches any string that is followed by a specific string n
+?!n             Matches any string that is not followed by a specific string n
+</code></pre>
+
+<h3>RegExp Object Properties</h3>
+
+<pre><code>Property        Description
+constructor     Returns the function that created the RegExp object's prototype
+global          Checks whether the "g" modifier is set
+ignoreCase      Checks whether the "i" modifier is set
+lastIndex       Specifies the index at which to start the next match
+multiline       Checks whether the "m" modifier is set
+source          Returns the text of the RegExp pattern
+</code></pre>
+
+<h3>RegExp Object Methods</h3>
+
+<pre><code>Method          Description
+compile()       Deprecated in version 1.5. Compiles a regular expression
+exec()          Tests for a match in a string. Returns the first match
+test()          Tests for a match in a string. Returns true or false
+toString()      Returns the string value of the regular expression
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -809,165 +1138,6 @@ $ w
 
 
   <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/04/mysql-useful-command-line/">Mysql - Useful Command Line</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-04T17:59:51+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:59 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Create database UTF8</h3>
-
-<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
-</code></pre>
-
-<h3>Drop database</h3>
-
-<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
-</code></pre>
-
-<h3>Import database from file</h3>
-
-<pre><code>$ mysql -u username -p database_name &lt; file.sql
-</code></pre>
-
-<h3>Export database to file</h3>
-
-<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/04/cakephp-3-dot-x-code-generation-with-bake/">CakePHP 3.x - Code Generation With Bake</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-04T17:44:10+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:44 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Some useful command</h2>
-
-<pre><code>$ bin/cake bake all users
-
-$ bin/cake bake controller users
-
-$ bin/cake bake model users
-</code></pre>
-
-<h2>Full guide</h2>
-
-<p>When run with no arguments bin/cake bake will output a list of available tasks. You should see something like:</p>
-
-<pre><code>$ bin/cake bake
-
-Welcome to CakePHP v3.0.0 Console
----------------------------------------------------------------
-App : src
-Path: /var/www/cakephp.dev/src/
----------------------------------------------------------------
-The following commands can be used to generate skeleton code for your application.
-
-Available bake commands:
-
-- all
-- behavior
-- cell
-- component
-- controller
-- fixture
-- form
-- helper
-- model
-- plugin
-- shell
-- template
-- test
-
-By using `cake bake [name]` you can invoke a specific bake task.
-</code></pre>
-
-<p>You can get more information on what each task does, and what options are available using the &ndash;help option:</p>
-
-<pre><code>$ bin/cake bake controller --help
-
-Welcome to CakePHP v3.0.0 Console
----------------------------------------------------------------
-App : src
-Path: /var/www/cakephp.dev/src/
----------------------------------------------------------------
-Bake a controller skeleton.
-
-Usage:
-cake bake controller [subcommand] [options] [&lt;name&gt;]
-
-Subcommands:
-
-all  Bake all controllers with CRUD methods.
-
-To see help on a subcommand use `cake bake controller [subcommand] --help`
-
-Options:
-
---help, -h        Display this help.
---verbose, -v     Enable verbose output.
---quiet, -q       Enable quiet output.
---plugin, -p      Plugin to bake into.
---force, -f       Force overwriting existing files without prompting.
---connection, -c  The datasource connection to get data from.
-                  (default: default)
---theme, -t       The theme to use when baking code.
---components      The comma separated list of components to use.
---helpers         The comma separated list of helpers to use.
---prefix          The namespace/routing prefix to use.
---no-test         Do not generate a test skeleton.
---no-actions      Do not generate basic CRUD action methods.
-
-Arguments:
-
-name  Name of the controller to bake. Can use Plugin.name to bake
-    controllers into plugins. (optional)
-</code></pre>
 </div>
   
   

@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Install openGL in Ubuntu - ダン・クァン・ミン Blog</title>
+  <title>OpenGL Beginner - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Command line $ sudo apt-get install freeglut3-dev libglew1.5-dev $ sudo apt-get install libxmu-dev libxi-dev $ sudo apt-get install binutils-gold $ &hellip;">
+  <meta name="description" content="Opening a window Ok, let’s go. First, we’ll have to deal with dependencies : we need some basic stuff to display messages in the console : // Include &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/15/install-opengl-in-ubuntu">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -83,7 +83,7 @@
   <header>
     
       
-        <h1 class="entry-title">Install openGL in Ubuntu</h1>
+        <h1 class="entry-title">OpenGL Beginner</h1>
       
     
     
@@ -93,7 +93,7 @@
 
 
 
-<time class='entry-date' datetime='2015-07-15T01:22:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:22 am</span></time>
+<time class='entry-date' datetime='2015-07-15T22:03:54+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:03 pm</span></time>
         
         
       </p>
@@ -101,15 +101,89 @@
   </header>
 
 
-<div class="entry-content"><h3>Command line</h3>
+<div class="entry-content"><h3>Opening a window</h3>
 
-<pre><code>$ sudo apt-get install freeglut3-dev libglew1.5-dev
+<p>Ok, let’s go. First, we’ll have to deal with dependencies : we need some basic stuff to display messages in the console :</p>
 
-$ sudo apt-get install libxmu-dev libxi-dev
+<pre><code>// Include standard headers
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+</code></pre>
 
-$ sudo apt-get install binutils-gold
+<p>First, GLEW. So this one actually is a little bit magic, but let’s leave this for later.</p>
 
-$ gcc dino.c -o dino -lGL -lglut
+<pre><code>// Include GLEW. Always include it before gl.h and glfw.h, since it's a bit magic.
+#include &lt;GL/glew.h&gt;
+</code></pre>
+
+<p>We decided to let GLFW handle the window and the keyboard, so let’s include it too :</p>
+
+<pre><code>// Include GLFW
+#include &lt;GL/glfw3.h&gt;
+</code></pre>
+
+<p>We don’t actually need this one right now, but this is a library for 3D mathematics. It will prove very useful soon. There is no magic in GLM, you can write your own if you want; it’s just handy. The “using namespace” is there to avoid typing “glm::vec3″, but “vec3″ instead.</p>
+
+<pre><code>// Include GLM
+#include &lt;glm/glm.hpp&gt;
+using namespace glm;
+</code></pre>
+
+<p>If you cut’n paste all these #include’s in playground.cpp, the compiler will complain that there is no main() function. So let’s create one :</p>
+
+<pre><code>int main(){
+}
+</code></pre>
+
+<p>First thing to do it to initialize GLFW :</p>
+
+<pre><code>// Initialise GLFW
+if( !glfwInit() )
+{
+    fprintf( stderr, "Failed to initialize GLFW\n" );
+    return -1;
+}
+</code></pre>
+
+<p>We can now create our first OpenGL window !</p>
+
+<pre><code>glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
+glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
+glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
+glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
+
+// Open a window and create its OpenGL context 
+GLFWwindow* window; // (In the accompanying source code, this variable is global) 
+window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL); 
+if( window == NULL ){
+    fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
+    glfwTerminate();
+    return -1;
+}
+glfwMakeContextCurrent(window); // Initialize GLEW 
+glewExperimental=true; // Needed in core profile 
+if (glewInit() != GLEW_OK) {
+    fprintf(stderr, "Failed to initialize GLEW\n");
+    return -1;
+}
+</code></pre>
+
+<p>Build this and run. A window should appear, and be closed right away. Of course ! We need to wait until the user hits the Escape key :</p>
+
+<pre><code>// Ensure we can capture the escape key being pressed below
+glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+
+do{
+    // Draw nothing, see you in tutorial 2 !
+
+    // Swap buffers
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+
+} // Check if the ESC key was pressed or the window was closed
+while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &amp;&amp;
+glfwWindowShouldClose(window) == 0 );
 </code></pre>
 </div>
 
@@ -133,7 +207,7 @@ $ gcc dino.c -o dino -lGL -lglut
 
 
 
-<time class='entry-date' datetime='2015-07-15T01:22:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:22 am</span></time>
+<time class='entry-date' datetime='2015-07-15T22:03:54+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:03 pm</span></time>
       
       
 
@@ -148,7 +222,7 @@ $ gcc dino.c -o dino -lGL -lglut
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/15/install-opengl-in-ubuntu/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/15/install-opengl-in-ubuntu/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner/" >Tweet</a>
   
   
   
@@ -157,10 +231,8 @@ $ gcc dino.c -o dino -lGL -lglut
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/07/11/install-golang/" title="Previous Post: Install GoLang">&laquo; Install GoLang</a>
+        <a class="basic-alignment left" href="/blog/2015/07/15/free-resource/" title="Previous Post: Free resource">&laquo; Free resource</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/07/15/free-resource/" title="Next Post: Free resource">Free resource &raquo;</a>
       
     </p>
   </footer>

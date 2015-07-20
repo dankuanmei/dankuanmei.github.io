@@ -5,11 +5,13 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>OpenGL Beginner - ダン・クァン・ミン Blog</title>
+  <title>Install Apache2 and Passenger - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Opening a window Ok, let’s go. First, we’ll have to deal with dependencies : we need some basic stuff to display messages in the console : // Include &hellip;">
+  <meta name="description" content="Update hệ thống và cài đặt cái gói build cơ bản apt-get update
+apt-get upgrade
+apt-get install build-essential Cài đặt Ruby curl -sSL https://rvm.io/ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +20,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/20/install-apache2-and-passenger">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -83,7 +85,7 @@
   <header>
     
       
-        <h1 class="entry-title">OpenGL Beginner</h1>
+        <h1 class="entry-title">Install Apache2 and Passenger</h1>
       
     
     
@@ -93,7 +95,7 @@
 
 
 
-<time class='entry-date' datetime='2015-07-15T22:03:54+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:03 pm</span></time>
+<time class='entry-date' datetime='2015-07-20T11:23:25+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:23 am</span></time>
         
         
       </p>
@@ -101,89 +103,84 @@
   </header>
 
 
-<div class="entry-content"><h3>Opening a window</h3>
+<div class="entry-content"><h3>Update hệ thống và cài đặt cái gói build cơ bản</h3>
 
-<p>Ok, let’s go. First, we’ll have to deal with dependencies : we need some basic stuff to display messages in the console :</p>
-
-<pre><code>// Include standard headers
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+<pre><code>apt-get update
+apt-get upgrade
+apt-get install build-essential
 </code></pre>
 
-<p>First, GLEW. So this one actually is a little bit magic, but let’s leave this for later.</p>
+<h3>Cài đặt Ruby</h3>
 
-<pre><code>// Include GLEW. Always include it before gl.h and glfw.h, since it's a bit magic.
-#include &lt;GL/glew.h&gt;
+<pre><code>curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+curl -sSL https://get.rvm.io | bash -s stable
+
+rvm install 2.2.2
+rvm use 2.2.2 --default
 </code></pre>
 
-<p>We decided to let GLFW handle the window and the keyboard, so let’s include it too :</p>
+<h3>Cài đặt Apache2 và Passenger</h3>
 
-<pre><code>// Include GLFW
-#include &lt;GL/glfw3.h&gt;
+<pre><code>apt-get install apache2
+passenger-install-apache2-module
 </code></pre>
 
-<p>We don’t actually need this one right now, but this is a library for 3D mathematics. It will prove very useful soon. There is no magic in GLM, you can write your own if you want; it’s just handy. The “using namespace” is there to avoid typing “glm::vec3″, but “vec3″ instead.</p>
+<h3>Config Apache2 với Passenger sau khi đã cài đặt xong Passenger</h3>
 
-<pre><code>// Include GLM
-#include &lt;glm/glm.hpp&gt;
-using namespace glm;
+<p>Tạo file /etc/apache2/mods-available/passenger.load</p>
+
+<pre><code>LoadModule passenger_module /home/root/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14/buildout/apache2/mod_passenger.so
 </code></pre>
 
-<p>If you cut’n paste all these #include’s in playground.cpp, the compiler will complain that there is no main() function. So let’s create one :</p>
+<p>Tạo file /etc/apache2/mods-available/passenger.conf</p>
 
-<pre><code>int main(){
-}
+<pre><code>&lt;IfModule mod_passenger.c&gt;
+     PassengerRoot /home/deploy/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14
+     PassengerDefaultRuby /home/deploy/.rvm/gems/ruby-2.2.2/wrappers/ruby
+     PassengerMaxPoolSize 10
+&lt;/IfModule&gt;
 </code></pre>
 
-<p>First thing to do it to initialize GLFW :</p>
+<p>Run command</p>
 
-<pre><code>// Initialise GLFW
-if( !glfwInit() )
-{
-    fprintf( stderr, "Failed to initialize GLFW\n" );
-    return -1;
-}
+<pre><code>a2enmod passenger
 </code></pre>
 
-<p>We can now create our first OpenGL window !</p>
+<h3>Config app Rails và add domain/sub-domain</h3>
 
-<pre><code>glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
-glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
-glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
+<p>Các bạn có thể tạo 1 file với tên bất kì trong thư mục /etc/apache2/sites-enabled</p>
 
-// Open a window and create its OpenGL context 
-GLFWwindow* window; // (In the accompanying source code, this variable is global) 
-window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL); 
-if( window == NULL ){
-    fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
-    glfwTerminate();
-    return -1;
-}
-glfwMakeContextCurrent(window); // Initialize GLEW 
-glewExperimental=true; // Needed in core profile 
-if (glewInit() != GLEW_OK) {
-    fprintf(stderr, "Failed to initialize GLEW\n");
-    return -1;
-}
+<p>Như mình thì cứ mỗi 1 app Rails/PHP mình sẽ tạo 1 file ở đây, sau này mình muốn gỡ app nào đó đi mình chỉ cần xóa file đó là được.</p>
+
+<p>Ví dụ với app Rails của mình gắn với domain: ruby.rocks, mình sẽ tạo file có tên là: ruby.rocks.conf có nội dung như sau:</p>
+
+<pre><code>&lt;VirtualHost *:80&gt;
+  ServerName ruby.rocks
+  DocumentRoot /home/root/mania-rails-test/public
+  RailsEnv production
+    &lt;Directory /home/root/mania-rails-test/public&gt;
+        Allow from all
+        Options -MultiViews
+        Require all granted
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
 </code></pre>
 
-<p>Build this and run. A window should appear, and be closed right away. Of course ! We need to wait until the user hits the Escape key :</p>
+<p>Giải thích các chỉ thị trong file này:</p>
 
-<pre><code>// Ensure we can capture the escape key being pressed below
-glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
+<ul>
+<li>VirtualHost *:80: bạn đang chỉ định rằng app này có thể được truy cập từ bên ngoài qua cổng 80</li>
+<li>ServerName ruby.rocks: đây chính là tên miền mà bạn muốn gắn với app Rails này</li>
+<li>DocumentRoot /home/root/mania-rails-test/public: đây là nơi để bạn define đường dẫn tới app Rails của bạn, và theo convention của Passenger thì sẽ là: $RAILS_ROOT_PATH + /public. Ví dụ app Rails của mình đặt tại /home/root/mania-rails-test/. Thì mình sẽ để là /home/root/mania-rails-test/public</li>
+<li>RailsEnv production Môi trường khi chạy app Rails này</li>
+<li>Tại thẻ Directory các bạn cũng để đường dẫn tới app Rails của mình giống như DocumentRoot</li>
+<li>Các phần còn lại trong thẻ Directory các bạn giữ nguyên, chúng ta sẽ nói về phần này sau.</li>
+</ul>
 
-do{
-    // Draw nothing, see you in tutorial 2 !
 
-    // Swap buffers
-    glfwSwapBuffers(window);
-    glfwPollEvents();
+<p>Cuối cùng chạy command</p>
 
-} // Check if the ESC key was pressed or the window was closed
-while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &amp;&amp;
-glfwWindowShouldClose(window) == 0 );
+<pre><code>service apache2 restart
 </code></pre>
 </div>
 
@@ -207,13 +204,13 @@ glfwWindowShouldClose(window) == 0 );
 
 
 
-<time class='entry-date' datetime='2015-07-15T22:03:54+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:03 pm</span></time>
+<time class='entry-date' datetime='2015-07-20T11:23:25+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:23 am</span></time>
       
       
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/opengl/'>opengl</a>
+    <a class='category' href='/blog/categories/apache2/'>apache2</a>, <a class='category' href='/blog/categories/passenger/'>passenger</a>
   
 </span>
 
@@ -222,7 +219,7 @@ glfwWindowShouldClose(window) == 0 );
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/15/opengl-beginner/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/20/install-apache2-and-passenger/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/20/install-apache2-and-passenger/" >Tweet</a>
   
   
   
@@ -231,10 +228,8 @@ glfwWindowShouldClose(window) == 0 );
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/07/15/free-resource/" title="Previous Post: Free resource">&laquo; Free resource</a>
+        <a class="basic-alignment left" href="/blog/2015/07/15/opengl-beginner/" title="Previous Post: OpenGL Beginner">&laquo; OpenGL Beginner</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/07/20/install-apache2-and-passenger/" title="Next Post: Install apache2 and Passenger">Install apache2 and Passenger &raquo;</a>
       
     </p>
   </footer>

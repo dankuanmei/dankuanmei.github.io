@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-21T21:29:19+09:00</updated>
+  <updated>2015-07-21T21:31:29+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -29,11 +29,17 @@
 
 <ol>
 <li><p>Go to the Google Developers Console</p></li>
-<li><p>Click Create Project:</p></li>
-<li><p>In the Project name field, type in a name for your project, such as Quickstart App.</p></li>
-<li><p>In the Project ID field, optionally type in a project ID for your project or use the one that the console has created for you. This ID must be unique world-wide.</p></li>
-<li><p>Click the Create button and wait for the project to be created. Note: There may be short delay of up to 30 seconds before the project is created. Once the project is created, the name you gave it appears at the top of the left sidebar.</p></li>
-<li><p>In the left sidebar, select APIs &amp; auth (the APIs sub-item is automatically selected).</p></li>
+<li><p>Click Create Project:</p>
+
+<ul>
+<li>In the Project name field, type in a name for your project, such as Quickstart App.</li>
+<li>In the Project ID field, optionally type in a project ID for your project or use the one that the console has created for you. This ID must be unique world-wide.</li>
+</ul>
+</li>
+<li><p>Click the Create button and wait for the project to be created. Note: There may be short delay of up to 30 seconds before the project is created. Once the project is created, the name you gave it appears at the top of the left sidebar.</p>
+
+<ul>
+<li>In the left sidebar, select APIs &amp; auth (the APIs sub-item is automatically selected).</li>
 <li>Find the Google+ API and set its status to ON—notice that this action moves Google+ API to the top of the list; you can scroll up to see it.</li>
 <li>In the sidebar under &ldquo;APIs &amp; auth&rdquo;, select Consent screen.</li>
 <li>Choose an Email Address and specify a Product Name.</li>
@@ -45,6 +51,8 @@
       com.google.android.gms.plus.sample.quickstart</li>
 <li>In a terminal, run the the Keytool utility to get the SHA-1 fingerprint of the certificate. For the debug.keystore, the password is android.
       keytool -exportcert -alias androiddebugkey -keystore <path-to-debug-or-production-keystore> -list -v</li>
+</ul>
+</li>
 </ol>
 
 ]]></content>

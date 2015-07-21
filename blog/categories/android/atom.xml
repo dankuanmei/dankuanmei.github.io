@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Android | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/android/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-21T21:28:05+09:00</updated>
+  <updated>2015-07-21T21:29:19+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -41,12 +41,10 @@
 <li>Click Create a new Client ID—the Create Client ID dialog box appears, as shown further below.</li>
 <li>Select Installed application for the application type.</li>
 <li>Select Android as the installed application type.</li>
-<li><p>Copy and paste the following package name for this quick-start app into the Package name field:</p>
-
-<p>  com.google.android.gms.plus.sample.quickstart</p></li>
-<li><p>In a terminal, run the the Keytool utility to get the SHA-1 fingerprint of the certificate. For the debug.keystore, the password is android.</p>
-
-<p>  keytool -exportcert -alias androiddebugkey -keystore <path-to-debug-or-production-keystore> -list -v</p></li>
+<li>Copy and paste the following package name for this quick-start app into the Package name field:
+      com.google.android.gms.plus.sample.quickstart</li>
+<li>In a terminal, run the the Keytool utility to get the SHA-1 fingerprint of the certificate. For the debug.keystore, the password is android.
+      keytool -exportcert -alias androiddebugkey -keystore <path-to-debug-or-production-keystore> -list -v</li>
 </ol>
 
 ]]></content>

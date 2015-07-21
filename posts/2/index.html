@@ -9,8 +9,10 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Nguyên tắc trong java Dưới đây là năm mục tiêu chính khi làm việc với ngôn ngữ Java: Nó phải &ldquo;đơn giản, hướng đối tượng, và gần gũi&rdquo;.
-Nó &hellip;">
+  <meta name="description" content="Quan hệ giữa các class trong UML, gồm có các 4 quan hệ chính sau: Realization
+Generation
+Dependency
+Association: có 2 quan hệ phân biệt Aggregation & &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +82,252 @@ Nó &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/">Một Số Quan Hệ Giữa Các Class Trong UML</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-10T10:53:15+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:53 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Quan hệ giữa các class trong UML, gồm có các 4 quan hệ chính sau:</p>
+
+<ol>
+<li>Realization</li>
+<li>Generation</li>
+<li>Dependency</li>
+<li>Association: có 2 quan hệ phân biệt Aggregation &amp; Composition</li>
+</ol>
+
+
+<h3>Quan hệ Realization (hiện thực hóa)</h3>
+
+<p>Là quan hệ giữa một classifier đóng vai trò là hợp đồng và một classifier đóng vai trò thực hiện. Hay nói cách khác:</p>
+
+<p>Mối quan hệ giữa 1 class implement 1 interface được gọi là quan hệ realization, được biểu diễn bởi đường đứt nét có hình mũi tên tam giác chỉ vào interface.</p>
+
+<p><img src="http://i.imgur.com/24Do9yQ.png"></p>
+
+<h3>Quan hệ generalization (tên khác là Inheritance)</h3>
+
+<p>Còn có tên khác là:</p>
+
+<ul>
+<li>Quan hệ tổng quát hóa</li>
+<li>Quan hệ khái quát hóa</li>
+<li>Quan hệ kế thừa</li>
+</ul>
+
+
+<p>Đối tượng cụ thể (concrete) sẽ kế thừa các thuộc tính và phương thức của đối tượng tổng quát (general)</p>
+
+<p>Ký hiệu: A is-a B</p>
+
+<p><img src="http://i.imgur.com/jYOTHlb.png"></p>
+
+<p>Đọc là :</p>
+
+<ul>
+<li>A là tổng quát của B, B là chi tiết của A</li>
+<li>B là trường hợp đặc biệt của A</li>
+<li>A là cha của B, B là con của A</li>
+</ul>
+
+
+<h3>Quan hệ Dependency (phụ thuộc)</h3>
+
+<p>Là quan hệ giữa 2 phần tử trong mô hình mà thay đổi ở phần tử này (phần tử độc lập) có thể gây ra thay đổi ở phần tử kia (phần tử phục thuộc).</p>
+
+<p>Là loại quan hệ giữa 2 object</p>
+
+<p>ClassA và ClassB không có quan hệ Association</p>
+
+<p>Trong ClassA có sử dụng biến toàn cục (kiểu B), hoặc sử dụng phương thức/thuộc tính static của ClassB</p>
+
+<p>Ký hiệu : A use-a B ,  bằng mũi tên 1 chiều nét đứt , từ bên phụ thuộc sang bên độc lập ;</p>
+
+<p><img src="http://i.imgur.com/vj6U2En.png"></p>
+
+<p>ClassA “phụ thuộc” vào ClassB ;</p>
+
+<p>Client –> Supplier (phần tử phục thuộc –> phần tử độc lập)</p>
+
+<p>Dependency còn có một số biểu hiện khác , thường dùng các stereotype sau :</p>
+
+<ul>
+<li><p><code>&lt;&lt;use&gt;&gt;</code> : chỉ rằng ngữ nghĩa của lớp gốc (mũi tên) phụ thuộc vào lớp ngọn (mũi tên) . Đặc biệt trong trường hợp lớp gốc dùng lớp ngọn làm tham số trong 1 số method của nó</p></li>
+<li><p><code>&lt;&lt;permit&gt;&gt;</code> : chỉ rằng lớp gốc được quyền truy cập 1 cách đặc biệt vào lớp ngọn (chẳng hạn truy cập các thao tác riêng tư). Tương ứng với khái niệm friend trong C++</p></li>
+<li><p><code>&lt;&lt;refine&gt;&gt;</code> : chỉ rằng lớp gốc ở 1 mức độ tinh chế cao hơn từ lớp ngọn . Chẳng hạn 1 lớp lập ở giai đoạn thiết kế nhằn tinh chế cùng lớp đó lập ở giai đoạn phân tích</p></li>
+</ul>
+
+
+<p>Lưu ý : Phân biệt giữa Dependency và Association</p>
+
+<ul>
+<li>Association là quan hệ cấu trúc</li>
+<li>Dependency là qua hệ phi cấu trúc</li>
+</ul>
+
+
+<h3>Association</h3>
+
+<p>Giữa 2 object của 2 lớp có sự ghép cặp (vợ – chồng , thầy – trò , khách hàng – hóa đơn …) . Tập hợp các kết nối cùng loại (cùng ý nghĩa) giữa các object của 2 lớp tạo thành mối liên kết association , quan hệ giữa 2 tập hợp (2 lớp)</p>
+
+<p>Là mỗi liên hệ giữa 2 lớp có  role, role là tên vai trò của mối liên kết : vd như : của , cho , có , liên kết tới , trao đối với , …. (thường tên role có kèm theo 1 mũi tên để chỉ hướng quan hệ áp dụng từ lớp nào sang lớp nào)</p>
+
+<p>Ký hiệu : A has-a B</p>
+
+<p><img src="http://i.imgur.com/N6nkWbx.png"></p>
+
+<p>Ý nghĩa : (trường hợp mũi tên không có chiều)
+- Hoặc  : Trong ClassA có thuộc tính có kiểu là ClassB
+- Hoặc  : Trong ClassB có thuộc tính có kiểu là ClassA</p>
+
+<p>Nhận xét :</p>
+
+<ul>
+<li>Về mặt lập trình, thuộc tính có thể được lưu trữ dạng biến đơn, biến mảng, hay biến con trỏ</li>
+<li>Có hoặc không có bản số cũng được</li>
+<li>Có hoặc không có mũi tên cũng được</li>
+<li>Nếu có mũi tên 1 chiều , chỉ ra chiều đối tượng thuộc lớp này chỉ có gọi đối tượng của lớp kia, không có chiều ngược lại</li>
+<li>Nếu không có mũi tên nào thì tương đương là mũi tên 2 chiều , hoặc chiều không quan trọng.</li>
+<li><code>Multiplicity</code> là bản số , lượng số , số object bên này tham gia vào mối kết hợp so với 1 object bên kia.</li>
+</ul>
+
+
+<h3>Quan hệ Aggregation (còn gọi là quan hệ thu nạp)</h3>
+
+<p>Đã xác định được ClassA và ClassB có quan hệ Association với nhau</p>
+
+<p>Xác định rõ hơn:</p>
+
+<p>Trong object của ClassA có chứa (trong phần thuộc tính) object của ClassB</p>
+
+<p>ObjectX của ClassA bị hủy thì ObjectY của ClassB (bên trong ObjectX) vẫn có thể còn tồn tại</p>
+
+<p>Còn gọi là shared-aggregation.Một dạng của nối kết, trong đó một phần tử này chứa các phần tử khác.</p>
+
+<p>Ký hiệu :</p>
+
+<p><img src="http://i.imgur.com/nrYxfcB.png"></p>
+
+<p>Ý nghĩa : còn gọi là : Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , và B có thể tạo ra độc lập , không cần phải tạo ra A , B có thể cùng thuộc 1 whole khác A.</p>
+
+<p>Chú ý : Từ share ở đây có nghĩa là , B có thể là bộ phận của whole khác, do đó A bị hủy thì chưa chắc B bị hủy .</p>
+
+<h3>Quan hệ Composition (hợp thành)</h3>
+
+<p>Là loại aggregation chặt chẽ hơn , còn gọi là non-shared aggregation.</p>
+
+<p>Ký hiệu :</p>
+
+<p><img src="http://i.imgur.com/HMYgISe.png"></p>
+
+<p>Ý nghĩa : còn gọi là Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , nhưng B không thể đứng 1 mình được , B chỉ là thuộc A mà thôi không thể cùng thuộc Whole khác được.</p>
+
+<p>Đã xác định được ClassA và ClassB có quan hệ Association với nhau</p>
+
+<p>Xác định rõ hơn:</p>
+
+<ul>
+<li>Trong object của ClassA có chứa (trong phần thuộc tính) object của ClassB</li>
+<li>ObjectX của ClassA bị hủy thì ObjectY của ClassB (bên trong ObjectX) không thể còn tồn tại</li>
+</ul>
+
+
+<p>Chú ý :</p>
+
+<ul>
+<li>B chỉ có thể là bộ phận của whole A</li>
+<li>A chết thì tất cả B chết</li>
+<li>B chết không ảnh hưởng đến A</li>
+<li>Bản số của Whole A luôn là 1, nghĩa là B luôn thuộc 1 A thôi</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo Blog Miễn Phí Bằng Octopress &amp; Github</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-10T10:38:33+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:38 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Octopress</h3>
+
+<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
+$ cd octopress
+$ bundle install --path vendor/bundle
+</code></pre>
+
+<h3>Thiết lập theme</h3>
+
+<pre><code>$ git clone git://github.com/lucaslew/whitespace.git .themes/whitespace
+$ rake install['whitespace'] # for zsh, use: rake install\['whitespace'\]
+$ rake generate
+</code></pre>
+
+<h3>Thêm bài viết</h3>
+
+<pre><code>$ rake new_post['Hello world']
+</code></pre>
+
+<h3>Xem trước</h3>
+
+<pre><code>$ rake preview
+</code></pre>
+
+<h3>GitHub Pages</h3>
+
+<pre><code>$ rake setup_github_pages
+</code></pre>
+
+<h3>Triển khai</h3>
+
+<pre><code>$ rake generate
+$ rake deploy
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1154,100 +1402,6 @@ $ w
 
 <pre><code>$ netstat -an | wc -l
 </code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/06/rails-server/">Rails Server</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-06T11:25:09+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:25 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>Rails Server Throwdown: Passenger, Unicorn or Puma?</h2>
-
-<p>Every millisecond counts. As professionals from industries outside the technology sector turn to web apps to run their businesses, shaving a minuscule amount of response time from your process can mean the difference between keeping an end user happy and losing their company’s account. It’s fair game to expect your Rails server to handle load balancing, to deter DDoS attacks, and to manage your app’s reverse proxy requests.</p>
-
-<p>Selecting a Rails server can set the pace for your app’s speed and scalability down the road, and switching horses mid-stream can lead to some tough client conversations. Even as hardware gets more robust and cloud computing platforms aim to replace dedicated servers, three of the most popular Rails server products got major updates in the past few months. Therefore, we set out to compare Passenger, Unicorn, and Puma to see if there’s more than a slight difference in performance.</p>
-
-<h3>Rails Server #1: Passenger</h3>
-
-<p>Passenger still gets the Rails Core Team’s vote as the “preferred way to deploy your Rails applications,” according to Phusion’s website. After a significant update during the summer, this popular Rails server now comes in two flavors: open source and Enterprise. This popular module directly integrates with Apache or NGINX, so you can upload and run your application code with ease.</p>
-
-<p>Thanks to built-in deployment error resistance, Passenger can shut down all application processes when it encounters a configuration error or a glitch in an application’s code. The Enterprise edition of Passenger enables enhanced monitoring and debugging, so you can get to the source of an error in real time. An accepted standard for many corporate server environments, Phusion’s website boasts of over 150,000 leading companies running apps with Passenger.</p>
-
-<h3>Rails Server #2: Unicorn</h3>
-
-<p>When James Pozdena benchmarked Unicorn in 2009, it maintained consistent average response times of around a second, even when hammered by concurrent requests. Podenza noted that Passenger’s maximum response time grew by as much as a second with each concurrent request.</p>
-
-<p>However, Urban Influence’s Nate Miller discovered that Unicorn’s speed comes at a cost. While testing Unicorn as a replacement for a Mongrel deployment experiencing a high number of 502 Bad Gateway errors, Miller benchmarked a similar drop in average response time on Unicorn. However, Unicorn’s standard deviation for gateway errors increased significantly, raising concerns that the speed gains could leave the door open to increased instability.</p>
-
-<h3>Rails Server #3: Puma</h3>
-
-<p>Evan Phoenix took a “Back to the Future” approach to rails servers, rewriting code from Mongrel that hearkens back to what Phoenix calls a “pre-rack world.” His benchmarks show Puma using less than one-tenth the active memory of a similar Unicorn setup, while trouncing competitors in speed tests. Puma leverage’s Mongrel’s heritage HTTP parser, offering accuracy without the “stuck mongrel” issues that dogged early Rails deployments.</p>
-
-<p>Puma runs best with Rubinius or JRuby, implementations that provide true concurrency. As developers prepare for Rails 4, some admins report significant speed improvements when combining Puma with NGINX’s proxy functionality. As recent Ruby converts search for Rails servers, developers have noticed the difference between a slow stack and a system supercharged with Puma.</p>
-
-<h3>Verdict</h3>
-
-<p>Even though Passenger’s recent updates address both speed and stability, Puma offers a lean and fast web server solution for most applications that require high concurrency. Of course, it always makes sense to run your own benchmarks and application tests. However, with growing support for Puma on many cloud-based application servers, this significantly refreshed version of Mongrel should be easy for you to test and to enjoy.</p>
-
-<h2>Deploy</h2>
-
-<h3>Rails Server #1: Passenger</h3>
-
-<h3>Rails Server #2: Unicorn</h3>
-
-<h3>Rails Server #3: Puma</h3>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/04/vagrant/">Vagrant</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-04T21:06:20+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:06 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
 </div>
   
   

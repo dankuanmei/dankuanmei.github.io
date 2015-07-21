@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-20T12:47:13+09:00</updated>
+  <updated>2015-07-21T21:28:05+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Note Something About Android Studio]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/21/note-something-about-android-studio/"/>
+    <updated>2015-07-21T21:22:08+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/21/note-something-about-android-studio</id>
+    <content type="html"><![CDATA[<h3>Create project with Google Plus login</h3>
+
+<p>Cần phải sửa lại phiên bản của <code>play-services</code> trong file <code>build.gradle</code></p>
+
+<pre><code>compile 'com.google.android.gms:play-services:6.1.71'
+</code></pre>
+
+<h3>Thao tác để enable Google Plus API</h3>
+
+<ol>
+<li><p>Go to the Google Developers Console</p></li>
+<li><p>Click Create Project:</p></li>
+<li><p>In the Project name field, type in a name for your project, such as Quickstart App.</p></li>
+<li><p>In the Project ID field, optionally type in a project ID for your project or use the one that the console has created for you. This ID must be unique world-wide.</p></li>
+<li><p>Click the Create button and wait for the project to be created. Note: There may be short delay of up to 30 seconds before the project is created. Once the project is created, the name you gave it appears at the top of the left sidebar.</p></li>
+<li><p>In the left sidebar, select APIs &amp; auth (the APIs sub-item is automatically selected).</p></li>
+<li>Find the Google+ API and set its status to ON—notice that this action moves Google+ API to the top of the list; you can scroll up to see it.</li>
+<li>In the sidebar under &ldquo;APIs &amp; auth&rdquo;, select Consent screen.</li>
+<li>Choose an Email Address and specify a Product Name.</li>
+<li>In the left sidebar under &ldquo;APIs &amp; auth&rdquo;, select Credentials.</li>
+<li>Click Create a new Client ID—the Create Client ID dialog box appears, as shown further below.</li>
+<li>Select Installed application for the application type.</li>
+<li>Select Android as the installed application type.</li>
+<li><p>Copy and paste the following package name for this quick-start app into the Package name field:</p>
+
+<p>  com.google.android.gms.plus.sample.quickstart</p></li>
+<li><p>In a terminal, run the the Keytool utility to get the SHA-1 fingerprint of the certificate. For the debug.keystore, the password is android.</p>
+
+<p>  keytool -exportcert -alias androiddebugkey -keystore <path-to-debug-or-production-keystore> -list -v</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Building a RESTful API in a Rails Application]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/20/building-a-restful-api-in-a-rails-application/"/>
+    <updated>2015-07-20T13:02:29+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/20/building-a-restful-api-in-a-rails-application</id>
+    <content type="html"><![CDATA[<h3>Auto setup</h3>
+
+<pre><code>rails new PROJECT -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+</code></pre>
+
+<p>PROJECT is name</p>
+
+<h3>Devise</h3>
+
+<p>Devise is a flexible authentication solution for Rails based on Warden. It:</p>
+
+<ul>
+<li>Is Rack based;</li>
+<li>Is a complete MVC solution based on Rails engines;</li>
+<li>Allows you to have multiple models signed in at the same time;</li>
+<li>Is based on a modularity concept: use only what you really need.</li>
+</ul>
+
+
+<p>It&rsquo;s composed of 10 modules:</p>
+
+<ul>
+<li><code>Database Authenticatable</code> encrypts and stores a password in the database to validate the authenticity of a user while signing in. The authentication can be done both through POST requests or HTTP Basic Authentication.</li>
+<li><code>Omniauthable</code> adds OmniAuth (<a href="https://github.com/intridea/omniauth">https://github.com/intridea/omniauth</a>) support.</li>
+<li><code>Confirmable</code> sends emails with confirmation instructions and verifies whether an account is already confirmed during sign in.</li>
+<li><code>Recoverable</code> resets the user password and sends reset instructions.</li>
+<li><code>Registerable</code> handles signing up users through a registration process, also allowing them to edit and destroy their account.</li>
+<li><code>Rememberable</code> manages generating and clearing a token for remembering the user from a saved cookie.</li>
+<li><code>Trackable</code> tracks sign in count, timestamps and IP address.</li>
+<li><code>Timeoutable</code> expires sessions that have not been active in a specified period of time.</li>
+<li><code>Validatable</code> provides validations of email and password. It&rsquo;s optional and can be customized, so you&rsquo;re able to define your own validations.</li>
+<li><code>Lockable</code> locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.</li>
+</ul>
+
+
+<h5>Getting started</h5>
+
+<pre><code>gem 'devise'
+
+rails generate devise:install
+
+rails generate devise MODEL
+</code></pre>
+
+<p>Replace MODEL with the class name used for the application’s users (it’s frequently User but could also be Admin).</p>
+
+<p>This will create a model (if one does not exist) and configure it with default Devise modules. The generator also configures your config/routes.rb file to point to the Devise controller.</p>
+
+<p>Next, check the MODEL for any additional configuration options you might want to add, such as confirmable or lockable. If you add an option, be sure to inspect the migration file (created by the generator if your ORM supports them) and uncomment the appropriate section. For example, if you add the confirmable option in the model, you&rsquo;ll need to uncomment the Confirmable section in the migration.</p>
+
+<p>Then run:</p>
+
+<pre><code>rake db:migrate
+</code></pre>
+
+<p>Next, you need to set up the default URL options for the Devise mailer in each environment.</p>
+
+<p>Here is a possible configuration for config/environments/development.rb:</p>
+
+<pre><code>config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Install Apache2 and Passenger]]></title>
@@ -1917,58 +2025,6 @@ $ w
 
 <pre><code>$ netstat -an | wc -l
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Rails Server]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/06/rails-server/"/>
-    <updated>2015-07-06T11:25:09+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/06/rails-server</id>
-    <content type="html"><![CDATA[<h2>Rails Server Throwdown: Passenger, Unicorn or Puma?</h2>
-
-<p>Every millisecond counts. As professionals from industries outside the technology sector turn to web apps to run their businesses, shaving a minuscule amount of response time from your process can mean the difference between keeping an end user happy and losing their company’s account. It’s fair game to expect your Rails server to handle load balancing, to deter DDoS attacks, and to manage your app’s reverse proxy requests.</p>
-
-<p>Selecting a Rails server can set the pace for your app’s speed and scalability down the road, and switching horses mid-stream can lead to some tough client conversations. Even as hardware gets more robust and cloud computing platforms aim to replace dedicated servers, three of the most popular Rails server products got major updates in the past few months. Therefore, we set out to compare Passenger, Unicorn, and Puma to see if there’s more than a slight difference in performance.</p>
-
-<h3>Rails Server #1: Passenger</h3>
-
-<p>Passenger still gets the Rails Core Team’s vote as the “preferred way to deploy your Rails applications,” according to Phusion’s website. After a significant update during the summer, this popular Rails server now comes in two flavors: open source and Enterprise. This popular module directly integrates with Apache or NGINX, so you can upload and run your application code with ease.</p>
-
-<p>Thanks to built-in deployment error resistance, Passenger can shut down all application processes when it encounters a configuration error or a glitch in an application’s code. The Enterprise edition of Passenger enables enhanced monitoring and debugging, so you can get to the source of an error in real time. An accepted standard for many corporate server environments, Phusion’s website boasts of over 150,000 leading companies running apps with Passenger.</p>
-
-<h3>Rails Server #2: Unicorn</h3>
-
-<p>When James Pozdena benchmarked Unicorn in 2009, it maintained consistent average response times of around a second, even when hammered by concurrent requests. Podenza noted that Passenger’s maximum response time grew by as much as a second with each concurrent request.</p>
-
-<p>However, Urban Influence’s Nate Miller discovered that Unicorn’s speed comes at a cost. While testing Unicorn as a replacement for a Mongrel deployment experiencing a high number of 502 Bad Gateway errors, Miller benchmarked a similar drop in average response time on Unicorn. However, Unicorn’s standard deviation for gateway errors increased significantly, raising concerns that the speed gains could leave the door open to increased instability.</p>
-
-<h3>Rails Server #3: Puma</h3>
-
-<p>Evan Phoenix took a “Back to the Future” approach to rails servers, rewriting code from Mongrel that hearkens back to what Phoenix calls a “pre-rack world.” His benchmarks show Puma using less than one-tenth the active memory of a similar Unicorn setup, while trouncing competitors in speed tests. Puma leverage’s Mongrel’s heritage HTTP parser, offering accuracy without the “stuck mongrel” issues that dogged early Rails deployments.</p>
-
-<p>Puma runs best with Rubinius or JRuby, implementations that provide true concurrency. As developers prepare for Rails 4, some admins report significant speed improvements when combining Puma with NGINX’s proxy functionality. As recent Ruby converts search for Rails servers, developers have noticed the difference between a slow stack and a system supercharged with Puma.</p>
-
-<h3>Verdict</h3>
-
-<p>Even though Passenger’s recent updates address both speed and stability, Puma offers a lean and fast web server solution for most applications that require high concurrency. Of course, it always makes sense to run your own benchmarks and application tests. However, with growing support for Puma on many cloud-based application servers, this significantly refreshed version of Mongrel should be easy for you to test and to enjoy.</p>
-
-<h2>Deploy</h2>
-
-<h3>Rails Server #1: Passenger</h3>
-
-<h3>Rails Server #2: Unicorn</h3>
-
-<h3>Rails Server #3: Puma</h3>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vagrant]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/04/vagrant/"/>
-    <updated>2015-07-04T21:06:20+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/04/vagrant</id>
-    <content type="html"><![CDATA[
 ]]></content>
   </entry>
   

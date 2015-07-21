@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Restful - ダン・クァン・ミン Blog</title>
+  <title>Note Something About Android Studio - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Category: restful">
+  <meta name="description" content="Create project with Google Plus login Cần phải sửa lại phiên bản của play-services trong file build.gradle compile 'com.google.android.gms:play- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/categories/restful">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/21/note-something-about-android-studio">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -78,60 +78,115 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Restful</h1>
+    
+      
+        <h1 class="entry-title">Note Something About Android Studio</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-21T21:22:08+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:22 pm</span></time>
+        
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>Create project with Google Plus login</h3>
 
-  
-  <h2>2015</h2>
+<p>Cần phải sửa lại phiên bản của <code>play-services</code> trong file <code>build.gradle</code></p>
 
-<article>
-  
-<h1><a href="/blog/2015/07/20/building-a-restful-api-in-a-rails-application/">Building a RESTful API in a Rails Application</a></h1>
-<time datetime="2015-07-20T13:02:29+09:00" pubdate><span class='month'>Jul</span> <span class='day'>20</span> <span class='year'>2015</span></time>
+<pre><code>compile 'com.google.android.gms:play-services:6.1.71'
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/api/'>api</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/restful/'>restful</a></span>
-</footer>
+<h3>Thao tác để enable Google Plus API</h3>
 
+<ol>
+<li><p>Go to the Google Developers Console</p></li>
+<li><p>Click Create Project:</p></li>
+<li><p>In the Project name field, type in a name for your project, such as Quickstart App.</p></li>
+<li><p>In the Project ID field, optionally type in a project ID for your project or use the one that the console has created for you. This ID must be unique world-wide.</p></li>
+<li><p>Click the Create button and wait for the project to be created. Note: There may be short delay of up to 30 seconds before the project is created. Once the project is created, the name you gave it appears at the top of the left sidebar.</p></li>
+<li><p>In the left sidebar, select APIs &amp; auth (the APIs sub-item is automatically selected).</p></li>
+<li>Find the Google+ API and set its status to ON—notice that this action moves Google+ API to the top of the list; you can scroll up to see it.</li>
+<li>In the sidebar under &ldquo;APIs &amp; auth&rdquo;, select Consent screen.</li>
+<li>Choose an Email Address and specify a Product Name.</li>
+<li>In the left sidebar under &ldquo;APIs &amp; auth&rdquo;, select Credentials.</li>
+<li>Click Create a new Client ID—the Create Client ID dialog box appears, as shown further below.</li>
+<li>Select Installed application for the application type.</li>
+<li>Select Android as the installed application type.</li>
+<li><p>Copy and paste the following package name for this quick-start app into the Package name field:</p>
 
-</article>
+<p>  com.google.android.gms.plus.sample.quickstart</p></li>
+<li><p>In a terminal, run the the Keytool utility to get the SHA-1 fingerprint of the certificate. For the debug.keystore, the password is android.</p>
 
-
-
-<article>
-  
-<h1><a href="/blog/2015/07/09/introduction-to-restful-webservice/">Explore About RESTful Webservice</a></h1>
-<time datetime="2015-07-09T10:39:53+09:00" pubdate><span class='month'>Jul</span> <span class='day'>09</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/restful/'>restful</a>, <a class='category' href='/blog/categories/webservice/'>webservice</a></span>
-</footer>
-
-
-</article>
-
-</div>
-
-  
-</article>
-
+<p>  keytool -exportcert -alias androiddebugkey -keystore <path-to-debug-or-production-keystore> -list -v</p></li>
+</ol>
 
 </div>
 
-<aside class="sidebar">
+
+  <footer>
+    <p class="meta">
+      
   
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    ダン・クァン・ミン
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-21T21:22:08+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:22 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>android</a>
+  
+</span>
+
+
+    </p>
     
+      <div class="sharing">
   
-</aside>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/21/note-something-about-android-studio/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/21/note-something-about-android-studio/" >Tweet</a>
+  
+  
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/20/building-a-restful-api-in-a-rails-application/" title="Previous Post: Building a RESTful API in a Rails Application">&laquo; Building a RESTful API in a Rails Application</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
 
     </div>
   </div>

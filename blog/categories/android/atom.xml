@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Android | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/android/atom.xml" rel="self"/>
+  <link href="http://dankuanmei.github.io/"/>
+  <updated>2015-07-21T21:28:05+09:00</updated>
+  <id>http://dankuanmei.github.io/</id>
+  <author>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Note Something About Android Studio]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/21/note-something-about-android-studio/"/>
+    <updated>2015-07-21T21:22:08+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/21/note-something-about-android-studio</id>
+    <content type="html"><![CDATA[<h3>Create project with Google Plus login</h3>
+
+<p>Cần phải sửa lại phiên bản của <code>play-services</code> trong file <code>build.gradle</code></p>
+
+<pre><code>compile 'com.google.android.gms:play-services:6.1.71'
+</code></pre>
+
+<h3>Thao tác để enable Google Plus API</h3>
+
+<ol>
+<li><p>Go to the Google Developers Console</p></li>
+<li><p>Click Create Project:</p></li>
+<li><p>In the Project name field, type in a name for your project, such as Quickstart App.</p></li>
+<li><p>In the Project ID field, optionally type in a project ID for your project or use the one that the console has created for you. This ID must be unique world-wide.</p></li>
+<li><p>Click the Create button and wait for the project to be created. Note: There may be short delay of up to 30 seconds before the project is created. Once the project is created, the name you gave it appears at the top of the left sidebar.</p></li>
+<li><p>In the left sidebar, select APIs &amp; auth (the APIs sub-item is automatically selected).</p></li>
+<li>Find the Google+ API and set its status to ON—notice that this action moves Google+ API to the top of the list; you can scroll up to see it.</li>
+<li>In the sidebar under &ldquo;APIs &amp; auth&rdquo;, select Consent screen.</li>
+<li>Choose an Email Address and specify a Product Name.</li>
+<li>In the left sidebar under &ldquo;APIs &amp; auth&rdquo;, select Credentials.</li>
+<li>Click Create a new Client ID—the Create Client ID dialog box appears, as shown further below.</li>
+<li>Select Installed application for the application type.</li>
+<li>Select Android as the installed application type.</li>
+<li><p>Copy and paste the following package name for this quick-start app into the Package name field:</p>
+
+<p>  com.google.android.gms.plus.sample.quickstart</p></li>
+<li><p>In a terminal, run the the Keytool utility to get the SHA-1 fingerprint of the certificate. For the debug.keystore, the password is android.</p>
+
+<p>  keytool -exportcert -alias androiddebugkey -keystore <path-to-debug-or-production-keystore> -list -v</p></li>
+</ol>
+
+]]></content>
+  </entry>
+  
+</feed>

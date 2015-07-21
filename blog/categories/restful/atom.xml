@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Restful | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/restful/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-20T12:47:13+09:00</updated>
+  <updated>2015-07-21T21:28:05+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,75 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Building a RESTful API in a Rails Application]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/20/building-a-restful-api-in-a-rails-application/"/>
+    <updated>2015-07-20T13:02:29+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/20/building-a-restful-api-in-a-rails-application</id>
+    <content type="html"><![CDATA[<h3>Auto setup</h3>
+
+<pre><code>rails new PROJECT -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+</code></pre>
+
+<p>PROJECT is name</p>
+
+<h3>Devise</h3>
+
+<p>Devise is a flexible authentication solution for Rails based on Warden. It:</p>
+
+<ul>
+<li>Is Rack based;</li>
+<li>Is a complete MVC solution based on Rails engines;</li>
+<li>Allows you to have multiple models signed in at the same time;</li>
+<li>Is based on a modularity concept: use only what you really need.</li>
+</ul>
+
+
+<p>It&rsquo;s composed of 10 modules:</p>
+
+<ul>
+<li><code>Database Authenticatable</code> encrypts and stores a password in the database to validate the authenticity of a user while signing in. The authentication can be done both through POST requests or HTTP Basic Authentication.</li>
+<li><code>Omniauthable</code> adds OmniAuth (<a href="https://github.com/intridea/omniauth">https://github.com/intridea/omniauth</a>) support.</li>
+<li><code>Confirmable</code> sends emails with confirmation instructions and verifies whether an account is already confirmed during sign in.</li>
+<li><code>Recoverable</code> resets the user password and sends reset instructions.</li>
+<li><code>Registerable</code> handles signing up users through a registration process, also allowing them to edit and destroy their account.</li>
+<li><code>Rememberable</code> manages generating and clearing a token for remembering the user from a saved cookie.</li>
+<li><code>Trackable</code> tracks sign in count, timestamps and IP address.</li>
+<li><code>Timeoutable</code> expires sessions that have not been active in a specified period of time.</li>
+<li><code>Validatable</code> provides validations of email and password. It&rsquo;s optional and can be customized, so you&rsquo;re able to define your own validations.</li>
+<li><code>Lockable</code> locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.</li>
+</ul>
+
+
+<h5>Getting started</h5>
+
+<pre><code>gem 'devise'
+
+rails generate devise:install
+
+rails generate devise MODEL
+</code></pre>
+
+<p>Replace MODEL with the class name used for the application’s users (it’s frequently User but could also be Admin).</p>
+
+<p>This will create a model (if one does not exist) and configure it with default Devise modules. The generator also configures your config/routes.rb file to point to the Devise controller.</p>
+
+<p>Next, check the MODEL for any additional configuration options you might want to add, such as confirmable or lockable. If you add an option, be sure to inspect the migration file (created by the generator if your ORM supports them) and uncomment the appropriate section. For example, if you add the confirmable option in the model, you&rsquo;ll need to uncomment the Confirmable section in the migration.</p>
+
+<p>Then run:</p>
+
+<pre><code>rake db:migrate
+</code></pre>
+
+<p>Next, you need to set up the default URL options for the Devise mailer in each environment.</p>
+
+<p>Here is a possible configuration for config/environments/development.rb:</p>
+
+<pre><code>config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Explore About RESTful Webservice]]></title>

@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Building a RESTful API in a Rails Application - ダン・クァン・ミン Blog</title>
+  <meta name="author" content="ダン・クァン・ミン">
+
+  
+  <meta name="description" content="Auto setup rails new PROJECT -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb PROJECT is name Devise Devise is a flexible &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/20/building-a-restful-api-in-a-rails-application">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="//fonts.googleapis.com/css?family=Fjalla+One" rel="stylesheet" type="text/css">
+<!--- MathJax Configuration -->
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+</head>
+
+<body   class="collapse-sidebar sidebar-footer" >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ダン・クァン・ミン Blog</a></h1>
+  
+    <h2>はじめまして</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscribe" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS" target="_blank"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="25" height="25" viewbox="0 0 100 100"><path class="social" d="M 13.310204,73.332654 C 5.967347,73.332654 0,79.322448 0,86.621428 c 0,7.338776 5.967347,13.262246 13.310204,13.262246 7.370408,0 13.328572,-5.92245 13.328572,-13.262246 0,-7.29898 -5.958164,-13.288774 -13.328572,-13.288774 z M 0.01530612,33.978572 V 53.143878 C 12.493878,53.143878 24.229592,58.02347 33.068368,66.865306 41.894898,75.685714 46.767346,87.47449 46.767346,100 h 19.25 C 66.017346,63.592858 36.4,33.979592 0.01530612,33.978572 l 0,0 z M 0.03877552,0 V 19.17449 C 44.54796,19.17551 80.77551,55.437756 80.77551,100 H 100 C 100,44.87653 55.15102,0 0.03877552,0 z"></path></svg></a></li>
+  
+</ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      <form action="https://www.google.com/search" method="get">
+        <fieldset role="search">
+          <input type="hidden" name="sitesearch" value="dankuanmei.github.io" />
+    
+          <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+        </fieldset>
+      </form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Building a RESTful API in a Rails Application</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-20T13:02:29+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:02 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h3>Auto setup</h3>
+
+<pre><code>rails new PROJECT -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+</code></pre>
+
+<p>PROJECT is name</p>
+
+<h3>Devise</h3>
+
+<p>Devise is a flexible authentication solution for Rails based on Warden. It:</p>
+
+<ul>
+<li>Is Rack based;</li>
+<li>Is a complete MVC solution based on Rails engines;</li>
+<li>Allows you to have multiple models signed in at the same time;</li>
+<li>Is based on a modularity concept: use only what you really need.</li>
+</ul>
+
+
+<p>It&rsquo;s composed of 10 modules:</p>
+
+<ul>
+<li><code>Database Authenticatable</code> encrypts and stores a password in the database to validate the authenticity of a user while signing in. The authentication can be done both through POST requests or HTTP Basic Authentication.</li>
+<li><code>Omniauthable</code> adds OmniAuth (<a href="https://github.com/intridea/omniauth">https://github.com/intridea/omniauth</a>) support.</li>
+<li><code>Confirmable</code> sends emails with confirmation instructions and verifies whether an account is already confirmed during sign in.</li>
+<li><code>Recoverable</code> resets the user password and sends reset instructions.</li>
+<li><code>Registerable</code> handles signing up users through a registration process, also allowing them to edit and destroy their account.</li>
+<li><code>Rememberable</code> manages generating and clearing a token for remembering the user from a saved cookie.</li>
+<li><code>Trackable</code> tracks sign in count, timestamps and IP address.</li>
+<li><code>Timeoutable</code> expires sessions that have not been active in a specified period of time.</li>
+<li><code>Validatable</code> provides validations of email and password. It&rsquo;s optional and can be customized, so you&rsquo;re able to define your own validations.</li>
+<li><code>Lockable</code> locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.</li>
+</ul>
+
+
+<h5>Getting started</h5>
+
+<pre><code>gem 'devise'
+
+rails generate devise:install
+
+rails generate devise MODEL
+</code></pre>
+
+<p>Replace MODEL with the class name used for the application’s users (it’s frequently User but could also be Admin).</p>
+
+<p>This will create a model (if one does not exist) and configure it with default Devise modules. The generator also configures your config/routes.rb file to point to the Devise controller.</p>
+
+<p>Next, check the MODEL for any additional configuration options you might want to add, such as confirmable or lockable. If you add an option, be sure to inspect the migration file (created by the generator if your ORM supports them) and uncomment the appropriate section. For example, if you add the confirmable option in the model, you&rsquo;ll need to uncomment the Confirmable section in the migration.</p>
+
+<p>Then run:</p>
+
+<pre><code>rake db:migrate
+</code></pre>
+
+<p>Next, you need to set up the default URL options for the Devise mailer in each environment.</p>
+
+<p>Here is a possible configuration for config/environments/development.rb:</p>
+
+<pre><code>config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+
+
+  <span class="byline author vcard">Authored by <span class="fn">
+  
+    ダン・クァン・ミン
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-20T13:02:29+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:02 pm</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/api/'>api</a>, <a class='category' href='/blog/categories/rails/'>rails</a>, <a class='category' href='/blog/categories/restful/'>restful</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/20/building-a-restful-api-in-a-rails-application/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/20/building-a-restful-api-in-a-rails-application/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/20/install-apache2-and-passenger/" title="Previous Post: Install apache2 and Passenger">&laquo; Install apache2 and Passenger</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/07/21/note-something-about-android-studio/" title="Next Post: Note something about Android Studio">Note something about Android Studio &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - ダン・クァン・ミン -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a> | Themed with <a href="https://github.com/lucaslew/whitespace">Whitespace</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

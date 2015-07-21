@@ -9,9 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Update hệ thống và cài đặt cái gói build cơ bản apt-get update
-apt-get upgrade
-apt-get install build-essential Cài đặt Ruby curl -sSL https://rvm.io/ &hellip;">
+  <meta name="description" content="Create project with Google Plus login Cần phải sửa lại phiên bản của play-services trong file build.gradle compile 'com.google.android.gms:play- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -81,6 +79,156 @@ apt-get install build-essential Cài đặt Ruby curl -sSL https://rvm.io/ &hell
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/21/note-something-about-android-studio/">Note Something About Android Studio</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-21T21:22:08+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>21</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:22 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Create project with Google Plus login</h3>
+
+<p>Cần phải sửa lại phiên bản của <code>play-services</code> trong file <code>build.gradle</code></p>
+
+<pre><code>compile 'com.google.android.gms:play-services:6.1.71'
+</code></pre>
+
+<h3>Thao tác để enable Google Plus API</h3>
+
+<ol>
+<li><p>Go to the Google Developers Console</p></li>
+<li><p>Click Create Project:</p></li>
+<li><p>In the Project name field, type in a name for your project, such as Quickstart App.</p></li>
+<li><p>In the Project ID field, optionally type in a project ID for your project or use the one that the console has created for you. This ID must be unique world-wide.</p></li>
+<li><p>Click the Create button and wait for the project to be created. Note: There may be short delay of up to 30 seconds before the project is created. Once the project is created, the name you gave it appears at the top of the left sidebar.</p></li>
+<li><p>In the left sidebar, select APIs &amp; auth (the APIs sub-item is automatically selected).</p></li>
+<li>Find the Google+ API and set its status to ON—notice that this action moves Google+ API to the top of the list; you can scroll up to see it.</li>
+<li>In the sidebar under &ldquo;APIs &amp; auth&rdquo;, select Consent screen.</li>
+<li>Choose an Email Address and specify a Product Name.</li>
+<li>In the left sidebar under &ldquo;APIs &amp; auth&rdquo;, select Credentials.</li>
+<li>Click Create a new Client ID—the Create Client ID dialog box appears, as shown further below.</li>
+<li>Select Installed application for the application type.</li>
+<li>Select Android as the installed application type.</li>
+<li><p>Copy and paste the following package name for this quick-start app into the Package name field:</p>
+
+<p>  com.google.android.gms.plus.sample.quickstart</p></li>
+<li><p>In a terminal, run the the Keytool utility to get the SHA-1 fingerprint of the certificate. For the debug.keystore, the password is android.</p>
+
+<p>  keytool -exportcert -alias androiddebugkey -keystore <path-to-debug-or-production-keystore> -list -v</p></li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/20/building-a-restful-api-in-a-rails-application/">Building a RESTful API in a Rails Application</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-20T13:02:29+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:02 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Auto setup</h3>
+
+<pre><code>rails new PROJECT -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
+</code></pre>
+
+<p>PROJECT is name</p>
+
+<h3>Devise</h3>
+
+<p>Devise is a flexible authentication solution for Rails based on Warden. It:</p>
+
+<ul>
+<li>Is Rack based;</li>
+<li>Is a complete MVC solution based on Rails engines;</li>
+<li>Allows you to have multiple models signed in at the same time;</li>
+<li>Is based on a modularity concept: use only what you really need.</li>
+</ul>
+
+
+<p>It&rsquo;s composed of 10 modules:</p>
+
+<ul>
+<li><code>Database Authenticatable</code> encrypts and stores a password in the database to validate the authenticity of a user while signing in. The authentication can be done both through POST requests or HTTP Basic Authentication.</li>
+<li><code>Omniauthable</code> adds OmniAuth (<a href="https://github.com/intridea/omniauth">https://github.com/intridea/omniauth</a>) support.</li>
+<li><code>Confirmable</code> sends emails with confirmation instructions and verifies whether an account is already confirmed during sign in.</li>
+<li><code>Recoverable</code> resets the user password and sends reset instructions.</li>
+<li><code>Registerable</code> handles signing up users through a registration process, also allowing them to edit and destroy their account.</li>
+<li><code>Rememberable</code> manages generating and clearing a token for remembering the user from a saved cookie.</li>
+<li><code>Trackable</code> tracks sign in count, timestamps and IP address.</li>
+<li><code>Timeoutable</code> expires sessions that have not been active in a specified period of time.</li>
+<li><code>Validatable</code> provides validations of email and password. It&rsquo;s optional and can be customized, so you&rsquo;re able to define your own validations.</li>
+<li><code>Lockable</code> locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.</li>
+</ul>
+
+
+<h5>Getting started</h5>
+
+<pre><code>gem 'devise'
+
+rails generate devise:install
+
+rails generate devise MODEL
+</code></pre>
+
+<p>Replace MODEL with the class name used for the application’s users (it’s frequently User but could also be Admin).</p>
+
+<p>This will create a model (if one does not exist) and configure it with default Devise modules. The generator also configures your config/routes.rb file to point to the Devise controller.</p>
+
+<p>Next, check the MODEL for any additional configuration options you might want to add, such as confirmable or lockable. If you add an option, be sure to inspect the migration file (created by the generator if your ORM supports them) and uncomment the appropriate section. For example, if you add the confirmable option in the model, you&rsquo;ll need to uncomment the Confirmable section in the migration.</p>
+
+<p>Then run:</p>
+
+<pre><code>rake db:migrate
+</code></pre>
+
+<p>Next, you need to set up the default URL options for the Devise mailer in each environment.</p>
+
+<p>Here is a possible configuration for config/environments/development.rb:</p>
+
+<pre><code>config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1033,252 +1181,6 @@ public class ApplicationRunner {
         System.out.println(army);
     }
 }
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/10/mot-so-quan-he-giua-cac-class-trong-uml/">Một Số Quan Hệ Giữa Các Class Trong UML</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-10T10:53:15+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:53 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Quan hệ giữa các class trong UML, gồm có các 4 quan hệ chính sau:</p>
-
-<ol>
-<li>Realization</li>
-<li>Generation</li>
-<li>Dependency</li>
-<li>Association: có 2 quan hệ phân biệt Aggregation &amp; Composition</li>
-</ol>
-
-
-<h3>Quan hệ Realization (hiện thực hóa)</h3>
-
-<p>Là quan hệ giữa một classifier đóng vai trò là hợp đồng và một classifier đóng vai trò thực hiện. Hay nói cách khác:</p>
-
-<p>Mối quan hệ giữa 1 class implement 1 interface được gọi là quan hệ realization, được biểu diễn bởi đường đứt nét có hình mũi tên tam giác chỉ vào interface.</p>
-
-<p><img src="http://i.imgur.com/24Do9yQ.png"></p>
-
-<h3>Quan hệ generalization (tên khác là Inheritance)</h3>
-
-<p>Còn có tên khác là:</p>
-
-<ul>
-<li>Quan hệ tổng quát hóa</li>
-<li>Quan hệ khái quát hóa</li>
-<li>Quan hệ kế thừa</li>
-</ul>
-
-
-<p>Đối tượng cụ thể (concrete) sẽ kế thừa các thuộc tính và phương thức của đối tượng tổng quát (general)</p>
-
-<p>Ký hiệu: A is-a B</p>
-
-<p><img src="http://i.imgur.com/jYOTHlb.png"></p>
-
-<p>Đọc là :</p>
-
-<ul>
-<li>A là tổng quát của B, B là chi tiết của A</li>
-<li>B là trường hợp đặc biệt của A</li>
-<li>A là cha của B, B là con của A</li>
-</ul>
-
-
-<h3>Quan hệ Dependency (phụ thuộc)</h3>
-
-<p>Là quan hệ giữa 2 phần tử trong mô hình mà thay đổi ở phần tử này (phần tử độc lập) có thể gây ra thay đổi ở phần tử kia (phần tử phục thuộc).</p>
-
-<p>Là loại quan hệ giữa 2 object</p>
-
-<p>ClassA và ClassB không có quan hệ Association</p>
-
-<p>Trong ClassA có sử dụng biến toàn cục (kiểu B), hoặc sử dụng phương thức/thuộc tính static của ClassB</p>
-
-<p>Ký hiệu : A use-a B ,  bằng mũi tên 1 chiều nét đứt , từ bên phụ thuộc sang bên độc lập ;</p>
-
-<p><img src="http://i.imgur.com/vj6U2En.png"></p>
-
-<p>ClassA “phụ thuộc” vào ClassB ;</p>
-
-<p>Client –> Supplier (phần tử phục thuộc –> phần tử độc lập)</p>
-
-<p>Dependency còn có một số biểu hiện khác , thường dùng các stereotype sau :</p>
-
-<ul>
-<li><p><code>&lt;&lt;use&gt;&gt;</code> : chỉ rằng ngữ nghĩa của lớp gốc (mũi tên) phụ thuộc vào lớp ngọn (mũi tên) . Đặc biệt trong trường hợp lớp gốc dùng lớp ngọn làm tham số trong 1 số method của nó</p></li>
-<li><p><code>&lt;&lt;permit&gt;&gt;</code> : chỉ rằng lớp gốc được quyền truy cập 1 cách đặc biệt vào lớp ngọn (chẳng hạn truy cập các thao tác riêng tư). Tương ứng với khái niệm friend trong C++</p></li>
-<li><p><code>&lt;&lt;refine&gt;&gt;</code> : chỉ rằng lớp gốc ở 1 mức độ tinh chế cao hơn từ lớp ngọn . Chẳng hạn 1 lớp lập ở giai đoạn thiết kế nhằn tinh chế cùng lớp đó lập ở giai đoạn phân tích</p></li>
-</ul>
-
-
-<p>Lưu ý : Phân biệt giữa Dependency và Association</p>
-
-<ul>
-<li>Association là quan hệ cấu trúc</li>
-<li>Dependency là qua hệ phi cấu trúc</li>
-</ul>
-
-
-<h3>Association</h3>
-
-<p>Giữa 2 object của 2 lớp có sự ghép cặp (vợ – chồng , thầy – trò , khách hàng – hóa đơn …) . Tập hợp các kết nối cùng loại (cùng ý nghĩa) giữa các object của 2 lớp tạo thành mối liên kết association , quan hệ giữa 2 tập hợp (2 lớp)</p>
-
-<p>Là mỗi liên hệ giữa 2 lớp có  role, role là tên vai trò của mối liên kết : vd như : của , cho , có , liên kết tới , trao đối với , …. (thường tên role có kèm theo 1 mũi tên để chỉ hướng quan hệ áp dụng từ lớp nào sang lớp nào)</p>
-
-<p>Ký hiệu : A has-a B</p>
-
-<p><img src="http://i.imgur.com/N6nkWbx.png"></p>
-
-<p>Ý nghĩa : (trường hợp mũi tên không có chiều)
-- Hoặc  : Trong ClassA có thuộc tính có kiểu là ClassB
-- Hoặc  : Trong ClassB có thuộc tính có kiểu là ClassA</p>
-
-<p>Nhận xét :</p>
-
-<ul>
-<li>Về mặt lập trình, thuộc tính có thể được lưu trữ dạng biến đơn, biến mảng, hay biến con trỏ</li>
-<li>Có hoặc không có bản số cũng được</li>
-<li>Có hoặc không có mũi tên cũng được</li>
-<li>Nếu có mũi tên 1 chiều , chỉ ra chiều đối tượng thuộc lớp này chỉ có gọi đối tượng của lớp kia, không có chiều ngược lại</li>
-<li>Nếu không có mũi tên nào thì tương đương là mũi tên 2 chiều , hoặc chiều không quan trọng.</li>
-<li><code>Multiplicity</code> là bản số , lượng số , số object bên này tham gia vào mối kết hợp so với 1 object bên kia.</li>
-</ul>
-
-
-<h3>Quan hệ Aggregation (còn gọi là quan hệ thu nạp)</h3>
-
-<p>Đã xác định được ClassA và ClassB có quan hệ Association với nhau</p>
-
-<p>Xác định rõ hơn:</p>
-
-<p>Trong object của ClassA có chứa (trong phần thuộc tính) object của ClassB</p>
-
-<p>ObjectX của ClassA bị hủy thì ObjectY của ClassB (bên trong ObjectX) vẫn có thể còn tồn tại</p>
-
-<p>Còn gọi là shared-aggregation.Một dạng của nối kết, trong đó một phần tử này chứa các phần tử khác.</p>
-
-<p>Ký hiệu :</p>
-
-<p><img src="http://i.imgur.com/nrYxfcB.png"></p>
-
-<p>Ý nghĩa : còn gọi là : Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , và B có thể tạo ra độc lập , không cần phải tạo ra A , B có thể cùng thuộc 1 whole khác A.</p>
-
-<p>Chú ý : Từ share ở đây có nghĩa là , B có thể là bộ phận của whole khác, do đó A bị hủy thì chưa chắc B bị hủy .</p>
-
-<h3>Quan hệ Composition (hợp thành)</h3>
-
-<p>Là loại aggregation chặt chẽ hơn , còn gọi là non-shared aggregation.</p>
-
-<p>Ký hiệu :</p>
-
-<p><img src="http://i.imgur.com/HMYgISe.png"></p>
-
-<p>Ý nghĩa : còn gọi là Whole A – Part B . Nghĩa là A được tạo từ nhiều B kết hợp lại , nhưng B không thể đứng 1 mình được , B chỉ là thuộc A mà thôi không thể cùng thuộc Whole khác được.</p>
-
-<p>Đã xác định được ClassA và ClassB có quan hệ Association với nhau</p>
-
-<p>Xác định rõ hơn:</p>
-
-<ul>
-<li>Trong object của ClassA có chứa (trong phần thuộc tính) object của ClassB</li>
-<li>ObjectX của ClassA bị hủy thì ObjectY của ClassB (bên trong ObjectX) không thể còn tồn tại</li>
-</ul>
-
-
-<p>Chú ý :</p>
-
-<ul>
-<li>B chỉ có thể là bộ phận của whole A</li>
-<li>A chết thì tất cả B chết</li>
-<li>B chết không ảnh hưởng đến A</li>
-<li>Bản số của Whole A luôn là 1, nghĩa là B luôn thuộc 1 A thôi</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/10/tao-blog-mien-phi-bang-octopress-and-github/">Tạo Blog Miễn Phí Bằng Octopress &amp; Github</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-10T10:38:33+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>10</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:38 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Octopress</h3>
-
-<pre><code>$ git clone git://github.com/imathis/octopress.git octopress
-$ cd octopress
-$ bundle install --path vendor/bundle
-</code></pre>
-
-<h3>Thiết lập theme</h3>
-
-<pre><code>$ git clone git://github.com/lucaslew/whitespace.git .themes/whitespace
-$ rake install['whitespace'] # for zsh, use: rake install\['whitespace'\]
-$ rake generate
-</code></pre>
-
-<h3>Thêm bài viết</h3>
-
-<pre><code>$ rake new_post['Hello world']
-</code></pre>
-
-<h3>Xem trước</h3>
-
-<pre><code>$ rake preview
-</code></pre>
-
-<h3>GitHub Pages</h3>
-
-<pre><code>$ rake setup_github_pages
-</code></pre>
-
-<h3>Triển khai</h3>
-
-<pre><code>$ rake generate
-$ rake deploy
 </code></pre>
 </div>
   

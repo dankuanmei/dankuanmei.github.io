@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Android - ダン・クァン・ミン Blog</title>
+  <title>Note Something When Work About Rails and Gmail - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Category: android">
+  <meta name="description" content="To enable smtp for gmail account via rails Cần phải bật chế độ less secure https://www.google.com/settings/u/1/security/lesssecureapps List files to &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/categories/android">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/22/note-something-when-work-about-rails-and-gmail">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -78,60 +78,105 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Android</h1>
+    
+      
+        <h1 class="entry-title">Note Something When Work About Rails and Gmail</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-22T10:49:06+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:49 am</span></time>
+        
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>To enable smtp for gmail account via rails</h3>
 
-  
-  <h2>2015</h2>
+<p>Cần phải bật chế độ less secure</p>
 
-<article>
-  
-<h1><a href="/blog/2015/07/31/android-retrofit/">Android - Retrofit, OkHttp and GSON</a></h1>
-<time datetime="2015-07-31T10:46:30+09:00" pubdate><span class='month'>Jul</span> <span class='day'>31</span> <span class='year'>2015</span></time>
+<pre><code>https://www.google.com/settings/u/1/security/lesssecureapps
+</code></pre>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/android/'>android</a>, <a class='category' href='/blog/categories/gson/'>gson</a>, <a class='category' href='/blog/categories/okhttp/'>okhttp</a>, <a class='category' href='/blog/categories/retrofit/'>retrofit</a></span>
-</footer>
+<h3>List files to config</h3>
 
+<pre><code>/config/environments/development.rb
+#Chú ý line này, cần phải chính xác
+config.action_mailer.default_url_options = { :host =&gt; '192.168.1.214:3000' }
 
-</article>
+/config/secrets.yml
+# Chú ý line này, có lẽ phải giống với tên đăng ký gmail
+admin_name: "Link works Japan"
+</code></pre>
 
+<h3>Edit Gemfile</h3>
 
+<p>Thêm gem <code>pg</code> vào production khi deploy lên heroku</p>
 
-<article>
-  
-<h1><a href="/blog/2015/07/21/note-something-about-android-studio/">Note Something About Android Studio</a></h1>
-<time datetime="2015-07-21T21:22:08+09:00" pubdate><span class='month'>Jul</span> <span class='day'>21</span> <span class='year'>2015</span></time>
+<h3>Tìm hiểu về gem pundit</h3>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/android/'>android</a></span>
-</footer>
-
-
-</article>
-
+<h3>Tìm hiểu về gem upmin-admin</h3>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
-</article>
 
 
-</div>
 
-<aside class="sidebar">
+  <span class="byline author vcard">Authored by <span class="fn">
   
+    ダン・クァン・ミン
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-22T10:49:06+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>22</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>10:49 am</span></time>
+      
+      
+
+
+    </p>
     
+      <div class="sharing">
   
-</aside>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/22/note-something-when-work-about-rails-and-gmail/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/22/note-something-when-work-about-rails-and-gmail/" >Tweet</a>
+  
+  
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/21/note-something-about-android-studio/" title="Previous Post: Note something about Android Studio">&laquo; Note something about Android Studio</a>
+      
+      
+        <a class="basic-alignment right" href="/blog/2015/07/31/android-retrofit/" title="Next Post: Android - Retrofit, OkHttp and GSON">Android - Retrofit, OkHttp and GSON &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
 
     </div>
   </div>

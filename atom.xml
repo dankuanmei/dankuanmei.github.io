@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-07-21T21:31:29+09:00</updated>
+  <updated>2015-07-31T10:51:45+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,73 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Android - Retrofit, OkHttp and GSON]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/31/android-retrofit/"/>
+    <updated>2015-07-31T10:46:30+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/31/android-retrofit</id>
+    <content type="html"><![CDATA[<h3>Overview</h3>
+
+<p>Retrofit is a type-safe REST client for Android built by Square. The library provides a powerful framework for authenticating and interacting with APIs and sending network requests with OkHttp.</p>
+
+<p>This library makes downloading JSON or XML data from a web API fairly straightforward. Once the data is downloaded then it is parsed into a Plain Old Java Object (POJO) which must be defined for each &ldquo;resource&rdquo; in the response.</p>
+
+<h3>Setup</h3>
+
+<p>Make sure to require Internet permissions in your <code>AndroidManifest.xml</code> file:</p>
+
+<pre><code>&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    .
+    .
+    .
+&lt;/manifest&gt;
+</code></pre>
+
+<p>Add the following to your <code>app/build.gradle</code> file:</p>
+
+<pre><code>dependencies {
+  compile 'com.squareup.okhttp:okhttp:2.4.0'
+  compile 'com.squareup.retrofit:retrofit:1.9.0'
+  compile 'com.google.code.gson:gson:2.3'
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Note Something When Work About Rails and Gmail]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/22/note-something-when-work-about-rails-and-gmail/"/>
+    <updated>2015-07-22T10:49:06+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/22/note-something-when-work-about-rails-and-gmail</id>
+    <content type="html"><![CDATA[<h3>To enable smtp for gmail account via rails</h3>
+
+<p>Cần phải bật chế độ less secure</p>
+
+<pre><code>https://www.google.com/settings/u/1/security/lesssecureapps
+</code></pre>
+
+<h3>List files to config</h3>
+
+<pre><code>/config/environments/development.rb
+#Chú ý line này, cần phải chính xác
+config.action_mailer.default_url_options = { :host =&gt; '192.168.1.214:3000' }
+
+/config/secrets.yml
+# Chú ý line này, có lẽ phải giống với tên đăng ký gmail
+admin_name: "Link works Japan"
+</code></pre>
+
+<h3>Edit Gemfile</h3>
+
+<p>Thêm gem <code>pg</code> vào production khi deploy lên heroku</p>
+
+<h3>Tìm hiểu về gem pundit</h3>
+
+<h3>Tìm hiểu về gem upmin-admin</h3>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Note Something About Android Studio]]></title>
@@ -1839,198 +1906,6 @@ Quantification
 <h3>URL - Uniform Resource Locator</h3>
 
 <p>URL hay cũng còn được gọi là địa chỉ của trang web . URL hiện tại được hiển thị trên thanh địa chỉ của trình duyệt  web . Ví dụ <a href="http://dantri.com/tu-van/chay-thu.html">http://dantri.com/tu-van/chay-thu.html</a>  là một URL nói cho máy tính dùng giao thức HTTP để nối tới máy chủ của dantri.com và yêu cầu nội dung ở /tu-van trong thư mục gốc .</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gradle]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/06/gradle/"/>
-    <updated>2015-07-06T13:59:40+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/06/gradle</id>
-    <content type="html"><![CDATA[<h2>Gradle.org - Why Gradle?</h2>
-
-<p>Gradle is an advanced build system as well as an advanced build toolkit allowing to create custom build logic through plugins.</p>
-
-<p>Here are some of its features that made us choose Gradle:</p>
-
-<ul>
-<li>Domain Specific Language (DSL) to describe and manipulate the build logic</li>
-<li>Build files are Groovy based and allow mixing of declarative elements through the DSL and using code to manipulate the DSL elements to provide custom logic.</li>
-<li>Built-in dependency management through Maven and/or Ivy.</li>
-<li>Very flexible. Allows using best practices but doesn’t force its own way of doing things.</li>
-<li>Plugins can expose their own DSL and their own API for build files to use.</li>
-<li>Good Tooling API allowing IDE integration</li>
-</ul>
-
-
-<h2>Wikipedia</h2>
-
-<p>Gradle is a build automation tool that builds upon the concepts of Apache Ant and Apache Maven and introduces a Groovy-based domain-specific language (DSL) instead of the more traditional XML form of declaring the project configuration. Gradle uses a directed acyclic graph (&ldquo;DAG&rdquo;) to determine the order in which tasks can be run.</p>
-
-<p>Gradle was designed for multi-project builds which can grow to be quite large, and supports incremental builds by intelligently determining which parts of the build tree are up-to-date, so that any task dependent upon those parts will not need to be re-executed.</p>
-
-<p>The initial plugins are primarily focused around Java, Groovy and Scala development and deployment, but more languages and project workflows are on the roadmap.</p>
-
-<h3>Example Java project</h3>
-
-<p>Consider the case where the Maven directory structure is used for Java sources and resources. These directories are: src/main/java, src/main/resources, src/test/java and src/test/resources.</p>
-
-<p>build.gradle</p>
-
-<pre><code>apply plugin: 'java'
-</code></pre>
-
-<p>The most simple Android project has the following build.gradle:</p>
-
-<pre><code>buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.11.1'
-    }
-}
-
-apply plugin: 'android'
-
-android {
-    compileSdkVersion 19
-    buildToolsVersion "19.0.0"
-}
-</code></pre>
-
-<p>Running gradle build will result in</p>
-
-<pre><code>&gt; gradle build
-:compileJava
-:processResources
-:classes
-:jar
-:assemble
-:compileTestJava
-:processTestResources
-:testClasses
-:test
-:check
-:build
-
-BUILD SUCCESSFUL
-</code></pre>
-
-<h2>Tutorial</h2>
-
-<h3>Installation of Gradle and setting it up correctly on your system</h3>
-
-<p>In this part of the tutorial, we shall focus on setting up Gradle on our system. While tools like Android Studio do ship with an internal Gradle distribution, our intention here is to understand the tools, its installation, the setup and firing up some basic Gradle commands.</p>
-
-<h4>Download Gradle</h4>
-
-<p>At the time of this update, Gradle is in version 2.2.1 and is available for download here.</p>
-
-<p>Just go ahead and download the ZIP file to your machine. You should have a file named gradle-2.2.1-all.zip. Expand it to a folder of your choice.</p>
-
-<h4>Environment Settings</h4>
-
-<p>The \bin folder of your gradle distribution contains the gradle script file (both Unix and Windows) that you will use to run the gradle command along with various parameters.</p>
-
-<p>Ideally, do the following:</p>
-
-<ul>
-<li>Create an environment variable GRADLE_HOME and point it to the Gradle Installation folder. On my machine, the Gradle installation folder is e:\gradle-2.2.1 and hence I have created a GRADLE_HOME Environment variable that has the value e:\gradle-2.2.1</li>
-<li>Add %GRADLE_HOME%\bin to the PATH environment variable. This will allow you to launch gradle command from any directory.</li>
-</ul>
-
-
-<h4>Verify Gradle Setup</h4>
-
-<pre><code>$ gradle -v
-</code></pre>
-
-<h4>Basic Gradle commands</h4>
-
-<pre><code>$ gradle -q help
-
-$ gradle -q tasks
-
-$ gradle properties
-</code></pre>
-
-<h3>Your first Java Project Build with Gradle</h3>
-
-<h3>Multiple Java Projects with Gradle</h3>
-
-<h3>Java Web Applications with Gradle</h3>
-
-<h3>App Engine Gradle Plugin</h3>
-
-<h3>Gradle + Android Studio</h3>
-
-<h3>Gradle + Android Studio + App Engine</h3>
-
-<h3>Gradle + App Engine + Cloud Endpoints + Android Studio</h3>
-
-<h3>Gradle + App Engine + Cloud Endpoints (Persistence) + Android Studio</h3>
-
-<h3>Consuming Endpoints in your Android application</h3>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Linux Command to Check Status]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/06/linux-command-to-check-status/"/>
-    <updated>2015-07-06T11:34:10+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/06/linux-command-to-check-status</id>
-    <content type="html"><![CDATA[<h2>To investigate the usage of disk memory</h2>
-
-<p>Check the disk usage. It was confirmed command in CentOS on Vagrant + Virtualbox.</p>
-
-<pre><code>$ df
-</code></pre>
-
-<p>Check the usage of memory.</p>
-
-<pre><code>$ free
-</code></pre>
-
-<h2>Survey the load on the CPU and disk I / O</h2>
-
-<p>Check the load average.</p>
-
-<pre><code>$ uptime
-
-$ w
-</code></pre>
-
-<p>Check and load average / task status / memory usage / swap.</p>
-
-<pre><code>$ top
-</code></pre>
-
-<p>CPU and I / O load, and other various confirmation.</p>
-
-<pre><code>$ sar
-</code></pre>
-
-<p>Check the status of the virtual memory.</p>
-
-<pre><code>$ vmstat
-</code></pre>
-
-<p>Check the status of the disk I / O.</p>
-
-<pre><code>$ iostat
-</code></pre>
-
-<p>Check the process running. CPU load of each process, it can confirm the memory usage.</p>
-
-<pre><code>$ ps aux
-</code></pre>
-
-<p>Display the network-related statistics</p>
-
-<pre><code>$ netstat -an | wc -l
-</code></pre>
 ]]></content>
   </entry>
   

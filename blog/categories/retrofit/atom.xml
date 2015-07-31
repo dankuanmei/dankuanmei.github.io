@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Retrofit | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/retrofit/atom.xml" rel="self"/>
+  <link href="http://dankuanmei.github.io/"/>
+  <updated>2015-07-31T10:51:45+09:00</updated>
+  <id>http://dankuanmei.github.io/</id>
+  <author>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Android - Retrofit, OkHttp and GSON]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/07/31/android-retrofit/"/>
+    <updated>2015-07-31T10:46:30+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/07/31/android-retrofit</id>
+    <content type="html"><![CDATA[<h3>Overview</h3>
+
+<p>Retrofit is a type-safe REST client for Android built by Square. The library provides a powerful framework for authenticating and interacting with APIs and sending network requests with OkHttp.</p>
+
+<p>This library makes downloading JSON or XML data from a web API fairly straightforward. Once the data is downloaded then it is parsed into a Plain Old Java Object (POJO) which must be defined for each &ldquo;resource&rdquo; in the response.</p>
+
+<h3>Setup</h3>
+
+<p>Make sure to require Internet permissions in your <code>AndroidManifest.xml</code> file:</p>
+
+<pre><code>&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    .
+    .
+    .
+&lt;/manifest&gt;
+</code></pre>
+
+<p>Add the following to your <code>app/build.gradle</code> file:</p>
+
+<pre><code>dependencies {
+  compile 'com.squareup.okhttp:okhttp:2.4.0'
+  compile 'com.squareup.retrofit:retrofit:1.9.0'
+  compile 'com.google.code.gson:gson:2.3'
+}
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>

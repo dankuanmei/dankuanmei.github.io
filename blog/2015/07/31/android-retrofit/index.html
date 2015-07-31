@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: Android - ダン・クァン・ミン Blog</title>
+  <title>Android - Retrofit, OkHttp and GSON - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Category: android">
+  <meta name="description" content="Overview Retrofit is a type-safe REST client for Android built by Square. The library provides a powerful framework for authenticating and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/categories/android">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/07/31/android-retrofit">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -78,60 +78,110 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: Android</h1>
+    
+      
+        <h1 class="entry-title">Android - Retrofit, OkHttp and GSON</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-31T10:46:30+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:46 am</span></time>
+        
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>Overview</h3>
 
-  
-  <h2>2015</h2>
+<p>Retrofit is a type-safe REST client for Android built by Square. The library provides a powerful framework for authenticating and interacting with APIs and sending network requests with OkHttp.</p>
 
-<article>
-  
-<h1><a href="/blog/2015/07/31/android-retrofit/">Android - Retrofit, OkHttp and GSON</a></h1>
-<time datetime="2015-07-31T10:46:30+09:00" pubdate><span class='month'>Jul</span> <span class='day'>31</span> <span class='year'>2015</span></time>
+<p>This library makes downloading JSON or XML data from a web API fairly straightforward. Once the data is downloaded then it is parsed into a Plain Old Java Object (POJO) which must be defined for each &ldquo;resource&rdquo; in the response.</p>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/android/'>android</a>, <a class='category' href='/blog/categories/gson/'>gson</a>, <a class='category' href='/blog/categories/okhttp/'>okhttp</a>, <a class='category' href='/blog/categories/retrofit/'>retrofit</a></span>
-</footer>
+<h3>Setup</h3>
 
+<p>Make sure to require Internet permissions in your <code>AndroidManifest.xml</code> file:</p>
 
-</article>
+<pre><code>&lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    &lt;uses-permission android:name="android.permission.INTERNET" /&gt;
+    .
+    .
+    .
+&lt;/manifest&gt;
+</code></pre>
 
+<p>Add the following to your <code>app/build.gradle</code> file:</p>
 
-
-<article>
-  
-<h1><a href="/blog/2015/07/21/note-something-about-android-studio/">Note Something About Android Studio</a></h1>
-<time datetime="2015-07-21T21:22:08+09:00" pubdate><span class='month'>Jul</span> <span class='day'>21</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/android/'>android</a></span>
-</footer>
-
-
-</article>
-
+<pre><code>dependencies {
+  compile 'com.squareup.okhttp:okhttp:2.4.0'
+  compile 'com.squareup.retrofit:retrofit:1.9.0'
+  compile 'com.google.code.gson:gson:2.3'
+}
+</code></pre>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
-</article>
 
 
-</div>
 
-<aside class="sidebar">
+  <span class="byline author vcard">Authored by <span class="fn">
   
+    ダン・クァン・ミン
+  
+  </span></span>
+
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-07-31T10:46:30+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>31</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>10:46 am</span></time>
+      
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/android/'>android</a>, <a class='category' href='/blog/categories/gson/'>gson</a>, <a class='category' href='/blog/categories/okhttp/'>okhttp</a>, <a class='category' href='/blog/categories/retrofit/'>retrofit</a>
+  
+</span>
+
+
+    </p>
     
+      <div class="sharing">
   
-</aside>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/07/31/android-retrofit/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/07/31/android-retrofit/" >Tweet</a>
+  
+  
+  
+</div>
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/07/22/note-something-when-work-about-rails-and-gmail/" title="Previous Post: Note something when work about Rails and Gmail">&laquo; Note something when work about Rails and Gmail</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+
+</div>
 
     </div>
   </div>

@@ -9,7 +9,8 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Interviewer Chà chà, chào hai anh, đây là lần đầu tiên blog của iem phỏng vấn hai anh, hai anh cảm thấy thế nào. Factory Method Tôi ko biết sao hay &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +80,197 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/11/install-golang/">Install GoLang</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-11T13:46:29+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:46 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content">
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/11/java-design-patterns-factory-methods/">Java Design Patterns - Factory Methods</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-11T11:38:55+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:38 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Định nghĩa một interface cho việc tạo ra một đối tượng, nhưng để cho các lớp con quyết định lớp nào sẽ tạo đối tượng. Factory Method cho phép một lớp hoãn việc tạo đối tượng sang các lớp con.</p>
+
+<p><img src="http://i.imgur.com/KCE7HIw.png"></p>
+
+<h2>#</h2>
+
+<p>Interface sản phẩm</p>
+
+<pre><code>public interface Weapon {
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<p>Interface factory chứa method để tạo sản phẩm</p>
+
+<pre><code>public interface Blacksmith {
+
+    Weapon manufactureWeapon(WeaponType weaponType);
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<p>Các subclass factory thực thi để tạo sản phẩm</p>
+
+<pre><code>public class ElfBlacksmith implements Blacksmith {
+
+    public Weapon manufactureWeapon(WeaponType weaponType) {
+        return new ElfWeapon(weaponType);
+    }
+
+}
+
+public class OrcBlacksmith implements Blacksmith {
+
+    public Weapon manufactureWeapon(WeaponType weaponType) {
+        return new OrcWeapon(weaponType);
+    }
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<p>Các subclass sản phẩm</p>
+
+<pre><code>public class ElfWeapon implements Weapon {
+
+    private WeaponType weaponType;
+
+    public ElfWeapon(WeaponType weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    @Override
+    public String toString() {
+        return "Elven " + weaponType;
+    }
+
+}
+
+public class OrcWeapon implements Weapon {
+
+    private WeaponType weaponType;
+
+    public OrcWeapon(WeaponType weaponType) {
+        this.weaponType = weaponType;
+    }
+
+    @Override
+    public String toString() {
+        return "Orcish " + weaponType;
+    }
+
+}
+</code></pre>
+
+<h2>#</h2>
+
+<p>Class chứa loại sản phẩm</p>
+
+<pre><code>public enum WeaponType {
+
+    SHORT_SWORD("short sword"), SPEAR("spear"), AXE("axe"), UNDEFINED("");
+
+    private String title;
+
+    WeaponType(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return title;
+    }
+}
+</code></pre>
+
+<h3>Application</h3>
+
+<p>Class chạy thực thi, khởi tạo đối tượng sản phẩm và đối tượng factory. Tạo factory tương ứng với sản phẩm muốn tạo và truyền vào loại sản phẩm.</p>
+
+<pre><code>/**
+ * 
+ * In Factory Method we have an interface (Blacksmith) with a method for
+ * creating objects (manufactureWeapon). The concrete subclasses (OrcBlacksmith,
+ * ElfBlacksmith) then override the method to produce objects of their liking.
+ * 
+ */
+public class App {
+
+    public static void main(String[] args) {
+        Blacksmith blacksmith;
+        Weapon weapon;
+
+        blacksmith = new f();
+        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        System.out.println(weapon);
+        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
+        System.out.println(weapon);
+
+        blacksmith = new ElfBlacksmith();
+        weapon = blacksmith.manufactureWeapon(WeaponType.SHORT_SWORD);
+        System.out.println(weapon);
+        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
+        System.out.println(weapon);
+    }
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1119,322 +1311,6 @@ Quantification
 <p>These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.</p>
 
 <p>The precise syntax for regular expressions varies among tools and with context; more detail is given in the Syntax section.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/06/mysql-tuning-and-optimization/">MySQL Tuning and Optimization</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-06T19:25:35+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>7:25 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>MySQL is a powerful open-source database.  With more and more database driven applications, people have been pushing MySQL to its limits.  Here are 101 tips for tuning and optimizing your MySQL install.  Some tips are specific to the environment they are installed on, but the concepts are universal.   I have divided them up into several categories to help you with getting the most out of MySQL:</p>
-
-<h2>MySQL Server Hardware and OS Tuning:</h2>
-
-<ol>
-<li><p>Have enough physical memory to load your entire InnoDB file into memory – InnoDB is much faster when the file can be accessed in memory rather than from disk.</p></li>
-<li><p>Avoid Swap at all costs – swapping is reading from disk, its slow.</p></li>
-<li><p>Use Battery-Backed RAM.</p></li>
-<li><p>Use an advanced RAID – preferably RAID10 or higher.</p></li>
-<li><p>Avoid RAID5 – the checksum needed to ensure integrity is costly.</p></li>
-<li><p>Separate your OS and data partitions, not just logically, but physically – costly OS writes and reads will impact your database performance.</p></li>
-<li><p>Put your mysql temp space and replication logs on a separate partition than your data – background writes will impact your database when it goes to write/read from disk.</p></li>
-<li><p>More disks equals more speed.</p></li>
-<li><p>Faster disks are better.</p></li>
-<li><p>Use SAS over SATA.</p></li>
-<li><p>Smaller disks are faster than larger disks, especially in RAID configs.</p></li>
-<li><p>Use Battery-Backed Cache RAID controllers.</p></li>
-<li><p>Avoid software raids.</p></li>
-<li><p>Consider using Solid State IO Cards (not disk drives) for your data partition – these cards can sustain over 2GB/s writes for almost any amount of data.</p></li>
-<li><p>On Linux set your swappiness value to 0 – no reason to cache files on a database server, this is more of a web server or desktop advantage.</p></li>
-<li><p>Mount filesystem with noatime and nodirtime if available – no reason to update database file modification times for access.</p></li>
-<li><p>Use XFS filesystem – a faster, smaller filesystem than ext3 and has more options for journaling, also ext3 has been shown to have double buffering issues with MySQL.</p></li>
-<li><p>Tune your XFS filesystem log and buffer variables – for maximum performance benchmark.</p></li>
-<li><p>On Linux systems, use NOOP or DEADLINE IO scheduler – the CFQ and ANTICIPATORY scheduler have been shown to be slow vs NOOP and DEADLINE scheduler.</p></li>
-<li><p>Use a 64-bit OS – more memory addressable and usable to MySQL.</p></li>
-<li><p>Remove unused packages and daemons from servers – less resource stealing.</p></li>
-<li><p>Put your host that use MySQL and your MySQL host in a hosts file – no dns lookups.</p></li>
-<li><p>Never force kill a MySQL process – you will corrupt your database and be running for the backups.</p></li>
-<li><p>Dedicate your server to MySQL – background processes and other services can steal from the db cpu time.</p></li>
-</ol>
-
-
-<h3>MySQL Configuration:</h3>
-
-<ol>
-<li><p>Use innodb_flush_method=O_DIRECT to avoid a double buffer when writing.</p></li>
-<li><p>Avoid O_DIRECT and EXT3 filesystem – you will serialize all your writes.</p></li>
-<li><p>Allocate enough innodb_buffer_pool_size to load your entire InnoDB file into memory – less reads from disk.</p></li>
-<li><p>Do not make innodb_log_file_size too big, with faster and more disks – flushing more often is good and lowers the recovery time during crashes.</p></li>
-<li><p>Do not mix innodb_thread_concurrency and thread_concurrency variables – these two values are not compatible.</p></li>
-<li><p>Allocate a minimal amount for max_connections – too many connections can use up your RAM and lock up your MySQL server.</p></li>
-<li><p>Keep thread_cache at a relatively high number, about 16 – to prevent slowness when opening connections.</p></li>
-<li><p>Use  skip-name-resolve – to remove dns lookups.</p></li>
-<li><p>Use query cache if your queries are repetitive and your data does not change often – however using query cache on data that changes often will give you a performance hit.</p></li>
-<li><p>Increase temp_table_size – to prevent disk writes.</p></li>
-<li><p>Increase max_heap_table_size – to prevent disk writes.</p></li>
-<li><p>Do not set your sort_buffer_size too high – this is per connection and can use up memory fast.</p></li>
-<li><p>Monitor key_read_requests and key_reads to determine your key_buffer size – the key read requests should be higher than your key_reads, otherwise you are not efficiently using your key_buffer.</p></li>
-<li><p>Set innodb_flush_log_at_trx_commit = 0 will improve performance, but leaving it to default (1), you will ensure data integrity, you will also ensure replication is not lagging</p></li>
-<li><p>Have a test environment where you can test your configs and restart often, without affecting production.</p></li>
-</ol>
-
-
-<h3>MySQL Schema Optimization:</h3>
-
-<ol>
-<li><p>Keep your database trim.</p></li>
-<li><p>Archive old data – to remove excessive row returns or searches on queries.</p></li>
-<li><p>Put indexes on your data.</p></li>
-<li><p>Do not overuse indexes, compare with your queries.</p></li>
-<li><p>Compress text and blob data types – to save space and reduce number of disk reads.</p></li>
-<li><p>UTF 8 and UTF16 is slower than latin1.</p></li>
-<li><p>Use Triggers sparingly.</p></li>
-<li><p>Keep redundant data to a minimum – do not duplicate data unnecessarily.</p></li>
-<li><p>Use linking tables rather than extending rows.</p></li>
-<li><p>Pay attention to your data types, use the smallest one possible for your real data.</p></li>
-<li><p>Separate blob/text data from other data if other data is often used for queries when blob/text are not.</p></li>
-<li><p>Check and optimize tables often.</p></li>
-<li><p>Rewrite InnoDB tables often to optimize.</p></li>
-<li><p>Sometimes, it is faster to drop indexes when adding columns and then add indexes back.</p></li>
-<li><p>Use different storage engines for different needs.</p></li>
-<li><p>Use ARCHIVE storage engine for Logging tables or Auditing tables – this is much more efficient for writes.</p></li>
-<li><p>Store session data in memcache rather than MySQL – memcache allows for auto-expiring values and prevents you from having to create costly reads and writes to MySQL for temporal data.</p></li>
-<li><p>Use VARCHAR instead CHAR when storing variable length strings – to save space since CHAR is fixed length and VARCHAR is not (utf8 is not affected by this).</p></li>
-<li><p>Make schema changes incrementally – a small change can have drastic effects.</p></li>
-<li><p>Test all schema changes in a development environment that mirrors production.</p></li>
-<li><p>Do NOT arbitrarily change values in your config file, it can have disastrous affects.</p></li>
-<li><p>Sometimes less is more in MySQL configs.</p></li>
-<li><p>When in doubt use a generic MySQL config file.</p></li>
-</ol>
-
-
-<h3>Query Optimization:</h3>
-
-<ol>
-<li><p>Use the slow query log to find slow queries.</p></li>
-<li><p>Use EXPLAIN to determine queries are functioning appropriately.</p></li>
-<li><p>Test your queries often to see if they are performing optimally – performance will change over time.</p></li>
-<li><p>Avoid count(*) on entire tables, it can lock the entire table.</p></li>
-<li><p>Make queries uniform so subsequent similar queries will use query cache.</p></li>
-<li><p>Use GROUP BY instead of DISTINCT when appropriate.</p></li>
-<li><p>Use indexed columns in WHERE, GROUP BY, and ORDER BY clauses.</p></li>
-<li><p>Keep indexes simple, do not reuse a column in multiple indexes.</p></li>
-<li><p>Sometimes MySQL chooses the wrong index, use USE INDEX for this case</p></li>
-<li><p>Check for issues using SQL_MODE=STRICT.</p></li>
-<li><p>Use a LIMIT on UNION instead of OR for less than 5 indexed fields.</p></li>
-<li><p>Use INSERT ON DUPLICATE KEY or INSERT IGNORE instead of UPDATE to avoid the SELECT prior to update.</p></li>
-<li><p>Use a indexed field and ORDER BY instead of MAX.</p></li>
-<li><p>Avoid using ORDER BY RAND().</p></li>
-<li><p>LIMIT M,N can actually slow down queries in certain circumstances, use sparingly.</p></li>
-<li><p>Use UNION instead of sub-queries in WHERE clauses.</p></li>
-<li><p>For UPDATES, use SHARE MODE to prevent exclusive locks.</p></li>
-<li><p>On restarts of MySQL, remember to warm your database, to ensure that your data is in memory and queries are fast.</p></li>
-<li><p>Use DROP TABLE then CREATE TABLE instead of DELETE FROM to remove all data from a table.</p></li>
-<li><p>Minimize the data in your query to only the data you need, using * is overkill most of the time.</p></li>
-<li><p>Consider persistent connections instead of multiple connections to reduce overhead.</p></li>
-<li><p>Benchmark queries, including using load on the server, sometimes a simple query can have affects on other queries.</p></li>
-<li><p>When load increases on your server, use SHOW PROCESSLIST to view slow/problematic queries.</p></li>
-<li><p>Test all suspect queries in a development environment where you have mirrored production data.</p></li>
-</ol>
-
-
-<h3>MySQL Backup Procedures:</h3>
-
-<ol>
-<li><p>Backup from secondary replicated server.</p></li>
-<li><p>Stop replication during backups to prevent inconsistencies on data dependencies and foreign constraints.</p></li>
-<li><p>Stop MySQL altogether and take a backup of the database files.</p></li>
-<li><p>Backup binary logs at same time as dumpfile if MySQL dump used – to make sure replication does not break.</p></li>
-<li><p>Do not trust an LVM snapshot for backups – this could create data inconsistencies that will give you issues in the future.</p></li>
-<li><p>Make dumps per table for easier single table recovery – if data is isolated from other tables.</p></li>
-<li><p>Use –opt when using mysqldump.</p></li>
-<li><p>Check and Optimize tables before a backup.</p></li>
-<li><p>When importing temporarily disable foreign constraints for a faster import.</p></li>
-<li><p>When importing temporarily disable unique checks for a faster import.</p></li>
-<li><p>Calculate size of database/tables data and indexes after each backup to monitor growth.</p></li>
-<li><p>Monitor slave replication for errors and delay with a cron script.</p></li>
-<li><p>Perform Backups regularly.</p></li>
-<li><p>Test your backups regularly.</p></li>
-</ol>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/06/concepts-used-in-the-network/">Concepts Used in the Network</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-06T15:33:16+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>6</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>3:33 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>ISP – Internet Service Provider</h3>
-
-<p>An Internet service provider (ISP) is an organization that provides services for accessing, using, or participating in the Internet. Internet service providers may be organized in various forms, such as commercial, community-owned, non-profit, or otherwise privately owned.</p>
-
-<p>Internet services typically provided by ISPs include Internet access, Internet transit, domain name registration, web hosting, Usenet service, colocation.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Internet_Connectivity_Access_layer.svg/800px-Internet_Connectivity_Access_layer.svg.png"></p>
-
-<p>ISP là công ty cung cấp cho bạn kết nối Internet . Ví dụ tại Việt Nam có những ISP như FPT , VDC , Viettel và một số công ty  khác . Đó là những công ty mà bạn sẽ phải trả tiền hàng tháng để dùng kết nối Internet của mình .</p>
-
-<h3>LAN – Local Area Network</h3>
-
-<p>A local area network (LAN) is a computer network that interconnects computers within a limited area such as a home, school, computer laboratory, or office building, using network media.[1] The defining characteristics of LANs, in contrast to wide area networks (WANs), include their smaller geographic area, and non-inclusion of leased telecommunication lines.[citation needed]</p>
-
-<p>ARCNET, Token Ring and other technology standards have been used in the past, but Ethernet over twisted pair cabling, and Wi-Fi are the two most common technologies currently used to build LANs.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Ethernet_LAN.svg/800px-Ethernet_LAN.svg.png"></p>
-
-<p>LAN là một mạng nhỏ hạn chế trong một khu vực . Ví dụ mạng trong gia đình hoặc mang trong văn phòng cơ quan gọi là mạng LAN .</p>
-
-<h3>WAN – Wide Area Network</h3>
-
-<p>A wide area network (WAN) is a network that covers a broad area (i.e., any telecommunications network that links across metropolitan, regional, national or international boundaries) using leased telecommunication lines. Business and government entities use WANs to relay data among employees, clients, buyers, and suppliers from various geographical locations. In essence, this mode of telecommunication allows a business to effectively carry out its daily function regardless of location. The Internet can be considered a WAN as well, and is used by businesses, governments, organizations, and individuals for almost any purpose imaginable.[1]</p>
-
-<p>Related terms for other types of networks are personal area networks (PANs), local area networks (LANs), campus area networks (CANs), or metropolitan area networks (MANs) which are usually limited to a room, building, campus or specific metropolitan area (e.g., a city) respectively.</p>
-
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/LAN_WAN_scheme.svg/800px-LAN_WAN_scheme.svg.png"></p>
-
-<p>WAN là mạng lớn hơn và có tầm bao phủ lớn hơn so với mạng LAN . Những ISP cung cấp cho bạn kết nối tới mạng WAN của họ để kết nối tới Internet .</p>
-
-<h3>IP Address</h3>
-
-<p>Địa chỉ giao thức Internet hay còn được gọi “IP Address” , là địa chỉ ở dạng số tương ứng với máy tính của bạn trong một mạng . Khi một máy tính muốn kết nối tới một máy khác , nó nối thông qua địa chỉ IP của máy tính đó .</p>
-
-<h3>IPv4 và IPv6</h3>
-
-<p>Có hai kiểu địa chỉ IP hay sử dụng . Địa chỉ IPv4 ( version 4 ) cũ hơn hiện tại được dùng nhiều hơn cả , địa chỉ IPv6 mới hơn . IPv6 là rất cần thiết bởi vì chúng ta đã không còn đủ không gian địa chỉ IPv4 cho tất cả mọi người và thiết bị trên thế giới .</p>
-
-<h3>Router</h3>
-
-<p>Router là thiết bị mà lưu lượng dữ liệu qua lại . Chúng ta thường có Router tại gia đình . Công việc của Router để gửi lưu lượng dữ liệu ra từ những thiết bị của bạn tới mạng Internet và nhận lại dữ liệu từ mạng Internet tới thiết bị của bạn .</p>
-
-<h3>Gateway</h3>
-
-<p>Gateway là thiết bị định hướng đường truyền giữa những mạng . Ví dụ trong gia đình Router của bạn chính là Gateway . Nó cung cấp “Gateway” giữa mạng LAN và WAN .</p>
-
-<h3>NAT – Network Address Translation</h3>
-
-<p>NAT được những Router sử dụng để chia xẻ một địa chỉ IP cho nhiều thiết bị . Ví dụ, bạn có thể có Router không dây trong gia đình để tạo mạng Wi-Fi cho máy xách tay , điện thoại thông minh , máy tính bảng và các thiết khác kết nối tới . IPS của bạn cung cấp cho bạn một địa chỉ IP để có thể với tới mọi nơi trên Internet , đôi khi địa chỉ đó gọi là địa chỉ IP công cộng ( Public IP Address ) .</p>
-
-<p>Router tạo một mạng LAN và gán những địa chỉ IP cục bộ tới những thiết bị của bạn . Router sau đó có nhiệm vụ như là một Gateway để những thiết bị của bạn ra ngoài mạng LAN và nó xuất hiện như là một thiết bị ( Router ) dùng một địa chỉ IP duy nhất .</p>
-
-<h3>DHCP – Dynamic Host Configuration Protocol</h3>
-
-<p>HDCP là một giao thức cho phép những máy tính yêu cầu tự động và được gán địa chỉ IP và những thiết lập mạng khác . Ví dụ , khi bạn kết nối máy xách tay hoặc điện thoại thông minh tới mạng Wi-Fi , thiết bị của bạn yêu cầu Router gán cho mình một địa chỉ IP bằng giao thức DHCP và khi ấy Router sẽ gán cho nó một địa chỉ IP . Việc này để đơn giản hóa cho gán địa chỉ IP tĩnh bằng tay .</p>
-
-<h3>Hostname</h3>
-
-<p>Hostname là tên của nhãn để có thể chỉ tới một thiết bị được kết nối trên mạng . Ví dụ trong mạng gia đình , Hostname máy tính Windows của bạn có thể là WINDOWSPC . Các thiết bị khác có thể kết nối tới WINDOWSPC mà không cần phải gõ địa chỉ IP cục bộ của máy tính .</p>
-
-<h3>Domain Name</h3>
-
-<p>Những tên miền ( Domain Name ) là một phần cơ bản của tên trang web ví dụ như google.com.vn.</p>
-
-<p>Tên miền thực chất là một kiểu khác của Hostname .</p>
-
-<h3>DNS – Domain Name System</h3>
-
-<p>DNS là những hệ thống  để chuyển đổi những tên miền và Hostname thành dạng số của IP Address .</p>
-
-<p>Khi bạn gõ google.com.vn trong thanh địa chỉ trong trình duyệt  web , máy tính của bạn sẽ kết nối tới những máy chủ DNS và máy chủ DNS sẽ gửi trả địa chỉ IP dạng số của máy chủ của trang google.com.vn .</p>
-
-<p>Bạn có thể dùng ngầm định địa chỉ những máy chủ DNS của ISP hoặc có thể dùng những máy chủ DNS của nhà cung cấp khác ví dụ như của Google có địa chỉ 8.8.8.8 và 8.8.4.4 .</p>
-
-<h3>Ethernet</h3>
-
-<p>Ethernet là chuẩn công nghệ mạng có dây đang được dùng gần như mọi nơi hiện nay . Nếu máy tính kết nối tới mạng thông qua cáp thì có nghĩa là hầu như chắc chắn đang dùng cáp Ethernet . Cáp này cắm vào cổng Ethernet trên máy tính của bạn .</p>
-
-<h3>Network Interface / Network Adapter</h3>
-
-<p>Kết nối có dây Ethernet và kết nối Wi-Fi trong máy tính của bạn đều dựa trên hai giao diện mạng ( Network Interface ) .</p>
-
-<p>Nếu máy xách tay của bạn được kết nối với cả mạng có dây và mạng Wi-Fi , mỗi giao diện mạng đều có địa chỉ IP riêng và khác nhau .</p>
-
-<p>Những giao diện mạng có thể cũng được thực hiện hoàn toàn trong phần mềm , do đó chúng không thường xuyên trực tiếp tới phần cứng tương ứng .</p>
-
-<h3>localhost</h3>
-
-<p> “localhost” hostname tương ứng với thiết bị bạn đang dùng . Nó được dùng để phản hồi ( Loopback ) giao diện mạng – giao diện mạng thực hiện bằng phầm mềm – để kết nối trực tiếp tới PC của bạn .</p>
-
-<p>localhost thực chất chỉ tới địa chỉ IPv4 127.0.0.1 hoặc địa chỉ IPv6 ::1 . Mỗi cái thường tương ứng với thiết bị hiện tại .</p>
-
-<h3>MAC Address</h3>
-
-<p>Mỗi giao diện mạng đều có địa chỉ MAC – Media Access Control , hay còn được gọi là địa chỉ vật lí ( Physical Address ) . Địa chỉ này là duy nhất được thiết kế để nhận dạng được các PC khác nhau trên mạng . Những địa chỉ MAC được các nhà sản xuất gán mỗi thiết bị mạng mà họ chế tạo .</p>
-
-<h3>Port – Cổng</h3>
-
-<p>Khi một ứng dụng muốn gửi hoặc nhận lưu lượng dữ liệu , nó phải dùng số Cổng ( Port ) từ 1 tới 65.535 . Điều đó có thể giải thích tại sao lại có nhiều ứng dụng trên máy tính dùng mạng và mỗi ứng dụng lại biết lưu lượng dữ liệu của mình .</p>
-
-<p>Chuẩn HTTP dùng cổng 80 , so đó khi bạn đang kết nối tới trang <a href="http://dantri.com">http://dantri.com</a> có nghĩa là bạn đang thực hiện kết nối HTTP tới cổng 80 trong trang dantri.com. Phần mềm máy chủ web của trang dantri.com đang “nghe” lưu lượng dữ liệu tới trong cổng 80 . Bạn có thể thử kết nối tới cổng 81 bằng cách gõ <a href="http://dantri.com:81">http://dantri.com:81</a> vào trình duyệt  web , nhưng bạn không nhận được phản hồi vì phần mềm máy chủ web không “nghe” trong cổng 81 .</p>
-
-<h3>Protocol – Giao thức – TCP , UDP , ICMP ….</h3>
-
-<p>Những giao thức là những cách khác nhau của truyền thông qua mạng Internet .</p>
-
-<p>TCP và UDP là những giao thức thông dụng nhất . Giao thức ICMP cũng được dùng nhưng chủ yếu để các thiết bị mạng có thể kiểm tra trạng thái của những thiết bị mạng khác .</p>
-
-<p>Những giao thức khác nhau là những ý tưởng cho những kiểu truyền thông khác nhau .</p>
-
-<h3>Packet – Gói dữ liệu</h3>
-
-<p>Packet là một đơn vị của dữ liệu được gửi giữa những thiết bị . Khi tải một trang web , máy tính của bạn gửi những Packet tới máy chủ yêu cầu trang web và máy chủ phản gửi trả lại bằng nhiều Packet khác nhau để máy tính của bạn tái tạo ra nội dung của trang web .</p>
-
-<p>Packet là đơn vị cơ bản của dữ liệu mà máy tính trên mạng trao đổi với nhau .</p>
-
-<h3>Firewall – Tường lửa</h3>
-
-<p>Firewall là một phần mềm hoặc phần cứng để ngăn chặn những kiểu lưu lượng dữ liệu nào đó . Ví dụ , Firewall có thể chặn dữ liệu đi vào từ một cổng nào đó hoặc chặn tất cả những luồng dữ liệu đi vào ngoại trừ dữ liệu được tới từ một địa chỉ IP nào đó .</p>
-
-<h3>HTTP - hypertext transfer protocol</h3>
-
-<p>HTTP là giao thức chuẩn trong những trình duyệt  web hiện đại và được các trang web sử dụng . FTP và BitTorrent là những ví dụ của những giao thức thay thế .</p>
-
-<h3>URL - Uniform Resource Locator</h3>
-
-<p>URL hay cũng còn được gọi là địa chỉ của trang web . URL hiện tại được hiển thị trên thanh địa chỉ của trình duyệt  web . Ví dụ <a href="http://dantri.com/tu-van/chay-thu.html">http://dantri.com/tu-van/chay-thu.html</a>  là một URL nói cho máy tính dùng giao thức HTTP để nối tới máy chủ của dantri.com và yêu cầu nội dung ở /tu-van trong thư mục gốc .</p>
 </div>
   
   

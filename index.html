@@ -9,7 +9,11 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Overview Retrofit is a type-safe REST client for Android built by Square. The library provides a powerful framework for authenticating and &hellip;">
+  <meta name="description" content="Move left, up, down, right Move left: [h]
+Move up: [j]
+Move down: [k]
+Move right:[l]
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +83,158 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/08/09/vim-tips/">Vim Tips</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-09T13:38:21+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>9</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:38 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Move left, up, down, right</h3>
+
+<p>Move left: [h]
+Move up:   [j]
+Move down: [k]
+Move right:[l]</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/08/08/rails-tutorial-step-by-step/">Rails Tutorial - Step by Step</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-08T10:49:19+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>8</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:49 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Init project</h2>
+
+<h3>Create project</h3>
+
+<pre><code>$ rails new project-name -d mysql
+$ cd project-name
+$ bundle install
+$ bundle update
+</code></pre>
+
+<h3>Init bitbucket and heroku</h3>
+
+<pre><code>$ git init
+$ git remote add origin git@bitbucket.org:&lt;username&gt;/&lt;project-name&gt;
+
+$ heroku create
+$ heroku apps:rename &lt;new-name&gt;
+</code></pre>
+
+<h3>Config heroku</h3>
+
+<h4>Gemfile</h4>
+
+<pre><code>group :production do
+  gem 'puma'
+  gem 'pg',             '0.17.1'
+  gem 'rails_12factor', '0.0.2'
+end
+</code></pre>
+
+<h4>Puma config</h4>
+
+<p>Create <code>Procfile</code></p>
+
+<pre><code>web: bundle exec puma -C config/puma.rb
+</code></pre>
+
+<p>Create a configuration file for Puma at <code>config/puma.rb</code></p>
+
+<pre><code>workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+threads_count = Integer(ENV['MAX_THREADS'] || 5)
+threads threads_count, threads_count
+
+preload_app!
+
+rackup      DefaultRackup
+port        ENV['PORT']     || 3000
+environment ENV['RACK_ENV'] || 'development'
+
+on_worker_boot do
+  ActiveRecord::Base.establish_connection
+end
+</code></pre>
+
+<p>Run command</p>
+
+<pre><code>$ heroku config:set MIN_THREADS=1 MAX_THREADS=1
+</code></pre>
+
+<h2>Create Static Page</h2>
+
+<pre><code>&lt;title&gt;&lt;%= full_title(yield(:title)) %&gt;&lt;/title&gt;
+</code></pre>
+
+<p><code>app/helpers/application_helper.rb</code></p>
+
+<pre><code>module ApplicationHelper
+
+# Returns the full title on a per-page basis.
+def full_title(page_title = '')
+  base_title = "Ruby on Rails Tutorial Sample App"
+  if page_title.empty?
+    base_title
+  else
+    page_title + " | " + base_title
+  end
+  end
+end
+</code></pre>
+
+<p>Add to view file</p>
+
+<pre><code>&lt;% provide(:title, "Home") %&gt;
+</code></pre>
+
+<h2>Create Layout using bootstrap</h2>
+
+<h2>Create User and basic auth</h2>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -834,197 +990,6 @@ int main(int argc , char ** argv) {
     glutDisplayFunc(disp);
     glutMainLoop();
     return 0;
-}
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/11/install-golang/">Install GoLang</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-11T13:46:29+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:46 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/11/java-design-patterns-factory-methods/">Java Design Patterns - Factory Methods</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-11T11:38:55+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>11</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:38 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Định nghĩa một interface cho việc tạo ra một đối tượng, nhưng để cho các lớp con quyết định lớp nào sẽ tạo đối tượng. Factory Method cho phép một lớp hoãn việc tạo đối tượng sang các lớp con.</p>
-
-<p><img src="http://i.imgur.com/KCE7HIw.png"></p>
-
-<h2>#</h2>
-
-<p>Interface sản phẩm</p>
-
-<pre><code>public interface Weapon {
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Interface factory chứa method để tạo sản phẩm</p>
-
-<pre><code>public interface Blacksmith {
-
-    Weapon manufactureWeapon(WeaponType weaponType);
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Các subclass factory thực thi để tạo sản phẩm</p>
-
-<pre><code>public class ElfBlacksmith implements Blacksmith {
-
-    public Weapon manufactureWeapon(WeaponType weaponType) {
-        return new ElfWeapon(weaponType);
-    }
-
-}
-
-public class OrcBlacksmith implements Blacksmith {
-
-    public Weapon manufactureWeapon(WeaponType weaponType) {
-        return new OrcWeapon(weaponType);
-    }
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Các subclass sản phẩm</p>
-
-<pre><code>public class ElfWeapon implements Weapon {
-
-    private WeaponType weaponType;
-
-    public ElfWeapon(WeaponType weaponType) {
-        this.weaponType = weaponType;
-    }
-
-    @Override
-    public String toString() {
-        return "Elven " + weaponType;
-    }
-
-}
-
-public class OrcWeapon implements Weapon {
-
-    private WeaponType weaponType;
-
-    public OrcWeapon(WeaponType weaponType) {
-        this.weaponType = weaponType;
-    }
-
-    @Override
-    public String toString() {
-        return "Orcish " + weaponType;
-    }
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Class chứa loại sản phẩm</p>
-
-<pre><code>public enum WeaponType {
-
-    SHORT_SWORD("short sword"), SPEAR("spear"), AXE("axe"), UNDEFINED("");
-
-    private String title;
-
-    WeaponType(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return title;
-    }
-}
-</code></pre>
-
-<h3>Application</h3>
-
-<p>Class chạy thực thi, khởi tạo đối tượng sản phẩm và đối tượng factory. Tạo factory tương ứng với sản phẩm muốn tạo và truyền vào loại sản phẩm.</p>
-
-<pre><code>/**
- * 
- * In Factory Method we have an interface (Blacksmith) with a method for
- * creating objects (manufactureWeapon). The concrete subclasses (OrcBlacksmith,
- * ElfBlacksmith) then override the method to produce objects of their liking.
- * 
- */
-public class App {
-
-    public static void main(String[] args) {
-        Blacksmith blacksmith;
-        Weapon weapon;
-
-        blacksmith = new f();
-        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-        System.out.println(weapon);
-        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
-        System.out.println(weapon);
-
-        blacksmith = new ElfBlacksmith();
-        weapon = blacksmith.manufactureWeapon(WeaponType.SHORT_SWORD);
-        System.out.println(weapon);
-        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-        System.out.println(weapon);
-    }
 }
 </code></pre>
 </div>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Tutorial | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/tutorial/atom.xml" rel="self"/>
+  <link href="http://dankuanmei.github.io/"/>
+  <updated>2015-08-09T13:42:00+09:00</updated>
+  <id>http://dankuanmei.github.io/</id>
+  <author>
+    <name><![CDATA[ダン・クァン・ミン]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Tutorial - Step by Step]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/08/08/rails-tutorial-step-by-step/"/>
+    <updated>2015-08-08T10:49:19+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/08/08/rails-tutorial-step-by-step</id>
+    <content type="html"><![CDATA[<h2>Init project</h2>
+
+<h3>Create project</h3>
+
+<pre><code>$ rails new project-name -d mysql
+$ cd project-name
+$ bundle install
+$ bundle update
+</code></pre>
+
+<h3>Init bitbucket and heroku</h3>
+
+<pre><code>$ git init
+$ git remote add origin git@bitbucket.org:&lt;username&gt;/&lt;project-name&gt;
+
+$ heroku create
+$ heroku apps:rename &lt;new-name&gt;
+</code></pre>
+
+<h3>Config heroku</h3>
+
+<h4>Gemfile</h4>
+
+<pre><code>group :production do
+  gem 'puma'
+  gem 'pg',             '0.17.1'
+  gem 'rails_12factor', '0.0.2'
+end
+</code></pre>
+
+<h4>Puma config</h4>
+
+<p>Create <code>Procfile</code></p>
+
+<pre><code>web: bundle exec puma -C config/puma.rb
+</code></pre>
+
+<p>Create a configuration file for Puma at <code>config/puma.rb</code></p>
+
+<pre><code>workers Integer(ENV['WEB_CONCURRENCY'] || 2)
+threads_count = Integer(ENV['MAX_THREADS'] || 5)
+threads threads_count, threads_count
+
+preload_app!
+
+rackup      DefaultRackup
+port        ENV['PORT']     || 3000
+environment ENV['RACK_ENV'] || 'development'
+
+on_worker_boot do
+  ActiveRecord::Base.establish_connection
+end
+</code></pre>
+
+<p>Run command</p>
+
+<pre><code>$ heroku config:set MIN_THREADS=1 MAX_THREADS=1
+</code></pre>
+
+<h2>Create Static Page</h2>
+
+<pre><code>&lt;title&gt;&lt;%= full_title(yield(:title)) %&gt;&lt;/title&gt;
+</code></pre>
+
+<p><code>app/helpers/application_helper.rb</code></p>
+
+<pre><code>module ApplicationHelper
+
+# Returns the full title on a per-page basis.
+def full_title(page_title = '')
+  base_title = "Ruby on Rails Tutorial Sample App"
+  if page_title.empty?
+    base_title
+  else
+    page_title + " | " + base_title
+  end
+  end
+end
+</code></pre>
+
+<p>Add to view file</p>
+
+<pre><code>&lt;% provide(:title, "Home") %&gt;
+</code></pre>
+
+<h2>Create Layout using bootstrap</h2>
+
+<h2>Create User and basic auth</h2>
+]]></content>
+  </entry>
+  
+</feed>

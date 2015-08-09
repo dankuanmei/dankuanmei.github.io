@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-08-09T13:56:20+09:00</updated>
+  <updated>2015-08-09T14:25:30+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -20,10 +20,18 @@
     <id>http://dankuanmei.github.io/blog/2015/08/09/vim-tips</id>
     <content type="html"><![CDATA[<h3>Move left, up, down, right</h3>
 
-<p>Move left: [h]
-Move up:   [j]
-Move down: [k]
-Move right:[l]</p>
+<p>  Move left : [h]
+  Move up   : [j]
+  Move down : [k]
+  Move right: [l]</p>
+
+<h3>Move word at a time</h3>
+
+<p>  [w]  moves to the start of next word;
+  [e]  moves to the end of next word;
+  [b]  moves to beginning of the word;</p>
+
+<h3>Virtual mode</h3>
 ]]></content>
   </entry>
   

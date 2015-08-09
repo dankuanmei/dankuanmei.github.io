@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-08-09T13:42:00+09:00</updated>
+  <updated>2015-08-09T13:56:20+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -90,36 +90,6 @@ end
 
 <pre><code>$ heroku config:set MIN_THREADS=1 MAX_THREADS=1
 </code></pre>
-
-<h2>Create Static Page</h2>
-
-<pre><code>&lt;title&gt;&lt;%= full_title(yield(:title)) %&gt;&lt;/title&gt;
-</code></pre>
-
-<p><code>app/helpers/application_helper.rb</code></p>
-
-<pre><code>module ApplicationHelper
-
-# Returns the full title on a per-page basis.
-def full_title(page_title = '')
-  base_title = "Ruby on Rails Tutorial Sample App"
-  if page_title.empty?
-    base_title
-  else
-    page_title + " | " + base_title
-  end
-  end
-end
-</code></pre>
-
-<p>Add to view file</p>
-
-<pre><code>&lt;% provide(:title, "Home") %&gt;
-</code></pre>
-
-<h2>Create Layout using bootstrap</h2>
-
-<h2>Create User and basic auth</h2>
 ]]></content>
   </entry>
   

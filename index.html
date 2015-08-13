@@ -140,7 +140,7 @@ end
 
 <p>Tạo controller Chat đơn giản</p>
 
-<pre><code>$rails g controller chat index
+<pre><code>$ rails g controller Chat index
 </code></pre>
 
 <p>Trong file <code>index.html.erb</code> chèn source code này vào</p>
@@ -153,7 +153,7 @@ end
 &lt;input id="send" type="button" value="send"&gt;
 
 &lt;script&gt;
-  var ws_rails = new WebSocketRails("localhost:3000/websocket");
+  var ws_rails = new WebSocketRails("sample-chat.local:3001/websocket");
   // メッセージ受信時の処理
   ws_rails.bind("websocket_chat", function(message){
     var message_li = document.createElement("li");
@@ -230,7 +230,45 @@ sudo chmod 600 /etc/apt/sources.list.d/passenger.list
 <pre><code>sudo service apache2 restart
 </code></pre>
 
-<p>Giờ là lúc tạo</p>
+<p>Giờ là lúc setup server apache. Hiện tại thì bắt buộc phải copy source code vào trong thư mục <code>/var/www</code>, khá là bất tiện.</p>
+
+<pre><code>$ sudo vim /etc/apache2/sites-available/sample-chat.local.conf
+</code></pre>
+
+<p>Sau đó chèn code sau</p>
+
+<pre><code>&lt;virtualhost *:80&gt;
+    DocumentRoot "/var/www/sample-chat/public"
+    ServerName sample-chat.local
+    SetEnv RACK_ENV development
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+    &lt;Directory "/var/www/sample-chat/public"&gt;
+      Options FollowSymLinks
+      Require all granted
+    &lt;/directory&gt;
+
+&lt;/virtualhost&gt;
+</code></pre>
+
+<p>Say đó sửa file <code>/etc/hosts</code> để thiết lập domain ảo ở local.</p>
+
+<p>Chạy lệnh</p>
+
+<pre><code>$ sudo service apache2 reload
+$ sudo service apache2 restart
+</code></pre>
+
+<p>Vào trong thư mục source code chạy lệnh <code>rake secret</code>sau đó copy đoạn mã vào trong file <code>config/secret.yml</code></p>
+
+<p>Sửa config trong file <code>config/initializers/websocket_rails.rb</code> về <code>config.standalone = true</code>. Sau đó chạy lệnh:</p>
+
+<pre><code>$ rake websocket_rails:start_server
+$ rake assets:precompile
+</code></pre>
+
+<p>Vậy là đã hoàn tất!</p>
 </div>
   
   

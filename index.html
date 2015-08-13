@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Move left, up, down, right Move left : [h] Move up : [j] Move down : [k] Move right: [l] Move word at a time [w] moves to the start of next word; [e &hellip;">
+  <meta name="description" content="Đầu tiên là tạo dự án rails đã. $ rails new sample-chat -d mysql Sau đó config database trong file config/database.yml Bước tiếp theo đó là cài đặt &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -85,6 +85,164 @@
       
   <header>
     
+      <h1 class="entry-title"><a href="/blog/2015/08/13/rails-websocket-deploy-on-apache2-with-passenger/">Rails Websocket Deploy on Apache2 With Passenger</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-13T11:26:37+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>13</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:26 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Đầu tiên là tạo dự án rails đã.</p>
+
+<pre><code>$ rails new sample-chat -d mysql
+</code></pre>
+
+<p>Sau đó config database trong file <code>config/database.yml</code></p>
+
+<p>Bước tiếp theo đó là cài đặt gem <code>websocket-rails</code>trong <code>Gemfile</code></p>
+
+<pre><code>gem "websocket-rails"
+</code></pre>
+
+<p>Chạy lệnh <code>bundle install</code></p>
+
+<p>Chạy lệnh <code>rails g websocket_rails:install</code></p>
+
+<p>WebsocketRailsコントローラの作成. Tạo file <code>app/controllers/websocket_chat_controller.rb</code></p>
+
+<pre><code># WebsocketRails::BaseControllerを継承
+class WebsocketChatController &lt; WebsocketRails::BaseController
+  def message_recieve
+    # クライアントからのメッセージを取得
+    recieve_message = message()
+    # websocket_chatイベントで接続しているクライアントにブロードキャスト
+    broadcast_message(:websocket_chat, recieve_message)
+  end
+end
+</code></pre>
+
+<p>Event Routerの設定. Sửa file <code>events.rb</code> trong thư mục config</p>
+
+<pre><code>WebsocketRails::EventMap.describe do
+  subscribe :websocket_chat, to: WebsocketChatController, with_method: :message_recieve
+end
+</code></pre>
+
+<p>Tạo controller Chat đơn giản</p>
+
+<pre><code>$rails g controller chat index
+</code></pre>
+
+<p>Trong file <code>index.html.erb</code> chèn source code này vào</p>
+
+<pre><code>&lt;!-- チャット表示部分 --&gt;
+&lt;ul id="chat_area"&gt;&lt;/ul&gt;
+
+&lt;!-- コメントフォーム --&gt;
+&lt;input id="comment" type="text"&gt;
+&lt;input id="send" type="button" value="send"&gt;
+
+&lt;script&gt;
+  var ws_rails = new WebSocketRails("localhost:3000/websocket");
+  // メッセージ受信時の処理
+  ws_rails.bind("websocket_chat", function(message){
+    var message_li = document.createElement("li");
+    message_li.textContent = message;
+    document.getElementById("chat_area").appendChild(message_li);
+  });
+
+  // メッセージ送信時の処理
+  document.getElementById("send").onclick =  function(){
+    var comment = document.getElementById("comment").value;
+    ws_rails.trigger("websocket_chat", comment);
+  }
+&lt;/script&gt;
+</code></pre>
+
+<p>Rack::Lockの無効化. Trong file <code>config/environments/development.rb</code>, viết thêm dòng config này vào:</p>
+
+<pre><code>config.middleware.delete Rack::Lock
+</code></pre>
+
+<p>Vậy là đã xong phần source code, giờ thì sẽ triển khai deploy trên Apache2, với Passenger &amp; Virtualhost.</p>
+
+<p>Trong Gemfile điền thêm hai gem:</p>
+
+<pre><code># Deploy
+gem 'passenger'
+gem 'therubyracer', platforms: :ruby
+</code></pre>
+
+<p>Bundle install xong thì chạy lệnh <code>passenger-install-apache2-module</code>. Thiết lập Passenger cho thằng Apache2.</p>
+
+<p>Thiết lập thêm theo cách này cho chắc ăn. Nhưng hình như sẽ bị cảnh báo là confict. Hiện thời chưa thấy confilct gì cả.</p>
+
+<p>First, install the PGP key for the repository server:</p>
+
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+</code></pre>
+
+<p>Create an APT source file:</p>
+
+<pre><code>sudo nano /etc/apt/sources.list.d/passenger.list
+</code></pre>
+
+<p>Insert the following line to add the Passenger repository to the file:</p>
+
+<pre><code>deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
+</code></pre>
+
+<p>Press CTRL+X to exit, type Y to save the file, and then press ENTER to confirm the file location.</p>
+
+<p>Change the owner and permissions for this file to restrict access to root:</p>
+
+<pre><code>sudo chown root: /etc/apt/sources.list.d/passenger.list
+sudo chmod 600 /etc/apt/sources.list.d/passenger.list
+</code></pre>
+
+<p>Update the APT cache:</p>
+
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p>Finally, install Passenger:</p>
+
+<pre><code>sudo apt-get install libapache2-mod-passenger
+</code></pre>
+
+<p>Make sure the Passenger Apache module; it maybe enabled already:</p>
+
+<pre><code>sudo a2enmod passenger
+</code></pre>
+
+<p>Restart Apache:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<p>Giờ là lúc tạo</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
       <h1 class="entry-title"><a href="/blog/2015/08/09/vim-tips/">Vim Tips</a></h1>
     
     
@@ -104,16 +262,18 @@
 
   <div class="entry-content"><h3>Move left, up, down, right</h3>
 
-<p>  Move left : [h]
-  Move up   : [j]
-  Move down : [k]
-  Move right: [l]</p>
+<pre><code>Move left : [h]
+Move up   : [j]
+Move down : [k]
+Move right: [l]
+</code></pre>
 
 <h3>Move word at a time</h3>
 
-<p>  [w]  moves to the start of next word;
-  [e]  moves to the end of next word;
-  [b]  moves to beginning of the word;</p>
+<pre><code>[w]  moves to the start of next word;
+[e]  moves to the end of next word;
+[b]  moves to beginning of the word;
+</code></pre>
 
 <h3>Virtual mode</h3>
 </div>
@@ -801,171 +961,6 @@ glfwWindowShouldClose(window) == 0 );
 <p><a href="http://ui-cloud.com/">http://ui-cloud.com/</a></p>
 
 <p>Trang chuyên dùng cho việc search tham khảo những thành phần của UI.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/15/install-opengl-in-ubuntu/">Install openGL in Ubuntu</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-15T01:22:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:22 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Install command line</h3>
-
-<pre><code>$ sudo apt-get install freeglut3-dev libglew1.5-dev
-
-$ sudo apt-get install libxmu-dev libxi-dev
-
-$ sudo apt-get install binutils-gold
-</code></pre>
-
-<h3>Complie command line</h3>
-
-<pre><code>$ cc -I/usr/X11R6/include program.c -L/usr/X11R6/lib -lglut -lGLU -lGL -lXmu -lXi -lXext -lX11 -lm -lpthread
-
-$ function ccgl() { cc -I/usr/X11R6/include "$@" -L/usr/X11R6/lib -lglut -lGLU -lGL -lXmu -lXi -lXext -lX11 -lm -lpthread; }
-
-$ ccgl program.c
-</code></pre>
-
-<h2>#</h2>
-
-<table>
-<thead>
-<tr>
-<th> C                           </th>
-<th> OpenGL                      </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> signed char                 </td>
-<td> GLbyte                      </td>
-</tr>
-<tr>
-<td> unsigned char               </td>
-<td> GLubyte, GLboolean          </td>
-</tr>
-<tr>
-<td> short                       </td>
-<td> GLshort                     </td>
-</tr>
-<tr>
-<td> unsigned short              </td>
-<td> GLushort                    </td>
-</tr>
-<tr>
-<td> int, long                   </td>
-<td> GLint, GLsizei              </td>
-</tr>
-<tr>
-<td> unsigned int, unsigned long </td>
-<td> GLuint, GLenum, GLbitfield  </td>
-</tr>
-<tr>
-<td> float                       </td>
-<td> GLfloat, GLclampf           </td>
-</tr>
-<tr>
-<td> double                      </td>
-<td> GLdouble, GLclampd          </td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>Function</h3>
-
-<p>void glutInit(int *argcp, char **argv);</p>
-
-<p>glutInitWindowPosition();</p>
-
-<p>glutInitWindowSize();</p>
-
-<p>glutInitDisplayMode();</p>
-
-<ul>
-<li>GLUT_RGBA RGBA モード</li>
-<li>GLUT_RGBAも GLUT_INDEX も記述されないときのデフォルト</li>
-<li>GLUT_RGB  GLUT_RGBA と同じ</li>
-<li>GLUT_INDEX    カラーインデックス モード</li>
-<li>GLUT_RGBAも記述された場合，上書きする</li>
-<li>GLUT_SINGLE   シングルバッファ モード</li>
-<li>GLUT_DOUBLE もGLUT_SINGLEも記述されていない場合の デフォルトである</li>
-<li>GLUT_DOUBLE   ダブルバッファ モード</li>
-<li>GLUT_SINGLE も記述されていた場合，上書きする</li>
-<li>GLUT_ACCUM    アキュムレーション バッファ</li>
-<li>GLUT_ALPHA    カラーバッファにアルファ成分を加えること</li>
-<li>GLUT_DEPTH    デプス(Z)バッファを加えること</li>
-<li>GLUT_STENCIL  ステンシル・バッファを加えること</li>
-<li>GLUT_MULTISAMPLE  マルチサンプリングのサポート</li>
-<li>GLX_SAMPLE_SGIS エクステンションをサポートしていなければならない</li>
-<li>GLUT_STEREO   ステレオ・ウィンドウビットマスク</li>
-</ul>
-
-
-<p>int glutCreateWindow(char *name);</p>
-
-<p>void glutDisplayFunc(void (*func)(void));</p>
-
-<p>void glClear(GLbitfield mask);</p>
-
-<p>void glClearColor(GLclampf red,  GLclampf green,  GLclampf blue,  GLclampf alpha);</p>
-
-<p>void glBegin(GLenum  mode);</p>
-
-<p>void glEnd(void);</p>
-
-<p>void glFlush();</p>
-
-<h3>Sample</h3>
-
-<pre><code>#include &lt;windows.h&gt;
-#include &lt;GL/gl.h&gt;
-#include &lt;GL/glut.h&gt;
-
-void disp(void) {
-    glClearColor(1 , 1 , 1 , 0);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glBegin(GL_POLYGON);
-    glEnd();
-
-    glFlush();
-}
-
-int main(int argc , char ** argv) {
-    glutInit(&amp;argc , argv);
-    glutInitWindowPosition(100 , 50);
-    glutInitWindowSize(200 , 100);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
-
-    glutCreateWindow("Kitty on your lap");
-    glutDisplayFunc(disp);
-    glutMainLoop();
-    return 0;
-}
-</code></pre>
 </div>
   
   

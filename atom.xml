@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-08-09T14:25:30+09:00</updated>
+  <updated>2015-08-13T12:08:41+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -14,22 +14,161 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Rails Websocket Deploy on Apache2 With Passenger]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/08/13/rails-websocket-deploy-on-apache2-with-passenger/"/>
+    <updated>2015-08-13T11:26:37+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/08/13/rails-websocket-deploy-on-apache2-with-passenger</id>
+    <content type="html"><![CDATA[<p>Đầu tiên là tạo dự án rails đã.</p>
+
+<pre><code>$ rails new sample-chat -d mysql
+</code></pre>
+
+<p>Sau đó config database trong file <code>config/database.yml</code></p>
+
+<p>Bước tiếp theo đó là cài đặt gem <code>websocket-rails</code>trong <code>Gemfile</code></p>
+
+<pre><code>gem "websocket-rails"
+</code></pre>
+
+<p>Chạy lệnh <code>bundle install</code></p>
+
+<p>Chạy lệnh <code>rails g websocket_rails:install</code></p>
+
+<p>WebsocketRailsコントローラの作成. Tạo file <code>app/controllers/websocket_chat_controller.rb</code></p>
+
+<pre><code># WebsocketRails::BaseControllerを継承
+class WebsocketChatController &lt; WebsocketRails::BaseController
+  def message_recieve
+    # クライアントからのメッセージを取得
+    recieve_message = message()
+    # websocket_chatイベントで接続しているクライアントにブロードキャスト
+    broadcast_message(:websocket_chat, recieve_message)
+  end
+end
+</code></pre>
+
+<p>Event Routerの設定. Sửa file <code>events.rb</code> trong thư mục config</p>
+
+<pre><code>WebsocketRails::EventMap.describe do
+  subscribe :websocket_chat, to: WebsocketChatController, with_method: :message_recieve
+end
+</code></pre>
+
+<p>Tạo controller Chat đơn giản</p>
+
+<pre><code>$rails g controller chat index
+</code></pre>
+
+<p>Trong file <code>index.html.erb</code> chèn source code này vào</p>
+
+<pre><code>&lt;!-- チャット表示部分 --&gt;
+&lt;ul id="chat_area"&gt;&lt;/ul&gt;
+
+&lt;!-- コメントフォーム --&gt;
+&lt;input id="comment" type="text"&gt;
+&lt;input id="send" type="button" value="send"&gt;
+
+&lt;script&gt;
+  var ws_rails = new WebSocketRails("localhost:3000/websocket");
+  // メッセージ受信時の処理
+  ws_rails.bind("websocket_chat", function(message){
+    var message_li = document.createElement("li");
+    message_li.textContent = message;
+    document.getElementById("chat_area").appendChild(message_li);
+  });
+
+  // メッセージ送信時の処理
+  document.getElementById("send").onclick =  function(){
+    var comment = document.getElementById("comment").value;
+    ws_rails.trigger("websocket_chat", comment);
+  }
+&lt;/script&gt;
+</code></pre>
+
+<p>Rack::Lockの無効化. Trong file <code>config/environments/development.rb</code>, viết thêm dòng config này vào:</p>
+
+<pre><code>config.middleware.delete Rack::Lock
+</code></pre>
+
+<p>Vậy là đã xong phần source code, giờ thì sẽ triển khai deploy trên Apache2, với Passenger &amp; Virtualhost.</p>
+
+<p>Trong Gemfile điền thêm hai gem:</p>
+
+<pre><code># Deploy
+gem 'passenger'
+gem 'therubyracer', platforms: :ruby
+</code></pre>
+
+<p>Bundle install xong thì chạy lệnh <code>passenger-install-apache2-module</code>. Thiết lập Passenger cho thằng Apache2.</p>
+
+<p>Thiết lập thêm theo cách này cho chắc ăn. Nhưng hình như sẽ bị cảnh báo là confict. Hiện thời chưa thấy confilct gì cả.</p>
+
+<p>First, install the PGP key for the repository server:</p>
+
+<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
+</code></pre>
+
+<p>Create an APT source file:</p>
+
+<pre><code>sudo nano /etc/apt/sources.list.d/passenger.list
+</code></pre>
+
+<p>Insert the following line to add the Passenger repository to the file:</p>
+
+<pre><code>deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
+</code></pre>
+
+<p>Press CTRL+X to exit, type Y to save the file, and then press ENTER to confirm the file location.</p>
+
+<p>Change the owner and permissions for this file to restrict access to root:</p>
+
+<pre><code>sudo chown root: /etc/apt/sources.list.d/passenger.list
+sudo chmod 600 /etc/apt/sources.list.d/passenger.list
+</code></pre>
+
+<p>Update the APT cache:</p>
+
+<pre><code>sudo apt-get update
+</code></pre>
+
+<p>Finally, install Passenger:</p>
+
+<pre><code>sudo apt-get install libapache2-mod-passenger
+</code></pre>
+
+<p>Make sure the Passenger Apache module; it maybe enabled already:</p>
+
+<pre><code>sudo a2enmod passenger
+</code></pre>
+
+<p>Restart Apache:</p>
+
+<pre><code>sudo service apache2 restart
+</code></pre>
+
+<p>Giờ là lúc tạo</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Vim Tips]]></title>
     <link href="http://dankuanmei.github.io/blog/2015/08/09/vim-tips/"/>
     <updated>2015-08-09T13:38:21+09:00</updated>
     <id>http://dankuanmei.github.io/blog/2015/08/09/vim-tips</id>
     <content type="html"><![CDATA[<h3>Move left, up, down, right</h3>
 
-<p>  Move left : [h]
-  Move up   : [j]
-  Move down : [k]
-  Move right: [l]</p>
+<pre><code>Move left : [h]
+Move up   : [j]
+Move down : [k]
+Move right: [l]
+</code></pre>
 
 <h3>Move word at a time</h3>
 
-<p>  [w]  moves to the start of next word;
-  [e]  moves to the end of next word;
-  [b]  moves to beginning of the word;</p>
+<pre><code>[w]  moves to the start of next word;
+[e]  moves to the end of next word;
+[b]  moves to beginning of the word;
+</code></pre>
 
 <h3>Virtual mode</h3>
 ]]></content>
@@ -1679,47 +1818,6 @@ exec()          Tests for a match in a string. Returns the first match
 test()          Tests for a match in a string. Returns true or false
 toString()      Returns the string value of the regular expression
 </code></pre>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Regular Expression]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/07/regular-expression/"/>
-    <updated>2015-07-07T10:45:58+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/07/regular-expression</id>
-    <content type="html"><![CDATA[<h2>From Wikipedia</h2>
-
-<p>In theoretical computer science and formal language theory, a regular expression (abbreviated regex or regexp and sometimes called a rational expression) is a sequence of characters that define a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. &ldquo;find and replace&rdquo;-like operations. The concept arose in the 1950s, when the American mathematician Stephen Kleene formalized the description of a regular language, and came into common use with the Unix text processing utilities ed, an editor, and grep (global regular expression print), a filter.</p>
-
-<p>Regular expressions are so useful in computing that the various systems to specify regular expressions have evolved to provide both a basic and extended standard for the grammar and syntax; modern regular expressions heavily augment the standard. Regular expression processors are found in several search engines, search and replace dialogs of several word processors and text editors, and in the command lines of text processing utilities, such as sed and AWK.</p>
-
-<p>Many programming languages provide regular expression capabilities, some built-in, for example Perl, JavaScript, Ruby, AWK, and Tcl, and others via a standard library, for example .NET languages, Java, Python and C++ (since C++11). Most other languages offer regular expressions via a library.</p>
-
-<p>Biểu thức chính quy (tiếng Anh: regular expression, viết tắt là regexp, regex hay regxp) là một chuỗi miêu tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Biểu thức chính quy thường được dùng trong các trình biên tập văn bản và các tiện ích tìm kiếm và xử lý văn bản dựa trên các mẫu được quy định. Nhiều ngôn ngữ lập trình cũng hỗ trợ biểu thức chính quy trong việc xử lý chuỗi, chẳng hạn như Perl có bộ máy mạnh mẽ để xử lý biểu thức chính quy được xây dựng trực tiếp trong cú pháp của chúng. Bộ các trình tiện ích (gồm trình biên tập sed và trình lọc grep) đi kèm các bản phân phối Unix có vai trò đầu tiên trong việc phổ biến khái niệm biểu thức chính quy.</p>
-
-<h3>Patterns</h3>
-
-<p>Each character in a regular expression is either understood to be a metacharacter with its special meaning, or a regular character with its literal meaning. Together, they can be used to identify textual material of a given pattern, or process a number of instances of it that can vary from a precise equality to a very general similarity of the pattern. The pattern sequence itself is an expression that is a statement in a language designed specifically to represent prescribed targets in the most concise and flexible way to direct the automation of text processing of general text files, specific textual forms, or of random input strings.</p>
-
-<h3>Basic concepts</h3>
-
-<p>A regular expression, often called a pattern, is an expression used to specify a set of strings required for a particular purpose. A simple way to specify a finite set of strings is to list its elements or members. However, there are often more concise ways to specify the desired set of strings. For example, the set containing the three strings &ldquo;Handel&rdquo;, &ldquo;Händel&rdquo;, and &ldquo;Haendel&rdquo; can be specified by the pattern H(ä|ae?)ndel; we say that this pattern matches each of the three strings. In most formalisms, if there exists at least one regex that matches a particular set then there exists an infinite number of other regex that also match it—the specification is not unique. Most formalisms provide the following operations to construct regular expressions.</p>
-
-<p>Boolean &ldquo;or&rdquo;
-    A vertical bar separates alternatives. For example, gray|grey can match &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
-Grouping
-    Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
-Quantification
-    A quantifier after a token (such as a character) or group specifies how often that preceding element is allowed to occur. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).</p>
-
-<pre><code>?   The question mark indicates there is zero or one of the preceding element. For example, colou?r matches both "color" and "colour".
-*   The asterisk indicates there is zero or more of the preceding element. For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on.
-+   The plus sign indicates there is one or more of the preceding element. For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac".
-</code></pre>
-
-<p>These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.</p>
-
-<p>The precise syntax for regular expressions varies among tools and with context; more detail is given in the Syntax section.</p>
 ]]></content>
   </entry>
   

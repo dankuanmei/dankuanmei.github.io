@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Passenger | ダン・クァン・ミン Blog]]></title>
-  <link href="http://dankuanmei.github.io/blog/categories/passenger/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Websocket | ダン・クァン・ミン Blog]]></title>
+  <link href="http://dankuanmei.github.io/blog/categories/websocket/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
   <updated>2015-08-13T12:08:41+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
@@ -147,93 +147,6 @@ sudo chmod 600 /etc/apt/sources.list.d/passenger.list
 </code></pre>
 
 <p>Giờ là lúc tạo</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Install Apache2 and Passenger]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/20/install-apache2-and-passenger/"/>
-    <updated>2015-07-20T11:23:25+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/20/install-apache2-and-passenger</id>
-    <content type="html"><![CDATA[<h3>Update hệ thống và cài đặt cái gói build cơ bản</h3>
-
-<pre><code>apt-get update
-apt-get upgrade
-apt-get install build-essential
-</code></pre>
-
-<h3>Cài đặt Ruby</h3>
-
-<pre><code>curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-curl -sSL https://get.rvm.io | bash -s stable
-
-rvm install 2.2.2
-rvm use 2.2.2 --default
-</code></pre>
-
-<h3>Cài đặt Apache2 và Passenger</h3>
-
-<pre><code>apt-get install apache2
-passenger-install-apache2-module
-</code></pre>
-
-<h3>Config Apache2 với Passenger sau khi đã cài đặt xong Passenger</h3>
-
-<p>Tạo file /etc/apache2/mods-available/passenger.load</p>
-
-<pre><code>LoadModule passenger_module /home/root/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14/buildout/apache2/mod_passenger.so
-</code></pre>
-
-<p>Tạo file /etc/apache2/mods-available/passenger.conf</p>
-
-<pre><code>&lt;IfModule mod_passenger.c&gt;
-     PassengerRoot /home/deploy/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14
-     PassengerDefaultRuby /home/deploy/.rvm/gems/ruby-2.2.2/wrappers/ruby
-     PassengerMaxPoolSize 10
-&lt;/IfModule&gt;
-</code></pre>
-
-<p>Run command</p>
-
-<pre><code>a2enmod passenger
-</code></pre>
-
-<h3>Config app Rails và add domain/sub-domain</h3>
-
-<p>Các bạn có thể tạo 1 file với tên bất kì trong thư mục /etc/apache2/sites-enabled</p>
-
-<p>Như mình thì cứ mỗi 1 app Rails/PHP mình sẽ tạo 1 file ở đây, sau này mình muốn gỡ app nào đó đi mình chỉ cần xóa file đó là được.</p>
-
-<p>Ví dụ với app Rails của mình gắn với domain: ruby.rocks, mình sẽ tạo file có tên là: ruby.rocks.conf có nội dung như sau:</p>
-
-<pre><code>&lt;VirtualHost *:80&gt;
-  ServerName ruby.rocks
-  DocumentRoot /home/root/mania-rails-test/public
-  RailsEnv production
-    &lt;Directory /home/root/mania-rails-test/public&gt;
-        Allow from all
-        Options -MultiViews
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-</code></pre>
-
-<p>Giải thích các chỉ thị trong file này:</p>
-
-<ul>
-<li>VirtualHost *:80: bạn đang chỉ định rằng app này có thể được truy cập từ bên ngoài qua cổng 80</li>
-<li>ServerName ruby.rocks: đây chính là tên miền mà bạn muốn gắn với app Rails này</li>
-<li>DocumentRoot /home/root/mania-rails-test/public: đây là nơi để bạn define đường dẫn tới app Rails của bạn, và theo convention của Passenger thì sẽ là: $RAILS_ROOT_PATH + /public. Ví dụ app Rails của mình đặt tại /home/root/mania-rails-test/. Thì mình sẽ để là /home/root/mania-rails-test/public</li>
-<li>RailsEnv production Môi trường khi chạy app Rails này</li>
-<li>Tại thẻ Directory các bạn cũng để đường dẫn tới app Rails của mình giống như DocumentRoot</li>
-<li>Các phần còn lại trong thẻ Directory các bạn giữ nguyên, chúng ta sẽ nói về phần này sau.</li>
-</ul>
-
-
-<p>Cuối cùng chạy command</p>
-
-<pre><code>service apache2 restart
-</code></pre>
 ]]></content>
   </entry>
   

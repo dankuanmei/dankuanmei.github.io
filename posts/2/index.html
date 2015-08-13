@@ -9,8 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Install command line $ sudo apt-get install freeglut3-dev libglew1.5-dev $ sudo apt-get install libxmu-dev libxi-dev $ sudo apt-get install binutils- &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,6 +79,171 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/15/install-opengl-in-ubuntu/">Install openGL in Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-15T01:22:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>1:22 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Install command line</h3>
+
+<pre><code>$ sudo apt-get install freeglut3-dev libglew1.5-dev
+
+$ sudo apt-get install libxmu-dev libxi-dev
+
+$ sudo apt-get install binutils-gold
+</code></pre>
+
+<h3>Complie command line</h3>
+
+<pre><code>$ cc -I/usr/X11R6/include program.c -L/usr/X11R6/lib -lglut -lGLU -lGL -lXmu -lXi -lXext -lX11 -lm -lpthread
+
+$ function ccgl() { cc -I/usr/X11R6/include "$@" -L/usr/X11R6/lib -lglut -lGLU -lGL -lXmu -lXi -lXext -lX11 -lm -lpthread; }
+
+$ ccgl program.c
+</code></pre>
+
+<h2>#</h2>
+
+<table>
+<thead>
+<tr>
+<th> C                           </th>
+<th> OpenGL                      </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> signed char                 </td>
+<td> GLbyte                      </td>
+</tr>
+<tr>
+<td> unsigned char               </td>
+<td> GLubyte, GLboolean          </td>
+</tr>
+<tr>
+<td> short                       </td>
+<td> GLshort                     </td>
+</tr>
+<tr>
+<td> unsigned short              </td>
+<td> GLushort                    </td>
+</tr>
+<tr>
+<td> int, long                   </td>
+<td> GLint, GLsizei              </td>
+</tr>
+<tr>
+<td> unsigned int, unsigned long </td>
+<td> GLuint, GLenum, GLbitfield  </td>
+</tr>
+<tr>
+<td> float                       </td>
+<td> GLfloat, GLclampf           </td>
+</tr>
+<tr>
+<td> double                      </td>
+<td> GLdouble, GLclampd          </td>
+</tr>
+</tbody>
+</table>
+
+
+<h3>Function</h3>
+
+<p>void glutInit(int *argcp, char **argv);</p>
+
+<p>glutInitWindowPosition();</p>
+
+<p>glutInitWindowSize();</p>
+
+<p>glutInitDisplayMode();</p>
+
+<ul>
+<li>GLUT_RGBA RGBA モード</li>
+<li>GLUT_RGBAも GLUT_INDEX も記述されないときのデフォルト</li>
+<li>GLUT_RGB  GLUT_RGBA と同じ</li>
+<li>GLUT_INDEX    カラーインデックス モード</li>
+<li>GLUT_RGBAも記述された場合，上書きする</li>
+<li>GLUT_SINGLE   シングルバッファ モード</li>
+<li>GLUT_DOUBLE もGLUT_SINGLEも記述されていない場合の デフォルトである</li>
+<li>GLUT_DOUBLE   ダブルバッファ モード</li>
+<li>GLUT_SINGLE も記述されていた場合，上書きする</li>
+<li>GLUT_ACCUM    アキュムレーション バッファ</li>
+<li>GLUT_ALPHA    カラーバッファにアルファ成分を加えること</li>
+<li>GLUT_DEPTH    デプス(Z)バッファを加えること</li>
+<li>GLUT_STENCIL  ステンシル・バッファを加えること</li>
+<li>GLUT_MULTISAMPLE  マルチサンプリングのサポート</li>
+<li>GLX_SAMPLE_SGIS エクステンションをサポートしていなければならない</li>
+<li>GLUT_STEREO   ステレオ・ウィンドウビットマスク</li>
+</ul>
+
+
+<p>int glutCreateWindow(char *name);</p>
+
+<p>void glutDisplayFunc(void (*func)(void));</p>
+
+<p>void glClear(GLbitfield mask);</p>
+
+<p>void glClearColor(GLclampf red,  GLclampf green,  GLclampf blue,  GLclampf alpha);</p>
+
+<p>void glBegin(GLenum  mode);</p>
+
+<p>void glEnd(void);</p>
+
+<p>void glFlush();</p>
+
+<h3>Sample</h3>
+
+<pre><code>#include &lt;windows.h&gt;
+#include &lt;GL/gl.h&gt;
+#include &lt;GL/glut.h&gt;
+
+void disp(void) {
+    glClearColor(1 , 1 , 1 , 0);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    glBegin(GL_POLYGON);
+    glEnd();
+
+    glFlush();
+}
+
+int main(int argc , char ** argv) {
+    glutInit(&amp;argc , argv);
+    glutInitWindowPosition(100 , 50);
+    glutInitWindowSize(200 , 100);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
+
+    glutCreateWindow("Kitty on your lap");
+    glutDisplayFunc(disp);
+    glutMainLoop();
+    return 0;
+}
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -1249,68 +1413,6 @@ exec()          Tests for a match in a string. Returns the first match
 test()          Tests for a match in a string. Returns true or false
 toString()      Returns the string value of the regular expression
 </code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/07/regular-expression/">Regular Expression</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-07T10:45:58+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>7</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:45 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>From Wikipedia</h2>
-
-<p>In theoretical computer science and formal language theory, a regular expression (abbreviated regex or regexp and sometimes called a rational expression) is a sequence of characters that define a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. &ldquo;find and replace&rdquo;-like operations. The concept arose in the 1950s, when the American mathematician Stephen Kleene formalized the description of a regular language, and came into common use with the Unix text processing utilities ed, an editor, and grep (global regular expression print), a filter.</p>
-
-<p>Regular expressions are so useful in computing that the various systems to specify regular expressions have evolved to provide both a basic and extended standard for the grammar and syntax; modern regular expressions heavily augment the standard. Regular expression processors are found in several search engines, search and replace dialogs of several word processors and text editors, and in the command lines of text processing utilities, such as sed and AWK.</p>
-
-<p>Many programming languages provide regular expression capabilities, some built-in, for example Perl, JavaScript, Ruby, AWK, and Tcl, and others via a standard library, for example .NET languages, Java, Python and C++ (since C++11). Most other languages offer regular expressions via a library.</p>
-
-<p>Biểu thức chính quy (tiếng Anh: regular expression, viết tắt là regexp, regex hay regxp) là một chuỗi miêu tả một bộ các chuỗi khác, theo những quy tắc cú pháp nhất định. Biểu thức chính quy thường được dùng trong các trình biên tập văn bản và các tiện ích tìm kiếm và xử lý văn bản dựa trên các mẫu được quy định. Nhiều ngôn ngữ lập trình cũng hỗ trợ biểu thức chính quy trong việc xử lý chuỗi, chẳng hạn như Perl có bộ máy mạnh mẽ để xử lý biểu thức chính quy được xây dựng trực tiếp trong cú pháp của chúng. Bộ các trình tiện ích (gồm trình biên tập sed và trình lọc grep) đi kèm các bản phân phối Unix có vai trò đầu tiên trong việc phổ biến khái niệm biểu thức chính quy.</p>
-
-<h3>Patterns</h3>
-
-<p>Each character in a regular expression is either understood to be a metacharacter with its special meaning, or a regular character with its literal meaning. Together, they can be used to identify textual material of a given pattern, or process a number of instances of it that can vary from a precise equality to a very general similarity of the pattern. The pattern sequence itself is an expression that is a statement in a language designed specifically to represent prescribed targets in the most concise and flexible way to direct the automation of text processing of general text files, specific textual forms, or of random input strings.</p>
-
-<h3>Basic concepts</h3>
-
-<p>A regular expression, often called a pattern, is an expression used to specify a set of strings required for a particular purpose. A simple way to specify a finite set of strings is to list its elements or members. However, there are often more concise ways to specify the desired set of strings. For example, the set containing the three strings &ldquo;Handel&rdquo;, &ldquo;Händel&rdquo;, and &ldquo;Haendel&rdquo; can be specified by the pattern H(ä|ae?)ndel; we say that this pattern matches each of the three strings. In most formalisms, if there exists at least one regex that matches a particular set then there exists an infinite number of other regex that also match it—the specification is not unique. Most formalisms provide the following operations to construct regular expressions.</p>
-
-<p>Boolean &ldquo;or&rdquo;
-    A vertical bar separates alternatives. For example, gray|grey can match &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
-Grouping
-    Parentheses are used to define the scope and precedence of the operators (among other uses). For example, gray|grey and gr(a|e)y are equivalent patterns which both describe the set of &ldquo;gray&rdquo; or &ldquo;grey&rdquo;.
-Quantification
-    A quantifier after a token (such as a character) or group specifies how often that preceding element is allowed to occur. The most common quantifiers are the question mark ?, the asterisk * (derived from the Kleene star), and the plus sign + (Kleene plus).</p>
-
-<pre><code>?   The question mark indicates there is zero or one of the preceding element. For example, colou?r matches both "color" and "colour".
-*   The asterisk indicates there is zero or more of the preceding element. For example, ab*c matches "ac", "abc", "abbc", "abbbc", and so on.
-+   The plus sign indicates there is one or more of the preceding element. For example, ab+c matches "abc", "abbc", "abbbc", and so on, but not "ac".
-</code></pre>
-
-<p>These constructions can be combined to form arbitrarily complex expressions, much like one can construct arithmetical expressions from numbers and the operations +, −, ×, and ÷. For example, H(ae?|ä)ndel and H(a|ae|ä)ndel are both valid patterns which match the same strings as the earlier example, H(ä|ae?)ndel.</p>
-
-<p>The precise syntax for regular expressions varies among tools and with context; more detail is given in the Syntax section.</p>
 </div>
   
   

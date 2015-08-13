@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Create the Directory Structure The first step that we are going to take is to make a directory structure that will hold the site data that we will be &hellip;">
+  <meta name="description" content="Installing CakePHP First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/04/setup-cakephp-3-dot-x/">Setup Cakephp 3.x</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-04T16:18:28+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>4:18 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>Installing CakePHP</h2>
+
+<p>First, you’ll need to download and install Composer if you haven’t done so already. If you have cURL installed, it’s as easy as running the following:</p>
+
+<pre><code>curl -s https://getcomposer.org/installer | php
+</code></pre>
+
+<p>Now that you’ve downloaded and installed Composer, you can get a new CakePHP application by running:</p>
+
+<pre><code>php composer.phar create-project --prefer-dist cakephp/app [app_name]
+</code></pre>
+
+<p>Or if Composer is installed globally:</p>
+
+<pre><code>composer create-project --prefer-dist cakephp/app [app_name]
+</code></pre>
+
+<p>You can now visit the path to where you installed your CakePHP application and see the setup traffic lights.</p>
+
+<h2>Development Server</h2>
+
+<p>A development installation is the fastest method to setup CakePHP. In this example, we will be using CakePHP’s console to run PHP’s built-in web server which will make your application available at <a href="http://host:port.">http://host:port.</a> From the app directory, execute:</p>
+
+<pre><code>bin/cake server -H 192.168.13.37 -p 5673
+</code></pre>
+
+<h2>Create <code>.htaccess</code> file</h2>
+
+<p>CakePHP webroot directory (will be copied to your application’s web root by bake):</p>
+
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine on
+    RewriteRule    ^$    app/webroot/    [L]
+    RewriteRule    (.*) app/webroot/$1    [L]
+&lt;/IfModule&gt;
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>

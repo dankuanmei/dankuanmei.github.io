@@ -255,7 +255,8 @@ sudo chmod 600 /etc/apt/sources.list.d/passenger.list
 
 <p>Chạy lệnh</p>
 
-<pre><code>$ sudo service apache2 reload
+<pre><code>$ sudo a2ensite sample-chat.local
+$ sudo service apache2 reload
 $ sudo service apache2 restart
 </code></pre>
 
@@ -316,6 +317,8 @@ $ rake assets:precompile
       
         <a class="basic-alignment left" href="/blog/2015/08/09/vim-tips/" title="Previous Post: Vim tips">&laquo; Vim tips</a>
       
+      
+        <a class="basic-alignment right" href="/blog/2015/08/15/vagrant-step-by-step/" title="Next Post: Vagrant Step by Step">Vagrant Step by Step &raquo;</a>
       
     </p>
   </footer>

@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Đầu tiên là tạo dự án rails đã. $ rails new sample-chat -d mysql Sau đó config database trong file config/database.yml Bước tiếp theo đó là cài đặt &hellip;">
+  <meta name="description" content="Download VirtualBox for Linux Hosts Add the following line to your /etc/apt/sources.list: deb http://download.virtualbox.org/virtualbox/debian trusty &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,123 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/08/15/vagrant-step-by-step/">Vagrant Step by Step</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-15T18:24:08+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>6:24 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Download VirtualBox for Linux Hosts</h3>
+
+<p>Add the following line to your /etc/apt/sources.list:</p>
+
+<pre><code>deb http://download.virtualbox.org/virtualbox/debian trusty contrib
+</code></pre>
+
+<p>Run command</p>
+
+<pre><code>$ wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+$ sudo apt-get update
+$ sudo apt-get install virtualbox-5.0
+$ sudo apt-get install dkms
+</code></pre>
+
+<h3>Install Vagrant( on HostMachine )</h3>
+
+<p>Please download vagrant from <code>http://www.vagrantup.com/downloads.html</code>.</p>
+
+<p>Then run command</p>
+
+<pre><code>$ vagrant box add centos6_5 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
+</code></pre>
+
+<p>Setup Vagrant( on HostMachine )</p>
+
+<pre><code>$ vagrant init centos6_5
+</code></pre>
+
+<p>Please set ip address into Vagrantfile.</p>
+
+<pre><code>Vagrant::Config.run do |config|
+  config.vm.box = "centos6_5" 
+  config.vm.network "public_network", ip:"192.168.1.156" 
+  ...
+</code></pre>
+
+<p>Install sahara( on HostMachine )</p>
+
+<p>Sahara can shot a snap for OS-image. You can commit your operations and rollback your operations.</p>
+
+<pre><code>$ vagrant plugin install sahara
+</code></pre>
+
+<p>if you have an error, please install c++ compiler( debian:g++, redhat:gcc-c++ )</p>
+
+<p>Wake up GuestMachine</p>
+
+<pre><code>$ vagrant up
+$ vagrant ssh
+</code></pre>
+
+<p>change super user</p>
+
+<pre><code>$ su -
+</code></pre>
+
+<p>Default password of root user is <code>vagrant</code>.</p>
+
+<p>Create user</p>
+
+<pre><code>$ useradd chefsfarms
+$ passwd chefsfarms
+Changing password for user chefsfarms.
+New password: chefsfarms
+Retype new password: chefsfarms
+passwd: all authentication tokens updated successfully.
+</code></pre>
+
+<p>Add a user in super users</p>
+
+<pre><code>$ visudo
+</code></pre>
+
+<p>Then please add below.</p>
+
+<pre><code>chefsfarms      ALL=(ALL)       NOPASSWD:ALL
+</code></pre>
+
+<p>change mode home directory of the guest user</p>
+
+<pre><code>$ chmod 755 /home/chefsfarms
+</code></pre>
+
+<h3>Install Chef-Solo( on GuestMachine )</h3>
+
+<pre><code>$ curl -L http://www.opscode.com/chef/install.sh | sudo bash
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -256,7 +373,8 @@ sudo chmod 600 /etc/apt/sources.list.d/passenger.list
 
 <p>Chạy lệnh</p>
 
-<pre><code>$ sudo service apache2 reload
+<pre><code>$ sudo a2ensite sample-chat.local
+$ sudo service apache2 reload
 $ sudo service apache2 restart
 </code></pre>
 
@@ -887,118 +1005,6 @@ do{
 while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &amp;&amp;
 glfwWindowShouldClose(window) == 0 );
 </code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/15/free-resource/">Free Resource</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-15T21:21:47+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>9:21 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>SNS avatar generator</h3>
-
-<p><code>uiFaces</code></p>
-
-<p><a href="http://uifaces.com/">http://uifaces.com/</a></p>
-
-<p>Dùng trong trường hợp muốn tạo ra một loạt avatar dùng cho demo vân vân.</p>
-
-<p>Có tích hợp cả API, rất đáng để dùng thử.</p>
-
-<h3>Free Video</h3>
-
-<p><code>mazwai</code></p>
-
-<p><a href="http://mazwai.com/#index">http://mazwai.com/#index</a></p>
-
-<p>Toàn là video nhìn rất cool.</p>
-
-<p><code>jQuery video background plugin</code></p>
-
-<p><a href="https://github.com/VodkaBears/Vide">https://github.com/VodkaBears/Vide</a></p>
-
-<h3>Icon</h3>
-
-<p><code>iconfinder</code></p>
-
-<p><a href="https://www.iconfinder.com/">https://www.iconfinder.com/</a></p>
-
-<h3>Html template</h3>
-
-<p><code>html5up</code></p>
-
-<p><a href="http://html5up.net/">http://html5up.net/</a></p>
-
-<p><code>startbootstrap</code></p>
-
-<p><a href="http://startbootstrap.com/">http://startbootstrap.com/</a></p>
-
-<p><code>blacktie</code></p>
-
-<p><a href="http://www.blacktie.co/">http://www.blacktie.co/</a></p>
-
-<h3>Free logo</h3>
-
-<p><code>Squarespace</code> (Recommend)</p>
-
-<p><a href="http://www.squarespace.com/logo#">http://www.squarespace.com/logo#</a></p>
-
-<p><code>LOGASTER</code></p>
-
-<p><a href="https://www.logaster.com/">https://www.logaster.com/</a></p>
-
-<h3>CSS animation</h3>
-
-<p><code>Animate.css</code> (Recommend)</p>
-
-<p><a href="http://daneden.github.io/animate.css/">http://daneden.github.io/animate.css/</a></p>
-
-<h3>HTML Gen</h3>
-
-<p><code>coveloping</code> (Recommend)</p>
-
-<p><a href="http://coveloping.com/">http://coveloping.com/</a></p>
-
-<p>Tập hợp rất nhiều công cụ dùng để sinh ra các phần trong trang HTML như price page vân vân.</p>
-
-<p><code>TeamPage.io</code></p>
-
-<p><a href="http://www.teampage.io/">http://www.teampage.io/</a></p>
-
-<p>Tạo team member page một cách rất đơn giản.</p>
-
-<p><code>FRAME</code></p>
-
-<p><a href="http://frame.lab25.co.uk/">http://frame.lab25.co.uk/</a></p>
-
-<p>Sinh ra 1 top page na ná như trang đó.</p>
-
-<p><code>UICloud</code></p>
-
-<p><a href="http://ui-cloud.com/">http://ui-cloud.com/</a></p>
-
-<p>Trang chuyên dùng cho việc search tham khảo những thành phần của UI.</p>
 </div>
   
   

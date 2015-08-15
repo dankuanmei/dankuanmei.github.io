@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Apache2 | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/apache2/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-08-13T13:34:42+09:00</updated>
+  <updated>2015-08-15T18:39:40+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -172,7 +172,8 @@ sudo chmod 600 /etc/apt/sources.list.d/passenger.list
 
 <p>Chạy lệnh</p>
 
-<pre><code>$ sudo service apache2 reload
+<pre><code>$ sudo a2ensite sample-chat.local
+$ sudo service apache2 reload
 $ sudo service apache2 restart
 </code></pre>
 

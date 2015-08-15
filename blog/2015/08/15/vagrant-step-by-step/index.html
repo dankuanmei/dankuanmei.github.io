@@ -108,7 +108,7 @@
 <pre><code>deb http://download.virtualbox.org/virtualbox/debian trusty contrib
 </code></pre>
 
-<p>Run command</p>
+<p>Run command:</p>
 
 <pre><code>$ wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
 $ sudo apt-get update
@@ -120,7 +120,7 @@ $ sudo apt-get install dkms
 
 <p>Please download vagrant from <code>http://www.vagrantup.com/downloads.html</code>.</p>
 
-<p>Then run command</p>
+<p>Then run command:</p>
 
 <pre><code>$ vagrant box add centos6_5 https://github.com/2creatives/vagrant-centos/releases/download/v6.5.3/centos65-x86_64-20140116.box
 </code></pre>
@@ -143,24 +143,28 @@ $ sudo apt-get install dkms
 <p>Sahara can shot a snap for OS-image. You can commit your operations and rollback your operations.</p>
 
 <pre><code>$ vagrant plugin install sahara
+$ vagrant plugin install vagrant-vbguest
+$ vagrant plugin install vagrant-omnibus
+$ vagrant plugin install vagrant-berkshelf
+$ vagrant plugin install vagrant-chef-zero
 </code></pre>
 
 <p>if you have an error, please install c++ compiler( debian:g++, redhat:gcc-c++ )</p>
 
-<p>Wake up GuestMachine</p>
+<p>Wake up GuestMachine:</p>
 
 <pre><code>$ vagrant up
 $ vagrant ssh
 </code></pre>
 
-<p>change super user</p>
+<p>change super user:</p>
 
 <pre><code>$ su -
 </code></pre>
 
 <p>Default password of root user is <code>vagrant</code>.</p>
 
-<p>Create user</p>
+<p>Create user:</p>
 
 <pre><code>$ useradd chefsfarms
 $ passwd chefsfarms
@@ -170,7 +174,7 @@ Retype new password: chefsfarms
 passwd: all authentication tokens updated successfully.
 </code></pre>
 
-<p>Add a user in super users</p>
+<p>Add a user in super users:</p>
 
 <pre><code>$ visudo
 </code></pre>
@@ -180,7 +184,7 @@ passwd: all authentication tokens updated successfully.
 <pre><code>chefsfarms      ALL=(ALL)       NOPASSWD:ALL
 </code></pre>
 
-<p>change mode home directory of the guest user</p>
+<p>Change mode home directory of the guest user:</p>
 
 <pre><code>$ chmod 755 /home/chefsfarms
 </code></pre>
@@ -189,6 +193,45 @@ passwd: all authentication tokens updated successfully.
 
 <pre><code>$ curl -L http://www.opscode.com/chef/install.sh | sudo bash
 </code></pre>
+
+<p>Go to <code>https://downloads.chef.io/chef-dk/redhat/#/</code>. Get link download.</p>
+
+<pre><code>$ wget https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chefdk-0.6.2-1.el6.x86_64.rpm
+
+$ sudo rpm -Uvh chefdk-0.6.2-1.el6.x86_64.rpm
+
+$ which chef
+
+$ chef -v
+</code></pre>
+
+<p>Then run:</p>
+
+<pre><code>$ chef generate repo chef-repo
+$ cd chef-repo
+
+$ vi Berksfile
+</code></pre>
+
+<p>Chèn source code sau vào.</p>
+
+<pre><code>source "https://supermarket.chef.io"
+
+cookbook 'application_ruby'
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'user'
+cookbook 'ssh_known_hosts'
+cookbook 'ruby_build'
+cookbook 'vim'
+</code></pre>
+
+<p>Chạy command:</p>
+
+<pre><code>$ berks vendor cookbooks
+</code></pre>
+
+<p>Thế là đã cài đặt xong. And now, all the needed cookbooks are downloaded into folder chef-repo/cookbooks</p>
 </div>
 
 

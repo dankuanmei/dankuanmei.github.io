@@ -9,7 +9,10 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Download VirtualBox for Linux Hosts Add the following line to your /etc/apt/sources.list: deb http://download.virtualbox.org/virtualbox/debian trusty &hellip;">
+  <meta name="description" content="Install apache2 $ sudo yum install httpd
+$ sudo service httpd start Install mysql $ sudo yum install mysql-server
+$ sudo service mysqld start
+$ &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +82,98 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/08/16/setup-apache/">Setup Apache, Mysql and Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-08-16T22:54:58+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:54 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Install apache2</p>
+
+<pre><code>$ sudo yum install httpd
+$ sudo service httpd start
+</code></pre>
+
+<p>Install mysql</p>
+
+<pre><code>$ sudo yum install mysql-server
+$ sudo service mysqld start
+$ mysql_secure_installation
+
+$ sudo yum install mlocate tree sysstat iftop dstat lsof tcpdump wget
+$ sudo yum install libcurl-devel httpd-devel apr-devel apr-util-devel
+$ sudo yum install mysql-devel
+</code></pre>
+
+<p>Set up rails</p>
+
+<pre><code>$ sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+$ curl -sSL https://get.rvm.io | bash
+$ source ~/.profile
+$ rvm install 2.2.2
+$ rvm use 2.2.2 --default
+$ gem install rails
+</code></pre>
+
+<p>Edit file <code>/etc/httpd/conf/httpd.conf</code></p>
+
+<pre><code>LoadModule passenger_module /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15/buildout/apache2/mod_passenger.so
+&lt;IfModule mod_passenger.c&gt;
+  PassengerRoot /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15
+  PassengerDefaultRuby /home/kankou/.rvm/gems/ruby-2.2.2/wrappers/ruby
+&lt;/IfModule&gt;
+
+&lt;VirtualHost *:80&gt;
+    ServerName kankouannai-apuri.local
+    DocumentRoot /home/kankou/Kankouannai/public/
+        RailsEnv development
+        RailsBaseURI /
+    &lt;Directory /home/kankou/Kankouannai/public/&gt;
+        AllowOverride all
+        Options -MultiViews
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Install passenger</p>
+
+<pre><code>$ gem install passenger
+$ passenger-install-apache2-module
+</code></pre>
+
+<p>Install vsftpd</p>
+
+<pre><code>$ sudo yum install vsftpd
+</code></pre>
+
+<p>Install nodejs</p>
+
+<pre><code>$ curl -sL https://rpm.nodesource.com/setup | sudo bash -
+$ sudo yum install nodejs
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -934,119 +1029,6 @@ passenger-install-apache2-module
 <p>Cuối cùng chạy command</p>
 
 <pre><code>service apache2 restart
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/15/opengl-beginner/">OpenGL Beginner</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-15T22:03:54+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>15</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:03 pm</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Opening a window</h3>
-
-<p>Ok, let’s go. First, we’ll have to deal with dependencies : we need some basic stuff to display messages in the console :</p>
-
-<pre><code>// Include standard headers
-#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-</code></pre>
-
-<p>First, GLEW. So this one actually is a little bit magic, but let’s leave this for later.</p>
-
-<pre><code>// Include GLEW. Always include it before gl.h and glfw.h, since it's a bit magic.
-#include &lt;GL/glew.h&gt;
-</code></pre>
-
-<p>We decided to let GLFW handle the window and the keyboard, so let’s include it too :</p>
-
-<pre><code>// Include GLFW
-#include &lt;GL/glfw3.h&gt;
-</code></pre>
-
-<p>We don’t actually need this one right now, but this is a library for 3D mathematics. It will prove very useful soon. There is no magic in GLM, you can write your own if you want; it’s just handy. The “using namespace” is there to avoid typing “glm::vec3″, but “vec3″ instead.</p>
-
-<pre><code>// Include GLM
-#include &lt;glm/glm.hpp&gt;
-using namespace glm;
-</code></pre>
-
-<p>If you cut’n paste all these #include’s in playground.cpp, the compiler will complain that there is no main() function. So let’s create one :</p>
-
-<pre><code>int main(){
-}
-</code></pre>
-
-<p>First thing to do it to initialize GLFW :</p>
-
-<pre><code>// Initialise GLFW
-if( !glfwInit() )
-{
-    fprintf( stderr, "Failed to initialize GLFW\n" );
-    return -1;
-}
-</code></pre>
-
-<p>We can now create our first OpenGL window !</p>
-
-<pre><code>glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
-glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
-glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
-
-// Open a window and create its OpenGL context 
-GLFWwindow* window; // (In the accompanying source code, this variable is global) 
-window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL); 
-if( window == NULL ){
-    fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
-    glfwTerminate();
-    return -1;
-}
-glfwMakeContextCurrent(window); // Initialize GLEW 
-glewExperimental=true; // Needed in core profile 
-if (glewInit() != GLEW_OK) {
-    fprintf(stderr, "Failed to initialize GLEW\n");
-    return -1;
-}
-</code></pre>
-
-<p>Build this and run. A window should appear, and be closed right away. Of course ! We need to wait until the user hits the Escape key :</p>
-
-<pre><code>// Ensure we can capture the escape key being pressed below
-glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
-do{
-    // Draw nothing, see you in tutorial 2 !
-
-    // Swap buffers
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-
-} // Check if the ESC key was pressed or the window was closed
-while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &amp;&amp;
-glfwWindowShouldClose(window) == 0 );
 </code></pre>
 </div>
   

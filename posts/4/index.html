@@ -9,7 +9,7 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Some useful command $ bin/cake bake all users $ bin/cake bake controller users $ bin/cake bake model users Full guide When run with no arguments bin/ &hellip;">
+  <meta name="description" content="Create database UTF8 mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8; Drop database mysql&gt; DROP DATABASE ＜データベース名＞; Import database &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -79,6 +79,54 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/07/04/mysql-useful-command-line/">Mysql - Useful Command Line</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-07-04T17:59:51+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>4</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>5:59 pm</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>Create database UTF8</h3>
+
+<pre><code>mysql&gt; CREATE DATABASE bookshelf DEFAULT CHARACTER SET utf8;
+</code></pre>
+
+<h3>Drop database</h3>
+
+<pre><code>mysql&gt; DROP DATABASE ＜データベース名＞;
+</code></pre>
+
+<h3>Import database from file</h3>
+
+<pre><code>$ mysql -u username -p database_name &lt; file.sql
+</code></pre>
+
+<h3>Export database to file</h3>
+
+<pre><code>$ mysqldump -u username -p database_name &gt; file.sql
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>

@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-08-15T21:06:18+09:00</updated>
+  <updated>2015-08-16T23:20:04+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -12,6 +12,77 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Setup Apache, Mysql and Rails]]></title>
+    <link href="http://dankuanmei.github.io/blog/2015/08/16/setup-apache/"/>
+    <updated>2015-08-16T22:54:58+09:00</updated>
+    <id>http://dankuanmei.github.io/blog/2015/08/16/setup-apache</id>
+    <content type="html"><![CDATA[<p>Install apache2</p>
+
+<pre><code>$ sudo yum install httpd
+$ sudo service httpd start
+</code></pre>
+
+<p>Install mysql</p>
+
+<pre><code>$ sudo yum install mysql-server
+$ sudo service mysqld start
+$ mysql_secure_installation
+
+$ sudo yum install mlocate tree sysstat iftop dstat lsof tcpdump wget
+$ sudo yum install libcurl-devel httpd-devel apr-devel apr-util-devel
+$ sudo yum install mysql-devel
+</code></pre>
+
+<p>Set up rails</p>
+
+<pre><code>$ sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+$ curl -sSL https://get.rvm.io | bash
+$ source ~/.profile
+$ rvm install 2.2.2
+$ rvm use 2.2.2 --default
+$ gem install rails
+</code></pre>
+
+<p>Edit file <code>/etc/httpd/conf/httpd.conf</code></p>
+
+<pre><code>LoadModule passenger_module /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15/buildout/apache2/mod_passenger.so
+&lt;IfModule mod_passenger.c&gt;
+  PassengerRoot /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15
+  PassengerDefaultRuby /home/kankou/.rvm/gems/ruby-2.2.2/wrappers/ruby
+&lt;/IfModule&gt;
+
+&lt;VirtualHost *:80&gt;
+    ServerName kankouannai-apuri.local
+    DocumentRoot /home/kankou/Kankouannai/public/
+        RailsEnv development
+        RailsBaseURI /
+    &lt;Directory /home/kankou/Kankouannai/public/&gt;
+        AllowOverride all
+        Options -MultiViews
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>
+
+<p>Install passenger</p>
+
+<pre><code>$ gem install passenger
+$ passenger-install-apache2-module
+</code></pre>
+
+<p>Install vsftpd</p>
+
+<pre><code>$ sudo yum install vsftpd
+</code></pre>
+
+<p>Install nodejs</p>
+
+<pre><code>$ curl -sL https://rpm.nodesource.com/setup | sudo bash -
+$ sudo yum install nodejs
+</code></pre>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vagrant Step by Step]]></title>
@@ -1709,121 +1780,6 @@ $ rake deploy
 
 
 <p>Ngoài các khái niệm trên, tùy theo ngôn ngữ, có thể sẽ có các chức năng OOP riêng biệt được cấp thêm vào.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Explore About RESTful Webservice]]></title>
-    <link href="http://dankuanmei.github.io/blog/2015/07/09/introduction-to-restful-webservice/"/>
-    <updated>2015-07-09T10:39:53+09:00</updated>
-    <id>http://dankuanmei.github.io/blog/2015/07/09/introduction-to-restful-webservice</id>
-    <content type="html"><![CDATA[<h3>RESTtful webservice là gì?</h3>
-
-<p>REST là một tập hợp các nguyên tắc mà dữ liệu có thể truyền qua phương thức truyền tin (như là HTTP). REST  là từ viết tắt của Representational State Transfer.</p>
-
-<p>This basically means that each unique URL is a representation of some object.</p>
-
-<p>Represntational : Tiêu biểu, tượng trưng; Đại diện, thay mặt</p>
-
-<p>State: Trạng thái; tình trạng</p>
-
-<p>Transfer: Sự di chuyển, sự dời chỗ; sự truyền</p>
-
-<p>REST yêu cầu người lập trình sử dụng các phương thức HTTP một cách rõ ràng và theo một cách phù hợp với định nghĩa giao thức. Nguyên tắc thiết kế cơ bản là thiết lập một ánh xạ 1:1 giữa create, read, update và delete (CRUD) và HTTP methods. Tuân theo quy tắc dưới đây:</p>
-
-<ul>
-<li>Để &ldquo;create&rdquo;, hãy sử dụng POST</li>
-<li>Để &ldquo;read&rdquo;, hãy sử dụng GET.</li>
-<li>Để &ldquo;update&rdquo;, hãy sử dụng PUT.</li>
-<li>Để &ldquo;delete&rdquo;, hãy sử dụng DELETE.</li>
-</ul>
-
-
-<h3>Who is using Restful webservice?</h3>
-
-<p>Internet giants like Yahoo, Amazon, eBay and more are using Restful webservice</p>
-
-<h3>Rest vs SOAP</h3>
-
-<table>
-<thead>
-<tr>
-<th> REST                                                  </th>
-<th> SOAP                                          </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> REST stands for REpresentational State Transfer       </td>
-<td> SOAP stands for Simple Object Access Protocol </td>
-</tr>
-<tr>
-<td> REST is not XML protocol based                        </td>
-<td> SOAP is a XML based messaging protocol        </td>
-</tr>
-<tr>
-<td> REST doesn’t have any specification                     </td>
-<td> SOAP has specifications like WSDL etc         </td>
-</tr>
-<tr>
-<td> REST doesn’t enforce message format as XML or JSON  </td>
-<td> SOAP enforces message format as XML           </td>
-</tr>
-<tr>
-<td> Light weight – due to the usage of JSON             </td>
-<td> Heavy weight – due to the usage of XML      </td>
-</tr>
-<tr>
-<td> Easy to parse the response                            </td>
-<td> Bit difficult to parse the response           </td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>RESTFul Webservice Request and Response – Drill down</h3>
-
-<p>Bước đầu tiên khi thiết kế RESTFul webservice là lựa chọn domain name đúng - gửi đến weatherinfo.org để hỏi thông tin thời tiết của các thành phố.</p>
-
-<p>Hãy xem ví dụ đầu tiên (weatherinfo.org) đã lấy tên thành phố là đầu vào, lấy thông tin thời tiết của thành phố và gửi trả kết quả lại cho trình duyệt. Giả sử các kết quả trả về là XML format, nó có thể là JSON một cách dễ dàng.</p>
-
-<p>Dưới đây là cấu trúc của Request và Response:</p>
-
-<h4>HTTP Request</h4>
-
-<p>The client request from the browser will look like:</p>
-
-<pre><code>GET http://weatherinfo.org/getweather/mumbai HTTP/1.1
-</code></pre>
-
-<h4>HTTP Response</h4>
-
-<p>The server response will look like</p>
-
-<pre><code>HTTP/1.1 200 Ok
-Date: Mon, 14 Apr 2014 10:20:58 GMT
-Content-Type: text/xml
-Content-length: 139
-
-&lt;City name="Mumbai" datetime="2014-04-14 10:20:58 GMT" &gt;
-&lt;Condition&gt;Scattered Clouds&lt;/Condition&gt;
-&lt;Temp&gt;33&lt;/Temp&gt;
-&lt;/City&gt;
-</code></pre>
-
-<p>Line 1 is the initial line which has the HTTP response code – 200 OK, lines 2 through 4 are the HTTP headers (there can be lots of headers, only 3 are shown here), line 5 is the mandatory blank line separating header and body, and lines 6 through 10 constitute the “HTTP Body (or content)” – this part is the data that the response carries and can be in any format, not necessarily XML.</p>
-
-<p>In fact, the most commonly used format on the web is HTML – one that web servers use to send back data to browsers. Whatever it is, the “Content-type” header usually specifies it. But if you are writing a web service, JSON is a better choice, but that is upto me. If your web service does not return complex or composite data, the format does not need to be JSON – it can be plain , in which case the body will just be a string of characters.</p>
-
-<h3>Advantages of using RESTful webservice</h3>
-
-<ol>
-<li><p>RESTful Web services are designed with less dependence on proprietary middleware (for example, an application server) than the SOAP- and WSDL-based kind.</p></li>
-<li><p>As per the RESTful interface design, XML or JSON over HTTP is a powerful interface that allows internal applications, such as Asynchronous JavaScript + XML/JSON (Ajax)-based custom user interfaces, to easily connect, address, and consume resources.</p></li>
-<li><p>The great fit between Ajax and REST has increased the amount of attention REST is getting these days.</p></li>
-<li><p>Exposing a system’s resources through a RESTful API is a flexible way to provide different kinds of applications with data formatted in a standard way. It helps to meet integration requirements that are critical to building systems where data can be easily combined (mashups) and to extend or build on a set of base, RESTful services into something much bigger.</p></li>
-</ol>
-
 ]]></content>
   </entry>
   

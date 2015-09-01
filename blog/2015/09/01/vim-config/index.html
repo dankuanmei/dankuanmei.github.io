@@ -5,14 +5,17 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setup Apache, Mysql and Rails - ダン・クァン・ミン Blog</title>
+  <title>Vim Config - ダン・クァン・ミン Blog</title>
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Install apache2 $ sudo yum install httpd
-$ sudo service httpd start Install mysql $ sudo yum install mysql-server
-$ sudo service mysqld start
-$ &hellip;">
+  <meta name="description" content=".vimrc set number
+set ruler
+set showmatch
+set hlsearch "--- tab ----
+set tabstop=4
+set shiftwidth=4 "--- indent ----
+" 'autoindent' depends on a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -21,7 +24,7 @@ $ &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/08/16/setup-apache">
+  <link rel="canonical" href="http://dankuanmei.github.io/blog/2015/09/01/vim-config">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="ダン・クァン・ミン Blog" type="application/atom+xml">
@@ -86,7 +89,7 @@ $ &hellip;">
   <header>
     
       
-        <h1 class="entry-title">Setup Apache, Mysql and Rails</h1>
+        <h1 class="entry-title">Vim Config</h1>
       
     
     
@@ -96,7 +99,7 @@ $ &hellip;">
 
 
 
-<time class='entry-date' datetime='2015-08-16T22:54:58+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:54 pm</span></time>
+<time class='entry-date' datetime='2015-09-01T09:18:07+09:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:18 am</span></time>
         
         
       </p>
@@ -104,68 +107,54 @@ $ &hellip;">
   </header>
 
 
-<div class="entry-content"><p>Install apache2</p>
+<div class="entry-content"><h3>.vimrc</h3>
 
-<pre><code>$ sudo yum install httpd
-$ sudo service httpd start
-</code></pre>
+<pre><code>set number
+set ruler
+set showmatch
+set hlsearch
 
-<p>Install mysql</p>
+"--- tab ----
+set tabstop=4
+set shiftwidth=4
 
-<pre><code>$ sudo yum install mysql-server
-$ sudo service mysqld start
-$ mysql_secure_installation
+"--- indent ----
+" 'autoindent' depends on a above line.
+"set autoindent
 
-$ sudo yum install mlocate tree sysstat iftop dstat lsof tcpdump wget
-$ sudo yum install libcurl-devel httpd-devel apr-devel apr-util-devel
-$ sudo yum install mysql-devel
-</code></pre>
+" 'smartndent' analies several lines.
+set smartindent
 
-<p>Set up rails</p>
+" 'cndent' is greatest for C-launguage.
+"set cindent
 
-<pre><code>$ sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-$ curl -sSL https://get.rvm.io | bash
-$ source ~/.profile
-$ rvm install 2.2.2
-$ rvm use 2.2.2 --default
-$ gem install rails
-</code></pre>
+"--- status ---
+set laststatus=2
 
-<p>Edit file <code>/etc/httpd/conf/httpd.conf</code></p>
+"--- ctags ---
+set tags=.tags
 
-<pre><code>LoadModule passenger_module /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15/buildout/apache2/mod_passenger.so
-&lt;IfModule mod_passenger.c&gt;
-  PassengerRoot /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15
-  PassengerDefaultRuby /home/kankou/.rvm/gems/ruby-2.2.2/wrappers/ruby
-&lt;/IfModule&gt;
+"--- list ----
+set list
+set listchars=tab:&gt;-
 
-&lt;VirtualHost *:80&gt;
-    ServerName kankouannai-apuri.local
-    DocumentRoot /home/kankou/Kankouannai/public/
-        RailsEnv development
-        RailsBaseURI /
-    &lt;Directory /home/kankou/Kankouannai/public/&gt;
-        AllowOverride all
-        Options -MultiViews
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-</code></pre>
+"--- decoration ----
+highlight SpecialKey ctermfg=grey
+highlight ZenkakuSpace cterm=underline ctermfg=darkgrey
 
-<p>Install passenger</p>
+"--- xml sort ---
+command XmlSort %s/&gt;&lt;/&gt;\r&lt;/g | setf xml | normal gg=G
 
-<pre><code>$ gem install passenger
-$ passenger-install-apache2-module
-</code></pre>
-
-<p>Install vsftpd</p>
-
-<pre><code>$ sudo yum install vsftpd
-</code></pre>
-
-<p>Install nodejs</p>
-
-<pre><code>$ curl -sL https://rpm.nodesource.com/setup | sudo bash -
-$ sudo yum install nodejs
+"--- open binary ----
+augroup BinaryXXD
+    autocmd!
+    autocmd BufReadPre  *.bin let &amp;binary =1
+    autocmd BufReadPost * if &amp;binary | silent %!xxd -g 1
+    autocmd BufReadPost * set ft=xxd | endif
+    autocmd BufWritePre * if &amp;binary | %!xxd -r | endif
+    autocmd BufWritePost * if &amp;binary | silent %!xxd -g 1
+    autocmd BufWritePost * set nomod | endif
+augroup END
 </code></pre>
 </div>
 
@@ -189,7 +178,7 @@ $ sudo yum install nodejs
 
 
 
-<time class='entry-date' datetime='2015-08-16T22:54:58+09:00'><span class='date'><span class='date-month'>Aug</span> <span class='date-day'>16</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>10:54 pm</span></time>
+<time class='entry-date' datetime='2015-09-01T09:18:07+09:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:18 am</span></time>
       
       
 
@@ -198,7 +187,7 @@ $ sudo yum install nodejs
     
       <div class="sharing">
   
-  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/08/16/setup-apache/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/08/16/setup-apache/" >Tweet</a>
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://dankuanmei.github.io/blog/2015/09/01/vim-config/" data-via="" data-counturl="http://dankuanmei.github.io/blog/2015/09/01/vim-config/" >Tweet</a>
   
   
   
@@ -207,10 +196,8 @@ $ sudo yum install nodejs
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2015/08/15/vagrant-step-by-step/" title="Previous Post: Vagrant Step by Step">&laquo; Vagrant Step by Step</a>
+        <a class="basic-alignment left" href="/blog/2015/08/16/setup-apache/" title="Previous Post: Setup Apache, Mysql and Rails">&laquo; Setup Apache, Mysql and Rails</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2015/09/01/vim-config/" title="Next Post: Vim config">Vim config &raquo;</a>
       
     </p>
   </footer>

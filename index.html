@@ -9,10 +9,13 @@
   <meta name="author" content="ダン・クァン・ミン">
 
   
-  <meta name="description" content="Install apache2 $ sudo yum install httpd
-$ sudo service httpd start Install mysql $ sudo yum install mysql-server
-$ sudo service mysqld start
-$ &hellip;">
+  <meta name="description" content=".vimrc set number
+set ruler
+set showmatch
+set hlsearch "--- tab ----
+set tabstop=4
+set shiftwidth=4 "--- indent ----
+" 'autoindent' depends on a &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -82,6 +85,84 @@ $ &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2015/09/01/vim-config/">Vim Config</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-09-01T09:18:07+09:00'><span class='date'><span class='date-month'>Sep</span> <span class='date-day'>1</span><span class='date-suffix'>st</span>, <span class='date-year'>2015</span></span> <span class='time'>9:18 am</span></time>
+        
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h3>.vimrc</h3>
+
+<pre><code>set number
+set ruler
+set showmatch
+set hlsearch
+
+"--- tab ----
+set tabstop=4
+set shiftwidth=4
+
+"--- indent ----
+" 'autoindent' depends on a above line.
+"set autoindent
+
+" 'smartndent' analies several lines.
+set smartindent
+
+" 'cndent' is greatest for C-launguage.
+"set cindent
+
+"--- status ---
+set laststatus=2
+
+"--- ctags ---
+set tags=.tags
+
+"--- list ----
+set list
+set listchars=tab:&gt;-
+
+"--- decoration ----
+highlight SpecialKey ctermfg=grey
+highlight ZenkakuSpace cterm=underline ctermfg=darkgrey
+
+"--- xml sort ---
+command XmlSort %s/&gt;&lt;/&gt;\r&lt;/g | setf xml | normal gg=G
+
+"--- open binary ----
+augroup BinaryXXD
+    autocmd!
+    autocmd BufReadPre  *.bin let &amp;binary =1
+    autocmd BufReadPost * if &amp;binary | silent %!xxd -g 1
+    autocmd BufReadPost * set ft=xxd | endif
+    autocmd BufWritePre * if &amp;binary | %!xxd -r | endif
+    autocmd BufWritePost * if &amp;binary | silent %!xxd -g 1
+    autocmd BufWritePost * set nomod | endif
+augroup END
+</code></pre>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -921,114 +1002,6 @@ rails generate devise MODEL
 <p>Here is a possible configuration for config/environments/development.rb:</p>
 
 <pre><code>config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-</code></pre>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/07/20/install-apache2-and-passenger/">Install Apache2 and Passenger</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-07-20T11:23:25+09:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>20</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>11:23 am</span></time>
-        
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>Update hệ thống và cài đặt cái gói build cơ bản</h3>
-
-<pre><code>apt-get update
-apt-get upgrade
-apt-get install build-essential
-</code></pre>
-
-<h3>Cài đặt Ruby</h3>
-
-<pre><code>curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-curl -sSL https://get.rvm.io | bash -s stable
-
-rvm install 2.2.2
-rvm use 2.2.2 --default
-</code></pre>
-
-<h3>Cài đặt Apache2 và Passenger</h3>
-
-<pre><code>apt-get install apache2
-passenger-install-apache2-module
-</code></pre>
-
-<h3>Config Apache2 với Passenger sau khi đã cài đặt xong Passenger</h3>
-
-<p>Tạo file /etc/apache2/mods-available/passenger.load</p>
-
-<pre><code>LoadModule passenger_module /home/root/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14/buildout/apache2/mod_passenger.so
-</code></pre>
-
-<p>Tạo file /etc/apache2/mods-available/passenger.conf</p>
-
-<pre><code>&lt;IfModule mod_passenger.c&gt;
-     PassengerRoot /home/deploy/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14
-     PassengerDefaultRuby /home/deploy/.rvm/gems/ruby-2.2.2/wrappers/ruby
-     PassengerMaxPoolSize 10
-&lt;/IfModule&gt;
-</code></pre>
-
-<p>Run command</p>
-
-<pre><code>a2enmod passenger
-</code></pre>
-
-<h3>Config app Rails và add domain/sub-domain</h3>
-
-<p>Các bạn có thể tạo 1 file với tên bất kì trong thư mục /etc/apache2/sites-enabled</p>
-
-<p>Như mình thì cứ mỗi 1 app Rails/PHP mình sẽ tạo 1 file ở đây, sau này mình muốn gỡ app nào đó đi mình chỉ cần xóa file đó là được.</p>
-
-<p>Ví dụ với app Rails của mình gắn với domain: ruby.rocks, mình sẽ tạo file có tên là: ruby.rocks.conf có nội dung như sau:</p>
-
-<pre><code>&lt;VirtualHost *:80&gt;
-  ServerName ruby.rocks
-  DocumentRoot /home/root/mania-rails-test/public
-  RailsEnv production
-    &lt;Directory /home/root/mania-rails-test/public&gt;
-        Allow from all
-        Options -MultiViews
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-</code></pre>
-
-<p>Giải thích các chỉ thị trong file này:</p>
-
-<ul>
-<li>VirtualHost *:80: bạn đang chỉ định rằng app này có thể được truy cập từ bên ngoài qua cổng 80</li>
-<li>ServerName ruby.rocks: đây chính là tên miền mà bạn muốn gắn với app Rails này</li>
-<li>DocumentRoot /home/root/mania-rails-test/public: đây là nơi để bạn define đường dẫn tới app Rails của bạn, và theo convention của Passenger thì sẽ là: $RAILS_ROOT_PATH + /public. Ví dụ app Rails của mình đặt tại /home/root/mania-rails-test/. Thì mình sẽ để là /home/root/mania-rails-test/public</li>
-<li>RailsEnv production Môi trường khi chạy app Rails này</li>
-<li>Tại thẻ Directory các bạn cũng để đường dẫn tới app Rails của mình giống như DocumentRoot</li>
-<li>Các phần còn lại trong thẻ Directory các bạn giữ nguyên, chúng ta sẽ nói về phần này sau.</li>
-</ul>
-
-
-<p>Cuối cùng chạy command</p>
-
-<pre><code>service apache2 restart
 </code></pre>
 </div>
   

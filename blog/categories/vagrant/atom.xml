@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vagrant | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/vagrant/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-03T10:30:07+09:00</updated>
+  <updated>2015-09-03T10:31:25+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -32,6 +32,9 @@ $ sudo apt-get update
 $ sudo apt-get install virtualbox-5.0
 $ sudo apt-get install dkms
 </code></pre>
+
+<!--more-->
+
 
 <h3>Install Vagrant( on HostMachine )</h3>
 
@@ -105,9 +108,6 @@ passwd: all authentication tokens updated successfully.
 
 <pre><code>$ chmod 755 /home/chefsfarms
 </code></pre>
-
-<!--more-->
-
 
 <h3>Install Chef-Solo( on GuestMachine )</h3>
 

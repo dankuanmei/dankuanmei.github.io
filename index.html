@@ -213,44 +213,12 @@ $ rvm use 2.2.2 --default
 $ gem install rails
 </code></pre>
 
-<p>Edit file <code>/etc/httpd/conf/httpd.conf</code></p>
-
-<pre><code>LoadModule passenger_module /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15/buildout/apache2/mod_passenger.so
-&lt;IfModule mod_passenger.c&gt;
-  PassengerRoot /home/kankou/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.15
-  PassengerDefaultRuby /home/kankou/.rvm/gems/ruby-2.2.2/wrappers/ruby
-&lt;/IfModule&gt;
-
-&lt;VirtualHost *:80&gt;
-    ServerName kankouannai-apuri.local
-    DocumentRoot /home/kankou/Kankouannai/public/
-        RailsEnv development
-        RailsBaseURI /
-    &lt;Directory /home/kankou/Kankouannai/public/&gt;
-        AllowOverride all
-        Options -MultiViews
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-</code></pre>
-
-<p>Install passenger</p>
-
-<pre><code>$ gem install passenger
-$ passenger-install-apache2-module
-</code></pre>
-
-<p>Install vsftpd</p>
-
-<pre><code>$ sudo yum install vsftpd
-</code></pre>
-
-<p>Install nodejs</p>
-
-<pre><code>$ curl -sL https://rpm.nodesource.com/setup | sudo bash -
-$ sudo yum install nodejs
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/16/setup-apache/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -366,51 +334,12 @@ passwd: all authentication tokens updated successfully.
 <pre><code>$ chmod 755 /home/chefsfarms
 </code></pre>
 
-<h3>Install Chef-Solo( on GuestMachine )</h3>
-
-<pre><code>$ curl -L http://www.opscode.com/chef/install.sh | sudo bash
-</code></pre>
-
-<p>Go to <code>https://downloads.chef.io/chef-dk/redhat/#/</code>. Get link download.</p>
-
-<pre><code>$ wget https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chefdk-0.6.2-1.el6.x86_64.rpm
-
-$ sudo rpm -Uvh chefdk-0.6.2-1.el6.x86_64.rpm
-
-$ which chef
-
-$ chef -v
-</code></pre>
-
-<p>Then run:</p>
-
-<pre><code>$ chef generate repo chef-repo
-$ cd chef-repo
-
-$ vi Berksfile
-</code></pre>
-
-<p>Chèn source code sau vào.</p>
-
-<pre><code>source "https://supermarket.chef.io"
-
-cookbook 'application_ruby'
-cookbook 'apt'
-cookbook 'build-essential'
-cookbook 'user'
-cookbook 'ssh_known_hosts'
-cookbook 'ruby_build'
-cookbook 'vim'
-</code></pre>
-
-<p>Chạy command:</p>
-
-<pre><code>$ berks vendor cookbooks
-</code></pre>
-
-<p>Thế là đã cài đặt xong. And now, all the needed cookbooks are downloaded into folder chef-repo/cookbooks</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/15/vagrant-step-by-step/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -467,147 +396,12 @@ class WebsocketChatController &lt; WebsocketRails::BaseController
 end
 </code></pre>
 
-<p>Event Routerの設定. Sửa file <code>events.rb</code> trong thư mục config</p>
-
-<pre><code>WebsocketRails::EventMap.describe do
-  subscribe :websocket_chat, to: WebsocketChatController, with_method: :message_recieve
-end
-</code></pre>
-
-<p>Tạo controller Chat đơn giản</p>
-
-<pre><code>$ rails g controller Chat index
-</code></pre>
-
-<p>Trong file <code>index.html.erb</code> chèn source code này vào</p>
-
-<pre><code>&lt;!-- チャット表示部分 --&gt;
-&lt;ul id="chat_area"&gt;&lt;/ul&gt;
-
-&lt;!-- コメントフォーム --&gt;
-&lt;input id="comment" type="text"&gt;
-&lt;input id="send" type="button" value="send"&gt;
-
-&lt;script&gt;
-  var ws_rails = new WebSocketRails("sample-chat.local:3001/websocket");
-  // メッセージ受信時の処理
-  ws_rails.bind("websocket_chat", function(message){
-    var message_li = document.createElement("li");
-    message_li.textContent = message;
-    document.getElementById("chat_area").appendChild(message_li);
-  });
-
-  // メッセージ送信時の処理
-  document.getElementById("send").onclick =  function(){
-    var comment = document.getElementById("comment").value;
-    ws_rails.trigger("websocket_chat", comment);
-  }
-&lt;/script&gt;
-</code></pre>
-
-<p>Rack::Lockの無効化. Trong file <code>config/environments/development.rb</code>, viết thêm dòng config này vào:</p>
-
-<pre><code>config.middleware.delete Rack::Lock
-</code></pre>
-
-<p>Vậy là đã xong phần source code, giờ thì sẽ triển khai deploy trên Apache2, với Passenger &amp; Virtualhost.</p>
-
-<p>Trong Gemfile điền thêm hai gem:</p>
-
-<pre><code># Deploy
-gem 'passenger'
-gem 'therubyracer', platforms: :ruby
-</code></pre>
-
-<p>Bundle install xong thì chạy lệnh <code>passenger-install-apache2-module</code>. Thiết lập Passenger cho thằng Apache2.</p>
-
-<p>Thiết lập thêm theo cách này cho chắc ăn. Nhưng hình như sẽ bị cảnh báo là confict. Hiện thời chưa thấy confilct gì cả.</p>
-
-<p>First, install the PGP key for the repository server:</p>
-
-<pre><code>sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 561F9B9CAC40B2F7
-</code></pre>
-
-<p>Create an APT source file:</p>
-
-<pre><code>sudo nano /etc/apt/sources.list.d/passenger.list
-</code></pre>
-
-<p>Insert the following line to add the Passenger repository to the file:</p>
-
-<pre><code>deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
-</code></pre>
-
-<p>Press CTRL+X to exit, type Y to save the file, and then press ENTER to confirm the file location.</p>
-
-<p>Change the owner and permissions for this file to restrict access to root:</p>
-
-<pre><code>sudo chown root: /etc/apt/sources.list.d/passenger.list
-sudo chmod 600 /etc/apt/sources.list.d/passenger.list
-</code></pre>
-
-<p>Update the APT cache:</p>
-
-<pre><code>sudo apt-get update
-</code></pre>
-
-<p>Finally, install Passenger:</p>
-
-<pre><code>sudo apt-get install libapache2-mod-passenger
-</code></pre>
-
-<p>Make sure the Passenger Apache module; it maybe enabled already:</p>
-
-<pre><code>sudo a2enmod passenger
-</code></pre>
-
-<p>Restart Apache:</p>
-
-<pre><code>sudo service apache2 restart
-</code></pre>
-
-<p>Giờ là lúc setup server apache. Hiện tại thì bắt buộc phải copy source code vào trong thư mục <code>/var/www</code>, khá là bất tiện.</p>
-
-<pre><code>$ sudo vim /etc/apache2/sites-available/sample-chat.local.conf
-</code></pre>
-
-<p>Sau đó chèn code sau</p>
-
-<pre><code>&lt;virtualhost *:80&gt;
-    DocumentRoot "/var/www/sample-chat/public"
-    ServerName sample-chat.local
-    SetEnv RACK_ENV development
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-    &lt;Directory "/var/www/sample-chat/public"&gt;
-      Options FollowSymLinks
-      Require all granted
-    &lt;/directory&gt;
-
-&lt;/virtualhost&gt;
-</code></pre>
-
-<p>Say đó sửa file <code>/etc/hosts</code> để thiết lập domain ảo ở local.</p>
-
-<p>Chạy lệnh</p>
-
-<pre><code>$ sudo a2ensite sample-chat.local
-$ sudo service apache2 reload
-$ sudo service apache2 restart
-</code></pre>
-
-<p>Vào trong thư mục source code chạy lệnh <code>rake secret</code>sau đó copy đoạn mã vào trong file <code>config/secret.yml</code></p>
-
-<p>Sửa config trong file <code>config/initializers/websocket_rails.rb</code> về <code>config.standalone = true</code>. Sau đó chạy lệnh:</p>
-
-<pre><code>$ rake websocket_rails:start_server
-$ rake assets:precompile
-</code></pre>
-
-<p>Vậy là đã hoàn tất!</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/13/rails-websocket-deploy-on-apache2-with-passenger/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -649,8 +443,6 @@ Move right: [l]
 [e]  moves to the end of next word;
 [b]  moves to beginning of the word;
 </code></pre>
-
-<h3>Virtual mode</h3>
 </div>
   
   
@@ -699,47 +491,12 @@ $ heroku create
 $ heroku apps:rename &lt;new-name&gt;
 </code></pre>
 
-<h3>Config heroku</h3>
-
-<h4>Gemfile</h4>
-
-<pre><code>group :production do
-  gem 'puma'
-  gem 'pg',             '0.17.1'
-  gem 'rails_12factor', '0.0.2'
-end
-</code></pre>
-
-<h4>Puma config</h4>
-
-<p>Create <code>Procfile</code></p>
-
-<pre><code>web: bundle exec puma -C config/puma.rb
-</code></pre>
-
-<p>Create a configuration file for Puma at <code>config/puma.rb</code></p>
-
-<pre><code>workers Integer(ENV['WEB_CONCURRENCY'] || 2)
-threads_count = Integer(ENV['MAX_THREADS'] || 5)
-threads threads_count, threads_count
-
-preload_app!
-
-rackup      DefaultRackup
-port        ENV['PORT']     || 3000
-environment ENV['RACK_ENV'] || 'development'
-
-on_worker_boot do
-  ActiveRecord::Base.establish_connection
-end
-</code></pre>
-
-<p>Run command</p>
-
-<pre><code>$ heroku config:set MIN_THREADS=1 MAX_THREADS=1
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/08/08/rails-tutorial-step-by-step/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -843,10 +600,6 @@ admin_name: "Link works Japan"
 <h3>Edit Gemfile</h3>
 
 <p>Thêm gem <code>pg</code> vào production khi deploy lên heroku</p>
-
-<h3>Tìm hiểu về gem pundit</h3>
-
-<h3>Tìm hiểu về gem upmin-admin</h3>
 </div>
   
   
@@ -949,62 +702,12 @@ admin_name: "Link works Japan"
 
 <p>PROJECT is name</p>
 
-<h3>Devise</h3>
-
-<p>Devise is a flexible authentication solution for Rails based on Warden. It:</p>
-
-<ul>
-<li>Is Rack based;</li>
-<li>Is a complete MVC solution based on Rails engines;</li>
-<li>Allows you to have multiple models signed in at the same time;</li>
-<li>Is based on a modularity concept: use only what you really need.</li>
-</ul>
-
-
-<p>It&rsquo;s composed of 10 modules:</p>
-
-<ul>
-<li><code>Database Authenticatable</code> encrypts and stores a password in the database to validate the authenticity of a user while signing in. The authentication can be done both through POST requests or HTTP Basic Authentication.</li>
-<li><code>Omniauthable</code> adds OmniAuth (<a href="https://github.com/intridea/omniauth">https://github.com/intridea/omniauth</a>) support.</li>
-<li><code>Confirmable</code> sends emails with confirmation instructions and verifies whether an account is already confirmed during sign in.</li>
-<li><code>Recoverable</code> resets the user password and sends reset instructions.</li>
-<li><code>Registerable</code> handles signing up users through a registration process, also allowing them to edit and destroy their account.</li>
-<li><code>Rememberable</code> manages generating and clearing a token for remembering the user from a saved cookie.</li>
-<li><code>Trackable</code> tracks sign in count, timestamps and IP address.</li>
-<li><code>Timeoutable</code> expires sessions that have not been active in a specified period of time.</li>
-<li><code>Validatable</code> provides validations of email and password. It&rsquo;s optional and can be customized, so you&rsquo;re able to define your own validations.</li>
-<li><code>Lockable</code> locks an account after a specified number of failed sign-in attempts. Can unlock via email or after a specified time period.</li>
-</ul>
-
-
-<h5>Getting started</h5>
-
-<pre><code>gem 'devise'
-
-rails generate devise:install
-
-rails generate devise MODEL
-</code></pre>
-
-<p>Replace MODEL with the class name used for the application’s users (it’s frequently User but could also be Admin).</p>
-
-<p>This will create a model (if one does not exist) and configure it with default Devise modules. The generator also configures your config/routes.rb file to point to the Devise controller.</p>
-
-<p>Next, check the MODEL for any additional configuration options you might want to add, such as confirmable or lockable. If you add an option, be sure to inspect the migration file (created by the generator if your ORM supports them) and uncomment the appropriate section. For example, if you add the confirmable option in the model, you&rsquo;ll need to uncomment the Confirmable section in the migration.</p>
-
-<p>Then run:</p>
-
-<pre><code>rake db:migrate
-</code></pre>
-
-<p>Next, you need to set up the default URL options for the Devise mailer in each environment.</p>
-
-<p>Here is a possible configuration for config/environments/development.rb:</p>
-
-<pre><code>config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/07/20/building-a-restful-api-in-a-rails-application/">Read on &rarr;</a>
+    </footer>
   
 
 

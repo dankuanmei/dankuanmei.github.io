@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Tutorial | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/tutorial/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -36,6 +36,9 @@ $ git remote add origin git@bitbucket.org:&lt;username&gt;/&lt;project-name&gt;
 $ heroku create
 $ heroku apps:rename &lt;new-name&gt;
 </code></pre>
+
+<!--more-->
+
 
 <h3>Config heroku</h3>
 

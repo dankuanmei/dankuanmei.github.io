@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Java | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/java/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -21,6 +21,9 @@
     <content type="html"><![CDATA[<p>Định nghĩa một interface cho việc tạo ra một đối tượng, nhưng để cho các lớp con quyết định lớp nào sẽ tạo đối tượng. Factory Method cho phép một lớp hoãn việc tạo đối tượng sang các lớp con.</p>
 
 <p><img src="http://i.imgur.com/KCE7HIw.png"></p>
+
+<!--more-->
+
 
 <h2>#</h2>
 

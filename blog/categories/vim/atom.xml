@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Vim | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -32,8 +32,6 @@ Move right: [l]
 [e]  moves to the end of next word;
 [b]  moves to beginning of the word;
 </code></pre>
-
-<h3>Virtual mode</h3>
 ]]></content>
   </entry>
   

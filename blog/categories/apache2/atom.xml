@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Apache2 | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/apache2/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -46,6 +46,9 @@ class WebsocketChatController &lt; WebsocketRails::BaseController
   end
 end
 </code></pre>
+
+<!--more-->
+
 
 <p>Event Routerの設定. Sửa file <code>events.rb</code> trong thư mục config</p>
 
@@ -216,6 +219,9 @@ rvm use 2.2.2 --default
 passenger-install-apache2-module
 </code></pre>
 
+<!--more-->
+
+
 <h3>Config Apache2 với Passenger sau khi đã cài đặt xong Passenger</h3>
 
 <p>Tạo file /etc/apache2/mods-available/passenger.load</p>
@@ -287,6 +293,9 @@ passenger-install-apache2-module
 
 <pre><code>sudo mkdir -p /var/www/example.local/public_html
 </code></pre>
+
+<!--more-->
+
 
 <h2>Grant Permissions</h2>
 

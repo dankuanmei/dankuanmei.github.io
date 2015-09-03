@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Opengl | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/opengl/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -26,6 +26,9 @@
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 </code></pre>
+
+<!--more-->
+
 
 <p>First, GLEW. So this one actually is a little bit magic, but let’s leave this for later.</p>
 
@@ -127,6 +130,9 @@ $ function ccgl() { cc -I/usr/X11R6/include "$@" -L/usr/X11R6/lib -lglut -lGLU -
 
 $ ccgl program.c
 </code></pre>
+
+<!--more-->
+
 
 <h2>#</h2>
 

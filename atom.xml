@@ -4,7 +4,7 @@
   <title><![CDATA[ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -101,6 +101,9 @@ $ rvm install 2.2.2
 $ rvm use 2.2.2 --default
 $ gem install rails
 </code></pre>
+
+<!--more-->
+
 
 <p>Edit file <code>/etc/httpd/conf/httpd.conf</code></p>
 
@@ -234,6 +237,9 @@ passwd: all authentication tokens updated successfully.
 <pre><code>$ chmod 755 /home/chefsfarms
 </code></pre>
 
+<!--more-->
+
+
 <h3>Install Chef-Solo( on GuestMachine )</h3>
 
 <pre><code>$ curl -L http://www.opscode.com/chef/install.sh | sudo bash
@@ -313,6 +319,9 @@ class WebsocketChatController &lt; WebsocketRails::BaseController
   end
 end
 </code></pre>
+
+<!--more-->
+
 
 <p>Event Routerの設定. Sửa file <code>events.rb</code> trong thư mục config</p>
 
@@ -475,8 +484,6 @@ Move right: [l]
 [e]  moves to the end of next word;
 [b]  moves to beginning of the word;
 </code></pre>
-
-<h3>Virtual mode</h3>
 ]]></content>
   </entry>
   
@@ -503,6 +510,9 @@ $ git remote add origin git@bitbucket.org:&lt;username&gt;/&lt;project-name&gt;
 $ heroku create
 $ heroku apps:rename &lt;new-name&gt;
 </code></pre>
+
+<!--more-->
+
 
 <h3>Config heroku</h3>
 
@@ -606,10 +616,6 @@ admin_name: "Link works Japan"
 <h3>Edit Gemfile</h3>
 
 <p>Thêm gem <code>pg</code> vào production khi deploy lên heroku</p>
-
-<h3>Tìm hiểu về gem pundit</h3>
-
-<h3>Tìm hiểu về gem upmin-admin</h3>
 ]]></content>
   </entry>
   
@@ -669,6 +675,9 @@ admin_name: "Link works Japan"
 </code></pre>
 
 <p>PROJECT is name</p>
+
+<!--more-->
+
 
 <h3>Devise</h3>
 
@@ -754,6 +763,9 @@ rvm use 2.2.2 --default
 passenger-install-apache2-module
 </code></pre>
 
+<!--more-->
+
+
 <h3>Config Apache2 với Passenger sau khi đã cài đặt xong Passenger</h3>
 
 <p>Tạo file /etc/apache2/mods-available/passenger.load</p>
@@ -827,6 +839,9 @@ passenger-install-apache2-module
 #include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 </code></pre>
+
+<!--more-->
+
 
 <p>First, GLEW. So this one actually is a little bit magic, but let’s leave this for later.</p>
 
@@ -1020,6 +1035,9 @@ $ function ccgl() { cc -I/usr/X11R6/include "$@" -L/usr/X11R6/lib -lglut -lGLU -
 $ ccgl program.c
 </code></pre>
 
+<!--more-->
+
+
 <h2>#</h2>
 
 <table>
@@ -1158,6 +1176,9 @@ int main(int argc , char ** argv) {
     <content type="html"><![CDATA[<p>Định nghĩa một interface cho việc tạo ra một đối tượng, nhưng để cho các lớp con quyết định lớp nào sẽ tạo đối tượng. Factory Method cho phép một lớp hoãn việc tạo đối tượng sang các lớp con.</p>
 
 <p><img src="http://i.imgur.com/KCE7HIw.png"></p>
+
+<!--more-->
+
 
 <h2>#</h2>
 

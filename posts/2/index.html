@@ -126,65 +126,12 @@ rvm use 2.2.2 --default
 passenger-install-apache2-module
 </code></pre>
 
-<h3>Config Apache2 với Passenger sau khi đã cài đặt xong Passenger</h3>
-
-<p>Tạo file /etc/apache2/mods-available/passenger.load</p>
-
-<pre><code>LoadModule passenger_module /home/root/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14/buildout/apache2/mod_passenger.so
-</code></pre>
-
-<p>Tạo file /etc/apache2/mods-available/passenger.conf</p>
-
-<pre><code>&lt;IfModule mod_passenger.c&gt;
-     PassengerRoot /home/deploy/.rvm/gems/ruby-2.2.2/gems/passenger-5.0.14
-     PassengerDefaultRuby /home/deploy/.rvm/gems/ruby-2.2.2/wrappers/ruby
-     PassengerMaxPoolSize 10
-&lt;/IfModule&gt;
-</code></pre>
-
-<p>Run command</p>
-
-<pre><code>a2enmod passenger
-</code></pre>
-
-<h3>Config app Rails và add domain/sub-domain</h3>
-
-<p>Các bạn có thể tạo 1 file với tên bất kì trong thư mục /etc/apache2/sites-enabled</p>
-
-<p>Như mình thì cứ mỗi 1 app Rails/PHP mình sẽ tạo 1 file ở đây, sau này mình muốn gỡ app nào đó đi mình chỉ cần xóa file đó là được.</p>
-
-<p>Ví dụ với app Rails của mình gắn với domain: ruby.rocks, mình sẽ tạo file có tên là: ruby.rocks.conf có nội dung như sau:</p>
-
-<pre><code>&lt;VirtualHost *:80&gt;
-  ServerName ruby.rocks
-  DocumentRoot /home/root/mania-rails-test/public
-  RailsEnv production
-    &lt;Directory /home/root/mania-rails-test/public&gt;
-        Allow from all
-        Options -MultiViews
-        Require all granted
-    &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-</code></pre>
-
-<p>Giải thích các chỉ thị trong file này:</p>
-
-<ul>
-<li>VirtualHost *:80: bạn đang chỉ định rằng app này có thể được truy cập từ bên ngoài qua cổng 80</li>
-<li>ServerName ruby.rocks: đây chính là tên miền mà bạn muốn gắn với app Rails này</li>
-<li>DocumentRoot /home/root/mania-rails-test/public: đây là nơi để bạn define đường dẫn tới app Rails của bạn, và theo convention của Passenger thì sẽ là: $RAILS_ROOT_PATH + /public. Ví dụ app Rails của mình đặt tại /home/root/mania-rails-test/. Thì mình sẽ để là /home/root/mania-rails-test/public</li>
-<li>RailsEnv production Môi trường khi chạy app Rails này</li>
-<li>Tại thẻ Directory các bạn cũng để đường dẫn tới app Rails của mình giống như DocumentRoot</li>
-<li>Các phần còn lại trong thẻ Directory các bạn giữ nguyên, chúng ta sẽ nói về phần này sau.</li>
-</ul>
-
-
-<p>Cuối cùng chạy command</p>
-
-<pre><code>service apache2 restart
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/07/20/install-apache2-and-passenger/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -221,83 +168,12 @@ passenger-install-apache2-module
 #include &lt;stdlib.h&gt;
 </code></pre>
 
-<p>First, GLEW. So this one actually is a little bit magic, but let’s leave this for later.</p>
-
-<pre><code>// Include GLEW. Always include it before gl.h and glfw.h, since it's a bit magic.
-#include &lt;GL/glew.h&gt;
-</code></pre>
-
-<p>We decided to let GLFW handle the window and the keyboard, so let’s include it too :</p>
-
-<pre><code>// Include GLFW
-#include &lt;GL/glfw3.h&gt;
-</code></pre>
-
-<p>We don’t actually need this one right now, but this is a library for 3D mathematics. It will prove very useful soon. There is no magic in GLM, you can write your own if you want; it’s just handy. The “using namespace” is there to avoid typing “glm::vec3″, but “vec3″ instead.</p>
-
-<pre><code>// Include GLM
-#include &lt;glm/glm.hpp&gt;
-using namespace glm;
-</code></pre>
-
-<p>If you cut’n paste all these #include’s in playground.cpp, the compiler will complain that there is no main() function. So let’s create one :</p>
-
-<pre><code>int main(){
-}
-</code></pre>
-
-<p>First thing to do it to initialize GLFW :</p>
-
-<pre><code>// Initialise GLFW
-if( !glfwInit() )
-{
-    fprintf( stderr, "Failed to initialize GLFW\n" );
-    return -1;
-}
-</code></pre>
-
-<p>We can now create our first OpenGL window !</p>
-
-<pre><code>glfwWindowHint(GLFW_SAMPLES, 4); // 4x antialiasing
-glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // We want OpenGL 3.3
-glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); // To make MacOS happy; should not be needed
-glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); //We don't want the old OpenGL 
-
-// Open a window and create its OpenGL context 
-GLFWwindow* window; // (In the accompanying source code, this variable is global) 
-window = glfwCreateWindow( 1024, 768, "Tutorial 01", NULL, NULL); 
-if( window == NULL ){
-    fprintf( stderr, "Failed to open GLFW window. If you have an Intel GPU, they are not 3.3 compatible. Try the 2.1 version of the tutorials.\n" );
-    glfwTerminate();
-    return -1;
-}
-glfwMakeContextCurrent(window); // Initialize GLEW 
-glewExperimental=true; // Needed in core profile 
-if (glewInit() != GLEW_OK) {
-    fprintf(stderr, "Failed to initialize GLEW\n");
-    return -1;
-}
-</code></pre>
-
-<p>Build this and run. A window should appear, and be closed right away. Of course ! We need to wait until the user hits the Escape key :</p>
-
-<pre><code>// Ensure we can capture the escape key being pressed below
-glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
-
-do{
-    // Draw nothing, see you in tutorial 2 !
-
-    // Swap buffers
-    glfwSwapBuffers(window);
-    glfwPollEvents();
-
-} // Check if the ESC key was pressed or the window was closed
-while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS &amp;&amp;
-glfwWindowShouldClose(window) == 0 );
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/07/15/opengl-beginner/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -455,126 +331,12 @@ $ function ccgl() { cc -I/usr/X11R6/include "$@" -L/usr/X11R6/lib -lglut -lGLU -
 $ ccgl program.c
 </code></pre>
 
-<h2>#</h2>
-
-<table>
-<thead>
-<tr>
-<th> C                           </th>
-<th> OpenGL                      </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> signed char                 </td>
-<td> GLbyte                      </td>
-</tr>
-<tr>
-<td> unsigned char               </td>
-<td> GLubyte, GLboolean          </td>
-</tr>
-<tr>
-<td> short                       </td>
-<td> GLshort                     </td>
-</tr>
-<tr>
-<td> unsigned short              </td>
-<td> GLushort                    </td>
-</tr>
-<tr>
-<td> int, long                   </td>
-<td> GLint, GLsizei              </td>
-</tr>
-<tr>
-<td> unsigned int, unsigned long </td>
-<td> GLuint, GLenum, GLbitfield  </td>
-</tr>
-<tr>
-<td> float                       </td>
-<td> GLfloat, GLclampf           </td>
-</tr>
-<tr>
-<td> double                      </td>
-<td> GLdouble, GLclampd          </td>
-</tr>
-</tbody>
-</table>
-
-
-<h3>Function</h3>
-
-<p>void glutInit(int *argcp, char **argv);</p>
-
-<p>glutInitWindowPosition();</p>
-
-<p>glutInitWindowSize();</p>
-
-<p>glutInitDisplayMode();</p>
-
-<ul>
-<li>GLUT_RGBA RGBA モード</li>
-<li>GLUT_RGBAも GLUT_INDEX も記述されないときのデフォルト</li>
-<li>GLUT_RGB  GLUT_RGBA と同じ</li>
-<li>GLUT_INDEX    カラーインデックス モード</li>
-<li>GLUT_RGBAも記述された場合，上書きする</li>
-<li>GLUT_SINGLE   シングルバッファ モード</li>
-<li>GLUT_DOUBLE もGLUT_SINGLEも記述されていない場合の デフォルトである</li>
-<li>GLUT_DOUBLE   ダブルバッファ モード</li>
-<li>GLUT_SINGLE も記述されていた場合，上書きする</li>
-<li>GLUT_ACCUM    アキュムレーション バッファ</li>
-<li>GLUT_ALPHA    カラーバッファにアルファ成分を加えること</li>
-<li>GLUT_DEPTH    デプス(Z)バッファを加えること</li>
-<li>GLUT_STENCIL  ステンシル・バッファを加えること</li>
-<li>GLUT_MULTISAMPLE  マルチサンプリングのサポート</li>
-<li>GLX_SAMPLE_SGIS エクステンションをサポートしていなければならない</li>
-<li>GLUT_STEREO   ステレオ・ウィンドウビットマスク</li>
-</ul>
-
-
-<p>int glutCreateWindow(char *name);</p>
-
-<p>void glutDisplayFunc(void (*func)(void));</p>
-
-<p>void glClear(GLbitfield mask);</p>
-
-<p>void glClearColor(GLclampf red,  GLclampf green,  GLclampf blue,  GLclampf alpha);</p>
-
-<p>void glBegin(GLenum  mode);</p>
-
-<p>void glEnd(void);</p>
-
-<p>void glFlush();</p>
-
-<h3>Sample</h3>
-
-<pre><code>#include &lt;windows.h&gt;
-#include &lt;GL/gl.h&gt;
-#include &lt;GL/glut.h&gt;
-
-void disp(void) {
-    glClearColor(1 , 1 , 1 , 0);
-    glClear(GL_COLOR_BUFFER_BIT);
-
-    glBegin(GL_POLYGON);
-    glEnd();
-
-    glFlush();
-}
-
-int main(int argc , char ** argv) {
-    glutInit(&amp;argc , argv);
-    glutInitWindowPosition(100 , 50);
-    glutInitWindowSize(200 , 100);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGBA);
-
-    glutCreateWindow("Kitty on your lap");
-    glutDisplayFunc(disp);
-    glutMainLoop();
-    return 0;
-}
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/07/15/install-opengl-in-ubuntu/">Read on &rarr;</a>
+    </footer>
   
 
 
@@ -636,136 +398,12 @@ int main(int argc , char ** argv) {
 
 <p><img src="http://i.imgur.com/KCE7HIw.png"></p>
 
-<h2>#</h2>
-
-<p>Interface sản phẩm</p>
-
-<pre><code>public interface Weapon {
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Interface factory chứa method để tạo sản phẩm</p>
-
-<pre><code>public interface Blacksmith {
-
-    Weapon manufactureWeapon(WeaponType weaponType);
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Các subclass factory thực thi để tạo sản phẩm</p>
-
-<pre><code>public class ElfBlacksmith implements Blacksmith {
-
-    public Weapon manufactureWeapon(WeaponType weaponType) {
-        return new ElfWeapon(weaponType);
-    }
-
-}
-
-public class OrcBlacksmith implements Blacksmith {
-
-    public Weapon manufactureWeapon(WeaponType weaponType) {
-        return new OrcWeapon(weaponType);
-    }
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Các subclass sản phẩm</p>
-
-<pre><code>public class ElfWeapon implements Weapon {
-
-    private WeaponType weaponType;
-
-    public ElfWeapon(WeaponType weaponType) {
-        this.weaponType = weaponType;
-    }
-
-    @Override
-    public String toString() {
-        return "Elven " + weaponType;
-    }
-
-}
-
-public class OrcWeapon implements Weapon {
-
-    private WeaponType weaponType;
-
-    public OrcWeapon(WeaponType weaponType) {
-        this.weaponType = weaponType;
-    }
-
-    @Override
-    public String toString() {
-        return "Orcish " + weaponType;
-    }
-
-}
-</code></pre>
-
-<h2>#</h2>
-
-<p>Class chứa loại sản phẩm</p>
-
-<pre><code>public enum WeaponType {
-
-    SHORT_SWORD("short sword"), SPEAR("spear"), AXE("axe"), UNDEFINED("");
-
-    private String title;
-
-    WeaponType(String title) {
-        this.title = title;
-    }
-
-    @Override
-    public String toString() {
-        return title;
-    }
-}
-</code></pre>
-
-<h3>Application</h3>
-
-<p>Class chạy thực thi, khởi tạo đối tượng sản phẩm và đối tượng factory. Tạo factory tương ứng với sản phẩm muốn tạo và truyền vào loại sản phẩm.</p>
-
-<pre><code>/**
- * 
- * In Factory Method we have an interface (Blacksmith) with a method for
- * creating objects (manufactureWeapon). The concrete subclasses (OrcBlacksmith,
- * ElfBlacksmith) then override the method to produce objects of their liking.
- * 
- */
-public class App {
-
-    public static void main(String[] args) {
-        Blacksmith blacksmith;
-        Weapon weapon;
-
-        blacksmith = new f();
-        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-        System.out.println(weapon);
-        weapon = blacksmith.manufactureWeapon(WeaponType.AXE);
-        System.out.println(weapon);
-
-        blacksmith = new ElfBlacksmith();
-        weapon = blacksmith.manufactureWeapon(WeaponType.SHORT_SWORD);
-        System.out.println(weapon);
-        weapon = blacksmith.manufactureWeapon(WeaponType.SPEAR);
-        System.out.println(weapon);
-    }
-}
-</code></pre>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2015/07/11/java-design-patterns-factory-methods/">Read on &rarr;</a>
+    </footer>
   
 
 

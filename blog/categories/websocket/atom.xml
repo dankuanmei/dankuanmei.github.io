@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Websocket | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/websocket/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -46,6 +46,9 @@ class WebsocketChatController &lt; WebsocketRails::BaseController
   end
 end
 </code></pre>
+
+<!--more-->
+
 
 <p>Event Routerの設定. Sửa file <code>events.rb</code> trong thư mục config</p>
 

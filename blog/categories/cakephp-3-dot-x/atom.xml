@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cakephp-3.x | ダン・クァン・ミン Blog]]></title>
   <link href="http://dankuanmei.github.io/blog/categories/cakephp-3-dot-x/atom.xml" rel="self"/>
   <link href="http://dankuanmei.github.io/"/>
-  <updated>2015-09-01T09:25:10+09:00</updated>
+  <updated>2015-09-03T10:30:07+09:00</updated>
   <id>http://dankuanmei.github.io/</id>
   <author>
     <name><![CDATA[ダン・クァン・ミン]]></name>
@@ -26,6 +26,9 @@ $ bin/cake bake controller users
 
 $ bin/cake bake model users
 </code></pre>
+
+<!--more-->
+
 
 <h2>Full guide</h2>
 
